@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import AdminHome from '../AdminHome/AdminHome';
 import AdminForm from '../AdminForm/AdminForm';
+import AdminDetail from '../AdminDetail/AdminDetail';
 
 import AddStudentForm from '../TeacherComponents/AddStudentForm/AddStudentForm';
 import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
@@ -64,17 +65,23 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-
-            <ProtectedRoute
+            <AdminHome
               exact
               path="/adminhome"
               component={AdminHome}
             />
-            <ProtectedRoute
+            
+            <AdminForm
               exact
               path="/adminform"
               component={AdminForm}
             />
+
+            <AdminDetail
+              exact
+              path="/admindetail"
+              component={AdminDetail}
+
             <ProtectedRoute
               exact
               path="/teacherhome"
@@ -104,10 +111,12 @@ class App extends Component {
               exact
               path="/studentroster"
               component={StudentRoster}
+
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
+          
           <Footer />
         </div>
       </Router>
