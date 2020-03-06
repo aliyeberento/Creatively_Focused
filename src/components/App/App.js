@@ -16,8 +16,11 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import AdminHome from '../AdminHome/AdminHome';
+import AdminForm from '../AdminForm/AdminForm';
 
 import './App.css';
+
 
 class App extends Component {
   componentDidMount () {
@@ -54,6 +57,17 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/adminhome"
+              component={AdminHome}
+            />
+            <ProtectedRoute
+              exact
+              path="/adminform"
+              component={AdminForm}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
