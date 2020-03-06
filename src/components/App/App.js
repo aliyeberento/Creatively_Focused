@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -20,12 +20,18 @@ import AdminHome from '../AdminHome/AdminHome';
 import AdminForm from '../AdminForm/AdminForm';
 import AdminDetail from '../AdminDetail/AdminDetail';
 
+import AddStudentForm from '../TeacherComponents/AddStudentForm/AddStudentForm';
+import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
+import EditStudentPage from '../TeacherComponents/EditStudentPage/EditStudentPage';
+import MonthlyCalendarPage from '../TeacherComponents/MonthlyCalendarPage/MonthlyCalendarPage';
+import StudentDetailPage from '../TeacherComponents/StudentDetailPage/StudentDetailPage';
+import StudentRoster from '../TeacherComponents/StudentRoster/StudentRoster';
+
 import './App.css';
 
-
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' })
   }
 
   render() {
@@ -70,10 +76,42 @@ class App extends Component {
               path="/adminform"
               component={AdminForm}
             />
+
             <AdminDetail
               exact
               path="/admindetail"
               component={AdminDetail}
+
+            <ProtectedRoute
+              exact
+              path="/teacherhome"
+              component={AnnualCalendarPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/monthlycalendar"
+              component={MonthlyCalendarPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/addstudent"
+              component={AddStudentForm}
+            />
+            <ProtectedRoute
+              exact
+              path="/editstudent"
+              component={EditStudentPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/studentdetail"
+              component={StudentDetailPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/studentroster"
+              component={StudentRoster}
+
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
@@ -82,7 +120,8 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
-  )}
+    )
+  }
 }
 
 export default connect()(App);
