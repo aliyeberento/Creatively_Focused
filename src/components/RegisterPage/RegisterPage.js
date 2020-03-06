@@ -5,6 +5,7 @@ class RegisterPage extends Component {
   state = {
     username: '',
     password: '',
+    auth: ''
   };
 
   registerUser = (event) => {
@@ -95,4 +96,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(RegisterPage);
-
