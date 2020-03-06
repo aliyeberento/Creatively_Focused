@@ -81,7 +81,7 @@ class App extends Component {
               exact
               path="/admindetail"
               component={AdminDetail}
-
+            />
             <ProtectedRoute
               exact
               path="/teacherhome"
