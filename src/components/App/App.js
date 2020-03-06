@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import AdminHome from '../AdminHome/AdminHome';
 import AdminForm from '../AdminForm/AdminForm';
+import AdminDetail from '../AdminDetail/AdminDetail';
 
 import './App.css';
 
@@ -58,20 +59,26 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-
-            <ProtectedRoute
+            <AdminHome
               exact
               path="/adminhome"
               component={AdminHome}
             />
-            <ProtectedRoute
+            
+            <AdminForm
               exact
               path="/adminform"
               component={AdminForm}
             />
+            <AdminDetail
+              exact
+              path="/admindetail"
+              component={AdminDetail}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
+          
           <Footer />
         </div>
       </Router>
