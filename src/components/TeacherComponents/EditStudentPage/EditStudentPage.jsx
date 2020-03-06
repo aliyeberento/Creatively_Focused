@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // import Footer from '../Footer/Footer';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
-class EditStudent extends Component {
+class EditStudentPage extends Component {
 
     render() {
         return (
@@ -17,4 +17,4 @@ class EditStudent extends Component {
     }
 }
 
-export default connect()(EditStudent);
+export default connect()(EditStudentPage);
