@@ -21,7 +21,8 @@ import EditStudentPage from '../TeacherComponents/EditStudentPage/EditStudentPag
 import MonthlyCalendarPage from '../TeacherComponents/MonthlyCalendarPage/MonthlyCalendarPage';
 import StudentDetailPage from '../TeacherComponents/StudentDetailPage/StudentDetailPage';
 import StudentRoster from '../TeacherComponents/StudentRoster/StudentRoster';
-import AdminRoute from '../AdminRoute/AdminRoute'
+import AdminRoute from '../AdminRoute/AdminRoute';
+import AdminForm from '../AdminForm/AdminForm';
 
 import './App.css';
 
@@ -61,17 +62,16 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-
             <AdminRoute
               exact
               path="/adminhome"
               component={AdminHome}
             />
-            {/* <AdminRoute
+            <AdminRoute
               exact
               path="/adminform"
-              component={RegisterPage}
-            /> */}
+              component={AdminForm}
+            />
             <AdminDetail
               exact
               path="/admindetail"
@@ -106,7 +106,6 @@ class App extends Component {
               exact
               path="/studentroster"
               component={StudentRoster}
-
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
