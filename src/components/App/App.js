@@ -5,23 +5,16 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import AdminHome from '../AdminHome/AdminHome';
-// import AdminForm from '../AdminForm/AdminForm';
-import RegisterPage from '../RegisterPage/RegisterPage';
-import AdminForm from '../AdminForm/AdminForm';
+// import RegisterPage from '../RegisterPage/RegisterPage';
 import AdminDetail from '../AdminDetail/AdminDetail';
-
 import AddStudentForm from '../TeacherComponents/AddStudentForm/AddStudentForm';
 import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
 import EditStudentPage from '../TeacherComponents/EditStudentPage/EditStudentPage';
@@ -83,6 +76,7 @@ class App extends Component {
               exact
               path="/admindetail"
               component={AdminDetail}
+            />
             <ProtectedRoute
               exact
               path="/teacherhome"
