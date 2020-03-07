@@ -97,6 +97,30 @@ ALTER TABLE "case_worker" ADD CONSTRAINT "case_worker_fk1" FOREIGN KEY ("user_id
 ALTER TABLE "student_event" ADD CONSTRAINT "student_event_fk0" FOREIGN KEY ("student_id") REFERENCES "student"("id");
 ALTER TABLE "student_event" ADD CONSTRAINT "student_event_fk1" FOREIGN KEY ("event_id") REFERENCES "event"("id");
 
+INSERT INTO "user" ("username", "password", "phone", "isd", "school", "auth", "prefcomm") 
+VALUES ('dane_smith@sps.edu', '1234', '651-123-4567', 1, 1, 3, false);
+
+INSERT INTO "school" ("name") 
+VALUES ('Jefferson Middle School');
+
+INSERT INTO "isd" ("isd", "city", "state") 
+VALUES ('625', 'Saint Paul', 'Minnesota');
+
+INSERT INTO "event" ("task") 
+VALUES ('Annual IEP Meeting');
+
+INSERT INTO "student" ("firstname", "lastname", "grade", "id_number", "prev_iep", "next_iep", "prev_eval", "next_eval", "disability", "fed_setting", "birthdate", "school_id", "isd_id", "notes", "teacher") 
+VALUES ('Luke', 'Rohde', 9, 3247809967453, '2-12-2020', '3-12-2021', '1-12-2019', '1-12-2022', 5, 2, '2-26-2006', 1, 1, 'notes about Luke', 1),
+('Paige', 'Wielgos', 8, 6748671239654, '11-1-2019', '11-1-2020', '10-1-2017', '10-1-2020', 4, 1, '9-27-2007', 1, 1, 'notes about Paige', 1),
+('Ken', 'Slack', 7, 3332188904345, '11-15-2019', '11-15-2020', '12-1-2018', '10-1-2021', 3, 4, '3-5-2008', 1, 1, 'notes about Ken', 1),
+('Aliye', 'Berento', 6, 9784438919022, '12-10-2019', '12-10-2020', '11-10-2019', '11-10-2021', 2, 2, '5-15-2009', 1, 1, 'notes about Aliye', 1);
+
+INSERT INTO "student_event" ("student_id", "event_id", "completed", "date_due")
+VALUES (2, 1, false, '11-1-2020');
+
+INSERT INTO "case_worker" ("student_id", "user_id") 
+VALUES(2, 1);
+
 DROP TABLE "user";
 DROP TABLE "student";
 DROP TABLE "event";
