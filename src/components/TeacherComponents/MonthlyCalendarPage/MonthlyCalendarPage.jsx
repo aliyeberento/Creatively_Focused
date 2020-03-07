@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Nav from '../Nav/Nav';
-// import Footer from '../Footer/Footer';
-// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 class MonthlyCalendarPage extends Component {
 
@@ -10,8 +7,6 @@ class MonthlyCalendarPage extends Component {
         return (
             <div>
                 <h1>Monthly Calendar Detail</h1>
-
-
             </div>
         )
     }

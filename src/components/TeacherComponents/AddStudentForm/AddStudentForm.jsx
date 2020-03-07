@@ -49,7 +49,7 @@ class AddStudentForm extends Component {
                     <input type="number" placeholder="federal setting"></input>
                     <input type="date" placeholder="birthdate"></input>
                     <input type="text" placeholder="notes"></input>
-                    <button>submit new student</button>
+                    <button onClick={this.submitNewStudent}>submit new student</button>
                 </form>
             </div>
         )

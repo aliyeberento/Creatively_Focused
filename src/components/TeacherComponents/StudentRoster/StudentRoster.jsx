@@ -9,9 +9,12 @@ class StudentRoster extends Component {
     render() {
         return (
             <div>
-                <h1>Student Roster</h1>
-
-
+                <h1>STUDENT LIST</h1>
+                <ul>
+                    <li>student 1</li>
+                    <li>student 2</li>
+                    <li>student 3</li>
+                </ul>
             </div>
         )
     }

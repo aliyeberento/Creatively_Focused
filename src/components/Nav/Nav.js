@@ -32,6 +32,12 @@ const Nav = (props) => (
           {/* <Link className="nav-link" to="/info">
             INFO PAGE
           </Link> */}
+          <Link className="nav-link" to="/studentroster">
+            STUDENT LIST
+          </Link>
+          <Link className="nav-link" to="/addstudent">
+            ADD NEW STUDENT
+          </Link>
           <LogOutButton className="nav-link"/>
         </>
       )}
