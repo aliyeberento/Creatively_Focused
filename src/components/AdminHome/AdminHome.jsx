@@ -14,7 +14,7 @@ class AdminHome extends Component {
         return (
             <div>
                 <h3>Hi, INSERT USERNAME</h3>
-                <button onClick={this.addBtn}>Add User</button>
+                {/* <button onClick={this.addBtn}>Add User</button> */}
                 <ul>
                     <li>list here</li>
                     <li>list here too</li>
