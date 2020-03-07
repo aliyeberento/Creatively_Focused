@@ -17,6 +17,8 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import AdminHome from '../AdminHome/AdminHome';
+// import AdminForm from '../AdminForm/AdminForm';
+import RegisterPage from '../RegisterPage/RegisterPage';
 import AdminForm from '../AdminForm/AdminForm';
 import AdminDetail from '../AdminDetail/AdminDetail';
 
@@ -26,6 +28,7 @@ import EditStudentPage from '../TeacherComponents/EditStudentPage/EditStudentPag
 import MonthlyCalendarPage from '../TeacherComponents/MonthlyCalendarPage/MonthlyCalendarPage';
 import StudentDetailPage from '../TeacherComponents/StudentDetailPage/StudentDetailPage';
 import StudentRoster from '../TeacherComponents/StudentRoster/StudentRoster';
+import AdminRoute from '../AdminRoute/AdminRoute'
 
 import './App.css';
 
@@ -65,23 +68,21 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-            <AdminHome
+
+            <AdminRoute
               exact
               path="/adminhome"
               component={AdminHome}
             />
-            
-            <AdminForm
+            {/* <AdminRoute
               exact
               path="/adminform"
-              component={AdminForm}
-            />
-
+              component={RegisterPage}
+            /> */}
             <AdminDetail
               exact
               path="/admindetail"
               component={AdminDetail}
-
             <ProtectedRoute
               exact
               path="/teacherhome"
