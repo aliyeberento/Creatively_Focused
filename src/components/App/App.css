@@ -48,6 +48,10 @@ input {
     cursor: pointer;
 }
 
+ul {
+    list-style-type: none;
+}
+
 @font-face {
     src: url('./fonts/BrandonGrotesque-Regular.otf');
     font-family: brandon-regular;
