@@ -144,6 +144,9 @@ VALUES (2, 1, false, '11-1-2020');
 INSERT INTO "case_worker" ("student_id", "user_id") 
 VALUES(2, 1);
 
+INSERT INTO "calendar" ("date", "creator")
+SELECT generate_series('2020-09-08'::DATE, '2021-06-10', '1 day'), '1';
+
 DROP TABLE "user";
 DROP TABLE "student";
 DROP TABLE "event";
