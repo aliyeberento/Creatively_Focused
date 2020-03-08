@@ -7,8 +7,29 @@ import './AdminForm.css';
 
 class AdminForm extends Component {
 
+    state = {
+        userToAdd: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            schoolId: '',
+            isdId: '',
+            roleAuth: ''
+        }
+    }
+
+    makeNewUser = () => {
+        console.log('making a new user:', this.state.userToAdd)
+        // this function should spread local state,
+        // and build a new teacher object
+    }
+
     submitBtn = () => {
-        console.log('submit button clicked')
+        console.log('submitting:', this.state.userToAdd)
+        // this should dispatch an action
+        // and then use withRouter to push history to teacher list
+        // or this new user's detail
     }
 
     render() {
@@ -43,10 +64,10 @@ class AdminForm extends Component {
                     <label>
                         Role/Auth:
                         <select name="role">
-                            <option value="0">CF Administrator</option>
-                            <option value="1">Superintendent</option>
-                            <option value="2">School Principal</option>
                             <option value="3">Teacher</option>
+                            <option value="2">School Principal</option>
+                            <option value="1">Superintendent</option>
+                            <option value="0">CF Admin</option>
                         </select>
                     </label>
                     <button onClick={this.submitBtn}>Submit</button>
