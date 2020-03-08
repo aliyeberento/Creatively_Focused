@@ -17,7 +17,11 @@ class AdminForm extends Component {
                <h3>Add/Edit User Page</h3>
                 <form>
                     <label>
-                        Name:
+                        First Name:
+                    <input type="text"  />
+                    </label>
+                    <label>
+                        Last Name:
                     <input type="text"  />
                     </label>
                     <label>
@@ -26,15 +30,24 @@ class AdminForm extends Component {
                     </label>
                     <label>
                         Password:
+                    <input type="password" />
+                    </label>
+                    <label>
+                        School Name:
                     <input type="text" />
                     </label>
                     <label>
-                        Disctrict:
+                        School District:
                     <input type="text" />
                     </label>
                     <label>
-                        Role:
-                    <input type="text" />
+                        Role/Auth:
+                        <select name="role">
+                            <option value="0">CF Administrator</option>
+                            <option value="1">Superintendent</option>
+                            <option value="2">School Principal</option>
+                            <option value="3">Teacher</option>
+                        </select>
                     </label>
                     <button onClick={this.submitBtn}>Submit</button>
                 </form>
