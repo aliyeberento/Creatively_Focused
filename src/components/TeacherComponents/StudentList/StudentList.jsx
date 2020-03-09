@@ -11,9 +11,15 @@ class StudentList extends Component {
         this.props.dispatch({ type: 'GET_STUDENT' });
     }
 
-    detailsBtn = () => {
-        console.log('view button clicked');
-        // bring user to student detail page for chosen student
+
+    detailsBtn = (student) => {
+        console.log('view button clicked')
+        console.log(student)
+    }
+
+    addStudent = () => {
+        this.props.history.push(`/addstudent`);
+
     }
 
     render() {
@@ -22,6 +28,7 @@ class StudentList extends Component {
         return (
             <div>
                 <h1>STUDENT LIST</h1>
+                <button onClick={this.addStudent}>Add Student</button>
                 <ul>
                     {this.props.student.map((student) => {
                         return <li key={student.id}>{student.firstname} {student.lastname}
