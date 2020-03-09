@@ -10,7 +10,7 @@ class Nav extends Component {
     return (
       <Menu>
         <div >
-          <h2>CREATIVELY FOCUSED</h2>
+          <h2 className="nav-title">CREATIVELY FOCUSED</h2>
           <Link to="/home">HOME</Link>
           <br />
           {/* Show this link if they are logged in or not,
