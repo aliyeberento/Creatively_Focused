@@ -10,8 +10,9 @@ class StudentList extends Component {
         this.props.dispatch({ type: 'GET_STUDENT' });
     }
 
-    detailsBtn = () => {
+    detailsBtn = (student) => {
         console.log('view button clicked')
+        console.log(student)
     }
 
     addStudent = () => {
