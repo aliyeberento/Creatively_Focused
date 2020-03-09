@@ -18,4 +18,17 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
+router.delete('/:id/', rejectUnauthenticated, (req, res) => {
+    const id = req.params.id
+
+    console.log('in delete route', id)
+    const queryText = 'DELETE FROM "student" WHERE "id" = $1'
+    pool.query(queryText, [id])
+        .then(() => { res.sendStatus(200) })
+        .catch((err) => {
+            console.log(err)
+            res.sendStatus(500)
+        })
+});
+
 module.exports = router;

@@ -11,7 +11,7 @@ function* addStudent(action) {
         };
 
         const response = yield axios.post('/api/addStudent', action.payload, config);
-        // console.log('action.payload from post saga addstudent', action.payload)
+        console.log('action.payload from post saga addstudent', action.payload)
 
         yield put({ type: 'SET_STUDENT', payload: response.data });
         

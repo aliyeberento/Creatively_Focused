@@ -10,12 +10,12 @@ class AddStudentForm extends Component {
             firstName: '',
             lastName: '',
             grade: '',
-            idNumber: '2-2-2020',
-            previousIep: '2-2-2020',
-            previousEval: '2-2-2020',
+            idNumber: '',
+            previousIep: '',
+            previousEval: '',
             disabilityCategory: '',
             federalSetting: '',
-            birthdate: '2-2-2020',
+            birthdate: '',
             notes: '',
             teacher: this.props.state.user.id,
             // schoolId: this.props.user.school,
@@ -33,7 +33,7 @@ class AddStudentForm extends Component {
         });
     }
 
-    submitNewStudent = () => {
+    submitNewStudent = (event) => {
         console.log('submitting a new student', this.state.studentToAdd);
         // this should dispatch an action
         // and then use withRouter to push history to student list
@@ -42,6 +42,7 @@ class AddStudentForm extends Component {
             type: 'SUBMIT_STUDENT',
             payload: this.state.studentToAdd
         });
+        event.preventDefault()
         this.props.history.push(`/studentlist`);
     }
 
@@ -49,7 +50,7 @@ class AddStudentForm extends Component {
         return (
             <div>
                 <h1>ADD NEW STUDENT</h1>
-                <form>
+                <form value={this.state.studentToAdd} >
                     <label>First Name<input type="text" placeholder="first name"></input></label>
                     <label>Last Name<input type="text" placeholder="last name"></input></label>
                     <label>Grade<input type="number" placeholder="grade"></input></label>
