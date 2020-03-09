@@ -21,9 +21,17 @@ class StudentList extends Component {
         this.props.history.push(`/addstudent`);
     }
 
+    deleteBtn = (student) => {
+        this.props.dispatch({
+            type: 'DELETE_STUDENT',
+            payload: student
+        });
+        console.log(student)
+        
+    }
+
     render() {
         console.log('student reducer contents:', this.props.state);
-
         return (
             <div>
                 <h1>STUDENT LIST</h1>
@@ -31,7 +39,8 @@ class StudentList extends Component {
                 <ul>
                     {this.props.student.map((student) => {
                         return <li key={student.id}>{student.firstname} {student.lastname}
-                            <button onClick={(event) => this.detailsBtn(event, student)}>View Details</button>
+                            <button onClick={() => this.detailsBtn(student.id)}>View Details</button>
+                            <button onClick={() => this.deleteBtn(student.id)}>Remove</button>
                         </li>
                         }
                     )}
