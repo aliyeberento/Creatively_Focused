@@ -10,9 +10,9 @@ CREATE TABLE "user" (
 	"username" varchar(255) NOT NULL UNIQUE,
 	"password" varchar(255) NOT NULL,
 	"phone" varchar(15),
-	"isd" INT NOT NULL,
+	"isd" INT,
 	"school" INT,
-	"auth" INT NOT NULL,
+	"auth" INT,
 	"prefcomm" BOOLEAN,
 	CONSTRAINT "user_pk" PRIMARY KEY ("id")
 ) WITH (
