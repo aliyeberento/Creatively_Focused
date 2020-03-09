@@ -36,6 +36,7 @@ class Nav extends Component {
                 <Link className="menu-item" to="/studentroster">
                   STUDENT LIST</Link>
               <br />
+
                 <Link className="menu-item" to="/addstudent">
                   ADD NEW STUDENT</Link>
               <br />
