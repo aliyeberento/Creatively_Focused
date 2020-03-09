@@ -5,9 +5,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
-    const queryText = `SELECT "firstname", "lastname", "birthdate", "grade", 
-    "id_number", "prev_iep", "next_iep", "prev_eval", "next_eval", "disability", 
-    "fed_setting", "birthdate", "school_id", "isd_id", "notes" 
+    const queryText = `SELECT "firstname", "lastname", "birthdate", "grade", "student_id",
+    "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval",
+    "school_id", "isd_id", "notes"
     FROM student WHERE teacher = $1`
     pool.query(queryText, [req.user.id])
         .then(results => {

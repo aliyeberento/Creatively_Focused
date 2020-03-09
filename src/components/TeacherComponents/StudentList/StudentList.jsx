@@ -10,7 +10,7 @@ class StudentList extends Component {
         this.props.dispatch({ type: 'GET_STUDENT' });
     }
 
-    editBtn = () => {
+    detailsBtn = () => {
         console.log('view button clicked')
     }
 
@@ -19,13 +19,8 @@ class StudentList extends Component {
             <div>
                 <h1>STUDENT LIST</h1>
                 <ul>
-                    <li>student 1</li>
-                    <li>student 2</li>
-                    <li>student 3</li>
-                </ul>
-                <ul>
                     {this.props.student.map((student) => {
-                        return <li key={student.id}>{student.firstname}
+                        return <li key={student.id}>{student.firstname} {student.lastname}
                             
                             <button onClick={() => this.detailsBtn(student.id)}>View Details</button>
                         </li>
