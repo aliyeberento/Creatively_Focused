@@ -144,8 +144,15 @@ VALUES (2, 1, false, '11-1-2020');
 INSERT INTO "case_worker" ("student_id", "user_id") 
 VALUES(2, 1);
 
+-- serially generates every day in a school year
 INSERT INTO "calendar" ("date", "creator")
 SELECT generate_series('2020-09-08'::DATE, '2021-06-10', '1 day'), '1';
+
+-- returns a student's first and last initials and grade number
+SELECT LEFT("firstname", 1) AS first,
+LEFT("lastname", 1) as last,
+"grade"
+FROM "student";
 
 DROP TABLE "user";
 DROP TABLE "student";
