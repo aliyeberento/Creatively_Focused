@@ -18,7 +18,6 @@ class StudentList extends Component {
 
     render() {
         console.log('student reducer contents:', this.props.state);
-
         return (
             <div>
                 <h1>STUDENT LIST</h1>
