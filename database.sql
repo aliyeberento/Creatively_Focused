@@ -153,6 +153,8 @@ LEFT("lastname", 1),
 FROM "student"
 WHERE id=5;
 
+INSERT INTO "student"("firstname", "lastname", "birthdate", "grade", "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval", "notes") VALUES('Luke', 'Rohde', '1981-02-17', 12, 3, 5, '2009-01-01', '2020-01-01', '2021-01-01', '2020-12-02', '2021-12-02', 'note about luke');
+
 DROP TABLE "user";
 DROP TABLE "student";
 DROP TABLE "event";
