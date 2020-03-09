@@ -14,10 +14,15 @@ class StudentList extends Component {
         console.log('view button clicked')
     }
 
+    addStudent = () => {
+        this.props.history.push(`/addstudent`);
+    }
+
     render() {
         return (
             <div>
                 <h1>STUDENT LIST</h1>
+                <button onClick={this.addStudent}>Add Student</button>
                 <ul>
                     {this.props.student.map((student) => {
                         return <li key={student.id}>{student.firstname} {student.lastname}

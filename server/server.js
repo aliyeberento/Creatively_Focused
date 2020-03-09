@@ -12,6 +12,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const studentListRouter = require('./routes/studentList.router');
 const teacherListRouter = require('./routes/teacherList.router');
+const addStudentRouter = require('./routes/addStudent.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/studentList', studentListRouter);
 app.use('/api/teacherList', teacherListRouter);
+app.use('/api/addStudent', addStudentRouter);
 
 // Serve static files
 app.use(express.static('build'));
