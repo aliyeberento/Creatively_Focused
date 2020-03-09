@@ -107,3 +107,7 @@ a {
 a:hover {
   background-color: wheat;
 }
+
+.menu-item {
+  text-decoration: none;
+}

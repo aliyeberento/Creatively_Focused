@@ -41,7 +41,7 @@ class Nav extends Component {
                 {/* <Link className="nav-link" to="/info">
           INFO PAGE
            </Link> */}
-                <Link className="menu-item" to="/studentroster">
+                <Link className="menu-item" to="/studentlist">
                   STUDENT LIST  </Link>
                 <br />
                 <Link className="menu-item" to="/addstudent">
