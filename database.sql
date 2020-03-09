@@ -148,11 +148,12 @@ VALUES(2, 1);
 INSERT INTO "calendar" ("date", "creator")
 SELECT generate_series('2020-09-08'::DATE, '2021-06-10', '1 day'), '1';
 
--- returns a student's first and last initials and grade number
-SELECT LEFT("firstname", 1) AS first,
-LEFT("lastname", 1) as last,
-"grade"
-FROM "student";
+-- returns a specific student's first and last initials and grade number as studentinitials
+SELECT CONCAT(LEFT("firstname", 1),
+LEFT("lastname", 1),
+"grade") "studentinitals"
+FROM "student"
+WHERE id=5;
 
 DROP TABLE "user";
 DROP TABLE "student";
