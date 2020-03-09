@@ -12,14 +12,13 @@ class StudentList extends Component {
     }
 
 
-    detailsBtn = (student) => {
+    detailsBtn = (event, student) => {
         console.log('view button clicked')
-        console.log(student)
+        this.props.history.push(`/studentdetail/${student.id}`)
     }
 
     addStudent = () => {
         this.props.history.push(`/addstudent`);
-
     }
 
     deleteBtn = (student) => {
@@ -42,7 +41,6 @@ class StudentList extends Component {
                         return <li key={student.id}>{student.firstname} {student.lastname}
                             <button onClick={() => this.detailsBtn(student.id)}>View Details</button>
                             <button onClick={() => this.deleteBtn(student.id)}>Remove</button>
-                            
                         </li>
                         }
                     )}
@@ -51,6 +49,7 @@ class StudentList extends Component {
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     student: state.student,
     user: state.user
