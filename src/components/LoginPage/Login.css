@@ -1,0 +1,16 @@
+
+.loginHeader {
+    display: flex;
+    justify-content: center;
+    /* border: black solid 2px; */
+    height:75px ;
+    width: 200px;
+    margin-left: 545px ;
+    color: white;
+    background-color: #4CC4FC;
+}
+
+form {
+    background-color: white;
+}
+
