@@ -1,9 +1,10 @@
 .nav-title {
-    font-size: 24px;
-    font-weight: 700;
-    display: inline-block;
-    color: #f2f2f2;
-    padding-left: 10px;
+  font-family: brandon-bold;
+  font-size: 24px;
+  font-weight: 700;
+  display: inline-block;
+  color: #f2f2f2;
+  padding-left: 10px;
 }
 
 .nav {
@@ -19,7 +20,7 @@
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
-
+  font-family: brandon-regular;
   /* these last two make the logout button in
   the nav bar look like another link */
   border:none;

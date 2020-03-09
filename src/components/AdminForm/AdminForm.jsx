@@ -7,8 +7,29 @@ import './AdminForm.css';
 
 class AdminForm extends Component {
 
+    state = {
+        userToAdd: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            schoolId: '',
+            isdId: '',
+            roleAuth: ''
+        }
+    }
+
+    makeNewUser = () => {
+        console.log('making a new user:', this.state.userToAdd)
+        // this function should spread local state,
+        // and build a new teacher object
+    }
+
     submitBtn = () => {
-        console.log('submit button clicked')
+        console.log('submitting:', this.state.userToAdd)
+        // this should dispatch an action
+        // and then use withRouter to push history to teacher list
+        // or this new user's detail
     }
 
     render() {
@@ -17,7 +38,11 @@ class AdminForm extends Component {
                <h3>Add/Edit User Page</h3>
                 <form>
                     <label>
-                        Name:
+                        First Name:
+                    <input type="text"  />
+                    </label>
+                    <label>
+                        Last Name:
                     <input type="text"  />
                     </label>
                     <label>
@@ -26,15 +51,24 @@ class AdminForm extends Component {
                     </label>
                     <label>
                         Password:
+                    <input type="password" />
+                    </label>
+                    <label>
+                        School Name:
                     <input type="text" />
                     </label>
                     <label>
-                        Disctrict:
+                        School District:
                     <input type="text" />
                     </label>
                     <label>
-                        Role:
-                    <input type="text" />
+                        Role/Auth:
+                        <select name="role">
+                            <option value="3">Teacher</option>
+                            <option value="2">School Principal</option>
+                            <option value="1">Superintendent</option>
+                            <option value="0">CF Admin</option>
+                        </select>
                     </label>
                     <button onClick={this.submitBtn}>Submit</button>
                 </form>

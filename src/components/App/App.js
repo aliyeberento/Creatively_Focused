@@ -5,28 +5,24 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
-import AboutPage from '../AboutPage/AboutPage';
+// import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+// import InfoPage from '../InfoPage/InfoPage';
 import AdminHome from '../AdminHome/AdminHome';
-import AdminForm from '../AdminForm/AdminForm';
+// import RegisterPage from '../RegisterPage/RegisterPage';
 import AdminDetail from '../AdminDetail/AdminDetail';
-
 import AddStudentForm from '../TeacherComponents/AddStudentForm/AddStudentForm';
 import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
 import EditStudentPage from '../TeacherComponents/EditStudentPage/EditStudentPage';
 import MonthlyCalendarPage from '../TeacherComponents/MonthlyCalendarPage/MonthlyCalendarPage';
 import StudentDetailPage from '../TeacherComponents/StudentDetailPage/StudentDetailPage';
 import StudentRoster from '../TeacherComponents/StudentRoster/StudentRoster';
-
+import AdminRoute from '../AdminRoute/AdminRoute';
+import AdminForm from '../AdminForm/AdminForm';
 import './App.css';
 
 class App extends Component {
@@ -44,11 +40,11 @@ class App extends Component {
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
-            <Route
+            {/* <Route
               exact
               path="/about"
               component={AboutPage}
-            />
+            /> */}
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -60,24 +56,22 @@ class App extends Component {
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/info"
               component={InfoPage}
-            />
-            <AdminHome
+            /> */}
+            <AdminRoute
               exact
               path="/adminhome"
               component={AdminHome}
             />
-            
-            <AdminForm
+            <AdminRoute
               exact
               path="/adminform"
               component={AdminForm}
             />
-
-            <AdminDetail
+            <AdminRoute
               exact
               path="/admindetail"
               component={AdminDetail}
@@ -111,12 +105,10 @@ class App extends Component {
               exact
               path="/studentroster"
               component={StudentRoster}
-
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          
           <Footer />
         </div>
       </Router>
