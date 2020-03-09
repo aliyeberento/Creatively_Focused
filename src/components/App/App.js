@@ -12,17 +12,17 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 // import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 // import InfoPage from '../InfoPage/InfoPage';
-import AdminHome from '../AdminHome/AdminHome';
+import AdminHome from '../AdminComponents/AdminHome/AdminHome';
 // import RegisterPage from '../RegisterPage/RegisterPage';
-import AdminDetail from '../AdminDetail/AdminDetail';
+import AdminDetail from '../AdminComponents/AdminDetail/AdminDetail';
 import AddStudentForm from '../TeacherComponents/AddStudentForm/AddStudentForm';
 import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
 import EditStudentPage from '../TeacherComponents/EditStudentPage/EditStudentPage';
 import MonthlyCalendarPage from '../TeacherComponents/MonthlyCalendarPage/MonthlyCalendarPage';
 import StudentDetailPage from '../TeacherComponents/StudentDetailPage/StudentDetailPage';
-import StudentRoster from '../TeacherComponents/StudentRoster/StudentRoster';
+import StudentList from '../TeacherComponents/StudentList/StudentList';
 import AdminRoute from '../AdminRoute/AdminRoute';
-import AdminForm from '../AdminForm/AdminForm';
+import AdminForm from '../AdminComponents/AdminForm/AdminForm';
 import './App.css';
 
 class App extends Component {
@@ -101,10 +101,10 @@ class App extends Component {
               path="/studentdetail"
               component={StudentDetailPage}
             />
-            <StudentRoster
+            <ProtectedRoute
               exact
-              path="/studentroster"
-              component={StudentRoster}
+              path="/studentlist"
+              component={StudentList}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

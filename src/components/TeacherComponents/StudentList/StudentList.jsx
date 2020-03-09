@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 // import Footer from '../Footer/Footer';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
-class StudentRoster extends Component {
+class StudentList extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'GET_STUDENT' });
     }
@@ -41,4 +41,4 @@ const mapStateToProps = (state) => ({
     student: state.student,
     user: state.user
 });
-export default withRouter(connect(mapStateToProps)(StudentRoster));
+export default withRouter(connect(mapStateToProps)(StudentList));

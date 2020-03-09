@@ -9,7 +9,7 @@ function* getStudent() {
             withCredentials: true,
         };
 
-        const response = yield axios.get('api/studentRoster', config);
+        const response = yield axios.get('api/studentList', config);
 
         yield put({ type: 'SET_STUDENT', payload: response.data });
 
@@ -18,8 +18,8 @@ function* getStudent() {
     }
 }
 
-function* studentRosterSaga() {
+function* studentListSaga() {
     yield takeLatest('GET_STUDENT', getStudent);
 }
 
-export default studentRosterSaga;
+export default studentListSaga;

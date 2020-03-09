@@ -13,7 +13,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         .then(results => {
             res.send(results.rows);
         }).catch(error => {
-            console.log('Error GET route /api/studentRoster in server', error);
+            console.log('Error GET route /api/studentList in server', error);
             res.sendStatus(500);
         });
 });
