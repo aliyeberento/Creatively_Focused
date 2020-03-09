@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
 
 const passport = require('./strategies/user.strategy');
+const mailUsersNotifications = require('./modules/mailUsersNotifications');
 
 // Route includes
 const userRouter = require('./routes/user.router');
