@@ -9,6 +9,7 @@ class Nav extends Component {
   render() {
     return (
       <Menu>
+
         <div >
           <h2 className="nav-title">CREATIVELY FOCUSED</h2>
           <Link to="/home">HOME</Link>
@@ -39,6 +40,7 @@ class Nav extends Component {
               <LogOutButton className="menu-item" />
             </>
           )}
+
         </div>
       </Menu>
     )
