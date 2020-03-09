@@ -15,8 +15,8 @@ class Nav extends Component {
           <Link to="/home"> </Link>
           <br />
           {/* Always show this link since the about page is not protected */}
-          <Link className="menu-item" to="/about">
-            ABOUT </Link>
+          {/* <Link className="menu-item" to="/about">
+            ABOUT </Link> */}
 
           <div >
             {/* Show this link if they are logged in or not,
@@ -41,7 +41,7 @@ class Nav extends Component {
                 {/* <Link className="nav-link" to="/info">
           INFO PAGE
            </Link> */}
-                <Link className="menu-item" to="/studentroster">
+                <Link className="menu-item" to="/studentlist">
                   STUDENT LIST  </Link>
                 <br />
                 <Link className="menu-item" to="/addstudent">
