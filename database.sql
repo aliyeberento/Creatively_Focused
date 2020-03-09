@@ -19,6 +19,8 @@ CREATE TABLE "user" (
   OIDS=FALSE
 );
 
+
+
 CREATE TABLE "student" (
 	"id" serial NOT NULL,
 	"firstname" varchar(100) NOT NULL,
@@ -42,6 +44,8 @@ CREATE TABLE "student" (
   OIDS=FALSE
 );
 
+
+
 CREATE TABLE "school" (
 	"id" serial NOT NULL,
 	"name" varchar(100) NOT NULL,
@@ -50,6 +54,8 @@ CREATE TABLE "school" (
 ) WITH (
   OIDS=FALSE
 );
+
+
 
 CREATE TABLE "isd" (
 	"id" serial NOT NULL,
@@ -61,6 +67,8 @@ CREATE TABLE "isd" (
   OIDS=FALSE
 );
 
+
+
 CREATE TABLE "case_worker" (
 	"student_id" int(10) NOT NULL,
 	"user_id" int(10) NOT NULL,
@@ -69,13 +77,18 @@ CREATE TABLE "case_worker" (
   OIDS=FALSE
 );
 
+
+
 CREATE TABLE "event" (
 	"id" serial NOT NULL,
 	"task" varchar(255) NOT NULL,
+	"notes" TEXT NOT NULL,
 	CONSTRAINT "event_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
+
+
 
 CREATE TABLE "student_event" (
 	"id" serial NOT NULL,
@@ -90,6 +103,8 @@ CREATE TABLE "student_event" (
   OIDS=FALSE
 );
 
+
+
 CREATE TABLE "calendar" (
 	"id" serial NOT NULL,
 	"date" serial NOT NULL,
@@ -101,6 +116,8 @@ CREATE TABLE "calendar" (
   OIDS=FALSE
 );
 
+
+
 ALTER TABLE "user" ADD CONSTRAINT "user_fk0" FOREIGN KEY ("isd") REFERENCES "isd"("id");
 ALTER TABLE "user" ADD CONSTRAINT "user_fk1" FOREIGN KEY ("school") REFERENCES "school"("id");
 
@@ -110,8 +127,10 @@ ALTER TABLE "student" ADD CONSTRAINT "student_fk2" FOREIGN KEY ("teacher") REFER
 
 ALTER TABLE "school" ADD CONSTRAINT "school_fk0" FOREIGN KEY ("isd_id") REFERENCES "isd"("id");
 
+
 ALTER TABLE "case_worker" ADD CONSTRAINT "case_worker_fk0" FOREIGN KEY ("student_id") REFERENCES "student"("id");
 ALTER TABLE "case_worker" ADD CONSTRAINT "case_worker_fk1" FOREIGN KEY ("user_id") REFERENCES "user"("id");
+
 
 ALTER TABLE "student_event" ADD CONSTRAINT "student_event_fk0" FOREIGN KEY ("student_id") REFERENCES "student"("id");
 ALTER TABLE "student_event" ADD CONSTRAINT "student_event_fk1" FOREIGN KEY ("event_id") REFERENCES "event"("id");
@@ -119,6 +138,7 @@ ALTER TABLE "student_event" ADD CONSTRAINT "student_event_fk2" FOREIGN KEY ("com
 
 ALTER TABLE "calendar" ADD CONSTRAINT "calendar_fk0" FOREIGN KEY ("school_id") REFERENCES "school"("id");
 ALTER TABLE "calendar" ADD CONSTRAINT "calendar_fk1" FOREIGN KEY ("creator") REFERENCES "user"("id");
+
 
 INSERT INTO "user" ("username", "password", "phone", "isd", "school", "auth", "prefcomm") 
 VALUES ('dane_smith@sps.edu', '1234', '651-123-4567', 1, 1, 3, false);
