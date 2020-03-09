@@ -13,6 +13,11 @@ class Nav extends Component {
         <div >
           <h2 >CREATIVELY FOCUSED</h2>
           <Link to="/home"> </Link>
+          <br />
+          {/* Always show this link since the about page is not protected */}
+          <Link className="menu-item" to="/about">
+            ABOUT </Link>
+
           <div >
             {/* Show this link if they are logged in or not,
        but call this link 'Home' if they are logged in,
@@ -23,9 +28,11 @@ class Nav extends Component {
                 <Link className="menu-item" to="/adminhome">
                   TEACHER LIST
           </Link>
+                <br />
                 <Link className="menu-item" to="/adminform">
                   ADD NEW USER
           </Link>
+                <br />
               </>
             )}
             {/* Show the link to the info page and the logout button if the user is logged in */}
@@ -36,14 +43,13 @@ class Nav extends Component {
            </Link> */}
                 <Link className="menu-item" to="/studentroster">
                   STUDENT LIST  </Link>
+                <br />
                 <Link className="menu-item" to="/addstudent">
                   ADD NEW STUDENT      </Link>
+                <br />
                 <LogOutButton className="menu-item" />
               </>
             )}
-            {/* Always show this link since the about page is not protected */}
-            <Link className="menu-item" to="/about">
-              ABOUT </Link>
           </div>
         </div>
       </Menu>

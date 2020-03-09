@@ -99,3 +99,11 @@
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+a {
+  color: white;
+}
+
+a:hover {
+  background-color: wheat;
+}
