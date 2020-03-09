@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 // import Nav from '../Nav/Nav';
 // import Footer from '../Footer/Footer';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 class StudentRoster extends Component {
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_STUDENT' });
+    }
+
+    editBtn = () => {
+        console.log('view button clicked')
+    }
 
     render() {
         return (
@@ -15,9 +23,22 @@ class StudentRoster extends Component {
                     <li>student 2</li>
                     <li>student 3</li>
                 </ul>
+                <ul>
+                    {this.props.student.map((student) => {
+                        return <li key={student.id}>{student.firstname}
+                            
+                            <button onClick={() => this.detailsBtn(student.id)}>View Details</button>
+                        </li>
+                    }
+                    )}
+
+                </ul>
             </div>
         )
     }
 }
-
-export default connect()(StudentRoster);
+const mapStateToProps = (state) => ({
+    student: state.student,
+    user: state.user
+});
+export default withRouter(connect(mapStateToProps)(StudentRoster));

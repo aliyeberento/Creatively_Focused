@@ -101,7 +101,7 @@ class App extends Component {
               path="/studentdetail"
               component={StudentDetailPage}
             />
-            <ProtectedRoute
+            <StudentRoster
               exact
               path="/studentroster"
               component={StudentRoster}
