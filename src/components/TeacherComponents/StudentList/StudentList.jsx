@@ -6,9 +6,11 @@ import { withRouter } from 'react-router-dom'
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 class StudentList extends Component {
+
     componentDidMount() {
         this.props.dispatch({ type: 'GET_STUDENT' });
     }
+
 
     detailsBtn = (student) => {
         console.log('view button clicked')
@@ -17,6 +19,7 @@ class StudentList extends Component {
 
     addStudent = () => {
         this.props.history.push(`/addstudent`);
+
     }
 
     deleteBtn = (student) => {
@@ -29,6 +32,7 @@ class StudentList extends Component {
     }
 
     render() {
+        console.log('student reducer contents:', this.props.state);
         return (
             <div>
                 <h1>STUDENT LIST</h1>
@@ -36,14 +40,12 @@ class StudentList extends Component {
                 <ul>
                     {this.props.student.map((student) => {
                         return <li key={student.id}>{student.firstname} {student.lastname}
-                            
                             <button onClick={() => this.detailsBtn(student.id)}>View Details</button>
                             <button onClick={() => this.deleteBtn(student.id)}>Remove</button>
                             
                         </li>
-                    }
+                        }
                     )}
-
                 </ul>
             </div>
         )
@@ -53,4 +55,5 @@ const mapStateToProps = (state) => ({
     student: state.student,
     user: state.user
 });
+
 export default withRouter(connect(mapStateToProps)(StudentList));

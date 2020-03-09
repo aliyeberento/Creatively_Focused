@@ -5,19 +5,15 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
-
 class Nav extends Component {
   render() {
     return (
       <Menu>
-        <div >
-          <h2 >CREATIVELY FOCUSED</h2>
-          <Link to="/home"> </Link>
-          <br />
-          {/* Always show this link since the about page is not protected */}
-          <Link className="menu-item" to="/about">
-            ABOUT </Link>
 
+        <div >
+          <h2 className="nav-title">CREATIVELY FOCUSED</h2>
+          <Link className="menu-item" to="/home">HOME</Link>
+          <br />
           <div >
             {/* Show this link if they are logged in or not,
        but call this link 'Home' if they are logged in,
@@ -62,4 +58,3 @@ const mapStateToProps = store => ({
 });
 
 export default connect(mapStateToProps)(Nav)
-
