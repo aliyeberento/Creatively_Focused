@@ -7,6 +7,13 @@ import './AdminDetail.css';
 
 class AdminDetail extends Component {
 
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'GET_TEACHER_DETAIL',
+            payload: this.props.match.params.id
+        })
+    }
+
     editBtn = () => {
         console.log('edit button clicked')
     }

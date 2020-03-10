@@ -11,7 +11,7 @@ function* getTeacher() {
 
         const response = yield axios.get('api/teacherList', config);
 
-        yield put({ type: 'SET_TEACHER', payload: response.data });
+        yield put({ type: 'SET_TEACHERS', payload: response.data });
 
     } catch (error) {
         console.log('teacher get request failed in saga', error);
@@ -19,7 +19,7 @@ function* getTeacher() {
 }
 
 function* teacherListSaga() {
-    yield takeLatest('GET_TEACHER', getTeacher);
+    yield takeLatest('GET_TEACHERS', getTeacher);
 }
 
 export default teacherListSaga;

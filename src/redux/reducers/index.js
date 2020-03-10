@@ -4,8 +4,13 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import teacher from './teacherReducer';
 import event from './eventReducer';
+<<<<<<< HEAD
 import students from './studentReducer';
 import studentDetail from  './studentDetailReducer';
+=======
+import student from './studentReducer';
+import teacherDetailReducer from './teacherDetailReducer';
+>>>>>>> master
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,8 +24,13 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   teacher, // contains the teacher's information (school, username, contact preference)
   event, // dates for the deadlines
+<<<<<<< HEAD
   students, // student information
   studentDetail, //
+=======
+  student, // student information
+  teacherDetailReducer
+>>>>>>> master
 });
 
 export default rootReducer;

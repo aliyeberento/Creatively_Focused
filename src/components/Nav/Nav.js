@@ -9,7 +9,11 @@ class Nav extends Component {
   render() {
     return (
       <Menu>
-        <div >
+
+
+        <div className="menu-color">
+
+
           <h2 className="nav-title">CREATIVELY FOCUSED</h2>
           <Link className="menu-item" to="/home">HOME</Link>
           <br />
@@ -31,13 +35,15 @@ class Nav extends Component {
               </>
             )}
             {/* Show the link to the info page and the logout button if the user is logged in */}
-            {this.props.store.user.id && (
+            {this.props.store.user.auth > 3 && (
               <>
                 <Link className="menu-item" to="/studentlist">
-                  STUDENT LIST  </Link>
+                  STUDENT LIST
+                  </Link>
                 <br />
                 <Link className="menu-item" to="/addstudent">
-                  ADD NEW STUDENT      </Link>
+                  ADD NEW STUDENT
+                  </Link>
                 <br />
                 <LogOutButton className="menu-item" />
               </>
