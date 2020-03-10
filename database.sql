@@ -10,9 +10,9 @@ CREATE TABLE "user" (
 	"username" varchar(255) NOT NULL UNIQUE,
 	"password" varchar(255) NOT NULL,
 	"phone" varchar(15),
-	"isd" int(5) NOT NULL,
-	"school" int(5),
-	"auth" int(1) NOT NULL,
+	"isd" INT,
+	"school" INT,
+	"auth" INT,
 	"prefcomm" BOOLEAN,
 	CONSTRAINT "user_pk" PRIMARY KEY ("id")
 ) WITH (
@@ -20,23 +20,23 @@ CREATE TABLE "user" (
 );
 
 CREATE TABLE "student" (
-	"id" serial NOT NULL,
+	"id" serial NOT NULL UNIQUE,
 	"firstname" varchar(100) NOT NULL,
 	"lastname" varchar(100) NOT NULL,
 	"birthdate" DATE NOT NULL,
-	"grade" int(2) NOT NULL,
-	"student_id" int(13) NOT NULL,
-	"disability_cat" int(2) NOT NULL,
-	"fed_setting" int(1) NOT NULL,
+	"grade" INT NOT NULL,
+	"student_id" INT NOT NULL,
+	"disability_cat" INT NOT NULL,
+	"fed_setting" INT NOT NULL,
 	"initial_iep" DATE,
 	"prev_iep" DATE NOT NULL,
 	"next_iep" DATE NOT NULL,
 	"prev_eval" DATE NOT NULL,
 	"next_eval" DATE NOT NULL,
-	"school_id" int NOT NULL,
-	"isd_id" int NOT NULL,
+	"school_id" INT NOT NULL,
+	"isd_id" INT NOT NULL,
 	"notes" TEXT,
-	"teacher" int(10) NOT NULL,
+	"teacher" INT NOT NULL,
 	CONSTRAINT "student_pk" PRIMARY KEY ("id","prev_iep")
 ) WITH (
   OIDS=FALSE
@@ -45,7 +45,7 @@ CREATE TABLE "student" (
 CREATE TABLE "school" (
 	"id" serial NOT NULL,
 	"name" varchar(100) NOT NULL,
-	"isd_id" int NOT NULL,
+	"isd_id" INT NOT NULL,
 	CONSTRAINT "school_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -53,7 +53,7 @@ CREATE TABLE "school" (
 
 CREATE TABLE "isd" (
 	"id" serial NOT NULL,
-	"isd" int(5) NOT NULL,
+	"isd" INT NOT NULL,
 	"city" varchar(100) NOT NULL,
 	"state" varchar(50) NOT NULL,
 	CONSTRAINT "isd_pk" PRIMARY KEY ("id")
@@ -62,8 +62,8 @@ CREATE TABLE "isd" (
 );
 
 CREATE TABLE "case_worker" (
-	"student_id" int(10) NOT NULL,
-	"user_id" int(10) NOT NULL,
+	"student_id" INT NOT NULL,
+	"user_id" INT NOT NULL,
 	CONSTRAINT "case_worker_pk" PRIMARY KEY ("student_id","user_id")
 ) WITH (
   OIDS=FALSE
@@ -72,6 +72,7 @@ CREATE TABLE "case_worker" (
 CREATE TABLE "event" (
 	"id" serial NOT NULL,
 	"task" varchar(255) NOT NULL,
+	"notes" TEXT NOT NULL,
 	CONSTRAINT "event_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -79,12 +80,12 @@ CREATE TABLE "event" (
 
 CREATE TABLE "student_event" (
 	"id" serial NOT NULL,
-	"student_id" int NOT NULL,
-	"event_id" int NOT NULL,
+	"student_id" INT NOT NULL,
+	"event_id" INT NOT NULL,
 	"due_date" DATE NOT NULL,
 	"completed" BOOLEAN NOT NULL DEFAULT 'false',
 	"date_completed" TIMESTAMP NOT NULL,
-	"completed_by" int NOT NULL,
+	"completed_by" INT NOT NULL,
 	CONSTRAINT "student_event_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -93,7 +94,7 @@ CREATE TABLE "student_event" (
 CREATE TABLE "calendar" (
 	"id" serial NOT NULL,
 	"date" serial NOT NULL,
-	"school_id" int NOT NULL,
+	"school_id" INT NOT NULL,
 	"school_day" BOOLEAN NOT NULL,
 	"creator" serial NOT NULL,
 	CONSTRAINT "calendar_pk" PRIMARY KEY ("id")
@@ -109,9 +110,6 @@ ALTER TABLE "student" ADD CONSTRAINT "student_fk1" FOREIGN KEY ("isd_id") REFERE
 ALTER TABLE "student" ADD CONSTRAINT "student_fk2" FOREIGN KEY ("teacher") REFERENCES "user"("id");
 
 ALTER TABLE "school" ADD CONSTRAINT "school_fk0" FOREIGN KEY ("isd_id") REFERENCES "isd"("id");
-
-ALTER TABLE "case_worker" ADD CONSTRAINT "case_worker_fk0" FOREIGN KEY ("student_id") REFERENCES "student"("id");
-ALTER TABLE "case_worker" ADD CONSTRAINT "case_worker_fk1" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 
 ALTER TABLE "student_event" ADD CONSTRAINT "student_event_fk0" FOREIGN KEY ("student_id") REFERENCES "student"("id");
 ALTER TABLE "student_event" ADD CONSTRAINT "student_event_fk1" FOREIGN KEY ("event_id") REFERENCES "event"("id");
@@ -154,6 +152,8 @@ LEFT("lastname", 1),
 "grade") "studentinitals"
 FROM "student"
 WHERE id=5;
+
+INSERT INTO "student"("firstname", "lastname", "birthdate", "grade", "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval", "notes") VALUES('Luke', 'Rohde', '1981-02-17', 12, 3, 5, '2009-01-01', '2020-01-01', '2021-01-01', '2020-12-02', '2021-12-02', 'note about luke');
 
 DROP TABLE "user";
 DROP TABLE "student";

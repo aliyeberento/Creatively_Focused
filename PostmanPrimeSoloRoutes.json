@@ -1,6 +1,6 @@
 {
 	"id": "5e3e8d98-813d-5d2a-a79a-39cd12328d63",
-	"name": "Prime Solo Routes",
+	"name": "Prime Group Routes",
 	"description": "Routes setup to test registration, login, and getting basic user data from the server.",
 	"order": [
 		"d78bc69f-0d9e-4489-ec9d-ac502b78acf8",
@@ -51,7 +51,7 @@
 			"description": "Registration",
 			"collectionId": "5e3e8d98-813d-5d2a-a79a-39cd12328d63",
 			"responses": [],
-			"rawModeData": "{\n    \"username\":\"new-user\",\n    \"password\":\"1234\"\n}"
+			"rawModeData": "{\n    \"username\":\"admin\",\n    \"password\":\"1234\"\n}"
 		},
 		{
 			"id": "e4c0f920-0aae-6f4e-2a74-147760d07f01",
@@ -71,7 +71,7 @@
 			"description": "Login",
 			"collectionId": "5e3e8d98-813d-5d2a-a79a-39cd12328d63",
 			"responses": [],
-			"rawModeData": "{\n    \"username\":\"new-user\",\n    \"password\":\"1234\"\n}"
+			"rawModeData": "{\n    \"username\":\"admin\",\n    \"password\":\"1234\"\n}"
 		}
 	]
 }
