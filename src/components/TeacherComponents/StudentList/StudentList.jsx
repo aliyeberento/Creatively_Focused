@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-// import Nav from '../Nav/Nav';
-// import Footer from '../Footer/Footer';
-// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 class StudentList extends Component {
 
@@ -11,9 +8,8 @@ class StudentList extends Component {
         this.props.dispatch({ type: 'GET_STUDENT' });
     }
 
-
     detailsBtn = (event, student) => {
-        console.log('view button clicked')
+        console.log('details button clicked', student)
         this.props.history.push(`/studentdetail/${student.id}`)
     }
 
@@ -27,11 +23,10 @@ class StudentList extends Component {
             payload: student
         });
         console.log(student)
-        
     }
 
     render() {
-        console.log('student reducer contents:', this.props.state);
+        console.log('student reducer contents:', this.props.student);
         return (
             <div>
                 <h1>STUDENT LIST</h1>
@@ -39,7 +34,7 @@ class StudentList extends Component {
                 <ul>
                     {this.props.student.map((student) => {
                         return <li key={student.id}>{student.firstname} {student.lastname}
-                            <button onClick={() => this.detailsBtn(student.id)}>View Details</button>
+                            <button onClick={(event) => this.detailsBtn(event, student)}>View Details</button>
                             <button onClick={() => this.deleteBtn(student.id)}>Remove</button>
                         </li>
                         }
