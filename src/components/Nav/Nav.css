@@ -5,6 +5,8 @@
   display: inline-block;
   color: #f2f2f2;
   padding-left: 10px;
+ 
+  
 }
 
 .nav {
@@ -26,6 +28,7 @@
   border:none;
   cursor: pointer;
   outline:0;
+  
 }
 
 .nav-link:hover {
@@ -80,9 +83,10 @@
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background-image: url('./banner-2-09.png');
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -93,6 +97,7 @@
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
+  
 }
 
 /* Styling of overlay */
@@ -105,9 +110,13 @@ a {
 }
 
 a:hover {
-  background-color: wheat;
+  background-color: gray;
 }
 
 .menu-item {
   text-decoration: none;
+}
+
+.menu-color {
+  background-color: #294A9A;
 }

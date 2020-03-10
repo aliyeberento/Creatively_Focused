@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import './studentList.css';
+import { withStyles} from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import { CardContent } from '@material-ui/core';
+
+
+
 // import Nav from '../Nav/Nav';
 // import Footer from '../Footer/Footer';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+
+const styles = {
+    root: {
+        maxWidth: 600,
+        maxHeight: 700,
+        paddingTop: '10%',
+        paddingLeft: '26%', 
+    },
+    
+};
 
 class StudentList extends Component {
 
@@ -32,21 +49,28 @@ class StudentList extends Component {
     }
 
     render() {
-        console.log('student reducer contents:', this.props.state);
+        console.log('student reducer contents:', this.props.student);
         return (
-            <div>
-                <h1>STUDENT LIST</h1>
+            <div className={this.props.classes.root}>
+                <h4 className="greeting">Hello {this.props.user.username}!</h4>
                 <button onClick={this.addStudent}>Add Student</button>
+                <Card>
+                    <CardContent>
+                
+                
                 <ul>
                     {this.props.student.map((student) => {
-                        return <li key={student.id}>{student.firstname} {student.lastname}
+                        return <li key={student.id}>
+                            {student.firstname} {student.lastname}
                             <button onClick={() => this.detailsBtn(student.id)}>View Details</button>
-                            <button onClick={() => this.deleteBtn(student.id)}>Remove</button>
+                                <button onClick={() => this.deleteBtn(student.id)}>Remove</button>
                             
                         </li>
                         }
                     )}
                 </ul>
+                    </CardContent>
+                </Card>
             </div>
         )
     }
@@ -56,4 +80,4 @@ const mapStateToProps = (state) => ({
     user: state.user
 });
 
-export default withRouter(connect(mapStateToProps)(StudentList));
+export default withStyles(styles) (withRouter(connect(mapStateToProps)(StudentList)));
