@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 class StudentDetailPage extends Component {
 
     componentDidMount() {
-        this.props.dispatch({
-            type: 'GET_STUDENT',
-        })
+        this.props.dispatch({type: 'GET_STUDENT'})
     }
 
     goToEdit = (id) => {
@@ -20,8 +18,11 @@ class StudentDetailPage extends Component {
     }
 
     render() {
+        console.log('student reducer contents:', this.props.student);
         console.log(this.props.match.params.id);
         let selectedStudent = this.props.student.filter(student => student.id == this.props.match.params.id)[0];
+        console.log(selectedStudent);
+        
         return (
             <div>
                 <h1>Student Detail Page</h1>
