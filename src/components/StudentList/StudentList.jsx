@@ -12,10 +12,11 @@ class StudentList extends Component {
     }
 
     render() {
+        console.log(this.props.reduxState.students);
         return (
             <div>
                 <ul>
-                    {this.props.reduxState.studentReducer.map(student => {
+                    {this.props.reduxState.students.map(student => {
                         return <StudentItem id="studentListItem" key={student.id} student={student} />
                     })}
                 </ul>
