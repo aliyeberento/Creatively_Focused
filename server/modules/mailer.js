@@ -1,32 +1,38 @@
+// NodeMailer setup
 require('dotenv').config();
 const nodemailer = require('nodemailer');
+const cron = require('cron');
 
-// NodeMailer setup
-// step 1
+// step 1 
+// email transport configuration
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.NODEMAILER_USER,
-        pass: process.env.NODEMAILER_PASSWORD
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
     }
 });
 
-// step 2
-module.exports = (email, textContents, htmlContents) => {
-    const mailOptions = {
-        from: process.env.NODEMAILER_USER, // sender address
-        to: email, // list of receivers
-        subject: 'test', // Subject line
-        text: textContents,
-        html: htmlContents || undefined
-    };
 
-    // step 3
-    transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-            console.log('err', err)
-        } else {
-            console.log('info', info);
+module.exports = () => {
+    cron.schedule("* * 1 * *", () => {
+        // step 2
+        // email message options
+        const mailOptions = {
+            from: process.env.EMAIL, // sender address
+            to: email, // list of receivers
+            subject: 'test', // Subject line
+            text: textContents,
+            html: htmlContents || undefined
         }
+        // step 3
+        // send email
+        transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+                console.log('err', err)
+            } else {
+                console.log('info', info);
+            }
+        });
     });
 }

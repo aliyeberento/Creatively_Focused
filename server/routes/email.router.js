@@ -2,6 +2,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const sendMailTo = require('../modules/mailer');
 const router = require('express').Router();
 const CronJob = require('cron').CronJob;
+// node cron allows you to schedule a task (ie email notifications) to be executed at a later date
 
 router.post('/', rejectUnauthenticated, (req, res) => {
     new CronJob(new Date(req.body.date), function() {

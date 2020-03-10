@@ -9,10 +9,10 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const emailRouter = require('./routes/email.router');
-
 const studentListRouter = require('./routes/studentList.router');
 const teacherListRouter = require('./routes/teacherList.router');
 const addStudentRouter = require('./routes/addStudent.router');
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
