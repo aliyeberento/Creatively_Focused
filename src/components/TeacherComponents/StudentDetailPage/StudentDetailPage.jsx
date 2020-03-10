@@ -9,6 +9,16 @@ class StudentDetailPage extends Component {
         })
     }
 
+    goToEdit = (id) => {
+        console.log('clicking to edit student:', id);
+        this.props.history.push(`/editstudent/${id}`)
+    }
+
+    goToStudentList = () => {
+        console.log('going back to student list');
+        this.props.history.push(`/studentlist`)
+    }
+
     render() {
         console.log(this.props.match.params.id);
         let selectedStudent = this.props.student.filter(student => student.id == this.props.match.params.id)[0];
@@ -30,9 +40,11 @@ class StudentDetailPage extends Component {
                     <li>{selectedStudent && selectedStudent.school_id}</li>
                     <li>{selectedStudent && selectedStudent.isd_id}</li>
                 </ul>
-                <button>EDIT STUDENT</button>
+                <button onClick={() => this.goToEdit(selectedStudent.id)}>EDIT STUDENT</button>
                 <br />
-                <button>BACK TO STUDENT LIST</button>
+                {/* IS THIS WHERE WE WANT THIS??? */}
+                {/* OR IN THE NAVBAR??? */}
+                <button onClick={this.goToStudentList}>BACK TO STUDENT LIST</button>
             </div>
         )
     }

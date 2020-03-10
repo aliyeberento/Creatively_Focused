@@ -93,7 +93,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/editstudent"
+              path="/editstudent/:id"
               component={EditStudentPage}
             />
             <ProtectedRoute
