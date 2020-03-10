@@ -1,6 +1,7 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 
+// NodeMailer setup
 // step 1
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -10,7 +11,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-//step 2
+// step 2
 module.exports = (email, textContents, htmlContents) => {
     const mailOptions = {
         from: process.env.NODEMAILER_USER, // sender address
