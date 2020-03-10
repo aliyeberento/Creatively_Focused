@@ -5,15 +5,16 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const encryptLib = require('../modules/encryption');
 
 router.post('/', rejectUnauthenticated, (req, res) => {
-
+    // req.body = data sent from addUser saga
     let newUser = req.body;
 
     console.log(req.body);
     const password = encryptLib.encryptPassword(newUser.password);
+    // inserting the data into the user table
     let queryText = `INSERT INTO "user" 
-    ("username", "password", "isd", "auth") 
-    VALUES ($1, $2, $3, $4);`;
-    pool.query(queryText, [newUser.email, password, newUser.isdId, newUser.roleAuth])
+    ("username", "password", "phone", "isd", "school", "auth") 
+    VALUES ($1, $2, $3, $4, $5, $6);`;
+    pool.query(queryText, [newUser.email, password, newUser.number, newUser.isdId, newUser.schoolId, newUser.roleAuth])
         .then((result) => {
             res.sendStatus(201);
         })
