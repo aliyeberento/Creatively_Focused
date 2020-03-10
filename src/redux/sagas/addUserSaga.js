@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
 function* addUser(action) {
-
+console.log('inside the add user saga')
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },

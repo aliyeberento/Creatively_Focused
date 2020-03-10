@@ -21,7 +21,7 @@ class StudentDetailPage extends Component {
 
     render() {
         console.log(this.props.match.params.id);
-        let selectedStudent = this.props.student.filter(student => student.id == this.props.match.params.id)[0];
+        let selectedStudent = this.props.student.filter(student => student.id === this.props.match.params.id)[0];
         return (
             <div>
                 <h1>Student Detail Page</h1>

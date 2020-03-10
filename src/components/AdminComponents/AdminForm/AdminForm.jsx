@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './AdminForm.css';
-// import Nav from '../Nav/Nav';
-// import Footer from '../Footer/Footer';
-// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 class AdminForm extends Component {
 
@@ -28,22 +25,6 @@ class AdminForm extends Component {
         }, () => {
             console.log(this.state.userToAdd)
         })
-
-        // this.setState({
-        //     usertoAdd: {
-        //         ...this.state.userToAdd,
-        //         [propertyName]: event.target.value
-
-                // firstName: event.target.value,
-                // lastName: event.target.value,
-                // email: event.target.value,
-                // password: event.target.value,
-                // schoolId: event.target.value,
-                // isdId: event.target.value,
-                // roleAuth: event.target.value    
-            // }
-        // })
-        // console.log('making a new user:', this.state.userToAdd)
         // this function should spread local state,
         // and build a new teacher object
     }
@@ -58,6 +39,7 @@ class AdminForm extends Component {
             type: 'ADD_USER',
             payload: this.state.userToAdd
         })
+        console.log('finished sumbitting')
     }
 
     render() {
