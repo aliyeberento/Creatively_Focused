@@ -5,7 +5,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
-    const queryText = `SELECT "username", "phone" 
+    const queryText = `SELECT "username", "phone", "id"
     FROM "user" WHERE auth <= 3`
     pool.query(queryText)
         .then(results => {

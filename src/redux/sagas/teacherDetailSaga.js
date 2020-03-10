@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
+
 function* teacherDetailSaga() {
     yield takeLatest('GET_TEACHER_DETAIL', getDetail);
 }

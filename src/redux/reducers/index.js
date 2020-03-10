@@ -5,7 +5,7 @@ import user from './userReducer';
 import teacher from './teacherReducer';
 import event from './eventReducer';
 import student from './studentReducer';
-import teacherDetail from './teacherDetailReducer'
+import teacherDetailReducer from './teacherDetailReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   teacher, // contains the teacher's information (school, username, contact preference)
   event, // dates for the deadlines
   student, // student information
-  teacherDetail
+  teacherDetailReducer
 });
 
 export default rootReducer;

@@ -12,7 +12,7 @@ class AdminHome extends Component {
     }
 
     editBtn = (event, teacher) => {
-        console.log('view button clicked')
+        console.log('view button clicked', teacher.id)
         // this.props.dispatch({
         //     type: 'GET_TEACHER_DETAIL'
         // })
