@@ -12,7 +12,7 @@ class StudentDetailPage extends Component {
         })
     }
 
-    // directs the admin to an edit page pre-populated with the items info
+    // directs the user to an edit page pre-populated with the item's info
     editStudent = () => {
         console.log('clicking to go edit', this.props.match.params.id);
         this.props.history.push(`/editstudent/${this.props.match.params.id}`)

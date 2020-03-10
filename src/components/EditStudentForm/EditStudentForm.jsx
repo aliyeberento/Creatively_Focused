@@ -16,6 +16,7 @@ class EditStudentForm extends Component {
             fed_setting: this.props.reduxState.studentDetail.fed_setting,
             birthdate: this.props.reduxState.studentDetail.birthdate,
             notes: this.props.reduxState.studentDetail.notes,
+            id: this.props.reduxState.studentDetail.id
         }
     }
 
@@ -34,7 +35,7 @@ class EditStudentForm extends Component {
         // dispatches edit to redux/database
         console.log('clicking to submit edit', this.state.studentToEdit);
         this.props.dispatch({
-            type: 'SUBMIT_EDIT',
+            type: 'EDIT_STUDENT',
             payload: this.state.studentToEdit,
             url: `/api/studentList/${this.state.studentToEdit.id}`
         })
