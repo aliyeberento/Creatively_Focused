@@ -26,10 +26,11 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/email', emailRouter);
+// app.use('/api/email', emailRouter);
 app.use('/api/studentList', studentListRouter);
 app.use('/api/teacherList', teacherListRouter);
 app.use('/api/addStudent', addStudentRouter);
+app.use('/api/addUser', addUserRouter)
 
 // Serve static files
 app.use(express.static('build'));
