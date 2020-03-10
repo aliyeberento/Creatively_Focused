@@ -41,6 +41,7 @@ class AdminForm extends Component {
             payload: this.state.userToAdd
         })
         console.log('finished sumbitting')
+        console.log('user auth level', this.props.store.user)
     }
 
     render() {
@@ -114,4 +115,10 @@ class AdminForm extends Component {
     }
 }
 
-export default connect()(AdminForm);
+const mapStateToProps = (store) => ({
+    store
+})
+    
+
+
+export default connect(mapStateToProps)(AdminForm);

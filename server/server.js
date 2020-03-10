@@ -8,7 +8,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const emailRouter = require('./routes/email.router');
+// const emailRouter = require('./routes/email.router');
 
 const studentListRouter = require('./routes/studentList.router');
 const teacherListRouter = require('./routes/teacherList.router');
@@ -28,7 +28,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/email', emailRouter);
+// app.use('/api/email', emailRouter);
 app.use('/api/studentList', studentListRouter);
 app.use('/api/teacherList', teacherListRouter);
 app.use('/api/addStudent', addStudentRouter);
