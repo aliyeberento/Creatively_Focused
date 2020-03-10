@@ -13,7 +13,7 @@ class StudentDetailPage extends Component {
     }
 
     // directs the admin to an edit page pre-populated with the items info
-    goEdit = () => {
+    editStudent = () => {
         console.log('clicking to go edit', this.props.match.params.id);
         this.props.history.push(`/editstudent/${this.props.match.params.id}`)
     }
@@ -46,7 +46,7 @@ class StudentDetailPage extends Component {
                 <p>Previous EVAL: {student.prev_eval}</p>
                 <p>Next EVAL: {student.next_eval}</p>
                 <p>Notes: {student.notes}</p>
-                <button>edit student</button><br />
+                <button onClick={this.editStudent}>edit student</button><br />
                 <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button>
             </div>
         )

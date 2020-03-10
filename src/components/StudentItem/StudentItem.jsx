@@ -13,7 +13,7 @@ class StudentItem extends Component {
             <div>
                 <li>
                     <p>{this.props.student.lastname}, {this.props.student.firstname}</p>
-                    <button key={this.props.student.id} onClick={(event) => this.goDetail(event, this.props.student)}>edit student</button>
+                    <button key={this.props.student.id} onClick={(event) => this.goDetail(event, this.props.student)}>view student details</button>
                 </li>
             </div>
         )

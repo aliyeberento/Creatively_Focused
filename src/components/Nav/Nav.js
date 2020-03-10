@@ -18,7 +18,7 @@ class Nav extends Component {
             but call this link 'Home' if they are logged in,
             and call this link 'Login / Register' if they are not */}
             {/* {this.props.store.user.id ? 'USER PROFILE' : 'LOGIN'} */}
-            {this.props.store.user.id < 3 && (
+            {this.props.store.user.auth < 3 && (
               <>
                 <Link className="menu-item" to="/adminhome">
                   TEACHER LIST
