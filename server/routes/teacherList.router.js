@@ -16,6 +16,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
-
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    let queryText = `SELECT * FROM "user" WHERE "id" = ${req.params.id}`
+    pool.query(queryText)
+        .then(response => {
+            res.send(response.rows)
+        })
+        .catch(error => {
+            console.log(error);
+            res.sendStatus(500)
+        })
+})
 
 module.exports = router;

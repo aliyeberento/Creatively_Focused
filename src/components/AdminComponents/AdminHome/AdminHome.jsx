@@ -8,11 +8,15 @@ import './AdminHome.css';
 
 class AdminHome extends Component {
     componentDidMount() {
-        this.props.dispatch({ type: 'GET_TEACHER' });
+        this.props.dispatch({ type: 'GET_TEACHERS' });
     }
 
-    editBtn = () => {
+    editBtn = (event, teacher) => {
         console.log('view button clicked')
+        // this.props.dispatch({
+        //     type: 'GET_TEACHER_DETAIL'
+        // })
+        this.props.history.push(`/admindetail/${teacher.id}`)
     }
 
     addBtn = () => {
@@ -21,14 +25,14 @@ class AdminHome extends Component {
     render() {
         return (
             <div>
-                <h3>Hi, {this.props.store.teacher.name}</h3>
+                <h3>Hi, {this.props.store.teacher.username}</h3>
                 <>
                     <ul>
                         {this.props.store.teacher.map((teacher) => {
                             return <ul key={teacher.id}>
                                 <li>{teacher.username} {teacher.phone}</li>          
                                 <br />                      
-                                <button onClick={() => this.detailsBtn(teacher.id)}>View Details</button>
+                                <button key = {teacher.id} onClick={(event) => this.editBtn(event, teacher)}>View Details</button>
                             </ul>
                         }
                         )}
