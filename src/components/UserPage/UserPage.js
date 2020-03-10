@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './user.css';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 
 // this could also be written with destructuring parameters as:
@@ -27,11 +28,11 @@ class UserPage extends Component {
     console.log(this.props.reduxState.user.username);
     
     return (
-      <div>
-        <h1 id="welcome">
+      <div className="welcome">
+        <h1 >
           Welcome, {this.props.reduxState.user.username}!
     </h1>
-        <p>Your ID is: {this.props.reduxState.user.id}</p>
+        <p >Your ID is: {this.props.reduxState.user.id}</p>
         <button onClick={this.editUser}>EDIT USER PROFILE</button>
         {/* <LogOutButton className="log-in" /> */}
       </div>

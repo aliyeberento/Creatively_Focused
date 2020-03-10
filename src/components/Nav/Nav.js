@@ -9,7 +9,11 @@ class Nav extends Component {
   render() {
     return (
       <Menu>
-        <div >
+
+
+        <div className="menu-color">
+
+
           <h2 className="nav-title">CREATIVELY FOCUSED</h2>
           <Link className="menu-item" to="/home">HOME</Link>
           <br />
