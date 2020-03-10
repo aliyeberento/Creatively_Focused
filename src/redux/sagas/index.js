@@ -6,6 +6,7 @@ import studentSaga from './studentSaga';
 import teacherSaga from './teacherSaga';
 import addStudentSaga from './addStudentSaga';
 import deleteStudentSaga from './deleteStudentSaga';
+import studentDetailSaga from './studentDetailSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     teacherSaga(), //for teacher information
     addStudentSaga(), // adds student info then saves to student reducer
     deleteStudentSaga(), // deletes by student id not school student id
+    studentDetailSaga(),
   ]);
 }

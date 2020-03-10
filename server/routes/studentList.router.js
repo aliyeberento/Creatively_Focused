@@ -18,6 +18,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    let queryText = `SELECT * FROM "student" WHERE "id" = ${req.params.id}`
+    pool.query(queryText)
+        .then(response => {
+            res.send(response.rows)
+        })
+        .catch(error => {
+            console.log(error);
+            res.sendStatus(500)
+        })
+})
+
+
 router.delete('/:id/', rejectUnauthenticated, (req, res) => {
     const id = req.params.id
 
