@@ -8,43 +8,45 @@ import './AdminHome.css';
 
 class AdminHome extends Component {
     componentDidMount() {
-        this.props.dispatch({ type: 'GET_TEACHER' });
+        this.props.dispatch({ type: 'GET_TEACHERS' });
     }
 
-    editBtn = () => {
-        console.log('view button clicked')
+    editBtn = (event, teacher) => {
+        console.log('view button clicked', teacher.id)
+        // this.props.dispatch({
+        //     type: 'GET_TEACHER_DETAIL'
+        // })
+        this.props.history.push(`/admindetail/${teacher.id}`)
     }
-   
+
     addBtn = () => {
         console.log('add user button clicked')
     }
     render() {
         return (
             <div>
-                <h3>Hi, INSERT USERNAME</h3>
-                {/* <button onClick={this.addBtn}>Add User</button> */}
-                <ul>
-                    <li>list here</li>
-                    <li>list here too</li>
-                    <li>also list here</li>
-                </ul>
-                <ul>
-                    {this.props.teacher.map((teacher) => {
-                        return <li key={teacher.id}>{teacher.username}
+                <h3>Hi, {this.props.store.teacher.username}</h3>
+                <>
+                    <ul>
+                        {this.props.store.teacher.map((teacher) => {
+                            return <ul key={teacher.id}>
+                                <li>{teacher.username} {teacher.phone}</li>          
+                                <br />                      
+                                <button key = {teacher.id} onClick={(event) => this.editBtn(event, teacher)}>View Details</button>
+                            </ul>
+                        }
+                        )}
+                    </ul>
+                </>
 
-                            <button onClick={() => this.detailsBtn(teacher.id)}>View Details</button>
-                        </li>
-                    }
-                    )}
-
-                </ul>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-    teacher: state.teacher,
-    user: state.user
+const mapStateToProps = (store) => ({
+    store
 });
+
+
 export default withRouter(connect(mapStateToProps)(AdminHome));

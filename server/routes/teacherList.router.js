@@ -5,9 +5,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
-    const queryText = `SELECT "username", "phone" 
-    FROM user WHERE auth = 3 < $1`
-    pool.query(queryText, [req.user.id])
+    const queryText = `SELECT "username", "phone", "id"
+    FROM "user" WHERE auth <= 3`
+    pool.query(queryText)
         .then(results => {
             res.send(results.rows);
         }).catch(error => {
@@ -16,6 +16,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
-
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    let queryText = `SELECT * FROM "user" WHERE "id" = ${req.params.id}`
+    pool.query(queryText)
+        .then(response => {
+            res.send(response.rows)
+        })
+        .catch(error => {
+            console.log(error);
+            res.sendStatus(500)
+        })
+})
 
 module.exports = router;
