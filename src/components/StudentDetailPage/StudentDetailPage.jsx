@@ -19,13 +19,13 @@ class StudentDetailPage extends Component {
     }
 
     // dispatches a DELETE to the database via redux saga for the item clicked on
-    deleteOpp = () => {
+    deleteStudent = () => {
         console.log('clicking to delete');
         this.props.dispatch({
-            type: 'DELETE_OPP',
+            type: 'DELETE_STUDENT',
             payload: this.props.match.params.id
         })
-        this.props.history.push(`/`)
+        this.props.history.push(`/studentlist`)
     }
 
     render() {
@@ -40,14 +40,14 @@ class StudentDetailPage extends Component {
                 <p>Student ID: {student.student_id}</p>
                 <p>Disability Category: {student.disability_cat}</p>
                 <p>Federal Setting: {student.fed_setting}</p>
-                <p>Grade: {student.grade}</p>
-                <p>Grade: {student.grade}</p>
-                <p>Grade: {student.grade}</p>
-                <p>Grade: {student.grade}</p>
-                <p>Grade: {student.grade}</p>
+                <p>Initial IEP date: {student.initial_iep}</p>
+                <p>Last IEP: {student.prev_iep}</p>
+                <p>Next IEP: {student.next_iep}</p>
+                <p>Previous EVAL: {student.prev_eval}</p>
+                <p>Next EVAL: {student.next_eval}</p>
                 <p>Notes: {student.notes}</p>
                 <button>edit student</button><br />
-                <button>delete student</button>
+                <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button>
             </div>
         )
     }
