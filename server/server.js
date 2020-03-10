@@ -1,15 +1,15 @@
-
 const express = require('express');
 require('dotenv').config();
 
 const app = express();
 const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
-
 const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const emailRouter = require('./routes/email.router');
+
 const studentListRouter = require('./routes/studentList.router');
 const teacherListRouter = require('./routes/teacherList.router');
 const addStudentRouter = require('./routes/addStudent.router');
@@ -28,6 +28,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/email', emailRouter);
 app.use('/api/studentList', studentListRouter);
 app.use('/api/teacherList', teacherListRouter);
 app.use('/api/addStudent', addStudentRouter);
