@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { withRouter } from 'react-router-dom';
 import './studentList.css';
 import { withStyles} from '@material-ui/core/styles';
@@ -11,6 +12,7 @@ import { CardContent } from '@material-ui/core';
 // import Nav from '../Nav/Nav';
 // import Footer from '../Footer/Footer';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+
 
 const styles = {
     root: {
@@ -28,15 +30,13 @@ class StudentList extends Component {
         this.props.dispatch({ type: 'GET_STUDENT' });
     }
 
-
-    detailsBtn = (student) => {
-        console.log('view button clicked')
-        console.log(student)
+    detailsBtn = (event, student) => {
+        console.log('details button clicked', student)
+        this.props.history.push(`/studentdetail/${student.id}`)
     }
 
     addStudent = () => {
         this.props.history.push(`/addstudent`);
-
     }
 
     deleteBtn = (student) => {
@@ -45,7 +45,6 @@ class StudentList extends Component {
             payload: student
         });
         console.log(student)
-        
     }
 
     render() {
@@ -60,11 +59,11 @@ class StudentList extends Component {
                 
                 <ul>
                     {this.props.student.map((student) => {
-                        return <li key={student.id}>
-                            {student.firstname} {student.lastname}
-                            <button onClick={() => this.detailsBtn(student.id)}>View Details</button>
-                                <button onClick={() => this.deleteBtn(student.id)}>Remove</button>
-                            
+
+                        return <li key={student.id}>{student.firstname} {student.lastname}
+                            <button onClick={(event) => this.detailsBtn(event, student)}>View Details</button>
+                            <button onClick={() => this.deleteBtn(student.id)}>Remove</button>
+
                         </li>
                         }
                     )}
@@ -75,6 +74,7 @@ class StudentList extends Component {
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     student: state.student,
     user: state.user
