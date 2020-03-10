@@ -26,8 +26,9 @@ import AdminForm from '../AdminComponents/AdminForm/AdminForm';
 import './App.css';
 
 class App extends Component {
+
   componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_USER' })
+    this.props.dispatch({ type: 'FETCH_USER' });
   }
 
   render() {
@@ -93,12 +94,12 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/editstudent"
+              path="/editstudent/:id"
               component={EditStudentPage}
             />
             <ProtectedRoute
               exact
-              path="/studentdetail"
+              path="/studentdetail/:id"
               component={StudentDetailPage}
             />
             <ProtectedRoute

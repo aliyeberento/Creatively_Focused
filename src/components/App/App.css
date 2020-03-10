@@ -9,7 +9,7 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
+    /* background-color: #dbd5d5; */
     width: 30%;
     height: 250px;
     margin: 20px auto;
@@ -50,6 +50,7 @@ input {
 
 ul {
     list-style-type: none;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 @font-face {
