@@ -2,20 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './AddStudentForm.css';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-
-
-
-const styles = {
-    root: {
-        maxWidth: 600,
-        maxHeight: 700,
-        paddingTop: '10%',
-        paddingLeft: '26%',
-    },
-
-};
 
 class AddStudentForm extends Component {
 
@@ -43,8 +29,6 @@ class AddStudentForm extends Component {
                 ...this.state.studentToAdd,
                 [propertyName]: event.target.value
             }
-        }, () => {
-            console.log(this.state.studentToAdd)
         })
         // this function should spread local state,
         // and build a new teacher object
@@ -63,41 +47,6 @@ class AddStudentForm extends Component {
 
         this.props.history.push(`/studentlist`);
     }
-
-    // makeNewStudent = (event) => {
-
-    //     event.preventDefault();
-    //     // this function should spread state
-    //     // build a new student object
-    //     this.setState({
-    //         ...this.state,
-    //         firstName: event.target.value,
-    //         lastName: event.target.value,
-    //         grade: event.target.value,
-    //         idNumber: event.target.value,
-    //         previousIep: event.target.value,
-    //         previousEval: event.target.value,
-    //         disabilityCategory: event.target.value,
-    //         federalSetting: event.target.value,
-    //         birthdate: event.target.value,
-    //         notes: event.target.value,
-    //     });
-    // }
-
-    // submitNewStudent = () => {
-
-    //     console.log('submitting a new student', this.state);
-
-    //     // this should dispatch an action
-    //     // and then use withRouter to push history to student list
-    //     // or this new student's detail
-    //     this.props.dispatch({
-    //         type: 'SUBMIT_STUDENT',
-    //         payload: this.state
-    //     });
-
-    //     this.props.history.push(`/studentlist`);
-    // }
 
     render() {
         return (
@@ -135,4 +84,4 @@ const mapStateToProps = (state) => ({
     state
 });
 
-export default withStyles(styles)(withRouter(connect(mapStateToProps)(AddStudentForm)));
+export default withRouter(connect(mapStateToProps)(AddStudentForm));
