@@ -31,6 +31,7 @@ import UserList from '../UserList/UserList';
 import UserDetailPage from '../UserDetailPage/UserDetailPage';
 import EditUserForm from '../EditUserForm/EditUserForm';
 import './App.css';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 class App extends Component {
 
