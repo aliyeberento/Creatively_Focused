@@ -52,7 +52,7 @@ class AdminForm extends Component {
     render() {
         return (
             <div>
-                <h3>Add/Edit User Page</h3>
+                <h1>ADD/EDIT NEW USER</h1>
                 <form>
                     {/* <label>
                         First Name:
@@ -108,7 +108,8 @@ class AdminForm extends Component {
                         <option value="0">CF Admin</option>
                     </select>
                 </label>
-                <button onClick={this.submitBtn}>Submit</button>
+                <br />
+                <button type="button" className="submitBtn" onClick={this.submitBtn}>Submit</button>
                 </form>
             </div >
         )

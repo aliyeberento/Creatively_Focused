@@ -31,7 +31,7 @@ import UserList from '../UserList/UserList';
 import UserDetailPage from '../UserDetailPage/UserDetailPage';
 import EditUserForm from '../EditUserForm/EditUserForm';
 import './App.css';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import TaskDetailPage from '../TaskDetailPage/TaskDetailPage';
 
 class App extends Component {
 
@@ -119,6 +119,11 @@ class App extends Component {
               exact
               path="/studentlist"
               component={StudentList}
+            />
+            <ProtectedRoute
+              exact
+              path="/taskdetail/:id"
+              component={TaskDetailPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

@@ -3,7 +3,7 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 import teacher from './teacherReducer';
-import event from './eventReducer';
+import tasks from './tasksReducer';
 import students from './studentReducer';
 import studentDetail from  './studentDetailReducer';
 import student from './studentReducer';
@@ -20,9 +20,9 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   teacher, // contains the teacher's information (school, username, contact preference)
-  event, // dates for the deadlines
+  tasks, // dates for the deadlines
   students, // student information
-  studentDetail, //
+  studentDetail, // individual student for viewing and editing
   student, // student information
   teacherDetail
 });

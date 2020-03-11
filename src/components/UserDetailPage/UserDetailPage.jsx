@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import TaskList from '../TaskList/TaskList';
 
 class UserDetailPage extends Component {
 
@@ -39,6 +40,13 @@ class UserDetailPage extends Component {
                 <p>Phone Number: {user.phone}</p>
                 <button onClick={this.editUser}>edit user</button><br />
                 <button onClick={(event) => { if (window.confirm('are you sure you want to delete this user?')) this.deleteUser(event) }}>delete user</button>
+                {/* SHOULD WE HAVE A LIST OF DEADLINES HERE? */}
+                {/* <ol>
+                    <li><input type="checkbox"></input>This is a task.</li>
+                    <li><input type="checkbox"></input>This is another task.</li>
+                    <li><input type="checkbox"></input>This is a third task.</li>
+                </ol> */}
+                <TaskList />
             </div>
         )
     }
