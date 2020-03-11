@@ -12,21 +12,21 @@ class TaskDetailPage extends Component {
         })
     }
 
-    // directs the user to an edit page pre-populated with the item's info
+    // directs the user to an edit page pre-populated with the task's info
     // editTask = () => {
     //     console.log('clicking to go edit', this.props.match.params.id);
     //     this.props.history.push(`/edittask/${this.props.match.params.id}`)
     // }
 
     // dispatches a DELETE to the database via redux saga for the item clicked on
-    deleteTask = () => {
-        console.log('clicking to delete');
-        this.props.dispatch({
-            type: 'DELETE_TASK',
-            payload: this.props.match.params.id
-        })
-        this.props.history.push(`/home`)
-    }
+    // deleteTask = () => {
+    //     console.log('clicking to delete');
+    //     this.props.dispatch({
+    //         type: 'DELETE_TASK',
+    //         payload: this.props.match.params.id
+    //     })
+    //     this.props.history.push(`/home`)
+    // }
 
     render() {
         let task = this.props.reduxState.taskDetail;
