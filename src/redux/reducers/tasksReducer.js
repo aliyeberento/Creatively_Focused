@@ -1,9 +1,8 @@
-const eventReducer = (state = [], action) => {
+const tasksReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_EVENT':
-
+        case 'SET_TASKS':
             return action.payload;
-        case 'UNSET_EVENT':
+        case 'UNSET_TASKS':
             return [];
         default:
             return state;
@@ -11,4 +10,4 @@ const eventReducer = (state = [], action) => {
 };
 
 
-export default eventReducer;
+export default tasksReducer;

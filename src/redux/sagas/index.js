@@ -7,11 +7,17 @@ import teacherSaga from './teacherSaga';
 import addStudentSaga from './addStudentSaga';
 import addUserSaga from './addUserSaga'
 import deleteStudentSaga from './deleteStudentSaga';
+
+import studentEventSaga from './studentEventSaga';
+
 import studentDetailSaga from './studentDetailSaga';
 import editStudentSaga from './editStudentSaga';
 import teacherDetailSaga from './teacherDetailSaga';
 import editUserSaga from './editUserSaga';
 import deleteUserSaga from './deleteUserSaga';
+import tasksSaga from './tasksSaga';
+
+
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -30,10 +36,15 @@ export default function* rootSaga() {
     addStudentSaga(), // adds student info then saves to student reducer
     addUserSaga(),
     deleteStudentSaga(), // deletes by student id not school student id
+
+    studentEventSaga(), // holds all of the student iep/eval dates
+
     studentDetailSaga(),
     editStudentSaga(),
     teacherDetailSaga(),
     editUserSaga(),
     deleteUserSaga(),
+    tasksSaga(),
+
   ]);
 }
