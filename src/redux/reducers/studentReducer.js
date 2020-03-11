@@ -1,8 +1,8 @@
 const studentReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_STUDENT':
+        case 'SET_STUDENTS':
             return action.payload;
-        case 'UNSET_STUDENT':
+        case 'UNSET_STUDENTS':
             return [];
         default:
             return state;

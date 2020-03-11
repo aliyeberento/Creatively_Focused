@@ -6,14 +6,14 @@ class AdminForm extends Component {
 
     state = {
         userToAdd: {
-            firstName: '',
-            lastName: '',
-            email: '',
+            // firstName: '',
+            // lastName: '',
+            username: '',
             password: '',
-            number: '',
-            schoolId: '',
-            isdId: '',
-            roleAuth: ''
+            phone: '',
+            isd: '',
+            school: '',
+            auth: 3
         }
     }
 
@@ -40,16 +40,21 @@ class AdminForm extends Component {
             type: 'ADD_USER',
             payload: this.state.userToAdd
         })
-        console.log('finished sumbitting')
-        console.log('user auth level', this.props.store.user)
+        // console.log('finished sumbitting')
+        // console.log('user auth level', this.props.store.user)
+        this.goDetail();
+    }
+
+    goDetail = () => {
+        this.props.history.push(`/adminhome`)
     }
 
     render() {
         return (
             <div>
-                <h3>Add/Edit User Page</h3>
+                <h1>ADD/EDIT NEW USER</h1>
                 <form>
-                    <label>
+                    {/* <label>
                         First Name:
                     <input type="text"
                             onChange={(event) => this.handleNewUser('firstName', event)} />
@@ -60,11 +65,11 @@ class AdminForm extends Component {
                     <input type="text"
                             onChange={(event) => this.handleNewUser('lastName', event)} />
                     </label>
-                    <br />
+                    <br /> */}
                     <label>
                         Email/Username:
                     <input type="text"
-                            onChange={(event) => this.handleNewUser('email', event)} />
+                            onChange={(event) => this.handleNewUser('username', event)} />
                     </label>
                     <br />
                     <label>
@@ -73,42 +78,38 @@ class AdminForm extends Component {
                             onChange={(event) => this.handleNewUser('password', event)} />
                     </label>
                     <br />
-                    {/* <label>Enter your phone number:</label>
-
-                    <input type="tel" id="phone" name="phone"
-                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                        required> */}
                     <label>
                         Phone number:
                         <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
                             placeholder = '(012)-345-6789'
                             max= "10" 
-                            onChange={(event) => this.handleNewUser('number', event)} >
+                            onChange={(event) => this.handleNewUser('phone', event)} >
                             </input>
                     </label>
                 <br />
                 <label>
                     School Name:
                     <input type="text" value={this.state.userToAdd.schoolId}
-                        onChange={(event) => this.handleNewUser('schoolId', event)} />
+                        onChange={(event) => this.handleNewUser('isd', event)} />
                 </label>
                 <br />
                 <label>
                     School District:
                     <input type="text" value={this.state.userToAdd.isdId}
-                        onChange={(event) => this.handleNewUser('isdId', event)} />
+                        onChange={(event) => this.handleNewUser('school', event)} />
                 </label>
                 <br />
                 <label>
                     Role/Auth:
-                        <select name="role" onChange={(event) => this.handleNewUser('roleAuth', event)} value={this.state.userToAdd.roleAuth} >
+                        <select name="role" onChange={(event) => this.handleNewUser('auth', event)} value={this.state.userToAdd.roleAuth} >
                         <option value="3">Teacher</option>
                         <option value="2">School Principal</option>
                         <option value="1">Superintendent</option>
                         <option value="0">CF Admin</option>
                     </select>
                 </label>
-                <button onClick={this.submitBtn}>Submit</button>
+                <br />
+                <button type="button" className="submitBtn" onClick={this.submitBtn}>Submit</button>
                 </form>
             </div >
         )
