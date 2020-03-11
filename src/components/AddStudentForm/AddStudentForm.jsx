@@ -44,7 +44,6 @@ class AddStudentForm extends Component {
             type: 'SUBMIT_STUDENT',
             payload: this.state.studentToAdd
         })
-
         this.props.history.push(`/studentlist`);
     }
 
@@ -52,7 +51,6 @@ class AddStudentForm extends Component {
         return (
             <div>
                 <h1>ADD NEW STUDENT</h1>
-
                 <div className="form">
                     <div className="set1">
                         <label>First Name<input type="text" placeholder="first name" onChange={(event) => this.handleAddStudent('firstName', event)}></input></label>
@@ -71,10 +69,7 @@ class AddStudentForm extends Component {
                         <label>Notes<input type="text" placeholder="notes" onChange={(event) => this.handleAddStudent('notes', event)}></input></label>
                         <button type="button" className="submitBtn" onClick={this.submitStudent}>Submit</button>
                     </div>
-
                 </div>
-
-
             </div>
         )
     }
