@@ -46,14 +46,25 @@ class UserPage extends Component {
           onChange={this.onChange}
           value={this.state.date}
         />
-        <ul>
-          {this.props.studentEvent.map((event) => {
-            return <li key={event.id}>
-              {event.task} {event.notes}
-            </li>
-          }
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Task
+                  </th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+          {this.props.studentEvent.map(event => (
+            <tr key={event.id}>
+              <td>{event.task}</td>
+              <td>{event.notes}</td>
+            </tr>
+          )
           )}
-        </ul>
+          </tbody>
+        </table>
         <button onClick={this.editUser}>EDIT USER PROFILE</button>
         {/* <LogOutButton className="log-in" /> */}
       </div>
