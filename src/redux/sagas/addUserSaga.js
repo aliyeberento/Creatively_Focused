@@ -12,8 +12,9 @@ console.log('inside the add user saga')
         //sending response to server to handle
         let response = yield axios.post('/api/addUser', action.payload, config);
         console.log('RESPONSE FROM ADD-USER-SAGA', response)
+        yield put({ type: 'GET_TEACHERS' });
     } catch (error) {
-        console.log('add student post request failed in saga', error);
+        console.log('add user post request failed in saga', error);
     }
 }
 

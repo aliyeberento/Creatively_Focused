@@ -14,7 +14,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     let queryText = `INSERT INTO "user" 
     ("username", "password", "phone", "isd", "school", "auth") 
     VALUES ($1, $2, $3, $4, $5, $6);`;
-    pool.query(queryText, [newUser.email, password, newUser.number, newUser.isdId, newUser.schoolId, newUser.roleAuth])
+    pool.query(queryText, [newUser.username, password, newUser.phone, newUser.isd, newUser.school, newUser.auth])
         .then((result) => {
             res.sendStatus(201);
         })
@@ -24,6 +24,5 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         });
 
 });
-
 
 module.exports = router;
