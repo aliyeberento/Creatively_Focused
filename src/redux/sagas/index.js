@@ -10,7 +10,7 @@ import deleteStudentSaga from './deleteStudentSaga';
 import studentDetailSaga from './studentDetailSaga';
 import editStudentSaga from './editStudentSaga';
 import teacherDetailSaga from './teacherDetailSaga';
-import editUserSaga from './editStudentSaga';
+import editUserSaga from './editUserSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.

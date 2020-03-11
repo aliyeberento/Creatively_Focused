@@ -7,7 +7,8 @@ class EditUserForm extends Component {
     state = {
         userToEdit: {
             id: this.props.reduxState.teacherDetail.id,
-            username: this.props.reduxState.teacherDetail.username
+            username: this.props.reduxState.teacherDetail.username,
+            // password: this.props.reduxState.teacherDetail.password
         }
     }
 
