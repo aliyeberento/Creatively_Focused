@@ -7,6 +7,7 @@ function* deleteStudent(action) {
         let id = action.payload
         console.log(action.payload)
         let response = yield axios.delete(`/api/studentList/${id}`);
+        console.log(response,'THIS IS RESPONSE FROM DELETE STUDENT SAGA')
         yield put({ type: 'GET_STUDENTS' })
 
     }
