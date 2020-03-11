@@ -32,7 +32,11 @@ class UserDetailPage extends Component {
         let user = this.props.reduxState.teacherDetail;
         return (
             <div>
-                <h1>{user.id}</h1>
+                <h1>Username: {user.username}</h1>
+                <p>ID: {user.id}</p>
+                <p>School: {user.school}</p>
+                <p>ISD: {user.isd}</p>
+                <p>Phone Number: {user.phone}</p>
                 <button onClick={this.editUser}>edit user</button><br />
                 <button onClick={(event) => { if (window.confirm('are you sure you want to delete this user?')) this.deleteUser(event) }}>delete user</button>
             </div>

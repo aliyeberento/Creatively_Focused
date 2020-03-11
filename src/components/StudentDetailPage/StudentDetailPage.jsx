@@ -33,7 +33,7 @@ class StudentDetailPage extends Component {
         return (
             <div>
                 <h1>{student.lastname}, {student.firstname}</h1>
-                <p>Username: {student.birthdate}</p>
+                <p>Birthdate: {student.birthdate}</p>
                 <button onClick={this.editStudent}>edit student</button><br />
                 <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button>
             </div>

@@ -8,6 +8,9 @@ class EditUserForm extends Component {
         userToEdit: {
             id: this.props.reduxState.teacherDetail.id,
             username: this.props.reduxState.teacherDetail.username,
+            phone: this.props.reduxState.teacherDetail.phone,
+            school: this.props.reduxState.teacherDetail.school,
+            isd: this.props.reduxState.teacherDetail.isd,
             // password: this.props.reduxState.teacherDetail.password
         }
     }
@@ -49,7 +52,10 @@ class EditUserForm extends Component {
         return (
             <div>
                 <form>
-                    <input type="text" label="name" defaultValue={user.username} value={user.username} onChange={(event) => this.editThisUser(event, 'username')}></input>
+                    <label>Username: <input type="text" label="username" defaultValue={user.username} value={user.username} onChange={(event) => this.editThisUser(event, 'username')}></input></label><br />
+                    <label>Phone Number: <input type="text" label="phone" defaultValue={user.phone} value={user.phone} onChange={(event) => this.editThisUser(event, 'phone')}></input></label><br />
+                    <label>School: <input type="text" label="school" defaultValue={user.school} value={user.school} onChange={(event) => this.editThisUser(event, 'school')}></input></label><br />
+                    <label>ISD: <input type="text" label="isd" defaultValue={user.isd} value={user.isd} onChange={(event) => this.editThisUser(event, 'isd')}></input></label><br />
                 </form>
                 <button onClick={this.submitEdit}>submit changes</button>
             </div >

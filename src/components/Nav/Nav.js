@@ -32,11 +32,11 @@ class Nav extends Component {
                   ADD NEW USER
                 </Link>
                 <br />
-                <LogOutButton className="menu-item" />
+                {/* <LogOutButton className="menu-item" /> */}
               </>
             )}
             {/* Show the link to the info page and the logout button if the user is logged in */}
-            {this.props.store.user.auth > 3 && (
+            {this.props.store.user.auth < 5 && (
               <>
                 <Link className="menu-item" to="/studentlist">
                   STUDENT LIST
