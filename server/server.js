@@ -14,6 +14,7 @@ const studentListRouter = require('./routes/studentList.router');
 const teacherListRouter = require('./routes/teacherList.router');
 const addStudentRouter = require('./routes/addStudent.router');
 const addUserRouter = require('./routes/addUser.router');
+const studentEventRouter = require('./routes/studentEvent.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,7 +33,8 @@ app.use('/api/user', userRouter);
 app.use('/api/studentList', studentListRouter);
 app.use('/api/teacherList', teacherListRouter);
 app.use('/api/addStudent', addStudentRouter);
-app.use('/api/addUser', addUserRouter)
+app.use('/api/addUser', addUserRouter);
+app.use('/api/studentEvent', studentEventRouter)
 
 // Serve static files
 app.use(express.static('build'));
