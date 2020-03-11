@@ -12,6 +12,8 @@ class EditUserForm extends Component {
         }
     }
 
+    
+
     editThisUser = (event, propertyValue) => {
         // build a new object in state
         console.log('building a new user', this.state.userToEdit);
@@ -38,7 +40,8 @@ class EditUserForm extends Component {
         // brings the user to a detail page showing all of
         // the information for the item they clicked on
         // console.log('clicking to go back to detail');
-        this.props.history.push(`/userdetail/${this.props.reduxState.teacherDetail.id}`)
+        this.props.history.push(`/admindetail/${this.props.reduxState.teacherDetail.id}`)
+        // this.props.history.push(`/`)
     }
 
     render() {
