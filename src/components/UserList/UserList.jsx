@@ -11,7 +11,7 @@ class UserList extends Component {
     }
 
     render() {
-        console.log(this.props.reduxState.teachers);
+        console.log(this.props.reduxState.teacher);
         return (
             <div>
                 <ul>
