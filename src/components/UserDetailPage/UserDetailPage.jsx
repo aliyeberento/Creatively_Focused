@@ -19,13 +19,13 @@ class UserDetailPage extends Component {
     }
 
     // dispatches a DELETE to the database via redux saga for the item clicked on
-    deleteStudent = () => {
-        console.log('clicking to delete');
+    deleteUser = () => {
+        console.log('clicking to delete', this.props.reduxState.teacherDetail.id);
         this.props.dispatch({
             type: 'DELETE_USER',
             payload: this.props.match.params.id
         })
-        this.props.history.push(`/userlist`)
+        this.props.history.push(`/adminhome`)
     }
 
     render() {
