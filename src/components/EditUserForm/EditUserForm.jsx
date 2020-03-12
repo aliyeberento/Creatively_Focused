@@ -59,7 +59,7 @@ class EditUserForm extends Component {
     goDetail = () => {
         // brings the user to a detail page showing all of
         // the information for the item they clicked on
-        this.props.history.push(`/teacherdetail/${this.props.match.params.id}`)
+        this.props.history.push(`/admindetail/${this.props.match.params.id}`)
     }
 
     updateUser = (event, propertyValue) => {

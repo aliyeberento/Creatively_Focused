@@ -15,7 +15,7 @@ class TaskList extends Component {
         return (
             <div>
                 <ul>
-                    <p>upcoming deadlines:</p>
+                    <h3>UPCOMING DEADLINES</h3>
                     {this.props.reduxState.tasks.map(task => {
                         return <TaskListItem key={task.id} task={task} />
                     })}

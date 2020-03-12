@@ -15,6 +15,7 @@ class StudentList extends Component {
         return (
             <div>
                 <ul>
+                <h3>STUDENT LIST</h3>
                     {this.props.reduxState.students.map(student => {
                         return <StudentItem id="studentListItem" key={student.id} student={student} />
                     })}
