@@ -65,7 +65,7 @@ class EditStudentForm extends Component {
                         <input type="text" label="name" defaultValue={student.birthdate} value={student.birthdate} onChange={(event) => this.editThisStudent(event, 'birthdate')}></input><br />
                         <input type="text" label="name" defaultValue={student.notes} value={student.notes} onChange={(event) => this.editThisStudent(event, 'notes')}></input><br />
                         </form>
-                        <button id="Button" variant="contained" onClick={this.submitEdit}>submit changes</button>
+                        <button onClick={this.submitEdit}>submit changes</button>
             </div >
         )
     }
