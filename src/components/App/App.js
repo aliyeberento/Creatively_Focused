@@ -127,7 +127,7 @@ class App extends Component {
               component={TaskDetailPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
-            <Route render={() => <h1>404</h1>} />
+            <Route render={() => <h1>Huh? Are you stupid? 404 dummy</h1>} />
           </Switch>
           <Footer />
         </div>

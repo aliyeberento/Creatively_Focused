@@ -30,6 +30,12 @@ class StudentDetailPage extends Component {
         this.props.history.push(`/studentlist`)
     }
 
+    goToStudentList = () => {
+        console.log('going back to student list');
+        this.props.history.push(`/studentlist`)
+    }
+
+
     render() {
         let student = this.props.reduxState.studentDetail;
         console.log(student);
@@ -52,13 +58,8 @@ class StudentDetailPage extends Component {
                 <button onClick={this.editStudent}>edit student</button><br />
                 <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button>
                 </ul>
-                {/* SHOULD WE HAVE A LIST OF DEALINES HERE? */}
-                {/* <ol>
-                    <li><input type="checkbox"></input>This is a task.</li>
-                    <li><input type="checkbox"></input>This is another task.</li>
-                    <li><input type="checkbox"></input>This is a third task.</li>
-                </ol> */}
                 <TaskList />
+                <button onClick={this.goToStudentList}>BACK TO STUDENT LIST</button>
             </div>
         )
     }

@@ -49,6 +49,10 @@ class AdminForm extends Component {
         this.props.history.push(`/adminhome`)
     }
 
+    // goDetail = () => {
+        // this.props.history.push(`/adminhome`)
+    // }
+
     render() {
         return (
             <div>
