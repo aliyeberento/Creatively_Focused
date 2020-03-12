@@ -34,7 +34,7 @@ class UserDetailPage extends Component {
         let user = this.props.reduxState.teacherDetail;
         return (
             <div>
-                <h1>Username: {user.username}</h1>
+                <h1>USERNAME: {user.username}</h1>
                     <ul>
                         <li>ID: {user.id}</li>
                         <li>School: {user.school}</li>

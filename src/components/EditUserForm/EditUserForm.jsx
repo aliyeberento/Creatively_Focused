@@ -49,7 +49,7 @@ class EditUserForm extends Component {
         // dispatches edit request to redux/database
         console.log('clicking to submit edit');
         this.props.dispatch({
-            type: 'UPDATE_USER',
+            type: 'EDIT_USER',
             payload: this.props.reduxState.teacherDetail,
             url: `/api/teacherList/${this.props.reduxState.teacherDetail.id}`
         })
@@ -77,7 +77,7 @@ class EditUserForm extends Component {
         return (
             <div>
                 <form>
-                    <label>Username:
+                    <label>USERNAME:
                         <input
                             type="text"
                             placeholder="username"
@@ -88,7 +88,7 @@ class EditUserForm extends Component {
                     <label>Phone Number:
                         <input
                             type="text"
-                            placeholder="username"
+                            placeholder="phone"
                             defaultValue={user.phone}
                             onChange={(event) => this.updateUser(event, 'phone')}
                         />
@@ -96,7 +96,7 @@ class EditUserForm extends Component {
                     <label>School:
                         <input
                             type="text"
-                            placeholder="username"
+                            placeholder="school"
                             defaultValue={user.school}
                             onChange={(event) => this.updateUser(event, 'school')}
                         />
@@ -104,7 +104,7 @@ class EditUserForm extends Component {
                     <label>District:
                         <input
                             type="text"
-                            placeholder="username"
+                            placeholder="isd"
                             defaultValue={user.isd}
                             onChange={(event) => this.updateUser(event, 'isd')}
                         />
@@ -112,7 +112,7 @@ class EditUserForm extends Component {
                     <label>Authorization Level:
                         <input
                             type="text"
-                            placeholder="username"
+                            placeholder="auth"
                             defaultValue={user.auth}
                             onChange={(event) => this.updateUser(event, 'auth')}
                         />
@@ -121,7 +121,7 @@ class EditUserForm extends Component {
                     <label>Phone Number: <input type="text" label="phone" defaultValue={user.phone} value={user.phone} onChange={(event) => this.editThisUser(event, 'phone')}></input></label><br />
                     <label>School: <input type="text" label="school" defaultValue={user.school} value={user.school} onChange={(event) => this.editThisUser(event, 'school')}></input></label><br />
                     <label>ISD: <input type="text" label="isd" defaultValue={user.isd} value={user.isd} onChange={(event) => this.editThisUser(event, 'isd')}></input></label><br /> */}
-                    <button onClick={this.submitEdit}>submit changes</button>
+                    <button type="button" onClick={this.submitEdit}>submit changes</button>
                 </form>
             </div >
         )
