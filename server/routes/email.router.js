@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     pool.query(selectUsers)
         .then(results => {
             res.send(results.rows);
-            console.log('results.rows', results.rows);
+            console.log('results.rows[0].username', results.rows);
             const transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
                 port: 587,
@@ -36,14 +36,15 @@ router.get('/', (req, res) => {
                     pass: process.env.PASSWORD
                 }
             });
-            // for(user of results)
+            for(i=0; i<results.rows.length; i++){
             const mailOptions = {
                 from: process.env.EMAIL,
-                to: results.rows[0].username,
+                to: results.rows[i].username,
                 subject: 'test', 
                 text: 'test',
                 html: '<p>test</p>'
             }
+          
             transporter.sendMail(mailOptions, function (err, info) {
                 if (err) {
                     console.log('err', err)
@@ -51,6 +52,7 @@ router.get('/', (req, res) => {
                     console.log('info', info);
                 }
             });
+        }
         }).catch(error => {
             console.log('Error GET route /api/email in server', error);
             res.sendStatus(500);
