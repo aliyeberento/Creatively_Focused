@@ -29,6 +29,12 @@ class UserDetailPage extends Component {
         this.props.history.push(`/adminhome`)
     }
 
+    goToUserList = () => {
+        console.log('going back to student list');
+        this.props.history.push(`/adminhome`)
+    }
+
+
     render() {
         let user = this.props.reduxState.teacherDetail;
         return (
@@ -46,6 +52,8 @@ class UserDetailPage extends Component {
                     <li><input type="checkbox"></input>This is another task.</li>
                     <li><input type="checkbox"></input>This is a third task.</li>
                 </ol> */}
+                <button onClick={this.goToUserList}>BACK TO USER LIST</button>
+
                 <TaskList />
             </div>
         )
