@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 
 class EditStudentForm extends Component {
 
@@ -92,7 +93,9 @@ class EditStudentForm extends Component {
                         <input
                             type="date"
                             placeholder="birthdate"
-                            defaultValue={this.props.reduxState.studentDetail.birthdate}
+                            defaultValue="03-01-2020"
+                            value="03-01-2020"
+                            // defaultValue={moment(this.props.reduxState.studentDetail.birthdate).format('MM-DD-YYYY')}
                             onChange={(event) => this.updateStudent(event, 'birthdate')}
                         />
                     </label><br />
@@ -128,12 +131,36 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudent(event, 'fed_setting')}
                         />
                     </label><br />
+                    <label>Teacher:
+                        <input
+                            type="text"
+                            placeholder="teacher"
+                            defaultValue={this.props.reduxState.studentDetail.teacher}
+                            onChange={(event) => this.updateStudent(event, 'teacher')}
+                        />
+                    </label><br />
+                    <label>School:
+                        <input
+                            type="number"
+                            placeholder="school"
+                            defaultValue={this.props.reduxState.studentDetail.school_id}
+                            onChange={(event) => this.updateStudent(event, 'school_id')}
+                        />
+                    </label><br />
+                    <label>School District:
+                        <input
+                            type="number"
+                            placeholder="isd"
+                            defaultValue={this.props.reduxState.studentDetail.isd_id}
+                            onChange={(event) => this.updateStudent(event, 'isd_id')}
+                        />
+                    </label><br />
                     <label>Notes:
                         <input
                             type="text"
                             placeholder="notes"
-                            defaultValue={this.props.reduxState.studentDetail.nptes}
-                            onChange={(event) => this.updateStudent(event, 'nptes')}
+                            defaultValue={this.props.reduxState.studentDetail.notes}
+                            onChange={(event) => this.updateStudent(event, 'notes')}
                         />
                     </label><br />
                     {/* <input type="text" label="name" defaultValue={student.firstname} value={student.firstname} onChange={(event) => this.editThisStudent(event, 'firstname')}></input><br />
@@ -159,19 +186,3 @@ const putReduxStateOnProps = (reduxState) => {
 }
 
 export default withRouter(connect(putReduxStateOnProps)(EditStudentForm));
-
-{/* <label>First Name:
-    <input
-        type="text"
-        placeholder="first name"
-        defaultValue={this.props.reduxState.studentDetail.firstname}
-        onChange={
-            this.props.dispatch({
-                type: 'EDIT_STUDENT',
-                payload: {
-                    key: 'firstname',
-                    value: event
-                }
-            })}>
-    </input>
-</label> */}

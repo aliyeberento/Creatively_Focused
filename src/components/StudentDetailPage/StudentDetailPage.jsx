@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 import TaskList from '../TaskList/TaskList';
 
 class StudentDetailPage extends Component {
@@ -31,20 +32,22 @@ class StudentDetailPage extends Component {
 
     render() {
         let student = this.props.reduxState.studentDetail;
+        console.log(student);
+    
         return (
             <div>
                 <h1>{student.lastname}, {student.firstname}</h1>
                 <ul>
                 <li>Grade: {student.grade}</li>
-                <li>Date of Birth: {student.borthdate}</li>
-                <li>Previous IEP: {student.prev_iep}</li>
-                <li>Next IEP: {student.next_iep}</li>
-                <li>Previous EVAL: {student.prev_eval}</li>
+                <li>Date of Birth: {moment(student.birthdate).format('MM-DD-YYYY')}</li>
+                <li>Previous IEP: {moment(student.prev_iep).format('MM-DD-YYYY')}</li>
+                <li>Next IEP: {moment(student.next_iep).format('MM-DD-YYYY')}</li>
+                <li>Previous EVAL: {moment(student.prev_eval).format('MM-DD-YYYY')}</li>
                 <li>Disability Category: {student.disability_cat}</li>
                 <li>Federal Setting: {student.fed_setting}</li>
                 <li>Teacher: {student.teacher}</li>
-                <li>School: {student.school}</li>
-                <li>ISD: {student.isd}</li>
+                <li>School: {student.school_id}</li>
+                <li>ISD: {student.isd_id}</li>
                 <li>Notes: {student.notes}</li><br />
                 <button onClick={this.editStudent}>edit student</button><br />
                 <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button>

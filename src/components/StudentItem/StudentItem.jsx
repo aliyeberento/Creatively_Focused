@@ -12,7 +12,7 @@ class StudentItem extends Component {
         return (
             <div>
                 <li>
-                    <p>{this.props.student.lastname}, {this.props.student.firstname}</p>
+                    {this.props.student.lastname}, {this.props.student.firstname}
                     <button key={this.props.student.id} onClick={(event) => this.goDetail(event, this.props.student)}>view student details</button>
                 </li>
             </div>
