@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TaskList from '../TaskList/TaskList';
+import StudentList from '../StudentList/StudentList';
 
 class UserDetailPage extends Component {
 
@@ -39,13 +40,15 @@ class UserDetailPage extends Component {
         let user = this.props.reduxState.teacherDetail;
         return (
             <div>
-                <h1>Username: {user.username}</h1>
-                <p>ID: {user.id}</p>
-                <p>School: {user.school}</p>
-                <p>ISD: {user.isd}</p>
-                <p>Phone Number: {user.phone}</p>
-                <button onClick={this.editUser}>edit user</button><br />
-                <button onClick={(event) => { if (window.confirm('are you sure you want to delete this user?')) this.deleteUser(event) }}>delete user</button>
+                <h1>USERNAME: {user.username}</h1>
+                    <ul>
+                        <li>ID: {user.id}</li>
+                        <li>School: {user.school}</li>
+                        <li>ISD: {user.isd}</li>
+                        <li>Phone Number: {user.phone}</li>
+                        <button onClick={this.editUser}>edit user</button><br />
+                        <button onClick={(event) => { if (window.confirm('are you sure you want to delete this user?')) this.deleteUser(event) }}>delete user</button>
+                    </ul>
                 {/* SHOULD WE HAVE A LIST OF DEADLINES HERE? */}
                 {/* <ol>
                     <li><input type="checkbox"></input>This is a task.</li>
@@ -55,6 +58,7 @@ class UserDetailPage extends Component {
                 <button onClick={this.goToUserList}>BACK TO USER LIST</button>
 
                 <TaskList />
+                <StudentList />
             </div>
         )
     }

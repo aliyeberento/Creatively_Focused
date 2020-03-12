@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 // get all the users
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
-    const queryText = `SELECT "username", "phone", "id"
+    const queryText = `SELECT * 
     FROM "user" WHERE auth <= 3`
     pool.query(queryText)
         .then(results => {
@@ -48,9 +48,13 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in router PUT', req.body);
     let sqlText = `
         UPDATE "user" 
-        SET "username"=$1
-            WHERE "id" = ${req.params.id};`;
-    let values = [req.body.username];
+        SET "username"=$1,
+        "phone"=$2,
+        "school"=$3,
+        "isd"=$4,
+        "auth"=$5
+        WHERE "id" = ${req.params.id};`;
+    let values = [req.body.username, req.body.phone, req.body.school, req.body.isd, req.body.auth];
     pool.query(sqlText, values)
     .then((result) => {
         res.sendStatus(200);
