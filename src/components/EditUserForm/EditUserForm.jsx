@@ -15,8 +15,6 @@ class EditUserForm extends Component {
         }
     }
 
-    
-
     editThisUser = (event, propertyValue) => {
         // build a new object in state
         console.log('building a new user', this.state.userToEdit);
