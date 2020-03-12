@@ -13,7 +13,7 @@ class UserItem extends Component {
         return (
             <div>
                 <li>
-                    <p>{this.props.teacher.id}</p>
+                    <p>{this.props.teacher.username}</p>
                     <button key={this.props.teacher.id} onClick={(event) => this.goDetail(event, this.props.teacher)}>view user details</button>
                 </li>
             </div>
