@@ -28,15 +28,15 @@ class Nav extends Component {
                   TEACHER LIST
                 </Link>
                 <br />
-                <Link className="menu-item" to="/adminform">
+                {/* <Link className="menu-item" to="/adminform">
                   ADD NEW USER
                 </Link>
-                <br />
+                <br /> */}
                 {/* <LogOutButton className="menu-item" /> */}
               </>
             )}
             {/* Show the link to the info page and the logout button if the user is logged in */}
-            {this.props.store.user.auth  && (
+            {this.props.store.user.auth < 5 && (
               <>
                 <Link className="menu-item" to="/studentlist">
                   STUDENT LIST

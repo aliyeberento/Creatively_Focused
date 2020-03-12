@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import StudentItem from '../StudentItem/StudentItem';
+import UserItem from '../UserItem/UserItem';
 import { Link } from 'react-router-dom';
 
-
-class StudentList extends Component {
+class UserList extends Component {
 
     componentDidMount() {
         this.props.dispatch({
-            type: 'GET_STUDENTS'
+            type: 'GET_TEACHERS'
         })
     }
 
     render() {
-        console.log(this.props.reduxState.students);
+        console.log(this.props.reduxState.teacher);
         return (
             <div>
-                <Link className="connectorLink" to="/addstudent">
+                <Link className="connectorLink" to="/adminform">
                     <button className="linkBtn">
                         ADD NEW STUDENT
                         </button>
                 </Link>
+                <br />
+
                 <ul>
-                    {this.props.reduxState.students.map(student => {
-                        return <StudentItem id="studentListItem" key={student.id} student={student} />
+                    {this.props.reduxState.teacher.map(teacher => {
+                        return <UserItem key={teacher.id} teacher={teacher} />
                     })}
                 </ul>
             </div>
@@ -37,4 +38,4 @@ const putStateOnProps = (reduxState) => {
     })
 }
 
-export default connect(putStateOnProps)(StudentList)
+export default connect(putStateOnProps)(UserList);

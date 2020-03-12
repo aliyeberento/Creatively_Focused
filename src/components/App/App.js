@@ -12,9 +12,9 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 // import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 // import InfoPage from '../InfoPage/InfoPage';
-import AdminHome from '../AdminComponents/AdminHome/AdminHome';
+// import AdminHome from '../AdminComponents/AdminHome/AdminHome';
 // import RegisterPage from '../RegisterPage/RegisterPage';
-import AdminDetail from '../AdminComponents/AdminDetail/AdminDetail';
+// import AdminDetail from '../AdminComponents/AdminDetail/AdminDetail';
 // import AddStudentForm from '../TeacherComponents/AddStudentForm/AddStudentForm';
 import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
 // import EditStudentPage from '../TeacherComponents/EditStudentPage/EditStudentPage';
@@ -27,7 +27,11 @@ import AddStudentForm from '../AddStudentForm/AddStudentForm';
 import EditStudentForm from '../EditStudentForm/EditStudentForm';
 import AdminRoute from '../AdminRoute/AdminRoute';
 import AdminForm from '../AdminComponents/AdminForm/AdminForm';
+import UserList from '../UserList/UserList';
+import UserDetailPage from '../UserDetailPage/UserDetailPage';
+import EditUserForm from '../EditUserForm/EditUserForm';
 import './App.css';
+// import LogOutButton from '../LogOutButton/LogOutButton';
 
 class App extends Component {
 
@@ -69,7 +73,7 @@ class App extends Component {
             <AdminRoute
               exact
               path="/adminhome"
-              component={AdminHome}
+              component={UserList}
             />
             <AdminRoute
               exact
@@ -78,8 +82,13 @@ class App extends Component {
             />
             <AdminRoute
               exact
-              path="/admindetail"
-              component={AdminDetail}
+              path="/admindetail/:id"
+              component={UserDetailPage}
+            />
+            <AdminRoute
+              exact
+              path="/edituser/:id"
+              component={EditUserForm}
             />
             <ProtectedRoute
               exact
@@ -112,7 +121,7 @@ class App extends Component {
               component={StudentList}
             />
             {/* If none of the other routes matched, we will show a 404. */}
-            <Route render={() => <h1>404</h1>} />
+            <Route render={() => <h1>Huh? Are you stupid? 404 dummy</h1>} />
           </Switch>
           <Footer />
         </div>
