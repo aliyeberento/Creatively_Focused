@@ -1,9 +1,9 @@
-const studentDetailReducer = (state = [], action) => {
+const studentDetailReducer = (state = {}, action) => {
     switch (action.type) {
         case 'SET_STUDENT':
             return action.payload;
         case 'UNSET_STUDENT':
-            return [];
+            return {};
         default:
             return state;
     }

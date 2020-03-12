@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './user.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+
 // import LogOutButton from '../LogOutButton/LogOutButton';
 
 // this could also be written with destructuring parameters as:

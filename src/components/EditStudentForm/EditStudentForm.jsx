@@ -78,3 +78,19 @@ const putReduxStateOnProps = (reduxState) => {
 }
 
 export default withRouter(connect(putReduxStateOnProps)(EditStudentForm));
+
+<label>First Name: 
+    <input 
+    type="text" 
+    placeholder="first name" 
+    defaultValue={this.props.reduxState.studentDetail.firstname}
+    onChange={
+        this.props.dispatch({
+            type: 'EDIT_STUDENT',
+            payload: {
+                key: 'firstname',
+                value: event
+            }
+        })}>
+    </input>
+</label>

@@ -53,16 +53,14 @@ class AddStudentForm extends Component {
                 <h1>ADD NEW STUDENT</h1>
                 <form className="form">
                     <div className="set1">
-                        <label>First Name<input type="text" placeholder="first name" onChange={(event) => this.handleAddStudent('firstName', event)}></input></label>
-                        <label>Last Name<input type="text" placeholder="last name" onChange={(event) => this.handleAddStudent('lastName', event)}></input></label>
-                        <label>Birthdate<input type="date" placeholder="birthdate" onChange={(event) => this.handleAddStudent('birthdate', event)}></input></label>
-                        <label>Grade<input type="number" placeholder="grade" onChange={(event) => this.handleAddStudent('grade', event)}></input></label>
-                        <label>Disability Category<input type="number" placeholder="disability category" onChange={(event) => this.handleAddStudent('disabilityCategory', event)}></input></label>
-                        <label>Student ID<input type="number" placeholder="id number" onChange={(event) => this.handleAddStudent('idNumber', event)}></input></label>
-                        <label>Federal Setting<input type="number" placeholder="federal setting" onChange={(event) => this.handleAddStudent('federalSetting', event)}></input></label>
-
+                        <label>First Name: <input type="text" placeholder="first name" onChange={(event) => this.handleAddStudent('firstName', event)}></input></label>
+                        <label>Last Name: <input type="text" placeholder="last name" onChange={(event) => this.handleAddStudent('lastName', event)}></input></label>
+                        <label>Birthdate: <input type="date" placeholder="birthdate" onChange={(event) => this.handleAddStudent('birthdate', event)}></input></label>
+                        <label>Grade: <input type="number" placeholder="grade" onChange={(event) => this.handleAddStudent('grade', event)}></input></label>
+                        <label>Disability Category: <input type="number" placeholder="disability category" onChange={(event) => this.handleAddStudent('disabilityCategory', event)}></input></label>
+                        <label>Student ID: <input type="number" placeholder="id number" onChange={(event) => this.handleAddStudent('idNumber', event)}></input></label>
+                        <label>Federal Setting: <input type="number" placeholder="federal setting" onChange={(event) => this.handleAddStudent('federalSetting', event)}></input></label>
                     </div>
-
                     <div className="set2">
                         <label>Previous IEP<input type="date" placeholder="previous iep date" onChange={(event) => this.handleAddStudent('previousIep', event)}></input></label>
                         <label>Previous Eval<input type="date" placeholder="previous eval date" onChange={(event) => this.handleAddStudent('previousEval', event)}></input></label>
