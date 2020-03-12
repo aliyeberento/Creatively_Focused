@@ -50,7 +50,12 @@ input {
 
 ul {
     list-style-type: none;
-    font-family: Helvetica, Arial, sans-serif;
+    /* font-family: Helvetica, Arial, sans-serif; */
+    width: 30%;
+    height: 250px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 2px;
 }
 
 @font-face {

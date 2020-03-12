@@ -45,7 +45,6 @@ class EditStudentForm extends Component {
     goDetail = () => {
         // brings the user to a detail page showing all of
         // the information for the item they clicked on
-        // console.log('clicking to go back to detail');
         this.props.history.push(`/studentdetail/${this.props.match.params.id}`)
     }
 
@@ -137,7 +136,6 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudent(event, 'nptes')}
                         />
                     </label><br />
-
                     {/* <input type="text" label="name" defaultValue={student.firstname} value={student.firstname} onChange={(event) => this.editThisStudent(event, 'firstname')}></input><br />
                         <input type="text" label="name" defaultValue={student.lastname} value={student.lastname} onChange={(event) => this.editThisStudent(event, 'lastname')}></input><br />
                         <input type="text" label="name" defaultValue={student.grade} value={student.grade} onChange={(event) => this.editThisStudent(event, 'grade')}></input><br />

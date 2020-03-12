@@ -34,9 +34,21 @@ class StudentDetailPage extends Component {
         return (
             <div>
                 <h1>{student.lastname}, {student.firstname}</h1>
-                <p>Birthdate: {student.birthdate}</p>
+                <ul>
+                <li>Grade: {student.grade}</li>
+                <li>Date of Birth: {student.borthdate}</li>
+                <li>Previous IEP: {student.prev_iep}</li>
+                <li>Next IEP: {student.next_iep}</li>
+                <li>Previous EVAL: {student.prev_eval}</li>
+                <li>Disability Category: {student.disability_cat}</li>
+                <li>Federal Setting: {student.fed_setting}</li>
+                <li>Teacher: {student.teacher}</li>
+                <li>School: {student.school}</li>
+                <li>ISD: {student.isd}</li>
+                <li>Notes: {student.notes}</li><br />
                 <button onClick={this.editStudent}>edit student</button><br />
                 <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button>
+                </ul>
                 {/* SHOULD WE HAVE A LIST OF DEALINES HERE? */}
                 {/* <ol>
                     <li><input type="checkbox"></input>This is a task.</li>
