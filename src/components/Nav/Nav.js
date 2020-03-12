@@ -42,10 +42,10 @@ class Nav extends Component {
                   STUDENT LIST
                   </Link>
                 <br />
-                <Link className="menu-item" to="/addstudent">
+                {/* <Link className="menu-item" to="/addstudent">
                   ADD NEW STUDENT
                   </Link>
-                <br />
+                <br /> */}
                 <LogOutButton className="menu-item" />
               </>
             )}
