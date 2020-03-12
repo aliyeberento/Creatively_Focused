@@ -16,13 +16,13 @@ class UserList extends Component {
         console.log(this.props.reduxState.teacher);
         return (
             <div>
+                <ul>
+                <h3>USER LIST</h3>
                 <Link className="connectorLink" to="/adminform">
                     <button className="linkBtn">
                         ADD NEW USER
                         </button>
                 </Link>
-
-                <ul>
                     {this.props.reduxState.teacher.map(teacher => {
                         return <UserItem key={teacher.id} teacher={teacher} />
                     })}
