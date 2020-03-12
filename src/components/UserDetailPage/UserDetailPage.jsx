@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import TaskList from '../TaskList/TaskList';
 
 class UserDetailPage extends Component {
 
@@ -19,17 +20,12 @@ class UserDetailPage extends Component {
     }
 
     // dispatches a DELETE to the database via redux saga for the item clicked on
-    deleteStudent = () => {
-        console.log('clicking to delete');
+    deleteUser = () => {
+        console.log('clicking to delete', this.props.reduxState.teacherDetail.id);
         this.props.dispatch({
             type: 'DELETE_USER',
             payload: this.props.match.params.id
         })
-        this.props.history.push(`/userlist`)
-    }
-
-    goToUserList = () => {
-        console.log('going back to student list');
         this.props.history.push(`/adminhome`)
     }
 
@@ -44,7 +40,13 @@ class UserDetailPage extends Component {
                 <p>Phone Number: {user.phone}</p>
                 <button onClick={this.editUser}>edit user</button><br />
                 <button onClick={(event) => { if (window.confirm('are you sure you want to delete this user?')) this.deleteUser(event) }}>delete user</button>
-                <button onClick={this.goToUserList}>BACK TO USER LIST</button>
+                {/* SHOULD WE HAVE A LIST OF DEADLINES HERE? */}
+                {/* <ol>
+                    <li><input type="checkbox"></input>This is a task.</li>
+                    <li><input type="checkbox"></input>This is another task.</li>
+                    <li><input type="checkbox"></input>This is a third task.</li>
+                </ol> */}
+                <TaskList />
             </div>
         )
     }

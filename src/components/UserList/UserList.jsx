@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import UserItem from '../UserItem/UserItem';
-import { Link } from 'react-router-dom';
 
 class UserList extends Component {
 
@@ -15,13 +14,6 @@ class UserList extends Component {
         console.log(this.props.reduxState.teacher);
         return (
             <div>
-                <Link className="connectorLink" to="/adminform">
-                    <button className="linkBtn">
-                        ADD NEW STUDENT
-                        </button>
-                </Link>
-                <br />
-
                 <ul>
                     {this.props.reduxState.teacher.map(teacher => {
                         return <UserItem key={teacher.id} teacher={teacher} />
