@@ -3,8 +3,10 @@ const sendMailTo = require('../modules/mailer');
 const router = require('express').Router();
 const pool = require('../modules/pool');
 
+require('dotenv').config();
+const nodemailer = require('nodemailer');
+
 router.get('/', (req, res) => {
-    let userRows;
     const selectUsers = `
     SELECT "user"."id" AS "user_id",
     "user"."username",
@@ -24,8 +26,31 @@ router.get('/', (req, res) => {
         .then(results => {
             res.send(results.rows);
             console.log('results.rows', results.rows);
-            console.log('results.username', results.rows.username);
-            
+            const transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false,
+                requireTLS: true,
+                auth: {
+                    user: process.env.EMAIL,
+                    pass: process.env.PASSWORD
+                }
+            });
+            // for(user of results)
+            const mailOptions = {
+                from: process.env.EMAIL,
+                to: results.rows[0].username,
+                subject: 'test', 
+                text: 'test',
+                html: '<p>test</p>'
+            }
+            transporter.sendMail(mailOptions, function (err, info) {
+                if (err) {
+                    console.log('err', err)
+                } else {
+                    console.log('info', info);
+                }
+            });
         }).catch(error => {
             console.log('Error GET route /api/email in server', error);
             res.sendStatus(500);
