@@ -22,6 +22,15 @@ input {
     margin-bottom: 10px;
 }
 
+.connectorLink {
+    color: black;
+}
+
+.linkBtn {
+    width: 150px;
+    height: 25px;
+}
+
 .log-in, .log-out, .register {
   background-color: #294A9A;
   border-radius: 4px;
@@ -50,7 +59,11 @@ input {
 
 ul {
     list-style-type: none;
-    font-family: Helvetica, Arial, sans-serif;
+    /* font-family: Helvetica, Arial, sans-serif; */
+    width: 30%;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 2px;
 }
 
 @font-face {

@@ -3,8 +3,10 @@ const sendMailTo = require('../modules/mailer');
 const router = require('express').Router();
 const pool = require('../modules/pool');
 
+require('dotenv').config();
+const nodemailer = require('nodemailer');
+
 router.get('/', (req, res) => {
-    let userRows;
     const selectUsers = `
     SELECT "user"."id" AS "user_id",
     "user"."username",
@@ -23,9 +25,35 @@ router.get('/', (req, res) => {
     pool.query(selectUsers)
         .then(results => {
             res.send(results.rows);
-            console.log('results.rows', results.rows);
-            console.log('results.username', results.rows.username);
-            
+            console.log('results.rows[0].username', results.rows);
+            const transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false,
+                requireTLS: true,
+                auth: {
+                    user: process.env.EMAIL,
+                    pass: process.env.PASSWORD
+                }
+            });
+            for(i=0; i<results.rows.length; i++){
+            const mailOptions = {
+                from: process.env.EMAIL,
+                to: results.rows[i].username,
+                subject: 'test', 
+                text: 'test',
+                html: `<p>Looks like you have an ${results.rows[i].task} on ${results.rows[i].due_date} coming up. 
+                I'll make sure you and the other team members are ready for this meeting by helping you space out the work. 
+                Let's get to work!</p>`
+            }
+            transporter.sendMail(mailOptions, function (err, info) {
+                if (err) {
+                    console.log('err', err)
+                } else {
+                    console.log('info', info);
+                }
+            });
+        }
         }).catch(error => {
             console.log('Error GET route /api/email in server', error);
             res.sendStatus(500);
