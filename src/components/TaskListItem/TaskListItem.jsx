@@ -13,6 +13,9 @@ class TaskListItem extends Component {
         return (
             <div>
                 <li>
+                    {/* CHECKBOX */}
+                    {/* TASK NAME */}
+                    {/* DATE DUTE */}
                     <p>{this.props.task.id}</p>
                     <button key={this.props.task.id} onClick={(event) => this.goDetail(event, this.props.task)}>view event details</button>
                 </li>

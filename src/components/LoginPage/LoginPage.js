@@ -64,14 +64,14 @@ class LoginPage extends Component {
               />
             </label>
           </div>
-          <div>
+          <center>
             <input
               className="log-in"
               type="submit"
               name="submit"
               value="Log In"
             />
-          </div>
+          </center>
         </form>
         {/* <center>
           <button
