@@ -19,6 +19,9 @@ class TaskList extends Component {
                     {this.props.reduxState.tasks.map(task => {
                         return <TaskListItem key={task.id} task={task} />
                     })}
+                    <li><input type="checkbox"></input>task #1</li>
+                    <li><input type="checkbox"></input>task #2</li>
+                    <li><input type="checkbox"></input>task #3</li>
                 </ul>
             </div>
         )

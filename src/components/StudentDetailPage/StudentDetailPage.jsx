@@ -35,11 +35,8 @@ class StudentDetailPage extends Component {
         this.props.history.push(`/studentlist`)
     }
 
-
     render() {
         let student = this.props.reduxState.studentDetail;
-        console.log(student);
-    
         return (
             <div>
                 <h1>{student.lastname}, {student.firstname}</h1>
@@ -56,10 +53,10 @@ class StudentDetailPage extends Component {
                 <li>ISD: {student.isd_id}</li>
                 <li>Notes: {student.notes}</li><br />
                 <button onClick={this.editStudent}>edit student</button><br />
-                <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button>
+                <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button><br />
+                <button onClick={this.goToStudentList}>BACK TO STUDENT LIST</button>
                 </ul>
                 <TaskList />
-                <button onClick={this.goToStudentList}>BACK TO STUDENT LIST</button>
             </div>
         )
     }

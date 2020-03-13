@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './user.css';
 import Calendar from 'react-calendar';
+import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
 
 // import LogOutButton from '../LogOutButton/LogOutButton';
@@ -47,12 +48,13 @@ class UserPage extends Component {
           onChange={this.onChange}
           value={this.state.date}
         />
+        {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
         <table>
           <thead>
             <tr>
               <th>
                 Task
-                  </th>
+              </th>
               <th>Notes</th>
             </tr>
           </thead>
@@ -67,6 +69,7 @@ class UserPage extends Component {
           </tbody>
         </table>
         <button onClick={this.editUser}>EDIT USER PROFILE</button>
+        <TaskList />
         {/* <LogOutButton className="log-in" /> */}
       </div>
     )
