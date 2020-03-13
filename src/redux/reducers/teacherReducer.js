@@ -9,5 +9,4 @@ const teacherReducer = (state = [], action) => {
     }
 };
 
-
 export default teacherReducer;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './user.css';
+
 //import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Moment from 'react-moment';
@@ -11,6 +12,10 @@ import {
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 const localizer = momentLocalizer(moment);
+
+import Calendar from 'react-calendar';
+import TaskList from '../TaskList/TaskList';
+import 'react-calendar/dist/Calendar.css';
 
 
 // import LogOutButton from '../LogOutButton/LogOutButton';
@@ -79,15 +84,23 @@ class UserPage extends Component {
           style={{ height: "100vh" }}
          
         />
-        {console.log(this.state.events)}
+
         
+
+        {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
+
         <table>
           <thead>
             <tr>
               <th>
                 Task
+
                   </th>
               <th>Date</th>
+
+              </th>
+              <th>Notes</th>
+
             </tr>
           </thead>
           <tbody>
@@ -109,6 +122,7 @@ class UserPage extends Component {
         </table>
         <h3 id="marker">!</h3>
         <button onClick={this.editUser}>EDIT USER PROFILE</button>
+        <TaskList />
         {/* <LogOutButton className="log-in" /> */}
       </div>
     )
