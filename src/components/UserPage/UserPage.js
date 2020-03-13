@@ -33,16 +33,16 @@ class UserPage extends Component {
     events: [
       {
         start: new Date(),
-        end: new Date(moment().add(1, "days")),
+        end: new Date(),
         title: "Some title"
       },
       {
         start: new Date(),
-        end: new Date(moment().add(1, "days")),
+        end: new Date(),
         title: "new thing"
       }
     ],
-    date: new Date(),
+    
   
   }
 
@@ -61,7 +61,6 @@ class UserPage extends Component {
   }
 
   render() {
-    console.log(this.state.date);
     
     return (
       <div className="welcome">
@@ -78,8 +77,7 @@ class UserPage extends Component {
           defaultView="month"
           events={this.state.events}
           style={{ height: "100vh" }}
-          onChange={this.onChange}
-          value={this.onChange}
+         
         />
         {console.log(this.state.events)}
         
@@ -96,9 +94,10 @@ class UserPage extends Component {
           {this.props.studentEvent.map(event => (
             <tr key={event.id}>
               
+              
               <td>{event.task}</td>
               <td>
-                <Moment id="marker" format="MM-D-YYYY" >{event.date}</Moment>
+                <Moment id="marker" format="MM-D-YYYY">{event.date}</Moment>
                 
               </td>
               
