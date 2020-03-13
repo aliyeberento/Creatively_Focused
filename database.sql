@@ -63,8 +63,8 @@ CREATE TABLE "isd" (
 );
 
 CREATE TABLE "case_worker" (
-	"student_id" int(10) NOT NULL,
-	"user_id" int(10) NOT NULL,
+	"student_id" int NOT NULL,
+	"user_id" int NOT NULL,
 	CONSTRAINT "case_worker_pk" PRIMARY KEY ("student_id","user_id")
 ) WITH (
   OIDS=FALSE
