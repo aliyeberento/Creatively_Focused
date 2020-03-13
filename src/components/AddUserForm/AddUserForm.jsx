@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './AdminForm.css';
+import './AddUserForm.css';
 
-class AdminForm extends Component {
+class AddUserForm extends Component {
 
     state = {
         userToAdd: {
@@ -122,4 +122,4 @@ const mapStateToProps = (store) => ({
     
 
 
-export default connect(mapStateToProps)(AdminForm);
+export default connect(mapStateToProps)(AddUserForm);
