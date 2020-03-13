@@ -49,6 +49,7 @@ class UserPage extends Component {
 
   editUser = () => {
     console.log('editing THIS user:', this.props.user.username); 
+
   }
 
   formatEventsForCalendar = (studentEvents) => {
@@ -119,8 +120,13 @@ class UserPage extends Component {
           
           </tbody>
         </table>
+
     
-        <button onClick={this.editUser}>EDIT USER PROFILE</button>
+       
+
+        
+        {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
+
         <TaskList />
         {/* <LogOutButton className="log-in" /> */}
 

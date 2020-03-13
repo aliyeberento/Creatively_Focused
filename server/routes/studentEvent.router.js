@@ -4,6 +4,11 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
+
+    // CONDITIONAL FOR USER AUTH
+    // AUTH 1 BY ISD == REQ.USER.ISD_ID
+    // AUTH 2 BY SCHOOL == REQ.USER.SCHOOL_ID
+    
     console.log('req.user:', req.user);
     const queryText = `SELECT "user"."id" AS "user_id",
     "event"."task",
