@@ -2,19 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './user.css';
 
-//import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Moment from 'react-moment';
-import {
-  Calendar,
-  momentLocalizer,
-} from 'react-big-calendar';
+import {Calendar, momentLocalizer,} from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
-
 import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
+
 const localizer = momentLocalizer(moment);
 
 
@@ -36,16 +31,7 @@ class UserPage extends Component {
       // this is where the user's info is held locally
     },
     events: [
-      {
-        start: new Date(),
-        end: new Date(),
-        title: "Some title"
-      },
-      {
-        start: new Date(),
-        end: new Date(),
-        title: "new thing"
-      }
+     
     ],
     
   
@@ -65,65 +51,79 @@ class UserPage extends Component {
     console.log('editing THIS user:', this.props.user.username); 
   }
 
-  render() {
+  formatEventsForCalendar = (studentEvents) => {
+    console.log(studentEvents);
+    let formatedStudentEvents = studentEvents.map(studentEvent => {
+      // if (new Date(studentEvent.date) == new Date(2020-03-01)) {
+      //   return {
+      //     start: new Date(studentEvent.date),
+      //     end: new Date(studentEvent.date),
+      //     title: studentEvent.task
+      //   }
+      // }
+      return {
+        start: new Date(studentEvent.date),
+        end: new Date(studentEvent.date),
+        title: studentEvent.task
+      }
+
+    });
     
+   return formatedStudentEvents;
+  }
+
+  
+
+  render() {
+
+    let events = this.formatEventsForCalendar(this.props.studentEvent)
+      // format dates for cal
+      // make events here?
+
     return (
       <div className="welcome">
         <h1 >
           Welcome, {this.props.user.username}!
         </h1>
-        {/* <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
-        /> */}
+      
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
           defaultView="month"
-          events={this.state.events}
+          events={events}
           style={{ height: "100vh" }}
+          
          
         />
-
-        
-
         {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
 
         <table>
           <thead>
             <tr>
-              <th>
-                Task
-
-                  </th>
+              <th>Task</th>
               <th>Date</th>
-
-            
               <th>Notes</th>
-
             </tr>
           </thead>
           <tbody>
           {this.props.studentEvent.map(event => (
             <tr key={event.id}>
-              
-              
               <td>{event.task}</td>
               <td>
                 <Moment id="marker" format="MM-D-YYYY">{event.date}</Moment>
-                
               </td>
-              
+              <td>{event.notes}</td>
             </tr>
           )
           )}
           
           </tbody>
         </table>
-        <h3 id="marker">!</h3>
+    
         <button onClick={this.editUser}>EDIT USER PROFILE</button>
         <TaskList />
         {/* <LogOutButton className="log-in" /> */}
+
       </div>
     )
   }

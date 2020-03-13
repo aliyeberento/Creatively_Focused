@@ -8,7 +8,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT "user"."id" AS "user_id",
     "event"."task",
     "event"."date",
-    "event"."id"
+    "event"."id",
+    "event"."notes"
     FROM "user"
     INNER JOIN "student" ON "student"."teacher" = "user"."id"
     INNER JOIN "student_event" ON "student"."id" = "student_event"."student_id"
