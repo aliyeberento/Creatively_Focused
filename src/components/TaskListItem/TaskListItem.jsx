@@ -14,10 +14,13 @@ class TaskListItem extends Component {
             <div>
                 <li>
                     {/* CHECKBOX */}
+                    <input type="checkbox"></input>
                     {/* TASK NAME */}
+                    {this.props.task.id}
                     {/* DATE DUTE */}
-                    <p>{this.props.task.id}</p>
+                    {this.props.task.due_date}
                     <button key={this.props.task.id} onClick={(event) => this.goDetail(event, this.props.task)}>view event details</button>
+                    {/* DO WE NEED A TASK DETAIL PAGE? */}
                 </li>
             </div>
         )
