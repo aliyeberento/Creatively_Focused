@@ -63,6 +63,7 @@ class UserPage extends Component {
 
   editUser = () => {
     console.log('editing THIS user:', this.props.user.username); 
+
   }
 
   render() {
@@ -121,7 +122,7 @@ class UserPage extends Component {
           </tbody>
         </table>
         <h3 id="marker">!</h3>
-        <button onClick={this.editUser}>EDIT USER PROFILE</button>
+        {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
         <TaskList />
         {/* <LogOutButton className="log-in" /> */}
       </div>
