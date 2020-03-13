@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './user.css';
+
+//import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import Moment from 'react-moment';
+import {
+  Calendar,
+  momentLocalizer,
+} from 'react-big-calendar';
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+const localizer = momentLocalizer(moment);
+
 import Calendar from 'react-calendar';
 import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
+
 
 // import LogOutButton from '../LogOutButton/LogOutButton';
 
@@ -22,7 +35,19 @@ class UserPage extends Component {
     user: {
       // this is where the user's info is held locally
     },
-    date: new Date(),
+    events: [
+      {
+        start: new Date(),
+        end: new Date(),
+        title: "Some title"
+      },
+      {
+        start: new Date(),
+        end: new Date(),
+        title: "new thing"
+      }
+    ],
+    
   
   }
 
@@ -30,44 +55,72 @@ class UserPage extends Component {
     this.props.dispatch({ type: 'GET_STUDENTEVENT' });
   }
 
-  onChange = date => this.setState({ date })
+  onChange = (date) => {
+    this.setState({ date });
+    console.log('on change triggered')
+  }
+  
 
   editUser = () => {
     console.log('editing THIS user:', this.props.user.username); 
   }
 
   render() {
-    console.log(this.props.user.username);
     
     return (
       <div className="welcome">
         <h1 >
           Welcome, {this.props.user.username}!
         </h1>
-        <Calendar
+        {/* <Calendar
           onChange={this.onChange}
           value={this.state.date}
+        /> */}
+        <Calendar
+          localizer={localizer}
+          defaultDate={new Date()}
+          defaultView="month"
+          events={this.state.events}
+          style={{ height: "100vh" }}
+         
         />
+
+        
+
         {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
+
         <table>
           <thead>
             <tr>
               <th>
                 Task
+
+                  </th>
+              <th>Date</th>
+
               </th>
               <th>Notes</th>
+
             </tr>
           </thead>
           <tbody>
           {this.props.studentEvent.map(event => (
             <tr key={event.id}>
+              
+              
               <td>{event.task}</td>
-              <td>{event.notes}</td>
+              <td>
+                <Moment id="marker" format="MM-D-YYYY">{event.date}</Moment>
+                
+              </td>
+              
             </tr>
           )
           )}
+          
           </tbody>
         </table>
+        <h3 id="marker">!</h3>
         <button onClick={this.editUser}>EDIT USER PROFILE</button>
         <TaskList />
         {/* <LogOutButton className="log-in" /> */}
