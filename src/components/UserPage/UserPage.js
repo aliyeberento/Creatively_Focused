@@ -11,11 +11,11 @@ import {
 } from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-const localizer = momentLocalizer(moment);
 
-import Calendar from 'react-calendar';
+
 import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
+const localizer = momentLocalizer(moment);
 
 
 // import LogOutButton from '../LogOutButton/LogOutButton';
@@ -98,7 +98,7 @@ class UserPage extends Component {
                   </th>
               <th>Date</th>
 
-              </th>
+            
               <th>Notes</th>
 
             </tr>
