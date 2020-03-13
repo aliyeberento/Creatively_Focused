@@ -42,9 +42,10 @@ router.get('/', (req, res) => {
                 to: results.rows[i].username,
                 subject: 'test', 
                 text: 'test',
-                html: '<p>test</p>'
+                html: `<p>Looks like you have an ${results.rows[i].task} on ${results.rows[i].due_date} coming up. 
+                I'll make sure you and the other team members are ready for this meeting by helping you space out the work. 
+                Let's get to work!</p>`
             }
-          
             transporter.sendMail(mailOptions, function (err, info) {
                 if (err) {
                     console.log('err', err)
