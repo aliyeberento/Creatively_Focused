@@ -46,6 +46,7 @@ class StudentDetailPage extends Component {
                 <li>Previous IEP: {moment(student.prev_iep).format('MM-DD-YYYY')}</li>
                 <li>Next IEP: {moment(student.next_iep).format('MM-DD-YYYY')}</li>
                 <li>Previous EVAL: {moment(student.prev_eval).format('MM-DD-YYYY')}</li>
+                <li>Next EVAL: {moment(student.next_eval).format('MM-DD-YYYY')}</li>
                 <li>Disability Category: {student.disability_cat}</li>
                 <li>Federal Setting: {student.fed_setting}</li>
                 <li>Teacher: {student.teacher}</li>
