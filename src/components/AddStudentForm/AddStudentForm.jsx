@@ -13,7 +13,7 @@ class AddStudentForm extends Component {
             idNumber: '',
             previousIep: '',
             previousEval: '',
-            disabilityCategory: '',
+            disabilityCategory: 0,
             federalSetting: '',
             birthdate: '',
             notes: '',
@@ -55,11 +55,49 @@ class AddStudentForm extends Component {
                     <div className="set1">
                         <label>First Name: <input type="text" placeholder="first name" onChange={(event) => this.handleAddStudent('firstName', event)}></input></label>
                         <label>Last Name: <input type="text" placeholder="last name" onChange={(event) => this.handleAddStudent('lastName', event)}></input></label>
+                        <label>Student ID: <input type="number" placeholder="id number" onChange={(event) => this.handleAddStudent('idNumber', event)}></input></label>
                         <label>Birthdate: <input type="date" placeholder="birthdate" onChange={(event) => this.handleAddStudent('birthdate', event)}></input></label>
                         <label>Grade: <input type="number" placeholder="grade" onChange={(event) => this.handleAddStudent('grade', event)}></input></label>
-                        <label>Disability Category: <input type="number" placeholder="disability category" onChange={(event) => this.handleAddStudent('disabilityCategory', event)}></input></label>
-                        <label>Student ID: <input type="number" placeholder="id number" onChange={(event) => this.handleAddStudent('idNumber', event)}></input></label>
-                        <label>Federal Setting: <input type="number" placeholder="federal setting" onChange={(event) => this.handleAddStudent('federalSetting', event)}></input></label>
+                        {/* <label>Disability Category: <input type="number" placeholder="disability category" onChange={(event) => this.handleAddStudent('disabilityCategory', event)}></input></label> */}
+                        
+                        <label>Disability Category: 
+                        <select name="disability_cat" onChange={(event) => this.handleAddStudent('disability_cat', event)}>
+                        <option value="0">cat</option>
+                        <option value="1">cat</option>
+                        <option value="2">cat</option>
+                        <option value="3">cat</option>
+                        <option value="4">cat</option>
+                        <option value="5">cat</option>
+                        <option value="6">cat</option>
+                        <option value="7">cat</option>
+                        <option value="8">cat</option>
+                        <option value="9">cat</option>
+                        <option value="10">cat</option>
+                        <option value="11">cat</option>
+                        <option value="12">cat</option>
+                        <option value="13">cat</option>
+                    </select>
+
+                        {/* <label>Federal Setting: <input type="number" placeholder="federal setting" onChange={(event) => this.handleAddStudent('federalSetting', event)}></input></label> */}
+                        
+                        <label>Federal Setting: 
+                        <select name="fed_setting" onChange={(event) => this.handleAddStudent('fed_setting', event)}>
+                        <option value="0">cat</option>
+                        <option value="1">cat</option>
+                        <option value="2">cat</option>
+                        <option value="3">cat</option>
+                        <option value="4">cat</option>
+                        <option value="5">cat</option>
+                        <option value="6">cat</option>
+                        <option value="7">cat</option>
+                        <option value="8">cat</option>
+                        <option value="9">cat</option>
+                        <option value="10">cat</option>
+                        <option value="11">cat</option>
+                        <option value="12">cat</option>
+                        <option value="13">cat</option>
+                    </select>
+
                     </div>
                     <div className="set2">
                         <label>Previous IEP<input type="date" placeholder="previous iep date" onChange={(event) => this.handleAddStudent('previousIep', event)}></input></label>
