@@ -7,6 +7,7 @@ function* deleteUser(action) {
         let id = action.payload
         console.log(action.payload)
         let response = yield axios.delete(`/api/teacherList/${id}`);
+        console.log(response)
         yield put({ type: 'GET_TEACHERS' })
 
     }
