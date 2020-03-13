@@ -5,7 +5,7 @@
 -- You will need to create a database called "creatively-focused" in which you create the following tables.
 
 CREATE TABLE "user" (
-	"id" serial NOT NULL,
+	"id" serial,
 	"username" varchar(255) NOT NULL UNIQUE,
 	"password" varchar(255) NOT NULL,
 	"firstname" varchar(100),
@@ -13,7 +13,7 @@ CREATE TABLE "user" (
 	"phone" varchar(15),
 	"isd" int,
 	"school" int,
-	"auth" int NOT NULL,
+	"auth" int,
 	"prefcomm" BOOLEAN,
 	CONSTRAINT "user_pk" PRIMARY KEY ("id")
 ) WITH (
@@ -96,7 +96,7 @@ CREATE TABLE "calendar" (
 	"id" serial NOT NULL,
 	"date" serial NOT NULL,
 	"school_id" int NOT NULL,
-	"school_day" BOOLEAN NOT NULL DEFAULT true,
+	"school_day" BOOLEAN NOT NULL DEFAULT 'true',
 	"creator" serial NOT NULL,
 	CONSTRAINT "calendar_pk" PRIMARY KEY ("id")
 ) WITH (
