@@ -5,7 +5,7 @@
 -- You will need to create a database called "creatively-focused" in which you create the following tables.
 
 CREATE TABLE "user" (
-	"id" serial,
+	"id" SERIAL NOT NULL,
 	"username" varchar(255) NOT NULL UNIQUE,
 	"password" varchar(255) NOT NULL,
 	"firstname" varchar(100),
@@ -21,7 +21,7 @@ CREATE TABLE "user" (
 );
 
 CREATE TABLE "student" (
-	"id" serial NOT NULL,
+	"id" SERIAL NOT NULL,
 	"firstname" varchar(100) NOT NULL,
 	"lastname" varchar(100) NOT NULL,
 	"birthdate" DATE,
@@ -44,7 +44,7 @@ CREATE TABLE "student" (
 );
 
 CREATE TABLE "school" (
-	"id" serial NOT NULL,
+	"id" SERIAL NOT NULL,
 	"name" varchar(100) NOT NULL,
 	"isd_id" int NOT NULL,
 	CONSTRAINT "school_pk" PRIMARY KEY ("id")
@@ -53,7 +53,7 @@ CREATE TABLE "school" (
 );
 
 CREATE TABLE "isd" (
-	"id" serial NOT NULL,
+	"id" SERIAL NOT NULL,
 	"isd" int NOT NULL,
 	"city" varchar(100),
 	"state" varchar(50),
@@ -71,7 +71,7 @@ CREATE TABLE "case_worker" (
 );
 
 CREATE TABLE "event" (
-	"id" serial NOT NULL,
+	"id" SERIAL NOT NULL,
 	"task" varchar(255) NOT NULL,
 	CONSTRAINT "event_pk" PRIMARY KEY ("id")
 ) WITH (
@@ -79,7 +79,7 @@ CREATE TABLE "event" (
 );
 
 CREATE TABLE "student_event" (
-	"id" serial NOT NULL,
+	"id" SERIAL NOT NULL,
 	"student_id" int NOT NULL,
 	"event_id" int NOT NULL,
 	"due_date" DATE NOT NULL,
@@ -93,11 +93,11 @@ CREATE TABLE "student_event" (
 );
 
 CREATE TABLE "calendar" (
-	"id" serial NOT NULL,
-	"date" serial NOT NULL,
+	"id" SERIAL NOT NULL,
+	"date" DATE NOT NULL,
 	"school_id" int NOT NULL,
 	"school_day" BOOLEAN NOT NULL DEFAULT 'true',
-	"creator" serial NOT NULL,
+	"creator" INT NOT NULL,
 	CONSTRAINT "calendar_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -144,3 +144,19 @@ DROP TABLE "school";
 DROP TABLE "isd";
 DROP TABLE "case_worker";
 DROP TABLE "calendar";
+
+INSERT INTO "isd"("isd", "city", "state") 
+VALUES
+(1, 'Farmington', 'MN'),
+(2, 'Minneapolis', 'MN'),
+(3, 'Saint Paul', 'MN');
+
+INSERT INTO "school"("name", "isd_id") 
+VALUES
+('Highland Park', 3),
+('Como', 3),
+('Johnson', 3),
+('North', 2),
+('Patrick Henry', 2),
+('South', 2);
+
