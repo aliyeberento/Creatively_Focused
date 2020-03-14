@@ -143,6 +143,12 @@ UPDATE "student" SET
 "next_iep" = now() + interval '1 year'
 WHERE "id" = ???;
 
+-- updates the student's eval dates with a PUT onClick
+UPDATE "student" SET
+"prev_eval" = now(),
+"next_eval" = now() + interval '3 years'
+WHERE "id" = ???;
+
 INSERT INTO "student"("firstname", "lastname", "birthdate", "grade", "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval", "notes") VALUES('Luke', 'Rohde', '1981-02-17', 12, 3, 5, '2009-01-01', '2020-01-01', '2021-01-01', '2020-12-02', '2021-12-02', 'note about luke');
 
 DROP TABLE "user";
