@@ -76,8 +76,27 @@ class EditUserForm extends Component {
         let user = this.props.reduxState.teacherDetail;
         return (
             <div>
+                <h1> EDIT USER</h1>
                 <form>
-                    <label>USERNAME:
+                    {/* ADD FIRST NAME */}
+                    <label>First Name:
+                        <input
+                            type="text"
+                            placeholder="firstname"
+                            defaultValue={user.firstname}
+                            onChange={(event) => this.updateUser(event, 'firstname')}
+                        />
+                    </label><br />
+                    {/* ADD LAST NAME */}
+                    <label>Last Name:
+                        <input
+                            type="text"
+                            placeholder="lastname"
+                            defaultValue={user.lastname}
+                            onChange={(event) => this.updateUser(event, 'lastname')}
+                        />
+                    </label><br />
+                    <label>Email/Username:
                         <input
                             type="text"
                             placeholder="username"
@@ -85,7 +104,7 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'username')}
                         />
                     </label><br />
-                    <label>Phone Number:
+                    <label>Mobile Phone Number:
                         <input
                             type="text"
                             placeholder="phone"
@@ -93,22 +112,53 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'phone')}
                         />
                     </label><br />
-                    <label>School:
+                    {/* TURN THIS INTO A DROP DOWN */}
+                    {/* <label>School:
                         <input
                             type="text"
                             placeholder="school"
                             defaultValue={user.school}
                             onChange={(event) => this.updateUser(event, 'school')}
                         />
-                    </label><br />
-                    <label>District:
+                    </label><br /> */}
+                    <label>
+                    Independent School District:
+                        <select name="school" onChange={(event) => this.updateUser(event, 'school')}>
+                        <option >Choose One...</option>
+                        <option value="3">Saint Paul, MN</option>
+                        <option value="2">Mineapolis, MN</option>
+                        <option value="1">Farmington, MN</option>
+                    </select>
+                </label>
+                <br />
+                <label>
+                    School:
+                        <select name="isd"
+                        id="isd" 
+                        defaultValue="isd" 
+                        placeholder="isd"
+                        onChange={(event) => this.updateUser(event, 'isd')}>
+                        <option >Choose One...</option>
+                        <option value="8">South High School</option>
+                        <option value="7">Patrick Henry High School</option>
+                        <option value="6">North High School</option>
+                        <option value="5">Johnson High School</option>
+                        <option value="4">Como</option>
+                        <option value="3">Highland Park Middle School</option>
+                        <option value="2">Farmington Junior High</option>
+                        <option value="1">Farmington Senior High</option>
+                    </select>
+                </label>
+                    {/* TURN THIS INTO A DROP DOWN */}
+                    {/* <label>District:
                         <input
                             type="text"
                             placeholder="isd"
                             defaultValue={user.isd}
                             onChange={(event) => this.updateUser(event, 'isd')}
                         />
-                    </label><br />
+                    </label><br /> */}
+                    {/* TURN THIS INTO A DROP DOWN */}
                     <label>Authorization Level:
                         <input
                             type="text"

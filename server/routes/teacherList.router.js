@@ -85,12 +85,14 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     let sqlText = `
         UPDATE "user" 
         SET "username"=$1,
-        "phone"=$2,
-        "school"=$3,
-        "isd"=$4,
-        "auth"=$5
+        "firstname"=$2,
+        "lastname"=$3,
+        "phone"=$4,
+        "school"=$5,
+        "isd"=$6,
+        "auth"=$7
         WHERE "id" = ${req.params.id};`;
-    let values = [req.body.username, req.body.phone, req.body.school, req.body.isd, req.body.auth];
+    let values = [req.body.username, req.body.firstname, req.body.lastname, req.body.phone, req.body.school, req.body.isd, req.body.auth];
     pool.query(sqlText, values)
     .then((result) => {
         res.sendStatus(200);
