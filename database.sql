@@ -122,6 +122,16 @@ ALTER TABLE "student_event" ADD CONSTRAINT "student_event_fk2" FOREIGN KEY ("com
 ALTER TABLE "calendar" ADD CONSTRAINT "calendar_fk0" FOREIGN KEY ("school_id") REFERENCES "school"("id");
 ALTER TABLE "calendar" ADD CONSTRAINT "calendar_fk1" FOREIGN KEY ("creator") REFERENCES "user"("id");
 
+-- creates iep events
+INSERT INTO "event" ("task") VALUES ('Notice of Team IEP Meeting'), ('Present Levels of Performance (IEP)'), ('Agenda and Reminder of IEP Meeting'), ('Print Final IEP Meeting Materials'), ('Annual IEP Meeting Deadline'), ('PWN and IEP Reminder'), ('Send PWN and IEP Due'), ('IEP Consent');
+
+-- creates eval events
+
+-- creates cf dates
+
+-- creates a transfer of rights at age 17
+INSERT INTO "event" ("task") VALUES ('Transfer of Rights');
+
 -- serially generates every day in a school year at school id 6
 INSERT INTO "calendar" ("date", "creator", "school_id")
 SELECT generate_series('2020-09-08'::DATE, '2021-06-11', '1 day'), '6', '1';
