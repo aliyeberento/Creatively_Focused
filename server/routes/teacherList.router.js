@@ -15,7 +15,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.auth == 0) {
         console.log(req.user);
         const queryText = `SELECT * 
-        FROM "user" WHERE auth <= 3`
+        FROM "user" WHERE auth <= 3
+        ORDER BY "lastname" ASC`
         pool.query(queryText)
         .then(results => {
             res.send(results.rows);
@@ -27,7 +28,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         console.log('superintendent isd:', req.user.isd);
         const isd = [req.user.isd]
         const queryText = `SELECT * 
-        FROM "user" WHERE (auth <= 3) AND ("isd" = $1)`
+        FROM "user" WHERE (auth <= 3) AND ("isd" = $1)
+        ORDER BY "lastname" ASC`
         pool.query(queryText, isd)
         .then(results => {
             res.send(results.rows);
@@ -39,7 +41,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         console.log('principal school:', req.user.school);        
         const school = [req.user.school]
         const queryText = `SELECT * 
-        FROM "user" WHERE (auth <= 3) AND (school = $1)`
+        FROM "user" WHERE (auth <= 3) AND (school = $1)
+        ORDER BY "lastname" ASC`
         pool.query(queryText, school)
         .then(results => {
             res.send(results.rows);
