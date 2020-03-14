@@ -63,7 +63,7 @@ class EditStudentForm extends Component {
         // let student = this.state.studentToEdit;
         return (
             <div>
-                <br></br>
+                <h1>EDIT STUDENT</h1>
                 <form>
                     <label>First Name:
                         <input
@@ -114,23 +114,26 @@ class EditStudentForm extends Component {
                             defaultValue={this.props.reduxState.studentDetail.next_eval}
                             onChange={(event) => this.updateStudent(event, 'next_eval')}
                         />
-                    </label><br />
-                    <label>Disability Category:
+                    </label>
+                    <br />
+                    {/* <label>Disability Category:
                         <input
                             type="number"
                             placeholder="disability category"
                             defaultValue={this.props.reduxState.studentDetail.disability_cat}
                             onChange={(event) => this.updateStudent(event, 'disability_cat')}
                         />
-                    </label><br />
-                    <label>Federal Setting:
+                    </label> */}
+                    <br />
+                    {/* <label>Federal Setting:
                         <input
                             type="number"
                             placeholder="federal setting"
                             defaultValue={this.props.reduxState.studentDetail.fed_setting}
                             onChange={(event) => this.updateStudent(event, 'fed_setting')}
                         />
-                    </label><br />
+                    </label> */}
+                    <br />
                     <label>Teacher:
                         <input
                             type="text"
@@ -138,23 +141,26 @@ class EditStudentForm extends Component {
                             defaultValue={this.props.reduxState.studentDetail.teacher}
                             onChange={(event) => this.updateStudent(event, 'teacher')}
                         />
-                    </label><br />
-                    <label>School:
+                    </label>
+                    <br />
+                    {/* <label>School:
                         <input
                             type="number"
                             placeholder="school"
                             defaultValue={this.props.reduxState.studentDetail.school_id}
                             onChange={(event) => this.updateStudent(event, 'school_id')}
                         />
-                    </label><br />
-                    <label>School District:
+                    </label> */}
+                    <br />
+                    {/* <label>School District:
                         <input
                             type="number"
                             placeholder="isd"
                             defaultValue={this.props.reduxState.studentDetail.isd_id}
                             onChange={(event) => this.updateStudent(event, 'isd_id')}
                         />
-                    </label><br />
+                    </label> */}
+                    <br />
                     <label>Notes:
                         <input
                             type="text"
