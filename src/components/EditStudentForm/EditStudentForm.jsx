@@ -137,7 +137,7 @@ class EditStudentForm extends Component {
                                     </option>
                                 )
                             })}
-                        </select>
+                        </select><br />
                     </label>
                     {/* <label>Teacher:
                         <input

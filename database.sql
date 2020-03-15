@@ -11,6 +11,7 @@ CREATE TABLE "user" (
 	"firstname" VARCHAR(100),
 	"lastname" VARCHAR(100),
 	"phone" VARCHAR(15),
+	-- SHOULD THIS BE isd_id?
 	"isd" INT,
 	"school" INT,
 	"auth" INT,
@@ -158,6 +159,20 @@ UPDATE "student" SET
 "prev_eval" = now(),
 "next_eval" = now() + interval '3 years'
 WHERE "id" = ???;
+
+-- gets all of a teacher's information, including school name and district number
+SELECT "user".firstname, 
+	"user".lastname, 
+	"user".phone, 
+	"isd".isd, 
+	"school".name AS "school", 
+	"isd".city, 
+	"isd".state, 
+	"user".auth
+FROM "user"
+LEFT JOIN "school" ON "school".id = "user".school
+LEFT JOIN "isd" ON "isd".id = "user".isd
+WHERE "user"."id" = 6;
 
 INSERT INTO "student"("firstname", "lastname", "birthdate", "grade", "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval", "notes") VALUES('Luke', 'Rohde', '1981-02-17', 12, 3, 5, '2009-01-01', '2020-01-01', '2021-01-01', '2020-12-02', '2021-12-02', 'note about luke');
 

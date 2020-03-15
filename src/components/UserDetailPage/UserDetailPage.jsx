@@ -42,11 +42,13 @@ class UserDetailPage extends Component {
             <div>
                 <h1>USER: {user.firstname} {user.lastname}</h1>
                     <ul>
-                        <li>Username: {user.username}</li>
-                        <li>ID: {user.id}</li>
+                        <li>E-Mail/Username: {user.username}</li>
+                        {/* THIS SHOULD SHOW THE NAME OF THE SCHOOL */}
                         <li>School: {user.school}</li>
+                        {/* THIS SHOULD SHOW THE NAME OF THE DISTRICT */}
                         <li>ISD: {user.isd}</li>
                         <li>Phone Number: {user.phone}</li>
+                        {/* IS THIS NEEDED? */}
                         <li>Authorization Level: {user.auth}</li>
                         <button onClick={this.editUser}>edit user</button><br />
                         <button onClick={(event) => { if (window.confirm('are you sure you want to delete this user?')) this.deleteUser(event) }}>delete user</button><br />
