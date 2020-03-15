@@ -172,7 +172,7 @@ SELECT "user".firstname,
 FROM "user"
 LEFT JOIN "school" ON "school".id = "user".school
 LEFT JOIN "isd" ON "isd".id = "user".isd
-WHERE "user"."id" = 6;
+WHERE "user"."id" = ???;
 
 INSERT INTO "student"("firstname", "lastname", "birthdate", "grade", "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval", "notes") VALUES('Luke', 'Rohde', '1981-02-17', 12, 3, 5, '2009-01-01', '2020-01-01', '2021-01-01', '2020-12-02', '2021-12-02', 'note about luke');
 
