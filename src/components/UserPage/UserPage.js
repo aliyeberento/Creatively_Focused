@@ -1,17 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './user.css';
-
 import 'react-calendar/dist/Calendar.css';
 import Moment from 'react-moment';
 import {Calendar, momentLocalizer,} from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import TaskList from '../TaskList/TaskList';
+// import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
 
-const localizer = momentLocalizer(moment);
+// styling
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
+
+// variables
+const localizer = momentLocalizer(moment);
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+});
 
 // import LogOutButton from '../LogOutButton/LogOutButton';
 
@@ -31,7 +49,7 @@ class UserPage extends Component {
       // this is where the user's info is held locally
     },
     events: [
-     
+     // this is the student's iep and evals from database
     ],
     
   
@@ -63,9 +81,9 @@ class UserPage extends Component {
       //   }
       // }
       return {
-        start: new Date(studentEvent.date),
-        end: new Date(studentEvent.date),
-        title: studentEvent.task
+        start: new Date(studentEvent.next_iep,), 
+        end: new Date(studentEvent.next_iep),
+        title: `${studentEvent.firstname}'s IEP`
       }
 
     });
@@ -77,7 +95,7 @@ class UserPage extends Component {
 
   render() {
 
-    let events = this.formatEventsForCalendar(this.props.studentEvent)
+    let events = this.formatEventsForCalendar(this.props.student)
       // format dates for cal
       // make events here?
 
@@ -97,29 +115,27 @@ class UserPage extends Component {
          
         />
         {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
-
-        <table>
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Date</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-          {this.props.studentEvent.map(event => (
-            <tr key={event.id}>
-              <td>{event.task}</td>
-              <td>
-                <Moment id="marker" format="MM-D-YYYY">{event.date}</Moment>
-              </td>
-              <td>{event.notes}</td>
-            </tr>
+        
+        <Table className="table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Next IEP</TableCell>
+              <TableCell>Next Eval</TableCell>
+              <TableCell>Notes</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+          {this.props.student.map(event => (
+            <TableRow key={event.id}>
+              <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
+              <TableCell><Moment format="MM-D-YYYY">{event.next_eval}</Moment></TableCell>
+              <TableCell>{event.notes}</TableCell>
+            </TableRow>
           )
           )}
-          
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
+        
 
     
        
@@ -127,7 +143,7 @@ class UserPage extends Component {
         
         {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
 
-        <TaskList />
+        {/* <TaskList /> */}
         {/* <LogOutButton className="log-in" /> */}
 
       </div>
@@ -140,8 +156,8 @@ class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  studentEvent: state.studentEvent
+  student: state.students
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default withStyles(styles)(connect(mapStateToProps)(UserPage));
