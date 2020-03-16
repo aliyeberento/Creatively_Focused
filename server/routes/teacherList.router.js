@@ -15,7 +15,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.auth == 0) {
         console.log(req.user);
         const queryText = `SELECT * 
-        FROM "user" WHERE auth <= 3`
+        FROM "user" WHERE auth <= 3
+        ORDER BY "lastname" ASC`
         pool.query(queryText)
         .then(results => {
             res.send(results.rows);
@@ -27,7 +28,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         console.log('superintendent isd:', req.user.isd);
         const isd = [req.user.isd]
         const queryText = `SELECT * 
-        FROM "user" WHERE (auth <= 3) AND ("isd" = $1)`
+        FROM "user" WHERE (auth <= 3) AND ("isd" = $1)
+        ORDER BY "lastname" ASC`
         pool.query(queryText, isd)
         .then(results => {
             res.send(results.rows);
@@ -39,7 +41,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         console.log('principal school:', req.user.school);        
         const school = [req.user.school]
         const queryText = `SELECT * 
-        FROM "user" WHERE (auth <= 3) AND (school = $1)`
+        FROM "user" WHERE (auth <= 3) AND (school = $1)
+        ORDER BY "lastname" ASC`
         pool.query(queryText, school)
         .then(results => {
             res.send(results.rows);
@@ -82,12 +85,14 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     let sqlText = `
         UPDATE "user" 
         SET "username"=$1,
-        "phone"=$2,
-        "school"=$3,
-        "isd"=$4,
-        "auth"=$5
+        "firstname"=$2,
+        "lastname"=$3,
+        "phone"=$4,
+        "school"=$5,
+        "isd"=$6,
+        "auth"=$7
         WHERE "id" = ${req.params.id};`;
-    let values = [req.body.username, req.body.phone, req.body.school, req.body.isd, req.body.auth];
+    let values = [req.body.username, req.body.firstname, req.body.lastname, req.body.phone, req.body.school, req.body.isd, req.body.auth];
     pool.query(sqlText, values)
     .then((result) => {
         res.sendStatus(200);

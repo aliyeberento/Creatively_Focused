@@ -14,6 +14,8 @@ const addStudentRouter = require('./routes/addStudent.router');
 const addUserRouter = require('./routes/addUser.router');
 const studentEventRouter = require('./routes/studentEvent.router');
 const emailRouter = require('./routes/email.router');
+const isdRouter = require('./routes/isd.router');
+const schoolRouter = require('./routes/school.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -34,6 +36,8 @@ app.use('/api/addStudent', addStudentRouter);
 app.use('/api/addUser', addUserRouter);
 app.use('/api/studentEvent', studentEventRouter)
 app.use('/api/email', emailRouter);
+app.use('/api/isd', isdRouter);
+app.use('/api/school', schoolRouter);
 
 // Serve static files
 app.use(express.static('build'));

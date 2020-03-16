@@ -6,16 +6,37 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 class Nav extends Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      menuOpen: false
+    }
+  }
+
+  handleStateChange (state) {
+    this.setState({menuOpen: state.isOpen})  
+  }
+
+  closeMenu () {
+    this.setState({menuOpen: false})
+  }
+
+  toggleMenu () {
+    this.setState(state => ({menuOpen: !state.menuOpen}))
+  }
+
   render() {
     return (
       <div id="outer-container">
-        <Menu  pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } right >
-
+        <Menu  pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } 
+        isOpen={this.state.menuOpen}
+        onStateChange={(state) => this.handleStateChange(state)}
+        right>
+        <main id="page-wrap">
             <div className="menu-color">
-
-
-              <h2 className="nav-title">CREATIVELY FOCUSED</h2>
-              <Link className="menu-item" to="/home">HOME</Link>
+              {/* <h2 className="nav-title">CREATIVELY FOCUSED</h2> */}
+              <Link className="menu-item" to="/home" onClick={() => this.closeMenu()}>HOME</Link>
               <br />
               <div >
                 {/* Show this link if they are logged in or not,
@@ -24,9 +45,9 @@ class Nav extends Component {
                 {/* {this.props.store.user.id ? 'USER PROFILE' : 'LOGIN'} */}
                 {this.props.store.user.auth < 3 && (
                   <>
-                    <Link className="menu-item" to="/adminhome">
+                    <Link className="menu-item" to="/adminhome" onClick={() => this.closeMenu()}>
                       TEACHER LIST
-                </Link>
+                    </Link>
                     <br />
                     {/* <Link className="menu-item" to="/adminform">
                   ADD NEW USER
@@ -38,20 +59,23 @@ class Nav extends Component {
                 {/* Show the link to the info page and the logout button if the user is logged in */}
                 {this.props.store.user.auth < 5 && (
                   <>
-                    <Link className="menu-item" to="/studentlist">
+                    <Link className="menu-item" to="/studentlist" onClick={() => this.closeMenu()}>
                       STUDENT LIST
-                  </Link>
+                    </Link>
                     <br />
                     {/* <Link className="menu-item" to="/addstudent">
                   ADD NEW STUDENT
                   </Link>
                 <br /> */}
-                    <LogOutButton className="menu-item" />
+
+                    {/* THIS LOGOUT BUTTON SHOULD HAVE THE CLOSE MENU FUNCTION PASSED DOWN ON PROPS */}
+
+                    <LogOutButton className="menu-item" closeMenu={this.closeMenu} onClick={() => this.closeMenu()}/>
                   </>
                 )}
               </div>
             </div>
-            <main id="page-wrap">
+            {/* <main id="page-wrap"> */}
           </main>
         </Menu>
       </div>

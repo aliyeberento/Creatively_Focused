@@ -76,8 +76,25 @@ class EditUserForm extends Component {
         let user = this.props.reduxState.teacherDetail;
         return (
             <div>
+                <h1> EDIT USER</h1>
                 <form>
-                    <label>USERNAME:
+                    <label>First Name:
+                        <input
+                            type="text"
+                            placeholder="firstname"
+                            defaultValue={user.firstname}
+                            onChange={(event) => this.updateUser(event, 'firstname')}
+                        />
+                    </label><br />
+                    <label>Last Name:
+                        <input
+                            type="text"
+                            placeholder="lastname"
+                            defaultValue={user.lastname}
+                            onChange={(event) => this.updateUser(event, 'lastname')}
+                        />
+                    </label><br />
+                    <label>Email/Username:
                         <input
                             type="text"
                             placeholder="username"
@@ -85,7 +102,7 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'username')}
                         />
                     </label><br />
-                    <label>Phone Number:
+                    <label>Mobile Phone Number:
                         <input
                             type="text"
                             placeholder="phone"
@@ -93,34 +110,40 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'phone')}
                         />
                     </label><br />
+                    <label>
+                        Independent School District:
+                        <select name="school" onChange={(event) => this.updateUser(event, 'school')}>
+                            <option >Choose One...</option>
+                            <option value="3">Saint Paul, MN</option>
+                            <option value="2">Mineapolis, MN</option>
+                            <option value="1">Farmington, MN</option>
+                        </select>
+                    </label>
+                    <br />
                     <label>School:
-                        <input
-                            type="text"
-                            placeholder="school"
-                            defaultValue={user.school}
-                            onChange={(event) => this.updateUser(event, 'school')}
-                        />
+                        <select name="isd" onChange={(event) => this.updateUser(event, 'isd')}>
+                            <option >Choose One...</option>
+                            <option value="8">South High School</option>
+                            <option value="7">Patrick Henry High School</option>
+                            <option value="6">North High School</option>
+                            <option value="5">Johnson High School</option>
+                            <option value="4">Como</option>
+                            <option value="3">Highland Park Middle School</option>
+                            <option value="2">Farmington Junior High</option>
+                            <option value="1">Farmington Senior High</option>
+                        </select>
+                    </label>
+                    {/* TURN THIS INTO A DROP DOWN */}
+                    <label>
+                        Role/Auth:
+                        <select name="role" onChange={(event) => this.updateUser(event, 'auth')}>
+                            <option >Choose One...</option>
+                            <option value="3">Teacher</option>
+                            <option value="2">School Principal</option>
+                            <option value="1">Superintendent</option>
+                            <option value="0">CF Admin</option>
+                        </select>
                     </label><br />
-                    <label>District:
-                        <input
-                            type="text"
-                            placeholder="isd"
-                            defaultValue={user.isd}
-                            onChange={(event) => this.updateUser(event, 'isd')}
-                        />
-                    </label><br />
-                    <label>Authorization Level:
-                        <input
-                            type="text"
-                            placeholder="auth"
-                            defaultValue={user.auth}
-                            onChange={(event) => this.updateUser(event, 'auth')}
-                        />
-                    </label><br />
-                    {/* <label>Username: <input type="text" label="username" defaultValue={user.username} value={user.username} onChange={(event) => this.editThisUser(event, 'username')}></input></label><br />
-                    <label>Phone Number: <input type="text" label="phone" defaultValue={user.phone} value={user.phone} onChange={(event) => this.editThisUser(event, 'phone')}></input></label><br />
-                    <label>School: <input type="text" label="school" defaultValue={user.school} value={user.school} onChange={(event) => this.editThisUser(event, 'school')}></input></label><br />
-                    <label>ISD: <input type="text" label="isd" defaultValue={user.isd} value={user.isd} onChange={(event) => this.editThisUser(event, 'isd')}></input></label><br /> */}
                     <button type="button" onClick={this.submitEdit}>submit changes</button>
                 </form>
             </div >
