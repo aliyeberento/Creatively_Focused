@@ -243,3 +243,12 @@ VALUES('Adam', 'Anderson', '2007-01-29', 8, 987149765, 0, 1, '2015-01-01', '2019
 ('Uter', 'Ulow', '2005-08-08', 10, 492478562, 1, 5, '2014-01-01', '2019-10-22', '2020-10-22', '2018-09-24', '2021-09-24', 5, 5, 3),
 ('Victor', 'Vandalay', '2008-09-21', 7, 728229472, 7, 2, '2015-01-01', '2020-02-01', '2021-02-01', '2019-01-04', '2022-01-04', 6, 3, 2);
 
+INSERT INTO "event" ("task") 
+VALUES('Notice of Team IEP Meeting'),
+('Present Levels of Performance (IEP)'),
+('Agenda and Reminder of IEP Meeting'),
+('Print Final IEP Meeting Materials'),
+('Annual IEP Meeting Deadline'),
+('PWN and IEP Reminder'),
+('Send PWN and IEP Due'),
+('IEP Consent');
