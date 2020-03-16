@@ -12,6 +12,7 @@ const studentListRouter = require('./routes/studentList.router');
 const teacherListRouter = require('./routes/teacherList.router');
 const addStudentRouter = require('./routes/addStudent.router');
 const addUserRouter = require('./routes/addUser.router');
+const twilioRouter = require('./routes/twilio.router')
 const studentEventRouter = require('./routes/studentEvent.router');
 const emailRouter = require('./routes/email.router');
 const isdRouter = require('./routes/isd.router');
@@ -38,6 +39,7 @@ app.use('/api/studentEvent', studentEventRouter)
 app.use('/api/email', emailRouter);
 app.use('/api/isd', isdRouter);
 app.use('/api/school', schoolRouter);
+app.use('/api/twilio', twilioRouter)
 
 // Serve static files
 app.use(express.static('build'));
