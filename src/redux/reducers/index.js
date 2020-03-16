@@ -10,7 +10,7 @@ import tasks from './tasksReducer';
 import students from './studentReducer';
 import studentDetail from  './studentDetailReducer';
 
-import student from './studentReducer';
+
 import teacherDetail from './teacherDetailReducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
   students, // student information
   studentDetail, // individual student for viewing and editing
 
-  student, // student information
+  
   teacherDetail
 });
 

@@ -46,8 +46,10 @@ class UserDetailPage extends Component {
                         <li>School: {user.school}</li>
                         <li>ISD: {user.isd}</li>
                         <li>Phone Number: {user.phone}</li>
+                        <li>Authorization Level: {user.auth}</li>
                         <button onClick={this.editUser}>edit user</button><br />
-                        <button onClick={(event) => { if (window.confirm('are you sure you want to delete this user?')) this.deleteUser(event) }}>delete user</button>
+                        <button onClick={(event) => { if (window.confirm('are you sure you want to delete this user?')) this.deleteUser(event) }}>delete user</button><br />
+                        <button onClick={this.goToUserList}>BACK TO USER LIST</button>
                     </ul>
                 {/* SHOULD WE HAVE A LIST OF DEADLINES HERE? */}
                 {/* <ol>
@@ -55,8 +57,6 @@ class UserDetailPage extends Component {
                     <li><input type="checkbox"></input>This is another task.</li>
                     <li><input type="checkbox"></input>This is a third task.</li>
                 </ol> */}
-                <button onClick={this.goToUserList}>BACK TO USER LIST</button>
-
                 <TaskList />
                 <StudentList />
             </div>

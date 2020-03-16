@@ -8,9 +8,15 @@
     margin-left: 545px ;
     color: white;
     background-color: #4CC4FC;
+    
 }
 
 form {
     background-color: white;
+    
 }
 
+#banner {
+    
+    width: 100%;
+}
