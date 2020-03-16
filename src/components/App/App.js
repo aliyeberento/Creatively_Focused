@@ -39,6 +39,9 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
+    this.props.dispatch({ type: 'GET_STUDENTEVENT' });
+    this.props.dispatch({ type: 'GET_STUDENTS' });
+    this.props.dispatch({ type: 'GET_TEACHERS' });
   }
 
   render() {
