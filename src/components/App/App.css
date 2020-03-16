@@ -42,7 +42,8 @@ input {
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
-  background-color: #008183;
+  color: black;
+  background-color: #C3EFCB;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -64,6 +65,11 @@ ul {
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
+}
+
+#CFlogo {
+    padding-top: 33px;
+    padding-left: 33px;
 }
 
 @font-face {

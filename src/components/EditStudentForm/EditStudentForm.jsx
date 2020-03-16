@@ -5,6 +5,12 @@ import { withRouter } from 'react-router-dom';
 
 class EditStudentForm extends Component {
 
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'GET_TEACHERS'
+        })
+    }
+
     // state = {
     //     studentToEdit: {
     //         firstname: this.props.reduxState.studentDetail.firstname,
@@ -63,7 +69,7 @@ class EditStudentForm extends Component {
         // let student = this.state.studentToEdit;
         return (
             <div>
-                <br></br>
+                <h1>EDIT STUDENT</h1>
                 <form>
                     <label>First Name:
                         <input
@@ -115,63 +121,57 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudent(event, 'next_eval')}
                         />
                     </label><br />
-                    <label>Disability Category:
-                        <input
-                            type="number"
-                            placeholder="disability category"
-                            defaultValue={this.props.reduxState.studentDetail.disability_cat}
-                            onChange={(event) => this.updateStudent(event, 'disability_cat')}
-                        />
-                    </label><br />
-                    <label>Federal Setting:
-                        <input
-                            type="number"
-                            placeholder="federal setting"
-                            defaultValue={this.props.reduxState.studentDetail.fed_setting}
-                            onChange={(event) => this.updateStudent(event, 'fed_setting')}
-                        />
-                    </label><br />
                     <label>Teacher:
+                    <select
+                            name="teacher"
+                            id="teacher"
+                            defaultValue="teacher"
+                            placeholder="teacher"
+                            onChange={(event) => this.updateStudent(event, 'teacher')}>
+                        {this.props.reduxState.teacher.map(teacher => {
+                                return (
+                                    <option
+                                        value={teacher.id}
+                                        key={teacher.id}>
+                                        {teacher.lastname}, {teacher.firstname}
+                                    </option>
+                                )
+                            })}
+                        </select><br />
+                    </label>
+                    {/* <label>Teacher:
                         <input
                             type="text"
                             placeholder="teacher"
                             defaultValue={this.props.reduxState.studentDetail.teacher}
                             onChange={(event) => this.updateStudent(event, 'teacher')}
                         />
-                    </label><br />
+                    </label><br /> */}
                     <label>School:
-                        <input
-                            type="number"
-                            placeholder="school"
-                            defaultValue={this.props.reduxState.studentDetail.school_id}
-                            onChange={(event) => this.updateStudent(event, 'school_id')}
-                        />
-                    </label><br />
-                    <label>School District:
-                        <input
-                            type="number"
+                        <select name="isd"
+                            id="isd"
+                            defaultValue="isd"
                             placeholder="isd"
-                            defaultValue={this.props.reduxState.studentDetail.isd_id}
-                            onChange={(event) => this.updateStudent(event, 'isd_id')}
-                        />
+                            onChange={(event) => this.updateStudent(event, 'isd')}>
+                            <option >Choose One...</option>
+                            <option value="8">South High School</option>
+                            <option value="7">Patrick Henry High School</option>
+                            <option value="6">North High School</option>
+                            <option value="5">Johnson High School</option>
+                            <option value="4">Como</option>
+                            <option value="3">Highland Park Middle School</option>
+                            <option value="2">Farmington Junior High</option>
+                            <option value="1">Farmington Senior High</option>
+                        </select>
                     </label><br />
-                    <label>Notes:
-                        <input
-                            type="text"
-                            placeholder="notes"
-                            defaultValue={this.props.reduxState.studentDetail.notes}
-                            onChange={(event) => this.updateStudent(event, 'notes')}
-                        />
+                    <label>Independent School District:
+                        <select name="school" onChange={(event) => this.updateStudent(event, 'school')}>
+                            <option >Choose One...</option>
+                            <option value="3">Saint Paul, MN</option>
+                            <option value="2">Mineapolis, MN</option>
+                            <option value="1">Farmington, MN</option>
+                        </select>
                     </label><br />
-                    {/* <input type="text" label="name" defaultValue={student.firstname} value={student.firstname} onChange={(event) => this.editThisStudent(event, 'firstname')}></input><br />
-                        <input type="text" label="name" defaultValue={student.lastname} value={student.lastname} onChange={(event) => this.editThisStudent(event, 'lastname')}></input><br />
-                        <input type="text" label="name" defaultValue={student.grade} value={student.grade} onChange={(event) => this.editThisStudent(event, 'grade')}></input><br />
-                        <input type="date" label="name" defaultValue={student.next_iep} value={student.next_iep} onChange={(event) => this.editThisStudent(event, 'next_iep')}></input><br />
-                        <input type="date" label="name" defaultValue={student.next_eval} value={student.next_eval} onChange={(event) => this.editThisStudent(event, 'next_eval')}></input><br />
-                        <input type="text" label="name" defaultValue={student.disability_cat} value={student.disability_cat} onChange={(event) => this.editThisStudent(event, 'disability_cat')}></input><br />
-                        <input type="text" label="name" defaultValue={student.fed_setting} value={student.fed_setting} onChange={(event) => this.editThisStudent(event, 'fed_setting')}></input><br />
-                        <input type="text" label="name" defaultValue={student.birthdate} value={student.birthdate} onChange={(event) => this.editThisStudent(event, 'birthdate')}></input><br />
-                        <input type="text" label="name" defaultValue={student.notes} value={student.notes} onChange={(event) => this.editThisStudent(event, 'notes')}></input><br /> */}
                     <button type="button" onClick={this.submitEdit}>submit changes</button>
                 </form>
             </div >

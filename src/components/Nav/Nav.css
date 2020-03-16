@@ -4,12 +4,11 @@
   font-weight: 700;
   display: inline-block;
   color: #f2f2f2;
-  padding-left: 10px;
- 
-  
+  padding-left: 10px;  
 }
 
 .nav {
+  height: 100px;
   overflow: hidden;
   background-color: #294A9A;
 }
@@ -63,7 +62,7 @@
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  background: white;
 }
 
 /* Position and sizing of clickable cross button */
@@ -78,6 +77,8 @@
 }
 
 /* General sidebar styles */
+
+/* WORK ON SPACING */
 .bm-menu {
   background-image: url('./banner-2-09.png');
   padding: 2.5em 1.5em 0;

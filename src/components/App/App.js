@@ -45,6 +45,9 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <div className="nav">
+            <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED</header>
+          </div>
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

@@ -5,16 +5,52 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // get all the users
 router.get('/', rejectUnauthenticated, (req, res) => {
-    console.log('req.user:', req.user);
-    const queryText = `SELECT * 
-    FROM "user" WHERE auth <= 3`
-    pool.query(queryText)
+    
+    console.log(req.user);
+
+    // CONDITIONAL FOR USER AUTH
+    // AUTH 1 BY ISD == REQ.USER.ISD_ID
+    // AUTH 2 BY SCHOOL == REQ.USER.SCHOOL_ID
+
+    if (req.user.auth == 0) {
+        console.log(req.user);
+        const queryText = `SELECT * 
+        FROM "user" WHERE auth <= 3
+        ORDER BY "lastname" ASC`
+        pool.query(queryText)
         .then(results => {
             res.send(results.rows);
         }).catch(error => {
             console.log('Error GET route /api/teacherList in server', error);
             res.sendStatus(500);
         });
+    } else if (req.user.auth == 1) {
+        console.log('superintendent isd:', req.user.isd);
+        const isd = [req.user.isd]
+        const queryText = `SELECT * 
+        FROM "user" WHERE (auth <= 3) AND ("isd" = $1)
+        ORDER BY "lastname" ASC`
+        pool.query(queryText, isd)
+        .then(results => {
+            res.send(results.rows);
+        }).catch(error => {
+            console.log('Error GET route /api/teacherList in server', error);
+            res.sendStatus(500);
+        });
+    } else if (req.user.auth == 2) {
+        console.log('principal school:', req.user.school);        
+        const school = [req.user.school]
+        const queryText = `SELECT * 
+        FROM "user" WHERE (auth <= 3) AND (school = $1)
+        ORDER BY "lastname" ASC`
+        pool.query(queryText, school)
+        .then(results => {
+            res.send(results.rows);
+        }).catch(error => {
+            console.log('Error GET route /api/teacherList in server', error);
+            res.sendStatus(500);
+        });
+    }
 });
 
 // get a specific user
@@ -49,12 +85,14 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     let sqlText = `
         UPDATE "user" 
         SET "username"=$1,
-        "phone"=$2,
-        "school"=$3,
-        "isd"=$4,
-        "auth"=$5
+        "firstname"=$2,
+        "lastname"=$3,
+        "phone"=$4,
+        "school"=$5,
+        "isd"=$6,
+        "auth"=$7
         WHERE "id" = ${req.params.id};`;
-    let values = [req.body.username, req.body.phone, req.body.school, req.body.isd, req.body.auth];
+    let values = [req.body.username, req.body.firstname, req.body.lastname, req.body.phone, req.body.school, req.body.isd, req.body.auth];
     pool.query(sqlText, values)
     .then((result) => {
         res.sendStatus(200);

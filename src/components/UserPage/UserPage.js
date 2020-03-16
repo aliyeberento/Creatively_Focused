@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './user.css';
-
-//import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Moment from 'react-moment';
-import {
-  Calendar,
-  momentLocalizer,
-} from 'react-big-calendar';
+import {Calendar, momentLocalizer,} from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
-
-import TaskList from '../TaskList/TaskList';
+// import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
-const localizer = momentLocalizer(moment);
 
+// styling
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
+
+// variables
+const localizer = momentLocalizer(moment);
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+});
 
 // import LogOutButton from '../LogOutButton/LogOutButton';
 
@@ -36,16 +49,7 @@ class UserPage extends Component {
       // this is where the user's info is held locally
     },
     events: [
-      {
-        start: new Date(),
-        end: new Date(),
-        title: "Some title"
-      },
-      {
-        start: new Date(),
-        end: new Date(),
-        title: "new thing"
-      }
+     // this is the student's iep and evals from database
     ],
     
   
@@ -63,67 +67,85 @@ class UserPage extends Component {
 
   editUser = () => {
     console.log('editing THIS user:', this.props.user.username); 
+
   }
 
-  render() {
+  formatEventsForCalendar = (studentEvents) => {
+    console.log(studentEvents);
+    let formatedStudentEvents = studentEvents.map(studentEvent => {
+      // if (new Date(studentEvent.date) == new Date(2020-03-01)) {
+      //   return {
+      //     start: new Date(studentEvent.date),
+      //     end: new Date(studentEvent.date),
+      //     title: studentEvent.task
+      //   }
+      // }
+      return {
+        start: new Date(studentEvent.next_iep,), 
+        end: new Date(studentEvent.next_iep),
+        title: `${studentEvent.firstname}'s IEP`
+      }
+
+    });
     
+   return formatedStudentEvents;
+  }
+
+  
+
+  render() {
+
+    let events = this.formatEventsForCalendar(this.props.student)
+      // format dates for cal
+      // make events here?
+
     return (
       <div className="welcome">
         <h1 >
           Welcome, {this.props.user.username}!
         </h1>
-        {/* <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
-        /> */}
+      
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
           defaultView="month"
-          events={this.state.events}
+          events={events}
           style={{ height: "100vh" }}
+          
          
         />
-
-        
-
         {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
-
-        <table>
-          <thead>
-            <tr>
-              <th>
-                Task
-
-                  </th>
-              <th>Date</th>
-
-            
-              <th>Notes</th>
-
-            </tr>
-          </thead>
-          <tbody>
-          {this.props.studentEvent.map(event => (
-            <tr key={event.id}>
-              
-              
-              <td>{event.task}</td>
-              <td>
-                <Moment id="marker" format="MM-D-YYYY">{event.date}</Moment>
-                
-              </td>
-              
-            </tr>
+        
+        <Table className="table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Next IEP</TableCell>
+              <TableCell>Next Eval</TableCell>
+              <TableCell>Notes</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+          {this.props.student.map(event => (
+            <TableRow key={event.id}>
+              <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
+              <TableCell><Moment format="MM-D-YYYY">{event.next_eval}</Moment></TableCell>
+              <TableCell>{event.notes}</TableCell>
+            </TableRow>
           )
           )}
-          
-          </tbody>
-        </table>
-        <h3 id="marker">!</h3>
-        <button onClick={this.editUser}>EDIT USER PROFILE</button>
-        <TaskList />
+          </TableBody>
+        </Table>
+        
+
+    
+       
+
+        
+        {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
+
+        {/* <TaskList /> */}
         {/* <LogOutButton className="log-in" /> */}
+
       </div>
     )
   }
@@ -134,8 +156,8 @@ class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  studentEvent: state.studentEvent
+  student: state.students
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default withStyles(styles)(connect(mapStateToProps)(UserPage));

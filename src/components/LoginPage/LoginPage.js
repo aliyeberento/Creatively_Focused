@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import logo from './logo square color.jpg';
+import banner from './banner-2-09.png';
 
 class LoginPage extends Component {
   state = {
@@ -32,6 +34,8 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
+        <div><img src={logo} alt="sparkle" /></div>
+        <div id="banner"><img src={banner} alt="sparkle" /></div>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -69,7 +73,7 @@ class LoginPage extends Component {
               className="log-in"
               type="submit"
               name="submit"
-              value="Log In"
+              value="Login"
             />
           </center>
         </form>
