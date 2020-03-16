@@ -43,7 +43,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "twilio": "^3.40.0"
   },
   "browserslist": [
     ">0.2%",

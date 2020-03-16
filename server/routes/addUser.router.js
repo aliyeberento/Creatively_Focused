@@ -12,9 +12,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     const password = encryptLib.encryptPassword(newUser.password);
     // inserting the data into the user table
     let queryText = `INSERT INTO "user" 
-    ("username", "password", "phone", "isd", "school", "auth") 
-    VALUES ($1, $2, $3, $4, $5, $6);`;
-    pool.query(queryText, [newUser.username, password, newUser.phone, newUser.isd, newUser.school, newUser.auth])
+    ("firstname", "lastname", "username", "password", "phone", "isd", "school", "auth") 
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
+    pool.query(queryText, [newUser.firstname, newUser.lastname, newUser.username, password, newUser.phone, newUser.isd, newUser.school, newUser.auth])
         .then((result) => {
             res.sendStatus(201);
         })

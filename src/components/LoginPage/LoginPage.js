@@ -73,7 +73,7 @@ class LoginPage extends Component {
               className="log-in"
               type="submit"
               name="submit"
-              value="Log In"
+              value="Login"
             />
           </center>
         </form>
