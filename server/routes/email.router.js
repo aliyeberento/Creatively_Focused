@@ -2,10 +2,10 @@ const { rejectUnathenticated } = require('../modules/authentication-middleware')
 const sendMailTo = require('../modules/mailer');
 const router = require('express').Router();
 const pool = require('../modules/pool');
-
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 
+// This GET route is for testing purposes. Emails will be triggered by Cron.
 router.get('/', (req, res) => {
     const selectUsers = `
     SELECT "user"."id" AS "user_id",
@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
                 to: results.rows[i].username,
                 subject: 'test', 
                 text: 'test',
-                html: `<p>Looks like you have an ${results.rows[i].task} on ${results.rows[i].due_date} coming up. 
+                html: `<p>Looks like you have a(n) ${results.rows[i].task} on ${results.rows[i].due_date} coming up. 
                 I'll make sure you and the other team members are ready for this meeting by helping you space out the work. 
                 Let's get to work!</p>`
             }

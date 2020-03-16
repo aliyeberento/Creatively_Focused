@@ -33,6 +33,7 @@ import UserDetailPage from '../UserDetailPage/UserDetailPage';
 import EditUserForm from '../EditUserForm/EditUserForm';
 import './App.css';
 import TaskDetailPage from '../TaskDetailPage/TaskDetailPage';
+import twilio from '../twilio/twilio'
 
 class App extends Component {
 
@@ -44,6 +45,9 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <div className="nav">
+            <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED</header>
+          </div>
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -125,6 +129,11 @@ class App extends Component {
               exact
               path="/taskdetail/:id"
               component={TaskDetailPage}
+            />
+            <ProtectedRoute
+            exact
+            path = "/twilio"
+            component={twilio}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>Huh? Are you stupid? 404 dummy</h1>} />

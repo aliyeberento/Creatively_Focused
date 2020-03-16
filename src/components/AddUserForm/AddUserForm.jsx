@@ -6,8 +6,8 @@ class AddUserForm extends Component {
 
     state = {
         userToAdd: {
-            // firstName: '',
-            // lastName: '',
+            firstName: '',
+            lastName: '',
             username: '',
             password: '',
             phone: '',
@@ -54,7 +54,7 @@ class AddUserForm extends Component {
             <div>
                 <h1>ADD/EDIT NEW USER</h1>
                 <form>
-                    {/* <label>
+                    <label>
                         First Name:
                     <input type="text"
                             onChange={(event) => this.handleNewUser('firstName', event)} />
@@ -65,7 +65,7 @@ class AddUserForm extends Component {
                     <input type="text"
                             onChange={(event) => this.handleNewUser('lastName', event)} />
                     </label>
-                    <br /> */}
+                    <br />
                     <label>
                         Email/Username:
                     <input type="text"
@@ -87,25 +87,53 @@ class AddUserForm extends Component {
                             </input>
                     </label>
                 <br />
-                <label>
+                {/* <label>
                     School Name:
                     <input type="text" value={this.state.userToAdd.schoolId}
                         onChange={(event) => this.handleNewUser('isd', event)} />
-                </label>
-                <br />
-                <label>
-                    School District:
-                    <input type="text" value={this.state.userToAdd.isdId}
-                        onChange={(event) => this.handleNewUser('school', event)} />
-                </label>
-                <br />
+                </label> */}
                 <label>
                     Role/Auth:
                         <select name="role" onChange={(event) => this.handleNewUser('auth', event)} value={this.state.userToAdd.roleAuth} >
+                        <option >Choose One...</option>
                         <option value="3">Teacher</option>
                         <option value="2">School Principal</option>
                         <option value="1">Superintendent</option>
                         <option value="0">CF Admin</option>
+                    </select>
+                </label>
+                <br />
+                {/* <label>
+                    School District:
+                    <input type="text" value={this.state.userToAdd.isdId}
+                        onChange={(event) => this.handleNewUser('school', event)} />
+                </label> */}
+                <label>
+                    Independent School District:
+                        <select name="school" onChange={(event) => this.handleNewUser('school', event)} value={this.state.userToAdd.roleAuth} >
+                        <option >Choose One...</option>
+                        <option value="3">Saint Paul, MN</option>
+                        <option value="2">Mineapolis, MN</option>
+                        <option value="1">Farmington, MN</option>
+                    </select>
+                </label>
+                <br />
+                <label>
+                    School:
+                        <select name="isd"
+                        id="isd" 
+                        defaultValue="isd" 
+                        placeholder="isd"
+                        onChange={(event) => this.handleNewUser('isd', event)} value={this.state.userToAdd.roleAuth} >
+                        <option >Choose One...</option>
+                        <option value="8">South High School</option>
+                        <option value="7">Patrick Henry High School</option>
+                        <option value="6">North High School</option>
+                        <option value="5">Johnson High School</option>
+                        <option value="4">Como</option>
+                        <option value="3">Highland Park Middle School</option>
+                        <option value="2">Farmington Junior High</option>
+                        <option value="1">Farmington Senior High</option>
                     </select>
                 </label>
                 <br />
