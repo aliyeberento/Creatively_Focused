@@ -85,9 +85,9 @@ CREATE TABLE "student_event" (
 	"event_id" INT NOT NULL,
 	"due_date" DATE NOT NULL,
 	"notes" TEXT,
-	"completed" BOOLEAN NOT NULL DEFAULT 'false',
+	"completed" BOOLEAN DEFAULT 'false',
 	"date_completed" TIMESTAMP,
-	"completed_by" INT NOT NULL,
+	"completed_by" INT,
 	CONSTRAINT "student_event_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -174,6 +174,23 @@ LEFT JOIN "school" ON "school".id = "user".school
 LEFT JOIN "isd" ON "isd".id = "user".isd
 WHERE "user"."id" = ???;
 
+-- gets all of the events for all of the students
+SELECT "event".task, "student_event".due_date, "student".firstname, "student".lastname FROM "student"
+JOIN "student_event" on "student_event".student_id = "student".id
+JOIN "event" on "student_event".event_id = "event".id;
+
+-- makes a bunch of events for a student
+INSERT INTO "student_event"("student_id", "event_id", "due_date", "completed", "completed_by")
+VALUES
+(3, 1, '2020-03-24', FALSE, 1), 
+(3, 2, '2020-03-24', FALSE, 1), 
+(3, 3, '2020-03-24', FALSE, 1), 
+(3, 4, '2020-03-24', FALSE, 1), 
+(3, 5, '2020-03-24', FALSE, 1), 
+(3, 6, '2020-03-24', FALSE, 1), 
+(3, 7, '2020-03-24', FALSE, 1), 
+(3, 8, '2020-03-24', FALSE, 1);
+
 INSERT INTO "student"("firstname", "lastname", "birthdate", "grade", "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval", "notes") VALUES('Luke', 'Rohde', '1981-02-17', 12, 3, 5, '2009-01-01', '2020-01-01', '2021-01-01', '2020-12-02', '2021-12-02', 'note about luke');
 
 DROP TABLE "user";
@@ -226,3 +243,12 @@ VALUES('Adam', 'Anderson', '2007-01-29', 8, 987149765, 0, 1, '2015-01-01', '2019
 ('Uter', 'Ulow', '2005-08-08', 10, 492478562, 1, 5, '2014-01-01', '2019-10-22', '2020-10-22', '2018-09-24', '2021-09-24', 5, 5, 3),
 ('Victor', 'Vandalay', '2008-09-21', 7, 728229472, 7, 2, '2015-01-01', '2020-02-01', '2021-02-01', '2019-01-04', '2022-01-04', 6, 3, 2);
 
+INSERT INTO "event" ("task") 
+VALUES('Notice of Team IEP Meeting'),
+('Present Levels of Performance (IEP)'),
+('Agenda and Reminder of IEP Meeting'),
+('Print Final IEP Meeting Materials'),
+('Annual IEP Meeting Deadline'),
+('PWN and IEP Reminder'),
+('Send PWN and IEP Due'),
+('IEP Consent');
