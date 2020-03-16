@@ -22,9 +22,6 @@ class Nav extends Component {
     this.setState({menuOpen: false})
   }
 
-  // This can be used to toggle the menu, e.g. when using a custom icon
-  // Tip: You probably want to hide either/both default icons if using a custom icon
-  // See https://github.com/negomi/react-burger-menu#custom-icons
   toggleMenu () {
     this.setState(state => ({menuOpen: !state.menuOpen}))
   }
@@ -38,8 +35,8 @@ class Nav extends Component {
         right>
         <main id="page-wrap">
             <div className="menu-color">
-              <h2 className="nav-title">CREATIVELY FOCUSED</h2>
-              <Link className="menu-item" to="/home" onClick={() => this.closeMenu()} onClick={() => this.closeMenu()}>HOME</Link>
+              {/* <h2 className="nav-title">CREATIVELY FOCUSED</h2> */}
+              <Link className="menu-item" to="/home" onClick={() => this.closeMenu()}>HOME</Link>
               <br />
               <div >
                 {/* Show this link if they are logged in or not,
@@ -70,7 +67,10 @@ class Nav extends Component {
                   ADD NEW STUDENT
                   </Link>
                 <br /> */}
-                    <LogOutButton className="menu-item" onClick={() => this.closeMenu()}/>
+
+                    {/* THIS LOGOUT BUTTON SHOULD HAVE THE CLOSE MENU FUNCTION PASSED DOWN ON PROPS */}
+
+                    <LogOutButton className="menu-item" closeMenu={this.closeMenu} onClick={() => this.closeMenu()}/>
                   </>
                 )}
               </div>

@@ -66,6 +66,11 @@ ul {
     border-radius: 2px;
 }
 
+#CFlogo {
+    padding-top: 33px;
+    padding-left: 33px;
+}
+
 @font-face {
     src: url('./fonts/BrandonGrotesque-Regular.otf');
     font-family: brandon-regular;
