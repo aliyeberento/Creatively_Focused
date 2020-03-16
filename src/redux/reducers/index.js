@@ -12,6 +12,9 @@ import studentDetail from  './studentDetailReducer';
 
 import student from './studentReducer';
 import teacherDetail from './teacherDetailReducer';
+import districtReducer from './districtReducer';
+import schoolReducer from './schoolReducer';
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -32,7 +35,9 @@ const rootReducer = combineReducers({
   studentDetail, // individual student for viewing and editing
 
   student, // student information
-  teacherDetail
+  teacherDetail,
+  districtReducer,
+  schoolReducer
 });
 
 export default rootReducer;

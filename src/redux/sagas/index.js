@@ -45,6 +45,7 @@ export default function* rootSaga() {
     editUserSaga(),
     deleteUserSaga(),
     tasksSaga(),
-
+    districtSaga(),
+    schoolSaga()
   ]);
 }
