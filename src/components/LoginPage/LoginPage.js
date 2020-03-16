@@ -35,7 +35,7 @@ class LoginPage extends Component {
     return (
       <div>
         <div><img src={logo} alt="sparkle" /></div>
-        <div id="banner"><img src={banner} alt="sparkle" /></div>
+        
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
