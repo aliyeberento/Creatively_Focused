@@ -55,9 +55,9 @@ class UserPage extends Component {
   
   }
 
-  componentDidMount() {
-    this.props.dispatch({ type: 'GET_STUDENTEVENT' });
-  }
+  // componentDidMount() {
+  //   this.props.dispatch({ type: 'GET_STUDENTEVENT' });
+  // }
 
   onChange = (date) => {
     this.setState({ date });
