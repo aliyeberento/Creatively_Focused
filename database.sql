@@ -85,9 +85,9 @@ CREATE TABLE "student_event" (
 	"event_id" INT NOT NULL,
 	"due_date" DATE NOT NULL,
 	"notes" TEXT,
-	"completed" BOOLEAN NOT NULL DEFAULT 'false',
+	"completed" BOOLEAN DEFAULT 'false',
 	"date_completed" TIMESTAMP,
-	"completed_by" INT NOT NULL,
+	"completed_by" INT,
 	CONSTRAINT "student_event_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -173,6 +173,23 @@ FROM "user"
 LEFT JOIN "school" ON "school".id = "user".school
 LEFT JOIN "isd" ON "isd".id = "user".isd
 WHERE "user"."id" = ???;
+
+-- gets all of the events for all of the students
+SELECT "event".task, "student_event".due_date, "student".firstname, "student".lastname FROM "student"
+JOIN "student_event" on "student_event".student_id = "student".id
+JOIN "event" on "student_event".event_id = "event".id;
+
+-- makes a bunch of events for a student
+INSERT INTO "student_event"("student_id", "event_id", "due_date", "completed", "completed_by")
+VALUES
+(3, 1, '2020-03-24', FALSE, 1), 
+(3, 2, '2020-03-24', FALSE, 1), 
+(3, 3, '2020-03-24', FALSE, 1), 
+(3, 4, '2020-03-24', FALSE, 1), 
+(3, 5, '2020-03-24', FALSE, 1), 
+(3, 6, '2020-03-24', FALSE, 1), 
+(3, 7, '2020-03-24', FALSE, 1), 
+(3, 8, '2020-03-24', FALSE, 1);
 
 INSERT INTO "student"("firstname", "lastname", "birthdate", "grade", "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval", "notes") VALUES('Luke', 'Rohde', '1981-02-17', 12, 3, 5, '2009-01-01', '2020-01-01', '2021-01-01', '2020-12-02', '2021-12-02', 'note about luke');
 
