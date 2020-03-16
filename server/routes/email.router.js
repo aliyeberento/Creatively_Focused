@@ -2,7 +2,6 @@ const { rejectUnathenticated } = require('../modules/authentication-middleware')
 const sendMailTo = require('../modules/mailer');
 const router = require('express').Router();
 const pool = require('../modules/pool');
-
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 
