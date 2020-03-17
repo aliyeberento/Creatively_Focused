@@ -30,4 +30,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // ADD A NEW DISTRICT
 
+router.post('/', rejectUnauthenticated, (req, res) => {
+    // req.body = data sent from addUser saga
+    let newDistrict = req.body;
+    console.log(req.body);
+    // inserting the data into the user table
+    let queryText = `INSERT INTO "isd" 
+    ("city", "isd", "state") 
+    VALUES ($1, $2, $3);`;
+    pool.query(queryText, [newDistrict.city, newDistrict.isd, newDistrict.state])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('error in add district post req in server', error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;

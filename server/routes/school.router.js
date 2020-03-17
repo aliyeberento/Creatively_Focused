@@ -43,4 +43,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // ADD A NEW SCHOOL
 
+router.post('/', rejectUnauthenticated, (req, res) => {
+    // req.body = data sent from addUser saga
+    let newSchool = req.body;
+    console.log(req.body);
+    // inserting the data into the user table
+    let queryText = `INSERT INTO "school" 
+    ("name", "isd_id") 
+    VALUES ($1, $2);`;
+    pool.query(queryText, [newSchool.name, newSchool.isd_id])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('error in add school post req in server', error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;

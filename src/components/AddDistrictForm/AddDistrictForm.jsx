@@ -9,7 +9,7 @@ class AddDistrictForm extends Component {
     state = {
         districtToAdd: {
             city: '',
-            number: '',
+            isd: '',
             state: ''
         }
     }
@@ -18,7 +18,7 @@ class AddDistrictForm extends Component {
         console.log('making a new district', this.state.districtToAdd);
         this.setState({
             districtToAdd: {
-                ...this.state.studentToAdd,
+                ...this.state.districtToAdd,
                 [propertyValue]: event.target.value
             }
         })
@@ -34,19 +34,25 @@ class AddDistrictForm extends Component {
         this.props.dispatch({
             type: 'ADD_DISTRICT',
             payload: this.state.districtToAdd
-        })
+        });
+        this.props.history.push('/home')
     }
 
-    render () {
+    render() {
         return (
             <div>
-                <label>District Name: 
-                <input onChange={(event) => this.makeDistrict(event, 'city')}></input></label>
-                <label>District Number: 
-                <input onChange={(event) => this.makeDistrict(event, 'number')}></input></label>
-                <label>State: 
-                <input onChange={(event) => this.makeDistrict(event, 'state')}></input></label>
-                <button onClick={this.submitDistrict}>Add District</button>
+                <form>
+                    <label>District City:
+                    <input onChange={(event) => this.makeDistrict(event, 'city')}></input></label><br />
+                    <label>District Number:
+                    <input onChange={(event) => this.makeDistrict(event, 'isd')}></input></label><br />
+
+                    {/* THIS WILL BE A SELECT WITH 50 HARDCODED STATE OPTIONS */}
+
+                    <label>District State:
+                    <input onChange={(event) => this.makeDistrict(event, 'state')}></input></label><br />
+                    <button type="submit" onClick={this.submitDistrict}>Add District</button>
+                </form>
             </div>
         )
     }
