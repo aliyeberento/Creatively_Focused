@@ -46,11 +46,7 @@ class AddDistrictForm extends Component {
                     <input onChange={(event) => this.makeDistrict(event, 'city')}></input></label><br />
                     <label>District Number:
                     <input onChange={(event) => this.makeDistrict(event, 'isd')}></input></label><br />
-
-                    {/* THIS WILL BE A SELECT WITH 50 HARDCODED STATE OPTIONS */}
-
                     <label>District State: 
-                    {/* <input onChange={(event) => this.makeDistrict(event, 'state')}></input> */}
                     <select>
                         <option>Choose one...</option>
                         <option value="AL" onChange={(event) => this.makeDistrict(event, 'state')}>Alabama</option>

@@ -26,22 +26,15 @@ class AddUserForm extends Component {
         }, () => {
             console.log(this.state.userToAdd)
         })
-        // this function should spread local state,
-        // and build a new teacher object
     }
 
     submitBtn = (event) => {
         event.preventDefault()
         console.log('submitting:', this.state.userToAdd)
-        // this should dispatch an action
-        // and then use withRouter to push history to teacher list
-        // or this new user's detail
         this.props.dispatch({
             type: 'ADD_USER',
             payload: this.state.userToAdd
         })
-        // console.log('finished sumbitting')
-        // console.log('user auth level', this.props.store.user)
         this.goDetail();
     }
 
@@ -50,6 +43,7 @@ class AddUserForm extends Component {
     }
 
     render() {
+        console.log(this.props.store.districtReducer);
         return (
             <div>
                 <h1>ADD/EDIT NEW USER</h1>
@@ -87,11 +81,6 @@ class AddUserForm extends Component {
                             </input>
                     </label>
                 <br />
-                {/* <label>
-                    School Name:
-                    <input type="text" value={this.state.userToAdd.schoolId}
-                        onChange={(event) => this.handleNewUser('isd', event)} />
-                </label> */}
                 <label>
                     Role/Auth:
                         <select name="role" onChange={(event) => this.handleNewUser('auth', event)} value={this.state.userToAdd.roleAuth} >
@@ -103,12 +92,14 @@ class AddUserForm extends Component {
                     </select>
                 </label>
                 <br />
+                <select name="district" id="district" defaultValue="district" placeholder="district" onChange={(event) => this.handleNewUser('district', event)}>District: 
+                            <option>Choose one...</option>
+                            {this.props.store.districtReducer.map(district => {
+                            return (
+                                <option value={district.id} key={district.id}>{district.city}, {district.state} - {district.isd}</option>
+                            )})}
+                        </select><br />
                 {/* <label>
-                    School District:
-                    <input type="text" value={this.state.userToAdd.isdId}
-                        onChange={(event) => this.handleNewUser('school', event)} />
-                </label> */}
-                <label>
                     Independent School District:
                         <select name="school" onChange={(event) => this.handleNewUser('school', event)} value={this.state.userToAdd.roleAuth} >
                         <option >Choose One...</option>
@@ -116,9 +107,16 @@ class AddUserForm extends Component {
                         <option value="2">Mineapolis, MN</option>
                         <option value="1">Farmington, MN</option>
                     </select>
-                </label>
+                </label> */}
                 <br />
-                <label>
+                <select name="school" id="school" defaultValue="school" placeholder="school" onChange={(event) => this.handleNewUser('school', event)}>School: 
+                            <option>Choose one...</option>
+                            {this.props.store.schoolReducer.map(school => {
+                            return (
+                                <option value={school.id} key={school.id}>{school.name} - {school.city}, {school.state} - {school.isd}</option>
+                            )})}
+                        </select><br />
+                {/* <label>
                     School:
                         <select name="isd"
                         id="isd" 
@@ -136,7 +134,7 @@ class AddUserForm extends Component {
                         <option value="1">Farmington Senior High</option>
                     </select>
                 </label>
-                <br />
+                <br /> */}
                 <button type="button" className="submitBtn" onClick={this.submitBtn}>Submit</button>
                 </form>
             </div >

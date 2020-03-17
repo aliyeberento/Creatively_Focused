@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 class AddSchoolForm extends Component {
 
-    // ONLY VISIBLE TO ISD LEVEL ADMIN
+    // ONLY VISIBLE TO ISD LEVEL ADMIN AND ABOVE
 
     state = {
         schoolToAdd: {
