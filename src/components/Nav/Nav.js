@@ -38,11 +38,32 @@ class Nav extends Component {
               {/* <h2 className="nav-title">CREATIVELY FOCUSED</h2> */}
               <Link className="menu-item" to="/home" onClick={() => this.closeMenu()}>HOME</Link>
               <br />
-              <div >
+              {/* <div > */}
                 {/* Show this link if they are logged in or not,
             but call this link 'Home' if they are logged in,
             and call this link 'Login / Register' if they are not */}
                 {/* {this.props.store.user.id ? 'USER PROFILE' : 'LOGIN'} */}
+                {this.props.store.user.auth < 1 && (
+                  <>
+                    <Link className="menu-item" to="/adddistrict" onClick={() => this.closeMenu()}>
+                      ADD DISTRICT
+                    </Link>
+                    <br />
+                    </>
+                    )}
+                    {this.props.store.user.auth < 2 && (
+                  <>
+                    <Link className="menu-item" to="/addschool" onClick={() => this.closeMenu()}>
+                      ADD SCHOOL
+                    </Link>
+                    <br />
+                    </>
+                    )}
+                    {/* <Link className="menu-item" to="/adminform">
+                  ADD NEW USER
+                </Link>
+                <br /> */}
+                    {/* <LogOutButton className="menu-item" /> */}
                 {this.props.store.user.auth < 3 && (
                   <>
                     <Link className="menu-item" to="/adminhome" onClick={() => this.closeMenu()}>
@@ -73,7 +94,7 @@ class Nav extends Component {
                     <LogOutButton className="menu-item" closeMenu={this.closeMenu} onClick={() => this.closeMenu()}/>
                   </>
                 )}
-              </div>
+              {/* </div> */}
             </div>
             {/* <main id="page-wrap"> */}
           </main>
