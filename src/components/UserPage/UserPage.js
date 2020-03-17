@@ -8,6 +8,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 // import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
+import Checkbox from '@material-ui/core/Checkbox';
 
 // styling
 import { withStyles } from '@material-ui/core/styles';
@@ -51,19 +52,23 @@ class UserPage extends Component {
     events: [
      // this is the student's iep and evals from database
     ],
+    complete: false, // marked complete default false - changes to true in db
     
-  
   }
 
-  componentDidMount() {
-    this.props.dispatch({ type: 'GET_STUDENTEVENT' });
-  }
+  // componentDidMount() {
+  //   this.props.dispatch({ type: 'GET_STUDENTEVENT' });
+  // }
 
   onChange = (date) => {
     this.setState({ date });
     console.log('on change triggered')
   }
   
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+    console.log(this.state.complete)
+  };
 
   editUser = () => {
     console.log('editing THIS user:', this.props.user.username); 
@@ -91,8 +96,6 @@ class UserPage extends Component {
    return formatedStudentEvents;
   }
 
-  
-
   render() {
 
     let events = this.formatEventsForCalendar(this.props.student)
@@ -111,9 +114,8 @@ class UserPage extends Component {
           defaultView="month"
           events={events}
           style={{ height: "100vh" }}
-          
-         
         />
+        {/* CURRENT CALENDAR WEEKDAYS INACCURATE */}
         {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
         
         <Table className="table">
@@ -121,26 +123,37 @@ class UserPage extends Component {
             <TableRow>
               <TableCell>Next IEP</TableCell>
               <TableCell>Next Eval</TableCell>
+              <TableCell>First Name</TableCell>
+              <TableCell>Last Name</TableCell>
+              <TableCell>Mark Completed</TableCell>
               <TableCell>Notes</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
           {this.props.student.map(event => (
             <TableRow key={event.id}>
+              
               <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
               <TableCell><Moment format="MM-D-YYYY">{event.next_eval}</Moment></TableCell>
+              <TableCell>{event.firstname}</TableCell>
+              <TableCell>{event.lastname}</TableCell>
+              <TableCell>
+                <div>
+                <Checkbox
+                  checked={this.state.checkedB}
+                  onChange={this.handleChange('complete')}
+                  value="complete"
+                  color="primary"
+                />
+              </div>
+              </TableCell>
               <TableCell>{event.notes}</TableCell>
             </TableRow>
           )
           )}
           </TableBody>
         </Table>
-        
-
     
-       
-
-        
         {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
 
         {/* <TaskList /> */}
@@ -156,7 +169,7 @@ class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  student: state.students
+  student: state.studentEvent
 });
 
 // this allows us to use <App /> in index.js

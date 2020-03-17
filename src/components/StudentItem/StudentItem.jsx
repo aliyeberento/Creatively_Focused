@@ -2,6 +2,40 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+//styling
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+
+const styles = {
+    card: {
+        minWidth: 400,
+        paddingBottom: '20%'
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+    paper: {
+        height: 100,
+        
+        width: 140,
+        
+    }
+    
+    
+};
+
 class StudentItem extends Component {
 
     goDetail = (event, student) => {
@@ -11,10 +45,19 @@ class StudentItem extends Component {
     render() {
         return (
             <div>
+                <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                    <Paper>
+                
+                    <CardContent>
                 <li>
                     {this.props.student.lastname}, {this.props.student.firstname}
-                    <button key={this.props.student.id} onClick={(event) => this.goDetail(event, this.props.student)}>view student details</button>
+                    <Button key={this.props.student.id} onClick={(event) => this.goDetail(event, this.props.student)}>view details</Button>
                 </li>
+                    </CardContent>
+                    </Paper>
+                    </Grid>
+                </Grid>
             </div>
         )
     }
@@ -26,4 +69,4 @@ const putReduxStateOnProps = (reduxState) => {
     }
 }
 
-export default withRouter(connect(putReduxStateOnProps)(StudentItem));
+export default withStyles(styles)(withRouter(connect(putReduxStateOnProps)(StudentItem)));

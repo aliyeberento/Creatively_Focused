@@ -10,12 +10,13 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     // AUTH 2 BY SCHOOL == REQ.USER.SCHOOL_ID
     
     console.log('req.user:', req.user);
-    const queryText = `SELECT "user"."id" AS "user_id",
-	"student"."next_iep", "student"."next_eval"
-	FROM "user"
-	JOIN "student" on "student"."teacher" = "user"."id"
-	WHERE "user"."id" = $1`
-    pool.query(queryText, [req.user.id])
+    const queryText = `SELECT "event".task, "student_event".due_date, 
+    "student".firstname, "student".lastname, "student_event".completed 
+    FROM "student"
+    JOIN "student_event" on "student_event".student_id = "student".id
+    JOIN "event" on "student_event".event_id = "event"."id"
+    `
+    pool.query(queryText)
         .then(results => {
             res.send(results.rows);
         }).catch(error => {

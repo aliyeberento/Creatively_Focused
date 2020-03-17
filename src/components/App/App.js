@@ -31,6 +31,8 @@ import AddUserForm from '../AddUserForm/AddUserForm'
 import UserList from '../UserList/UserList';
 import UserDetailPage from '../UserDetailPage/UserDetailPage';
 import EditUserForm from '../EditUserForm/EditUserForm';
+import AddDistrictForm from '../AddDistrictForm/AddDistrictForm';
+import AddSchoolForm from '../AddSchoolForm/AddSchoolForm';
 import './App.css';
 import TaskDetailPage from '../TaskDetailPage/TaskDetailPage';
 import twilio from '../twilio/twilio'
@@ -39,6 +41,11 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
+    this.props.dispatch({ type: 'GET_TEACHERS' });
+    this.props.dispatch({ type: 'GET_STUDENTS' });
+    this.props.dispatch({ type: 'GET_STUDENTEVENT' });
+    this.props.dispatch({ type: 'GET_SCHOOLS' });
+    this.props.dispatch({ type: 'GET_DISTRICTS' });
   }
 
   render() {
@@ -94,6 +101,16 @@ class App extends Component {
               exact
               path="/edituser/:id"
               component={EditUserForm}
+            />
+            <AdminRoute
+              exact
+              path="/adddistrict"
+              component={AddDistrictForm}
+            />
+            <AdminRoute
+              exact
+              path="/addschool"
+              component={AddSchoolForm}
             />
             <ProtectedRoute
               exact
