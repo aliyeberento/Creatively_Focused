@@ -169,7 +169,7 @@ class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  student: state.students
+  student: state.studentEvent
 });
 
 // this allows us to use <App /> in index.js
