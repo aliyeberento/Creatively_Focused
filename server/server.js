@@ -15,7 +15,7 @@ const addUserRouter = require('./routes/addUser.router');
 const twilioRouter = require('./routes/twilio.router')
 const studentEventRouter = require('./routes/studentEvent.router');
 const emailRouter = require('./routes/email.router');
-// const isdRouter = require('./routes/isd.router');
+const isdRouter = require('./routes/isd.router');
 const schoolRouter = require('./routes/school.router');
 
 // Body parser middleware
@@ -37,7 +37,7 @@ app.use('/api/addStudent', addStudentRouter);
 app.use('/api/addUser', addUserRouter);
 app.use('/api/studentEvent', studentEventRouter)
 app.use('/api/email', emailRouter);
-// app.use('/api/isd', isdRouter);
+app.use('/api/isd', isdRouter);
 app.use('/api/school', schoolRouter);
 app.use('/api/twilio', twilioRouter)
 
