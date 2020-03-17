@@ -8,8 +8,8 @@ class AddSchoolForm extends Component {
 
     state = {
         schoolToAdd: {
-            city: '',
-            district: ''
+            name: '',
+            isd_id: 0
         }
     }
 
@@ -17,7 +17,7 @@ class AddSchoolForm extends Component {
         console.log('making a new school', this.state.schoolToAdd);
         this.setState({
             schoolToAdd: {
-                ...this.state.studentToAdd,
+                ...this.state.schoolToAdd,
                 [propertyValue]: event.target.value
             }
         })
@@ -34,6 +34,7 @@ class AddSchoolForm extends Component {
             type: 'ADD_SCHOOL',
             payload: this.state.schoolToAdd
         })
+        this.props.history.push('/home')
     }
 
     render () {
@@ -41,15 +42,15 @@ class AddSchoolForm extends Component {
             <div>
                 <form>
                 <label>School Name: 
-                    <input onChange={(event) => this.makeDistrict(event, 'city')}></input></label>
-                        <select name="district" id="district" defaultValue="district" placeholder="district" onChange={(event) => this.makeNewPet(event, 'district')}>School District: 
+                    <input onChange={(event) => this.makeSchool(event, 'name')}></input></label><br />
+                        <select name="isd_id" id="isd_id" defaultValue="isd_id" placeholder="isd_id" onChange={(event) => this.makeSchool(event, 'isd_id')}>School District: 
                             <option>Choose one...</option>
-                            {this.props.state.districtReducer.map(district => {
+                            {this.props.state.districtReducer.map(isd => {
                             return (
-                                <option value={district.id} key={district.id}>{district.city} - {district.isd}</option>
+                                <option value={isd.id} key={isd.id}>{isd.city}, {isd.state} - {isd.isd}</option>
                             )})}
-                        </select>
-                <button onClick={this.submitSchool}>Add School</button>
+                        </select><br />
+                <button type="button" onClick={this.submitSchool}>Add School</button>
                 </form>
             </div>
         )
