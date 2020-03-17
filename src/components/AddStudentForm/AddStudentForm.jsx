@@ -30,16 +30,11 @@ class AddStudentForm extends Component {
                 [propertyName]: event.target.value
             }
         })
-        // this function should spread local state,
-        // and build a new teacher object
     }
 
     submitStudent = (event) => {
         event.preventDefault()
         console.log('submitting:', this.state.studentToAdd)
-        // this should dispatch an action
-        // and then use withRouter to push history to teacher list
-        // or this new user's detail
         this.props.dispatch({
             type: 'SUBMIT_STUDENT',
             payload: this.state.studentToAdd
@@ -58,7 +53,6 @@ class AddStudentForm extends Component {
                         <label>Student ID: <input type="number" placeholder="id number" onChange={(event) => this.handleAddStudent('student_id', event)}></input></label>
                         <label>Birthdate: <input type="date" placeholder="birthdate" onChange={(event) => this.handleAddStudent('birthdate', event)}></input></label>
                         <label>Grade: <input type="number" placeholder="grade" onChange={(event) => this.handleAddStudent('grade', event)}></input></label>
-                        {/* <label>Disability Category: <input type="number" placeholder="disability category" onChange={(event) => this.handleAddStudent('disabilityCategory', event)}></input></label> */}
                         <label>Disability Category: 
                             <select name="disability_cat" onChange={(event) => this.handleAddStudent('disability_cat', event)}>
                                 <option value="0">Autism</option>
@@ -77,7 +71,6 @@ class AddStudentForm extends Component {
                                 <option value="13">Visual Impairment Inclucing Blindness</option>
                             </select>
                         </label>
-                        {/* <label>Federal Setting: <input type="number" placeholder="federal setting" onChange={(event) => this.handleAddStudent('federalSetting', event)}></input></label> */}
                         <label>Federal Setting: 
                             <select name="fed_setting" onChange={(event) => this.handleAddStudent('fed_setting', event)}>
                                 <option value="1">I</option>

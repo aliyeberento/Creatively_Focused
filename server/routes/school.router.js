@@ -15,9 +15,17 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
     if (req.user.auth == 0) {
         console.log(req.user);
-        const queryText = `SELECT * 
+        // const queryText = `SELECT * 
+        // FROM "school"
+        // ORDER BY "name" ASC`
+        const queryText = `SELECT 
+        "school".name, 
+        "isd".isd, 
+        "isd".city, 
+        "isd".state
         FROM "school"
-        ORDER BY "name" ASC`
+        JOIN "isd" on "school".isd_id = "isd".id
+        ORDER BY "city" ASC`
         pool.query(queryText)
         .then(results => {
             res.send(results.rows);
@@ -28,8 +36,14 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     } else if (req.user.auth == 1) {
         console.log('superintendent isd:', req.user.isd);
         const isd = [req.user.isd]
-        const queryText = `SELECT * 
-        FROM "school" WHERE "isd_id" = $1
+        const queryText = `SELECT 
+        "school".name, 
+        "isd".isd, 
+        "isd".city, 
+        "isd".state
+        FROM "school"
+        JOIN "isd" on "school".isd_id = "isd".id 
+        WHERE "isd_id" = $1
         ORDER BY "name" ASC`
         pool.query(queryText, isd)
         .then(results => {
