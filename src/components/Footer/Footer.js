@@ -13,8 +13,8 @@ const Footer = () => (
       <img src={sparkle} alt="sparkle" />
     </div>
     <div id="box2">
-      <div><strong>JOIN OUR <a href="https://creativelyfocused.us17.list-manage.com/subscribe?u=c25de0603d9b92d4309d5b8a4&id=93bd1cfd94" ><strong>NEWSLETTER</strong></a></strong></div>
-      <div><strong>FOLLOW US <a href="https://www.instagram.com/creatively.focused/" ><strong>@CREATIVELY.FOCUSED</strong></a></strong></div>
+      <div><strong>JOIN OUR <a href="https://creativelyfocused.us17.list-manage.com/subscribe?u=c25de0603d9b92d4309d5b8a4&id=93bd1cfd94" id="social"><strong>NEWSLETTER</strong></a></strong></div>
+      <div><strong>FOLLOW US <a href="https://www.instagram.com/creatively.focused/" id="social"><strong>@CREATIVELY.FOCUSED</strong></a></strong></div>
      &copy; Creatively Focused
     </div>
     <div id="box3">

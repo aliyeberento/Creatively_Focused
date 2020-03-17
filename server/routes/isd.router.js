@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-// GET ALL THE SCHOOLS
+// GET ALL THE DISTRICTS
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     
@@ -16,31 +16,18 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.auth == 0) {
         console.log(req.user);
         const queryText = `SELECT * 
-        FROM "school"
-        ORDER BY "name" ASC`
+        FROM "isd"
+        ORDER BY "city" ASC`
         pool.query(queryText)
         .then(results => {
             res.send(results.rows);
         }).catch(error => {
-            console.log('Error GET route /api/school in server', error);
+            console.log('Error GET route /api/isd in server', error);
             res.sendStatus(500);
         });
-    } else if (req.user.auth == 1) {
-        console.log('superintendent isd:', req.user.isd);
-        const isd = [req.user.isd]
-        const queryText = `SELECT * 
-        FROM "school" WHERE "isd_id" = $1
-        ORDER BY "name" ASC`
-        pool.query(queryText, isd)
-        .then(results => {
-            res.send(results.rows);
-        }).catch(error => {
-            console.log('Error GET route /api/school in server', error);
-            res.sendStatus(500);
-        });
-    }
+    } 
 });
 
-// ADD A NEW SCHOOL
+// ADD A NEW DISTRICT
 
 module.exports = router;
