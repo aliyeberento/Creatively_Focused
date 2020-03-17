@@ -18,11 +18,11 @@ const transporter = nodemailer.createTransport({
 //email teachers their daily deadline reminders
 //Cron will run every morning at 8:00AM
 cron.schedule('* 8 * * *', async () => {  
-    const variable = await getNotifications();
-    for(i=0; i<variable.length; i++){
-        let email = variable[i].username;
-        let task = variable[i].task;
-        let dueDate = variable[i].due_date;
+    const userResults = await getNotifications();
+    for(i=0; i<userResults.length; i++){
+        let email = userResults[i].username;
+        let task = userResults[i].task;
+        let dueDate = userResults[i].due_date;
     const mailOptions = {
         from: process.env.EMAIL,
         to: email,
