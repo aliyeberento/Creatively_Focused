@@ -3,11 +3,16 @@ Group Project for Prime Digital Academy
 
 Client: Creatively Focused - Elizabeth Orme, Matthew Lasure, Becky Vavrichek
 
-Group: Aliye Berento, Luke Rhodie, Paige Wielgos
+Group: Aliye Berento, Luke Rohde, Paige Wielgos
 
 Duration: 2 week sprint
 
 This is a web application that helps teachers keep track of mandatory meetings for all of their students. The app will allow teachers to visually see their workload through a calendar and regulate scheduling conflicts. There will be set reminders for upcoming dates as well as alerts if a calendar month is too congested. This will allow teachers to be mindful of the amount of work they are doing and plan accordingly.
+
+
+## Preview
+    -insert screenshots/gifs here
+
 
 ## Setup Instructions
 
@@ -58,6 +63,7 @@ CREATE TABLE "user" (
     - Add new users and other admins
     - View all events for their assigned teachers, school, etc
 
+
 ## Built With
 
 * React
@@ -71,11 +77,15 @@ CREATE TABLE "user" (
 * Nodemailer
 * Twilio
 
+
 ## Challenges
 
 * Learning new technologies
 
+
 ## Future Plans
 
 * Admin usability
+
+
 
