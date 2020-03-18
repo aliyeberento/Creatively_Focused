@@ -41,7 +41,7 @@ input {
   cursor: pointer;
 }
 
-.log-in:hover, .log-out:hover, .register:hover {
+.log-in:hover, .register:hover {
   color: black;
   background-color: #C3EFCB;
 }
@@ -70,6 +70,7 @@ ul {
 #CFlogo {
     padding-top: 33px;
     padding-left: 33px;
+    position: fixed;
 }
 
 @font-face {

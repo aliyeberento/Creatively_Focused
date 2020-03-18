@@ -52,9 +52,10 @@ class StudentDetailPage extends Component {
                 <li>Next EVAL: {moment(student.next_eval).format('MM-DD-YYYY')}</li>
                 <li>Disability Category: {student.disability_cat}</li>
                 <li>Federal Setting: {student.fed_setting}</li>
-                <li>Teacher: {student.teacher}</li>
-                <li>School: {student.school_id}</li>
-                <li>ISD: {student.isd_id}</li>
+
+                <li>Teacher: {student.teacherlastname}, {student.teacherfirstname}</li>
+                <li>School: {student.school}</li>
+                <li>ISD: {student.isd}</li>
                 <li>Notes: {student.notes}</li><br />
                 <button onClick={this.editStudent}>edit student</button><br />
                

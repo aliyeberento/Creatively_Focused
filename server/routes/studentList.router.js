@@ -8,9 +8,34 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
     if (req.user.auth == 0) {
-        const queryText =
-        `SELECT * FROM "student"
-        ORDER BY "lastname" ASC`
+        const queryText = `
+        SELECT 
+            "student".id,
+            "student".firstname, 
+            "student".lastname, 
+            "student".birthdate, 
+            "student".grade, 
+            "student".student_id, 
+            "student".disability_cat, 
+            "student".fed_setting, 
+            "student".initial_iep, 
+            "student".prev_iep, 
+            "student".next_iep, 
+            "student".prev_eval, 
+            "student".next_eval, 
+            "student".notes,
+            "user".firstname AS "teacherfirstname", 
+            "user".lastname AS "teacherlastname", 
+            "school".name AS "school", 
+            "isd".isd, 
+            "isd".city, 
+            "isd".state
+            FROM "student"
+            JOIN "user" on "user".id = "student".teacher
+            JOIN "school" on "school".id = "student".school_id
+            JOIN "isd" on "isd".id = "student".isd_id
+            ORDER BY "lastname" ASC
+            `
         pool.query(queryText)
         .then(results => {
             res.send(results.rows);
@@ -19,11 +44,34 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
     } else if (req.user.auth == 1) {
-        const queryText =`SELECT "id", "firstname", "lastname", "birthdate", "grade", "student_id",
-        "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval",
-        "teacher", "school_id", "isd_id", "notes"
-        FROM "student" WHERE "isd_id" = $1
-        ORDER BY "lastname" ASC`
+        const queryText =`
+        SELECT
+            "student".id,
+            "student".firstname, 
+            "student".lastname, 
+            "student".birthdate, 
+            "student".grade, 
+            "student".student_id, 
+            "student".disability_cat, 
+            "student".fed_setting, 
+            "student".initial_iep, 
+            "student".prev_iep, 
+            "student".next_iep, 
+            "student".prev_eval, 
+            "student".next_eval, 
+            "student".notes,
+            "user".firstname AS "teacherfirstname", 
+            "user".lastname AS "teacherlastname", 
+            "school".name AS "school", 
+            "isd".isd, 
+            "isd".city, 
+            "isd".state
+            FROM "student"
+            JOIN "user" on "user".id = "student".teacher
+            JOIN "school" on "school".id = "student".school_id
+            JOIN "isd" on "isd".id = "student".isd_id
+            WHERE "isd_id" = $1
+            ORDER BY "lastname" ASC`
         pool.query(queryText, [req.user.isd])
         .then(results => {
             res.send(results.rows);
@@ -32,11 +80,34 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
     } else if (req.user.auth == 2) {
-        const queryText =`SELECT "id", "firstname", "lastname", "birthdate", "grade", "student_id",
-        "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval",
-        "teacher", "school_id", "isd_id", "notes"
-        FROM "student" WHERE "school_id" = $1
-        ORDER BY "lastname" ASC`
+        const queryText =`
+        SELECT 
+            "student".id,    
+            "student".firstname, 
+            "student".lastname, 
+            "student".birthdate, 
+            "student".grade, 
+            "student".student_id, 
+            "student".disability_cat, 
+            "student".fed_setting, 
+            "student".initial_iep, 
+            "student".prev_iep, 
+            "student".next_iep, 
+            "student".prev_eval, 
+            "student".next_eval, 
+            "student".notes,
+            "user".firstname AS "teacherfirstname", 
+            "user".lastname AS "teacherlastname", 
+            "school".name AS "school", 
+            "isd".isd, 
+            "isd".city, 
+            "isd".state
+            FROM "student"
+            JOIN "user" on "user".id = "student".teacher
+            JOIN "school" on "school".id = "student".school_id
+            JOIN "isd" on "isd".id = "student".isd_id
+            WHERE "school_id" = $1
+            ORDER BY "lastname" ASC`
         pool.query(queryText, [req.user.school])
         .then(results => {
             res.send(results.rows);
@@ -45,11 +116,34 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
     } else {
-    const queryText =`SELECT "id", "firstname", "lastname", "birthdate", "grade", "student_id",
-    "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval",
-    "teacher", "school_id", "isd_id", "notes"
-    FROM "student" WHERE "teacher" = $1
-    ORDER BY "lastname" DESC`
+    const queryText =`
+    SELECT 
+        "student".id,
+        "student".firstname, 
+        "student".lastname, 
+        "student".birthdate, 
+        "student".grade, 
+        "student".student_id, 
+        "student".disability_cat, 
+        "student".fed_setting, 
+        "student".initial_iep, 
+        "student".prev_iep, 
+        "student".next_iep, 
+        "student".prev_eval, 
+        "student".next_eval, 
+        "student".notes,
+        "user".firstname AS "teacherfirstname", 
+        "user".lastname AS "teacherlastname", 
+        "school".name AS "school", 
+        "isd".isd, 
+        "isd".city, 
+        "isd".state
+        FROM "student"
+        JOIN "user" on "user".id = "student".teacher
+        JOIN "school" on "school".id = "student".school_id
+        JOIN "isd" on "isd".id = "student".isd_id
+        WHERE "teacher" = $1
+        ORDER BY "lastname" DESC`
     pool.query(queryText, [req.user.id])
         .then(results => {
             res.send(results.rows);
@@ -62,7 +156,33 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // get a specific student item
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    let queryText = `SELECT * FROM "student" WHERE "id" = ${req.params.id}`
+    let queryText = `
+    SELECT 
+        "student".id,
+        "student".firstname, 
+        "student".lastname, 
+        "student".birthdate, 
+        "student".grade, 
+        "student".student_id, 
+        "student".disability_cat, 
+        "student".fed_setting, 
+        "student".initial_iep, 
+        "student".prev_iep, 
+        "student".next_iep, 
+        "student".prev_eval, 
+        "student".next_eval, 
+        "student".notes,
+        "user".firstname AS "teacherfirstname", 
+        "user".lastname AS "teacherlastname", 
+        "school".name AS "school", 
+        "isd".isd, 
+        "isd".city, 
+        "isd".state
+        FROM "student"
+        JOIN "user" on "user".id = "student".teacher
+        JOIN "school" on "school".id = "student".school_id
+        JOIN "isd" on "isd".id = "student".isd_id
+        WHERE "student".id = ${req.params.id}`
     pool.query(queryText)
         .then(response => {
             res.send(response.rows)

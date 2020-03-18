@@ -48,6 +48,8 @@ class UserDetailPage extends Component {
                         <li>E-Mail/Username: {user.username}</li>
                         {/* THIS SHOULD SHOW THE NAME OF THE SCHOOL */}
                         <li>School: {user.school}</li>
+                        <li>City: {user.city}</li>
+                        <li>State: {user.state}</li>
                         {/* THIS SHOULD SHOW THE NAME OF THE DISTRICT */}
                         <li>ISD: {user.isd}</li>
                         <li>Phone Number: {user.phone}</li>

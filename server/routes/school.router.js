@@ -15,9 +15,17 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
     if (req.user.auth == 0) {
         console.log(req.user);
-        const queryText = `SELECT * 
+        // const queryText = `SELECT * 
+        // FROM "school"
+        // ORDER BY "name" ASC`
+        const queryText = `SELECT 
+        "school".name, 
+        "isd".isd, 
+        "isd".city, 
+        "isd".state
         FROM "school"
-        ORDER BY "name" ASC`
+        JOIN "isd" on "school".isd_id = "isd".id
+        ORDER BY "city" ASC`
         pool.query(queryText)
         .then(results => {
             res.send(results.rows);
@@ -28,8 +36,14 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     } else if (req.user.auth == 1) {
         console.log('superintendent isd:', req.user.isd);
         const isd = [req.user.isd]
-        const queryText = `SELECT * 
-        FROM "school" WHERE "isd_id" = $1
+        const queryText = `SELECT 
+        "school".name, 
+        "isd".isd, 
+        "isd".city, 
+        "isd".state
+        FROM "school"
+        JOIN "isd" on "school".isd_id = "isd".id 
+        WHERE "isd_id" = $1
         ORDER BY "name" ASC`
         pool.query(queryText, isd)
         .then(results => {
@@ -38,22 +52,27 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             console.log('Error GET route /api/school in server', error);
             res.sendStatus(500);
         });
-    } else if (req.user.auth == 2) {
-        console.log('principal school:', req.user.school);        
-        const school = [req.user.school]
-        const queryText = `SELECT * 
-        FROM "user" WHERE (auth <= 3) AND (school = $1)
-        ORDER BY "lastname" ASC`
-        pool.query(queryText, school)
-        .then(results => {
-            res.send(results.rows);
-        }).catch(error => {
-            console.log('Error GET route /api/teacherList in server', error);
-            res.sendStatus(500);
-        });
     }
 });
 
 // ADD A NEW SCHOOL
+
+router.post('/', rejectUnauthenticated, (req, res) => {
+    // req.body = data sent from addUser saga
+    let newSchool = req.body;
+    console.log(req.body);
+    // inserting the data into the user table
+    let queryText = `INSERT INTO "school" 
+    ("name", "isd_id") 
+    VALUES ($1, $2);`;
+    pool.query(queryText, [newSchool.name, newSchool.isd_id])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('error in add school post req in server', error);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

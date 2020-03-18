@@ -3,38 +3,20 @@ Group Project for Prime Digital Academy
 
 Client: Creatively Focused - Elizabeth Orme, Matthew Lasure, Becky Vavrichek
 
-Group: Aliye Berento, Luke Rohde, Paige Wielgos
+Group: Aliye Berento, Luke Rohde, Ken Slack, and Paige Wielgos
 
 Duration: 2 week sprint
 
 This is a web application that helps teachers keep track of mandatory meetings for all of their students. The app will allow teachers to visually see their workload through a calendar and regulate scheduling conflicts. There will be set reminders for upcoming dates as well as alerts if a calendar month is too congested. This will allow teachers to be mindful of the amount of work they are doing and plan accordingly.
 
-
 ## Preview
     -insert screenshots/gifs here
 
+## Database Setup Instructions
 
-## Setup Instructions
+Create a new database called `creatively-focused`. Copy and paste the PostmanPrimeGroupRoutes.json file's text into Postman via IMPORT, 'paste raw text'. Run the three routes provided there in order to create an administrator account.
 
-Create a new database called `creatively-focused` and create a `user` table:
-
-```SQL
-CREATE TABLE "user" (
-	"id" SERIAL,
-	"username" VARCHAR(255) NOT NULL UNIQUE,
-	"password" VARCHAR(255) NOT NULL,
-	"firstname" VARCHAR(100),
-	"lastname" VARCHAR(100),
-	"phone" VARCHAR(15),
-	"isd" INT,
-	"school" INT,
-	"auth" INT,
-	"prefcomm" BOOLEAN,
-	CONSTRAINT "user_pk" PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
-);
-```
+Copy all of the database.sql code into Postico and run all of the CREATE TABLE and ALTER TABLE commands in order to produce the database.
 
 ## Installation
 
@@ -50,17 +32,16 @@ CREATE TABLE "user" (
 * Run `npm run client`
 * Navigate to `localhost:3000`
 
-
 ## Usage
 
 * User - Teachers
     - Add students to their class
-    - Edit student information
+    - Edit student's personal information and relevant dates
     - View all upcoming events
     - Add events and mettings for students
 
 * Admin - Principals, District Managers, Other Staff
-    - Add new users and other admins
+    - Add new application users (classroom teachers, school principals, district superintendents, as well as other case workers), districts, schools and other admins
     - View all events for their assigned teachers, school, etc
 
 
@@ -76,16 +57,15 @@ CREATE TABLE "user" (
 * Material-UI
 * Nodemailer
 * Twilio
+* React Big Calendar
 
 
 ## Challenges
 
-* Learning new technologies
-
+* Learning new technologies, of which there were many: NodeMailer, Twilio, React Big Calendar
+* The database presented many challenges due to its sheer scope and relational complexity
 
 ## Future Plans/Improvements
 
 * Admin usability
-
-
-
+* The database has been over-built to accomodate usage beyond local and state borders
