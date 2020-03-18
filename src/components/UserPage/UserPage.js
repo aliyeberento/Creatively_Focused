@@ -68,8 +68,29 @@ class UserPage extends Component {
 
   };
 
-  editUser = () => {
-    console.log('editing THIS user:', this.props.user.username);
+  // editUser = () => {
+  //   console.log('editing THIS user:', this.props.user.username);
+  // }
+
+  updateStudentEvent = (event, propertyValue) => {
+    this.props.dispatch({
+      type: 'UPDATE_STUDENT',
+      payload: {
+        key: [propertyValue],
+        value: event.target.value
+      }
+    })
+  }
+
+  submitEdit = () => {
+    // dispatches edit request to redux/database
+    console.log('clicking to submit edit');
+    this.props.dispatch({
+      type: 'EDIT_STUDENT',
+      payload: this.props.reduxState.studentDetail,
+      url: `/api/studentList/${this.props.reduxState.studentDetail.id}`
+    })
+    this.goDetail();
   }
 
   formatEventsForCalendar = (studentEvents) => {
@@ -102,7 +123,7 @@ class UserPage extends Component {
         return {
           start: new Date(studentEvent.next_iep),
           end: new Date(studentEvent.next_iep),
-          title: `!!${studentEvent.firstname}'s IEP`
+          title: `⚠ ${studentEvent.firstname}'s IEP`
         }
         // the standard object to return
       } else {
