@@ -112,7 +112,7 @@ class AddUserForm extends Component {
                             <option>Choose one...</option>
                                 {this.props.store.districtReducer.map(district => {
                                     return (
-                                        <option key={district.id} value={district.id}>{district.isd}</option>
+                                        <option key={district.id} value={district.id}>{district.state} - {district.isd}</option>
                                     )
                                 })}
                             </select>
@@ -128,7 +128,7 @@ class AddUserForm extends Component {
                                 <option>Choose one...</option>
                                 {this.props.store.schoolReducer.map(school => {
                                     return (
-                                        <option key={school.id} value={school.isd_id} >
+                                        <option key={school.id} value={school.id}>
                                             {school.name}</option>
                                     )
                                 })}

@@ -72,6 +72,16 @@ class EditUserForm extends Component {
         })
     }
 
+    updateUserInt = (event, propertyValue) => {
+        this.props.dispatch({
+            type: 'UPDATE_USER',
+            payload: {
+                key: [propertyValue],
+                value: Number(event.target.value)
+            }
+        });
+    }
+
     render() {
         let user = this.props.reduxState.teacherDetail;
         console.log(user);
@@ -118,11 +128,11 @@ class EditUserForm extends Component {
                             id="isd" 
                             defaultValue={user.isd} 
                             placeholder="isd" 
-                            onChange={(event) => this.updateUser(event, 'isd')}>District:
+                            onChange={(event) => this.updateUserInt(event, 'isd')}>District:
                             <option>Choose one...</option>
                                 {this.props.reduxState.districtReducer.map(isd => {
                                     return (
-                                        <option value={Number(isd.id)} key={isd.id}>{isd.state} - {isd.isd}</option>
+                                        <option value={isd.id} key={isd.id}>{isd.state} - {isd.isd}</option>
                                     )
                                 })}
                             </select></label>
@@ -137,7 +147,7 @@ class EditUserForm extends Component {
                     </label> */}
                     <br />
                     <label>School:
-                            <select name="school" id="school" defaultValue="school" placeholder="school" onChange={(event) => this.updateUser(event, 'school')}>
+                            <select name="school" id="school" defaultValue="school" placeholder="school" onChange={(event) => this.updateUserInt(event, 'school')}>
                                 <option>Choose one...</option>
                                 {this.props.reduxState.schoolReducer.map(school => {
                                     return (
@@ -160,7 +170,7 @@ class EditUserForm extends Component {
                     </label> */}
                     <label>
                         Role/Auth:
-                        <select name="role" onChange={(event) => this.updateUser(event, 'auth')}>
+                        <select name="role" onChange={(event) => this.updateUserInt(event, 'auth')}>
                             <option >Choose One...</option>
                             <option value="3">Teacher</option>
                             <option value="2">School Principal</option>
