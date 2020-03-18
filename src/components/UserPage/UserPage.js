@@ -49,9 +49,6 @@ class UserPage extends Component {
     user: {
       // this is where the user's info is held locally
     },
-    events: [
-     // this is the student's iep and evals from database
-    ],
     complete: false, // marked complete default false - changes to true in db
     
   }
@@ -72,40 +69,49 @@ class UserPage extends Component {
 
   editUser = () => {
     console.log('editing THIS user:', this.props.user.username); 
-
   }
 
   formatEventsForCalendar = (studentEvents) => {
-    console.log(studentEvents);
+    let counter = 0;
     let formatedStudentEvents = studentEvents.map(studentEvent => {
-      // if (new Date(studentEvent.date) == new Date(2020-03-01)) {
-      //   return {
-      //     start: new Date(studentEvent.date),
-      //     end: new Date(studentEvent.date),
-      //     title: studentEvent.task
-      //   }
-      // }
+    console.log(Number(counter));
+    
+    counter ++;
+    if (counter > 3) {
       return {
-        start: new Date(studentEvent.next_iep,), 
+        start: new Date(studentEvent.next_iep),
+        end: new Date(studentEvent.next_iep),
+        title: '!'
+      }
+    }else {
+      return {
+        start: new Date(studentEvent.next_iep),
         end: new Date(studentEvent.next_iep),
         title: `${studentEvent.firstname}'s IEP`
       }
-
+    }
+        
     });
     
    return formatedStudentEvents;
+    
   }
+
 
   render() {
 
-    let events = this.formatEventsForCalendar(this.props.student)
-      // format dates for cal
-      // make events here?
+    let events = this.formatEventsForCalendar(this.props.student);
+    events.length = 4;
+
+    console.log(events);
+    console.log(Calendar);
+  
 
     return (
       <div className="welcome">
         <h1 >
           Welcome, {this.props.user.username}!
+          
         </h1>
       
         <Calendar
@@ -115,8 +121,6 @@ class UserPage extends Component {
           events={events}
           style={{ height: "100vh" }}
         />
-        {/* CURRENT CALENDAR WEEKDAYS INACCURATE */}
-        {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
         
         <Table className="table">
           <TableHead>
@@ -131,6 +135,7 @@ class UserPage extends Component {
           </TableHead>
           <TableBody>
           {this.props.student.map(event => (
+            
             <TableRow key={event.id}>
               
               <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
@@ -169,7 +174,7 @@ class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  student: state.studentEvent
+  student: state.students
 });
 
 // this allows us to use <App /> in index.js
