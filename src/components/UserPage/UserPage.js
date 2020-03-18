@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import './user.css';
 import 'react-calendar/dist/Calendar.css';
 import Moment from 'react-moment';
-import {Calendar, momentLocalizer,} from 'react-big-calendar';
+import { Calendar, momentLocalizer, } from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+
 // import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -49,11 +50,8 @@ class UserPage extends Component {
     user: {
       // this is where the user's info is held locally
     },
-    events: [
-     // this is the student's iep and evals from database
-    ],
     complete: false, // marked complete default false - changes to true in db
-    
+
   }
 
   // componentDidMount() {
@@ -64,50 +62,74 @@ class UserPage extends Component {
     this.setState({ date });
     console.log('on change triggered')
   }
-  
+
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
-    console.log(this.state.complete)
+
   };
 
   editUser = () => {
-    console.log('editing THIS user:', this.props.user.username); 
-
+    console.log('editing THIS user:', this.props.user.username);
   }
 
   formatEventsForCalendar = (studentEvents) => {
-    console.log(studentEvents);
+    // object that will have the amount of studentEvents within that month
+    // jan = 0, dec = 11
+    let year = {
+      0: 0,
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
+      8: 0,
+      9: 0,
+      10: 0,
+      11: 0
+    };
+    
+    studentEvents.map(studentEvent => {
+      // takes the index of year and increment studentEvent in that month
+      year[moment(studentEvent.next_iep).month()]++
+    });
+    // loops through studentEvents and turns it into an object for calendar
     let formatedStudentEvents = studentEvents.map(studentEvent => {
-      // if (new Date(studentEvent.date) == new Date(2020-03-01)) {
-      //   return {
-      //     start: new Date(studentEvent.date),
-      //     end: new Date(studentEvent.date),
-      //     title: studentEvent.task
-      //   }
-      // }
-      return {
-        start: new Date(studentEvent.next_iep,), 
-        end: new Date(studentEvent.next_iep),
-        title: `${studentEvent.firstname}'s IEP`
+
+      // if the year's index is more than 3 change all events in that month
+      if (year[moment(studentEvent.next_iep).month()] > 3) {
+        return {
+          start: new Date(studentEvent.next_iep),
+          end: new Date(studentEvent.next_iep),
+          title: `!!${studentEvent.firstname}'s IEP`
+        }
+        // the standard object to return
+      } else {
+        return {
+          start: new Date(studentEvent.next_iep),
+          end: new Date(studentEvent.next_iep),
+          title: `${studentEvent.firstname}'s IEP`
+        }
       }
 
     });
-    
-   return formatedStudentEvents;
+    //returns one of the objects
+    return formatedStudentEvents;
   }
 
+
   render() {
-
-    let events = this.formatEventsForCalendar(this.props.student)
-      // format dates for cal
-      // make events here?
-
+    
+    let events = this.formatEventsForCalendar(this.props.student);
+  
     return (
       <div className="welcome">
         <h1 >
           Welcome, {this.props.user.username}!
+  
         </h1>
-      
+
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
@@ -115,9 +137,7 @@ class UserPage extends Component {
           events={events}
           style={{ height: "100vh" }}
         />
-        {/* CURRENT CALENDAR WEEKDAYS INACCURATE */}
-        {/* THIS MIGHT BE REPLACEABLE WITH THE TASKLIST COMPONENT */}
-        
+
         <Table className="table">
           <TableHead>
             <TableRow>
@@ -130,30 +150,35 @@ class UserPage extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-          {this.props.student.map(event => (
-            <TableRow key={event.id}>
-              
-              <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
-              <TableCell><Moment format="MM-D-YYYY">{event.next_eval}</Moment></TableCell>
-              <TableCell>{event.firstname}</TableCell>
-              <TableCell>{event.lastname}</TableCell>
-              <TableCell>
-                <div>
-                <Checkbox
-                  checked={this.state.checkedB}
-                  onChange={this.handleChange('complete')}
-                  value="complete"
-                  color="primary"
-                />
-              </div>
-              </TableCell>
-              <TableCell>{event.notes}</TableCell>
-            </TableRow>
-          )
-          )}
+            {this.props.student.map(event => (
+
+              <TableRow key={event.id}>
+
+                <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
+                <TableCell><Moment format="MM-D-YYYY">{event.next_eval}</Moment></TableCell>
+                <TableCell>{event.firstname}</TableCell>
+                <TableCell>{event.lastname}</TableCell>
+                <TableCell>
+
+
+                  <div>
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('complete')}
+                      value="true"
+                      color="primary"
+                    />
+                  </div>
+
+
+                </TableCell>
+                <TableCell>{event.notes}</TableCell>
+              </TableRow>
+            )
+            )}
           </TableBody>
         </Table>
-    
+
         {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
 
         {/* <TaskList /> */}
@@ -169,7 +194,7 @@ class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  student: state.studentEvent
+  student: state.students
 });
 
 // this allows us to use <App /> in index.js

@@ -15,6 +15,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     FROM "student"
     JOIN "student_event" on "student_event".student_id = "student".id
     JOIN "event" on "student_event".event_id = "event"."id"
+    WHERE "student_event".completed = FALSE
     `
     pool.query(queryText)
         .then(results => {
@@ -68,8 +69,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         "student_event"."notes",
         "student_event"."completed",
         "student_event"."date_completed",
-        "event"."task",
-        "school"."name"
+        "event"."task"
         FROM "user" 
         JOIN "student" ON "student"."teacher" = "user"."id"
         JOIN "student_event" ON "student"."id" = "student_event"."student_id"
@@ -86,9 +86,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             });
     } else {
         // teachers see events for only their students
-        const queryText = `SELECT "user"."firstname" AS "teacher_firstname",
-        "user"."lastname" AS "teacher_lastname",
-        "student"."firstname" AS "student_firstname",
+        const queryText = `SELECT "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
         "student_event"."due_date",
         "student_event"."notes",
@@ -111,8 +109,24 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     }
 });
 
-
-
-
+// updates a single student
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in router PUT for studentEvent', req.body);
+    let sqlText = `
+        UPDATE "student_event" 
+        SET 
+            "completed"=$1,
+            "date_completed"=$2,
+            "completed_by"=$3,
+            WHERE "id"=${req.params.id};`;
+    let values = [req.body.completed, req.body.date_completed, req.completed_by];
+    pool.query(sqlText, values)
+        .then((result) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

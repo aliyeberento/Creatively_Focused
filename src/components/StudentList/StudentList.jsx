@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 // styling
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+// import Card from '@material-ui/core/Card';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardContent from '@material-ui/core/CardContent';
+// import Button from '@material-ui/core/Button';
 
 const styles = {
     card: {
-        minWidth: 275,
+        minWidth: 400,
     },
     bullet: {
         display: 'inline-block',
@@ -41,6 +41,7 @@ class StudentList extends Component {
         return (
             <div>
                 <ul>
+                    
                 <h1>STUDENT LIST</h1>
                 
                 <Link className="connectorLink" to="/addstudent">
@@ -51,6 +52,7 @@ class StudentList extends Component {
                     {this.props.reduxState.students.map(student => {
                         return <StudentItem id="studentListItem" key={student.id} student={student} />
                     })}
+                    
                 </ul>
             </div>
         )
