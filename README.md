@@ -83,7 +83,7 @@ CREATE TABLE "user" (
 * Learning new technologies
 
 
-## Future Plans
+## Future Plans/Improvements
 
 * Admin usability
 

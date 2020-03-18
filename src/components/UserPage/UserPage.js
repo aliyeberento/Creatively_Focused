@@ -6,6 +6,7 @@ import Moment from 'react-moment';
 import {Calendar, momentLocalizer,} from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+
 // import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -73,11 +74,12 @@ class UserPage extends Component {
 
   formatEventsForCalendar = (studentEvents) => {
     let counter = 0;
+    // let daysInMonth = 30;
     let formatedStudentEvents = studentEvents.map(studentEvent => {
     console.log(Number(counter));
     
     counter ++;
-    if (counter > 3) {
+      if (counter > 3 && moment().daysInMonth()) {
       return {
         start: new Date(studentEvent.next_iep),
         end: new Date(studentEvent.next_iep),
@@ -101,10 +103,10 @@ class UserPage extends Component {
   render() {
 
     let events = this.formatEventsForCalendar(this.props.student);
-    events.length = 4;
+    // events.length = 4;
 
     console.log(events);
-    console.log(Calendar);
+    console.log(moment().daysInMonth());
   
 
     return (
@@ -147,7 +149,7 @@ class UserPage extends Component {
                 <Checkbox
                   checked={this.state.checkedB}
                   onChange={this.handleChange('complete')}
-                  value="complete"
+                  value="true"
                   color="primary"
                 />
               </div>
