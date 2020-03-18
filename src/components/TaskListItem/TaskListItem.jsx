@@ -10,16 +10,19 @@ class TaskListItem extends Component {
     }
 
     render() {
+        let task = this.props.reduxState.studentEvent
         return (
             <div>
                 <li>
                     {/* CHECKBOX */}
                     <input type="checkbox"></input>
-                    {/* TASK NAME */}
-                    {this.props.task.id}
                     {/* DATE DUTE */}
-                    {this.props.task.due_date}
-                    <button key={this.props.task.id} onClick={(event) => this.goDetail(event, this.props.task)}>view event details</button>
+                    {task.due_date}
+                    {/* STUDENT NAME */}
+                    {task.lastname}, {task.firstname}
+                    {/* TASK NAME */}
+                    {task.task}
+                    <button key={task.id} onClick={(event) => this.goDetail(event, this.props.task)}>view event details</button>
                     {/* DO WE NEED A TASK DETAIL PAGE? */}
                 </li>
             </div>
