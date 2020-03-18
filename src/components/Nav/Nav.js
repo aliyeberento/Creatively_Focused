@@ -67,7 +67,7 @@ class Nav extends Component {
                 {this.props.store.user.auth < 3 && (
                   <>
                     <Link className="menu-item" to="/adminhome" onClick={() => this.closeMenu()}>
-                      TEACHER LIST
+                      USER LIST
                     </Link>
                     <br />
                     {/* <Link className="menu-item" to="/adminform">

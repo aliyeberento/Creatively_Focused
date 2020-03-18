@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import TaskList from '../TaskList/TaskList';
+import Popup from 'reactjs-popup';
+import logo from '../UserDetailPage/logo square color.jpg';
+import './StudentDetailPage.css';
 
 class StudentDetailPage extends Component {
 
@@ -55,7 +58,20 @@ class StudentDetailPage extends Component {
                 <li>ISD: {student.isd}</li>
                 <li>Notes: {student.notes}</li><br />
                 <button onClick={this.editStudent}>edit student</button><br />
-                <button onClick={(event) => { if (window.confirm('are you sure you want to delete this student?')) this.deleteStudent(event) }}>delete student</button><br />
+               
+                    <Popup trigger={<button> DELETE </button>} modal>
+                        {close => (
+                            <div className="popup-contents">
+                                <img src={logo} alt="sparkle" />
+                                <div className="content">Are you sure you want to delete this student?</div>
+                                <div className="actions">
+                                    <button className="button-popup" onClick={(event) => this.deleteStudent(event)}>YES</button>
+                                    <button className="button-popup" onClick={() => close()}>NO</button>
+                                </div>
+                            </div>
+                        )}
+                    </Popup>
+
                 <button onClick={this.goToStudentList}>BACK TO STUDENT LIST</button>
                 </ul>
                 <TaskList />

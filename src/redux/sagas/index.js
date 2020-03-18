@@ -16,6 +16,7 @@ import deleteUserSaga from './deleteUserSaga';
 import tasksSaga from './tasksSaga';
 import districtSaga from './districtSaga';
 import schoolSaga from './schoolSaga';
+import editStudentEventSaga from './editStudentEventSaga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -42,6 +43,7 @@ export default function* rootSaga() {
     deleteUserSaga(),
     tasksSaga(),
     districtSaga(),
-    schoolSaga()
+    schoolSaga(),
+    editStudentEventSaga(),
   ]);
 }

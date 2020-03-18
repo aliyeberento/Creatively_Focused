@@ -65,7 +65,7 @@ Copy all of the database.sql code into Postico and run all of the CREATE TABLE a
 * Learning new technologies, of which there were many: NodeMailer, Twilio, React Big Calendar
 * The database presented many challenges due to its sheer scope and relational complexity
 
-## Future Plans
+## Future Plans/Improvements
 
 * Admin usability
 * The database has been over-built to accomodate usage beyond local and state borders

@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     card: {
-        minWidth: 275,
+        minWidth: 400,
     },
     bullet: {
         display: 'inline-block',
@@ -41,6 +41,7 @@ class StudentList extends Component {
         return (
             <div>
                 <ul>
+                    
                 <h1>STUDENT LIST</h1>
                 
                 <Link className="connectorLink" to="/addstudent">
@@ -51,6 +52,7 @@ class StudentList extends Component {
                     {this.props.reduxState.students.map(student => {
                         return <StudentItem id="studentListItem" key={student.id} student={student} />
                     })}
+                    
                 </ul>
             </div>
         )
