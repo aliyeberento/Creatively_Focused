@@ -36,24 +36,24 @@ router.get('/', (req, res) => {
                     pass: process.env.PASSWORD
                 }
             });
-            for(i=0; i<results.rows.length; i++){
-            const mailOptions = {
-                from: process.env.EMAIL,
-                to: results.rows[i].username,
-                subject: 'test', 
-                text: 'test',
-                html: `<p>Looks like you have a(n) ${results.rows[i].task} on ${results.rows[i].due_date} coming up. 
+            for (i = 0; i < results.rows.length; i++) {
+                const mailOptions = {
+                    from: process.env.EMAIL,
+                    to: results.rows[i].username,
+                    subject: 'test',
+                    text: 'test',
+                    html: `<p>Looks like you have a(n) ${results.rows[i].task} on ${results.rows[i].due_date} coming up. 
                 I'll make sure you and the other team members are ready for this meeting by helping you space out the work. 
                 Let's get to work!</p>`
-            }
-            transporter.sendMail(mailOptions, function (err, info) {
-                if (err) {
-                    console.log('err', err)
-                } else {
-                    console.log('info', info);
                 }
-            });
-        }
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if (err) {
+                        console.log('err', err)
+                    } else {
+                        console.log('info', info);
+                    }
+                });
+            }
         }).catch(error => {
             console.log('Error GET route /api/email in server', error);
             res.sendStatus(500);
