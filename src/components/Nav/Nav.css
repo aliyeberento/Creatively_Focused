@@ -130,6 +130,7 @@ a:hover {
   
 } 
 
+/* gets rid of the highlight box when items are clicked */
 *:focus {
   outline: none;
 }
