@@ -48,7 +48,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         JOIN "student_event" ON "student"."id" = "student_event"."student_id"
         JOIN "event" ON "student_event"."event_id" = "event"."id"
         JOIN "school" ON "user"."school" = "school"."id"
-        WHERE (auth <= 3) AND ("isd" = $1)
+        WHERE (auth <= 3) AND ("isd" = $1) AND ("student_event".completed = FALSE)
         ORDER BY "user"."lastname" ASC;`
         pool.query(queryText, isd)
             .then(results => {
@@ -75,7 +75,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         JOIN "student_event" ON "student"."id" = "student_event"."student_id"
         JOIN "event" ON "student_event"."event_id" = "event"."id"
         JOIN "school" ON "user"."school" = "school"."id"
-        WHERE (auth <= 3) AND ("school" = $1)
+        WHERE (auth <= 3) AND ("school" = $1) AND ("student_event".completed = FALSE)
         ORDER BY "user"."lastname" ASC;`
         pool.query(queryText, school)
             .then(results => {
@@ -97,7 +97,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         JOIN "student" ON "student"."teacher" = "user"."id"
         JOIN "student_event" ON "student"."id" = "student_event"."student_id"
         JOIN "event" ON "student_event"."event_id" = "event"."id"
-        WHERE (auth <= 3) AND ("teacher" = $1)
+        WHERE (auth <= 3) AND ("teacher" = $1) AND ("student_event".completed = FALSE)
         ORDER BY "user"."lastname" ASC;`
         pool.query(queryText, [req.user.id])
             .then(results => {
@@ -113,13 +113,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in router PUT for studentEvent', req.body);
     let sqlText = `
-        UPDATE "student_event" 
+    UPDATE "student_event" 
         SET 
-            "completed"=$1,
-            "date_completed"=$2,
-            "completed_by"=$3,
+            "completed"=$1
             WHERE "id"=${req.params.id};`;
-    let values = [req.body.completed, req.body.date_completed, req.completed_by];
+    let values = [req.body.completed];
+    console.log(req.params)
     pool.query(sqlText, values)
         .then((result) => {
             res.sendStatus(200);
