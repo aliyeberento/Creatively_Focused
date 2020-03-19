@@ -70,34 +70,22 @@ class UserPage extends Component {
 
   };
 
-  // editUser = () => {
-  //   console.log('editing THIS user:', this.props.user.username);
+  updateStudentEvent = (e, event) => {
+    this.props.dispatch({
+      type: 'EDIT_STUDENTEVENT',
+      payload: event
+    })
+  }
+
+  // submitEdit = () => {
+  //   // dispatches edit request to redux/database
+  //   console.log('clicking to submit edit');
+  //   this.props.dispatch({
+  //     type: 'EDIT_STUDENTEVENT',
+  //     payload: this.props.student,
+  //     url: `/api/studentEvent/${this.props.match.params.id}`
+  //   })
   // }
-
-  updateStudentEvent = (e, propertyValue, id) => {
-    // console.log('updating student event', event, propertyValue);
-    console.log(id);
-    
-    this.props.dispatch({
-      type: 'EDIT_STUDENTEVENT',
-      payload: {
-        key: propertyValue,
-        value: 'true',
-        id: id
-      }
-    })
-  }
-
-  submitEdit = () => {
-    // dispatches edit request to redux/database
-    console.log('clicking to submit edit');
-    this.props.dispatch({
-      type: 'EDIT_STUDENTEVENT',
-      payload: this.props.student,
-      url: `/api/studentEvent/${this.props.match.params.id}`
-    })
-    
-  }
 
   formatEventsForCalendar = (studentEvents) => {
     // object that will have the amount of studentEvents within that month
@@ -183,7 +171,7 @@ class UserPage extends Component {
                   <Checkbox
                     key={event.id}
                     checked={this.state.checkedB}
-                    onChange={(e) => this.updateStudentEvent(e, 'completed', event.id)}
+                    onChange={(e) => this.updateStudentEvent(e, event)}
                     value="true"
                     color="primary"
                   />
