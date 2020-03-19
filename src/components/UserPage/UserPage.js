@@ -63,15 +63,7 @@ class UserPage extends Component {
 
   }
 
-  // componentDidMount() {
-  //   this.props.dispatch({ type: 'GET_STUDENTEVENT' });
-  // }
-
-  onChange = (date) => {
-    this.setState({ date });
-    console.log('on change triggered')
-  }
-
+  // changes checkboxes in task list to true
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
 
@@ -83,7 +75,7 @@ class UserPage extends Component {
 
   updateStudentEvent = (event, propertyValue) => {
     this.props.dispatch({
-      type: 'UPDATE_STUDENT',
+      type: 'EDIT_STUDENTEVENT',
       payload: {
         key: [propertyValue],
         value: event.target.value
@@ -95,11 +87,11 @@ class UserPage extends Component {
     // dispatches edit request to redux/database
     console.log('clicking to submit edit');
     this.props.dispatch({
-      type: 'EDIT_STUDENT',
-      payload: this.props.reduxState.studentDetail,
-      url: `/api/studentList/${this.props.reduxState.studentDetail.id}`
+      type: 'EDIT_STUDENTEVENT',
+      payload: this.props.student,
+      url: `/api/studentEvent/${this.props.match.params.id}`
     })
-    this.goDetail();
+    
   }
 
   formatEventsForCalendar = (studentEvents) => {
@@ -119,7 +111,7 @@ class UserPage extends Component {
       10: 0,
       11: 0
     };
-    
+
     studentEvents.map(studentEvent => {
       // takes the index of year and increment studentEvent in that month
       year[moment(studentEvent.next_iep).month()]++
@@ -148,16 +140,14 @@ class UserPage extends Component {
     return formatedStudentEvents;
   }
 
-
   render() {
-    
+    // sets the events for calendar using the student's dates
     let events = this.formatEventsForCalendar(this.props.student);
-  
+
     return (
       <div className="welcome">
         <h1 >
           Welcome, {this.props.user.username}!
-  
         </h1>
 
         <Calendar
@@ -179,9 +169,10 @@ class UserPage extends Component {
               <TableCell>Notes</TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
             {this.props.student.map(event => (
-
+              // maps over studentsEvent reducer
               <TableRow key={event.id}>
 
                 <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
@@ -190,16 +181,14 @@ class UserPage extends Component {
                 <TableCell>{event.lastname}</TableCell>
                 <TableCell>
 
-
                   <div>
                     <Checkbox
                       checked={this.state.checkedB}
-                      onChange={this.handleChange('complete')}
+                      onChange={(event) => this.updateStudentEvent(event, 'completed')}
                       value="true"
                       color="primary"
                     />
                   </div>
-
 
                 </TableCell>
                 <TableCell>{event.notes}</TableCell>

@@ -11,6 +11,7 @@ function* editStudentEventSaga() {
 function* editStudentEvent(action) {
     console.log('in editStudentEvent saga', action);
     yield axios.put(`/api/studentEvent/${action.payload.id}`, action.payload);
+    console.log(action.payload.id, action.payload)
     yield put({ type: 'GET_STUDENTEVENT' });
 }
 
