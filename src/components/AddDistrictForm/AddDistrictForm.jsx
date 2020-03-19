@@ -51,6 +51,7 @@ class AddDistrictForm extends Component {
     render() {
         return (
             <div>
+                <h1>ADD NEW DISTRICT</h1>
                 <form>
                     <label>District City:
                     <input onChange={(event) => this.makeDistrict(event, 'city')}></input></label><br />

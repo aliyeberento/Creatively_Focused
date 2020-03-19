@@ -40,6 +40,7 @@ class AddSchoolForm extends Component {
     render () {
         return (
             <div>
+                <h1>ADD NEW SCHOOL</h1>
                 <form>
                 <label>School Name: 
                     <input onChange={(event) => this.makeSchool(event, 'name')}></input></label><br />
