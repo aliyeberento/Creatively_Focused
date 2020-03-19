@@ -6,8 +6,6 @@ import Moment from 'react-moment';
 import { Calendar, momentLocalizer, } from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
-// import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
 import Checkbox from '@material-ui/core/Checkbox';
 
@@ -61,7 +59,6 @@ class UserPage extends Component {
     },
     complete: false, // marked complete default false - changes to true in db
     id: this.props.student
-
   }
 
   // changes checkboxes in task list to true
@@ -127,7 +124,6 @@ class UserPage extends Component {
           title: `${studentEvent.firstname}'s IEP`
         }
       }
-
     });
     //returns one of the objects
     return formatedStudentEvents;
@@ -135,15 +131,10 @@ class UserPage extends Component {
 
   render() {
     // sets the events for calendar using the student's dates
-    let events = this.formatEventsForCalendar(this.props.student);
-    console.log(this.props.student);
-    
+    let events = this.formatEventsForCalendar(this.props.student);    
     return (
       <div className="welcome">
-        <h1 >
-          Welcome, {this.props.user.username}!
-        </h1>
-
+        <h1 >Welcome, {this.props.user.firstname}!</h1>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
@@ -151,47 +142,35 @@ class UserPage extends Component {
           events={events}
           style={{ height: "100vh" }}
         />
-
         <Table className="table">
           <TableHead>
             <TableRow>
               <TableCell>Mark Completed</TableCell>
               <TableCell>Date Due</TableCell>
               <TableCell>Task Name</TableCell>
-              <TableCell>First Name</TableCell>
-              <TableCell>Last Name</TableCell>
+              <TableCell>Student Name</TableCell>
             </TableRow>
           </TableHead>
-
           <TableBody>
             {this.props.student.map(event => (
               // maps over studentsEvent reducer
               <TableRow key={event.id}>
-                
+                <TableCell>
                   <Checkbox
                     key={event.id}
                     checked={this.state.checkedB}
                     onChange={(e) => this.updateStudentEvent(e, event)}
                     value="true"
                     color="primary"
-                  />
-              
+                  /></TableCell>
                 <TableCell><Moment format="MM-D-YYYY">{event.due_date}</Moment></TableCell>
                 <TableCell>{event.task}</TableCell>
-                <TableCell>{event.firstname}</TableCell>
-                <TableCell>{event.lastname}</TableCell>
-                
+                <TableCell>{event.student_lastname}, {event.student_firstname}</TableCell>
               </TableRow>
             )
             )}
           </TableBody>
         </Table>
-
-        {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
-
-        {/* <TaskList /> */}
-        {/* <LogOutButton className="log-in" /> */}
-
       </div>
     )
   }
