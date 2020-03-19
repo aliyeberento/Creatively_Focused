@@ -22,7 +22,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             "student".prev_iep, 
             "student".next_iep, 
             "student".prev_eval, 
-            "student".next_eval, 
+            "student".next_eval,
+            "student".isd_id,
+            "student".school_id, 
             "student".notes,
             "user".firstname AS "teacherfirstname", 
             "user".lastname AS "teacherlastname", 
@@ -59,6 +61,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             "student".next_iep, 
             "student".prev_eval, 
             "student".next_eval, 
+            "student".isd_id,
+            "student".school_id,
             "student".notes,
             "user".firstname AS "teacherfirstname", 
             "user".lastname AS "teacherlastname", 
@@ -95,6 +99,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             "student".next_iep, 
             "student".prev_eval, 
             "student".next_eval, 
+            "student".isd_id,
+            "student".school_id,
             "student".notes,
             "user".firstname AS "teacherfirstname", 
             "user".lastname AS "teacherlastname", 
@@ -131,6 +137,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         "student".next_iep, 
         "student".prev_eval, 
         "student".next_eval, 
+        "student".isd_id,
+        "student".school_id,
         "student".notes,
         "user".firstname AS "teacherfirstname", 
         "user".lastname AS "teacherlastname", 
@@ -164,6 +172,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         "student".birthdate, 
         "student".grade, 
         "student".student_id, 
+        "student".teacher,
         "student".disability_cat, 
         "student".fed_setting, 
         "student".initial_iep, 
@@ -221,9 +230,11 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
             "disability_cat"=$7,
             "fed_setting"=$8,
             "birthdate"=$9,
-            "notes"=$10
+            "notes"=$10,
+            "teacher"=$11,
+            "school_id"=$12
             WHERE "id"=${req.params.id};`;
-    let values = [req.body.firstname, req.body.lastname, req.body.grade, req.body.student_id, req.body.next_iep, req.body.next_eval, req.body.disaibility_cat, req.body.fed_setting, req.body.birthdate, req.body.notes];
+    let values = [req.body.firstname, req.body.lastname, req.body.grade, req.body.student_id, req.body.next_iep, req.body.next_eval, req.body.disability_cat, req.body.fed_setting, req.body.birthdate, req.body.notes, req.body.teacher, req.body.school_id];
     pool.query(sqlText, values)
     .then((result) => {
         res.sendStatus(200);

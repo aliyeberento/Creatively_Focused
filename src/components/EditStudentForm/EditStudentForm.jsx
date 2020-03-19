@@ -5,11 +5,11 @@ import { withRouter } from 'react-router-dom';
 
 class EditStudentForm extends Component {
 
-    componentDidMount() {
-        this.props.dispatch({
-            type: 'GET_TEACHERS'
-        })
-    }
+    // componentDidMount() {
+    //     this.props.dispatch({
+    //         type: 'GET_TEACHERS'
+    //     })
+    // }
 
     // state = {
     //     studentToEdit: {
@@ -59,14 +59,25 @@ class EditStudentForm extends Component {
         this.props.dispatch({
             type: 'UPDATE_STUDENT',
             payload: {
-                key: [propertyValue],
+                key: propertyValue,
                 value: event.target.value
+            }
+        })
+    }
+
+    updateStudentInt = (event, propertyValue) => {
+        this.props.dispatch({
+            type: 'UPDATE_STUDENT',
+            payload: {
+                key: propertyValue,
+                value: Number(event.target.value)
             }
         })
     }
 
     render() {
         // let student = this.state.studentToEdit;
+        console.log(this.props.reduxState.studentDetail);
         return (
             <div>
                 <h1>EDIT STUDENT</h1>
@@ -92,7 +103,7 @@ class EditStudentForm extends Component {
                             type="text"
                             placeholder="grade"
                             defaultValue={this.props.reduxState.studentDetail.grade}
-                            onChange={(event) => this.updateStudent(event, 'grade')}
+                            onChange={(event) => this.updateStudentInt(event, 'grade')}
                         />
                     </label><br />
                     <label>Date of Birth:
@@ -105,6 +116,35 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudent(event, 'birthdate')}
                         />
                     </label><br />
+                    <label>Disability Category: 
+                            <select name="disability_cat" onChange={(event) => this.updateStudentInt(event, 'disability_cat')}>
+                                <option>Choose one...</option>
+                                <option value="0">Autism</option>
+                                <option value="1">Deaf-Blindness</option>
+                                <option value="2">Deafness</option>
+                                <option value="3">Developmental Delay</option>
+                                <option value="4">Emotional Disturbance</option>
+                                <option value="5">Hearing Impairment</option>
+                                <option value="6">Intellectual Disability</option>
+                                <option value="7">Multiple Disabilities</option>
+                                <option value="8">Orthopedic Impairment</option>
+                                <option value="9">Other Health Impairment</option>
+                                <option value="10">Specific Learning Disability</option>
+                                <option value="11">Speech or Language Impairment</option>
+                                <option value="12">Traumatic Brain Injury</option>
+                                <option value="13">Visual Impairment Inclucing Blindness</option>
+                            </select>
+                        </label><br />
+                        <label>Federal Setting: 
+                            <select name="fed_setting" onChange={(event) => this.updateStudentInt(event, 'fed_setting')}>
+                                <option>Choose one...</option>
+                                <option value="1">I</option>
+                                <option value="2">II</option>
+                                <option value="3">III</option>
+                                <option value="4">IV</option>
+                                <option value="5">V</option>
+                            </select>
+                        </label><br />
                     <label>Next IEP:
                         <input
                             type="date"
@@ -127,7 +167,8 @@ class EditStudentForm extends Component {
                             id="teacher"
                             defaultValue="teacher"
                             placeholder="teacher"
-                            onChange={(event) => this.updateStudent(event, 'teacher')}>
+                            onChange={(event) => this.updateStudentInt(event, 'teacher')}>
+                            <option >Choose One...</option>
                         {this.props.reduxState.teacher.map(teacher => {
                                 return (
                                     <option
@@ -148,12 +189,19 @@ class EditStudentForm extends Component {
                         />
                     </label><br /> */}
                     <label>School:
-                        <select name="isd"
-                            id="isd"
-                            defaultValue="isd"
-                            placeholder="isd"
-                            onChange={(event) => this.updateStudent(event, 'isd')}>
-                            <option >Choose One...</option>
+                        <select name="school_id"
+                            id="school_id"
+                            defaultValue="school_id"
+                            placeholder="school_id"
+                            onChange={(event) => this.updateStudentInt(event, 'school_id')}>
+                                <option >Choose One...</option>
+                                {this.props.reduxState.schoolReducer.map(school => {
+                                    return (
+                                        <option key={school.id} value={school.id}>
+                                            {school.name}</option>
+                                    )
+                                })}
+                            {/* <option >Choose One...</option>
                             <option value="8">South High School</option>
                             <option value="7">Patrick Henry High School</option>
                             <option value="6">North High School</option>
@@ -161,15 +209,20 @@ class EditStudentForm extends Component {
                             <option value="4">Como</option>
                             <option value="3">Highland Park Middle School</option>
                             <option value="2">Farmington Junior High</option>
-                            <option value="1">Farmington Senior High</option>
+                            <option value="1">Farmington Senior High</option> */}
                         </select>
                     </label><br />
                     <label>Independent School District:
-                        <select name="school" onChange={(event) => this.updateStudent(event, 'school')}>
+                        <select name="isd" onChange={(event) => this.updateStudentInt(event, 'isd')}>
                             <option >Choose One...</option>
-                            <option value="3">Saint Paul, MN</option>
+                            {this.props.reduxState.districtReducer.map(district => {
+                                    return (
+                                        <option key={district.id} value={district.id}>{district.state} - {district.isd}</option>
+                                    )
+                                })}
+                            {/* <option value="3">Saint Paul, MN</option>
                             <option value="2">Mineapolis, MN</option>
-                            <option value="1">Farmington, MN</option>
+                            <option value="1">Farmington, MN</option> */}
                         </select>
                     </label><br />
                     <button type="button" onClick={this.submitEdit}>submit changes</button>

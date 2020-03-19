@@ -46,6 +46,15 @@ const styles = theme => ({
 
 class UserPage extends Component {
 
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' });
+    this.props.dispatch({ type: 'GET_TEACHERS' });
+    this.props.dispatch({ type: 'GET_STUDENTS' });
+    this.props.dispatch({ type: 'GET_STUDENTEVENT' });
+    this.props.dispatch({ type: 'GET_SCHOOLS' });
+    this.props.dispatch({ type: 'GET_DISTRICTS' });
+  }
+
   state = {
     user: {
       // this is where the user's info is held locally
