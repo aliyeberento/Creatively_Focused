@@ -43,8 +43,8 @@ input {
 }
 
 .log-in:hover, .register:hover {
-  color: black;
-  background-color: #C3EFCB;
+  /* color: black; */
+  background-color: rgb(66, 103, 190);
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
