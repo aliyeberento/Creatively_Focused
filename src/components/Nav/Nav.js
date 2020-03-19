@@ -33,12 +33,10 @@ class Nav extends Component {
         isOpen={this.state.menuOpen}
         onStateChange={(state) => this.handleStateChange(state)}
         right>
-        <main id="page-wrap">
+        <main >
             <div className="menu-color">
-              {/* <h2 className="nav-title">CREATIVELY FOCUSED</h2> */}
               <Link className="menu-item" to="/home" onClick={() => this.closeMenu()}>HOME</Link>
               <br />
-              {/* <div > */}
                 {/* Show this link if they are logged in or not,
             but call this link 'Home' if they are logged in,
             and call this link 'Login / Register' if they are not */}
@@ -59,22 +57,12 @@ class Nav extends Component {
                     <br />
                     </>
                     )}
-                    {/* <Link className="menu-item" to="/adminform">
-                  ADD NEW USER
-                </Link>
-                <br /> */}
-                    {/* <LogOutButton className="menu-item" /> */}
                 {this.props.store.user.auth < 3 && (
                   <>
                     <Link className="menu-item" to="/adminhome" onClick={() => this.closeMenu()}>
                       USER LIST
                     </Link>
                     <br />
-                    {/* <Link className="menu-item" to="/adminform">
-                  ADD NEW USER
-                </Link>
-                <br /> */}
-                    {/* <LogOutButton className="menu-item" /> */}
                   </>
                 )}
                 {/* Show the link to the info page and the logout button if the user is logged in */}
@@ -84,19 +72,12 @@ class Nav extends Component {
                       STUDENT LIST
                     </Link>
                     <br />
-                    {/* <Link className="menu-item" to="/addstudent">
-                  ADD NEW STUDENT
-                  </Link>
-                <br /> */}
-
                     {/* THIS LOGOUT BUTTON SHOULD HAVE THE CLOSE MENU FUNCTION PASSED DOWN ON PROPS */}
 
-                    <LogOutButton className="menu-item" closeMenu={this.closeMenu} onClick={() => this.closeMenu()}/>
+                    <LogOutButton className="logoutButton"  closeMenu={this.closeMenu} onClick={() => this.closeMenu()}/>
                   </>
                 )}
-              {/* </div> */}
             </div>
-            {/* <main id="page-wrap"> */}
           </main>
         </Menu>
       </div>

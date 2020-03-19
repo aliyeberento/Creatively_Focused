@@ -107,7 +107,7 @@ a {
 }
 
 a:hover {
-  background-color: gray;
+  background-color: rgb(66, 103, 190);
 }
 
 .menu-item {
@@ -118,3 +118,20 @@ a:hover {
 .menu-color {
   background-color: #294A9A;
 }
+
+.outer-Container {
+  pointer-events: none;
+  border-color: wheat;
+  border: wheat 2px solid;
+  
+} 
+
+*:focus {
+  outline: none;
+}
+
+.logoutButton {
+  text-decoration: none;
+  color: white;
+}
+
