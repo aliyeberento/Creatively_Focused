@@ -6,13 +6,6 @@ import { Link, withRouter } from 'react-router-dom';
 
 class LogOutButton extends Component {
 
-  // logout = () => {
-  //   console.log('logging out, closing menu, going /home');
-  //   this.props.history.push('/home');
-  //   this.props.reduxState.dispatch({ type: 'LOGOUT' });
-  //   this.props.closeMenu();
-  // }
-
   render() {
     return (
       <Link
