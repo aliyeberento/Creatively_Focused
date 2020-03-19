@@ -34,7 +34,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <div><img src={logo} alt="sparkle" /></div>
+        {/* <div><img src={logo} alt="sparkle" /></div> */}
         
         {this.props.errors.loginMessage && (
           <h2

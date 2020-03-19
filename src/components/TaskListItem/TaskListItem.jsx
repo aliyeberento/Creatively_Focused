@@ -18,12 +18,12 @@ class TaskListItem extends Component {
                     {/* CHECKBOX */}
                     <input type="checkbox"></input>
                     {/* DATE DUTE */}
-                    {moment(task.due_date).format('MM-DD-YYYY')}
+                    {moment(task.due_date).format('MM-DD-YYYY')}<br />
                     {/* STUDENT NAME */}
-                    {task.lastname}, {task.firstname}
+                    {task.lastname}, {task.firstname}<br />
                     {/* TASK NAME */}
                     {task.task}
-                    <button key={task.id} onClick={(event) => this.goDetail(event, this.props.task)}>view event details</button>
+                    {/* <button key={task.id} onClick={(event) => this.goDetail(event, this.props.task)}>view event details</button> */}
                     {/* DO WE NEED A TASK DETAIL PAGE? */}
                 </li>
             </div>
