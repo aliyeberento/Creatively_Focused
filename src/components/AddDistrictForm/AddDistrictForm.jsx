@@ -13,7 +13,7 @@ class AddDistrictForm extends Component {
             state: ''
         }
     }
-
+//takes the input value and makes it the new districtToAdd value
     makeDistrict = (event, propertyValue) => {
         console.log('making a new district', this.state.districtToAdd);
         this.setState({
@@ -23,7 +23,7 @@ class AddDistrictForm extends Component {
             }
         })
     }
-
+//takes the input value and makes it the new isd number
     makeDistrictInt = (event, propertyValue) => {
         console.log('making a new district', this.state.districtToAdd);
         this.setState({

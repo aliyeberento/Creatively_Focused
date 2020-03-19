@@ -22,7 +22,7 @@ class AddStudentForm extends Component {
             isd_id: this.props.state.user.isd,
         }
     }
-
+// takes the users input and inputs it into local state
     handleAddStudent = (propertyName, event) => {
         this.setState({
             studentToAdd: {
@@ -31,7 +31,7 @@ class AddStudentForm extends Component {
             }
         })
     }
-
+// takes the users input and inputs it into local state
     handleAddStudentInt = (propertyName, event) => {
         this.setState({
             studentToAdd: {
@@ -41,6 +41,7 @@ class AddStudentForm extends Component {
         })
     }
 
+//takes local state and sends it to 
     submitStudent = (event) => {
         event.preventDefault()
         console.log('submitting:', this.state.studentToAdd)

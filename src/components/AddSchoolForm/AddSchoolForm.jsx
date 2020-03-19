@@ -12,7 +12,7 @@ class AddSchoolForm extends Component {
             isd_id: 0
         }
     }
-
+//takes the input value and makes it the new schoolToAdd value
     makeSchool = (event, propertyValue) => {
         console.log('making a new school', this.state.schoolToAdd);
         this.setState({
