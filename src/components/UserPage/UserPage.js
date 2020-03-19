@@ -60,6 +60,7 @@ class UserPage extends Component {
       // this is where the user's info is held locally
     },
     complete: false, // marked complete default false - changes to true in db
+    id: this.props.student
 
   }
 
@@ -73,12 +74,16 @@ class UserPage extends Component {
   //   console.log('editing THIS user:', this.props.user.username);
   // }
 
-  updateStudentEvent = (event, propertyValue) => {
+  updateStudentEvent = (e, propertyValue, id) => {
+    // console.log('updating student event', event, propertyValue);
+    console.log(id);
+    
     this.props.dispatch({
       type: 'EDIT_STUDENTEVENT',
       payload: {
-        key: [propertyValue],
-        value: event.target.value
+        key: propertyValue,
+        value: 'true',
+        id: id
       }
     })
   }
@@ -143,7 +148,8 @@ class UserPage extends Component {
   render() {
     // sets the events for calendar using the student's dates
     let events = this.formatEventsForCalendar(this.props.student);
-
+    console.log(this.props.student);
+    
     return (
       <div className="welcome">
         <h1 >
@@ -161,12 +167,11 @@ class UserPage extends Component {
         <Table className="table">
           <TableHead>
             <TableRow>
-              <TableCell>Next IEP</TableCell>
-              <TableCell>Next Eval</TableCell>
+              <TableCell>Mark Completed</TableCell>
+              <TableCell>Date Due</TableCell>
+              <TableCell>Task Name</TableCell>
               <TableCell>First Name</TableCell>
               <TableCell>Last Name</TableCell>
-              <TableCell>Mark Completed</TableCell>
-              <TableCell>Notes</TableCell>
             </TableRow>
           </TableHead>
 
@@ -174,24 +179,20 @@ class UserPage extends Component {
             {this.props.student.map(event => (
               // maps over studentsEvent reducer
               <TableRow key={event.id}>
-
+                
+                  <Checkbox
+                    key={event.id}
+                    checked={this.state.checkedB}
+                    onChange={(e) => this.updateStudentEvent(e, 'completed', event.id)}
+                    value="true"
+                    color="primary"
+                  />
+              
                 <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
-                <TableCell><Moment format="MM-D-YYYY">{event.next_eval}</Moment></TableCell>
+                <TableCell>{event.task}</TableCell>
                 <TableCell>{event.firstname}</TableCell>
                 <TableCell>{event.lastname}</TableCell>
-                <TableCell>
-
-                  <div>
-                    <Checkbox
-                      checked={this.state.checkedB}
-                      onChange={(event) => this.updateStudentEvent(event, 'completed')}
-                      value="true"
-                      color="primary"
-                    />
-                  </div>
-
-                </TableCell>
-                <TableCell>{event.notes}</TableCell>
+                
               </TableRow>
             )
             )}
@@ -213,7 +214,7 @@ class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  student: state.students
+  student: state.studentEvent
 });
 
 // this allows us to use <App /> in index.js
