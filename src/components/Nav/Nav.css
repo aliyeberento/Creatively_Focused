@@ -11,6 +11,10 @@
   height: 100px;
   overflow: hidden;
   background-color: #294A9A;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
 }
 
 .nav-link {
@@ -107,7 +111,7 @@ a {
 }
 
 a:hover {
-  background-color: gray;
+  background-color: rgb(66, 103, 190);
 }
 
 .menu-item {
@@ -118,3 +122,20 @@ a:hover {
 .menu-color {
   background-color: #294A9A;
 }
+
+.outer-Container {
+  pointer-events: none;
+  border-color: wheat;
+  border: wheat 2px solid;
+  
+} 
+
+*:focus {
+  outline: none;
+}
+
+.logoutButton {
+  text-decoration: none;
+  color: white;
+}
+
