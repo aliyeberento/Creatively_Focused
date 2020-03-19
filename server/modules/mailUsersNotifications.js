@@ -20,9 +20,7 @@ module.exports = async () => {
         .then(results => {
             console.log('results.rows[0].username', results.rows);
             return results.rows;
-      
         }).catch(error => {
             console.log('Error in email module', error);
-
         });
 }
