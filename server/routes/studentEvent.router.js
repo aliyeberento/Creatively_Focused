@@ -123,9 +123,11 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     // pool.query(sqlText, [id])
 
     let sqlText = `
-        UPDATE "student_event" 
-        SET "completed" = NOT "completed"
-        WHERE "id"=${req.body.id};`
+    UPDATE "student_event" 
+    SET "completed" = NOT "completed",
+    "date_completed" = now(),
+    "completed_by" = ${req.user.id}
+    WHERE "id"=${req.body.id};`
     pool.query(sqlText)
         .then((result) => {
             res.sendStatus(200);

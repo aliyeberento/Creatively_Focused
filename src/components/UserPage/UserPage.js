@@ -176,7 +176,7 @@ class UserPage extends Component {
                     color="primary"
                   />
               
-                <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
+                <TableCell><Moment format="MM-D-YYYY">{event.due_date}</Moment></TableCell>
                 <TableCell>{event.task}</TableCell>
                 <TableCell>{event.firstname}</TableCell>
                 <TableCell>{event.lastname}</TableCell>
