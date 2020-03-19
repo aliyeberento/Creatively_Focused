@@ -16,12 +16,12 @@ class TaskList extends Component {
             <div>
                 <ul>
                     <h3>UPCOMING DEADLINES</h3>
-                    {this.props.reduxState.tasks.map(task => {
+                    {this.props.reduxState.studentEvent.map(task => {
                         return <TaskListItem key={task.id} task={task} />
                     })}
-                    <li><input type="checkbox"></input>task #1</li>
+                    {/* <li><input type="checkbox"></input>task #1</li>
                     <li><input type="checkbox"></input>task #2</li>
-                    <li><input type="checkbox"></input>task #3</li>
+                    <li><input type="checkbox"></input>task #3</li> */}
                 </ul>
             </div>
         )

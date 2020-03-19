@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 
 class TaskListItem extends Component {
 
@@ -10,14 +11,14 @@ class TaskListItem extends Component {
     }
 
     render() {
-        let task = this.props.reduxState.studentEvent
+        let task = this.props.task
         return (
             <div>
                 <li>
                     {/* CHECKBOX */}
                     <input type="checkbox"></input>
                     {/* DATE DUTE */}
-                    {task.due_date}
+                    {moment(task.due_date).format('MM-DD-YYYY')}
                     {/* STUDENT NAME */}
                     {task.lastname}, {task.firstname}
                     {/* TASK NAME */}

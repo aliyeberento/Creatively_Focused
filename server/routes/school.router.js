@@ -19,7 +19,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         // FROM "school"
         // ORDER BY "name" ASC`
         const queryText = `SELECT 
+        "school".id,
         "school".name, 
+        "school".isd_id,
         "isd".isd, 
         "isd".city, 
         "isd".state
@@ -37,6 +39,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         console.log('superintendent isd:', req.user.isd);
         const isd = [req.user.isd]
         const queryText = `SELECT 
+        "school".id,
         "school".name, 
         "isd".isd, 
         "isd".city, 

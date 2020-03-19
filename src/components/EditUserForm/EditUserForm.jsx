@@ -72,8 +72,20 @@ class EditUserForm extends Component {
         })
     }
 
+    updateUserInt = (event, propertyValue) => {
+        this.props.dispatch({
+            type: 'UPDATE_USER',
+            payload: {
+                key: [propertyValue],
+                value: Number(event.target.value)
+            }
+        });
+    }
+
     render() {
         let user = this.props.reduxState.teacherDetail;
+        console.log(user);
+        
         return (
             <div>
                 <h1> EDIT USER</h1>
@@ -110,7 +122,21 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'phone')}
                         />
                     </label><br />
-                    <label>
+                    <label>District:
+                        <select 
+                            name="isd" 
+                            id="isd" 
+                            defaultValue={user.isd} 
+                            placeholder="isd" 
+                            onChange={(event) => this.updateUserInt(event, 'isd')}>District:
+                            <option>Choose one...</option>
+                                {this.props.reduxState.districtReducer.map(isd => {
+                                    return (
+                                        <option value={isd.id} key={isd.id}>{isd.state} - {isd.isd}</option>
+                                    )
+                                })}
+                            </select></label>
+                    {/* <label>
                         Independent School District:
                         <select name="school" onChange={(event) => this.updateUser(event, 'school')}>
                             <option >Choose One...</option>
@@ -118,9 +144,18 @@ class EditUserForm extends Component {
                             <option value="2">Mineapolis, MN</option>
                             <option value="1">Farmington, MN</option>
                         </select>
-                    </label>
+                    </label> */}
                     <br />
                     <label>School:
+                            <select name="school" id="school" defaultValue="school" placeholder="school" onChange={(event) => this.updateUserInt(event, 'school')}>
+                                <option>Choose one...</option>
+                                {this.props.reduxState.schoolReducer.map(school => {
+                                    return (
+                                        <option value={school.id} key={school.id}>{school.city} - {school.name} - {school.isd}</option>
+                                    )
+                                })}
+                            </select></label>
+                    {/* <label>School:
                         <select name="isd" onChange={(event) => this.updateUser(event, 'isd')}>
                             <option >Choose One...</option>
                             <option value="8">South High School</option>
@@ -132,11 +167,10 @@ class EditUserForm extends Component {
                             <option value="2">Farmington Junior High</option>
                             <option value="1">Farmington Senior High</option>
                         </select>
-                    </label>
-                    {/* TURN THIS INTO A DROP DOWN */}
+                    </label> */}
                     <label>
                         Role/Auth:
-                        <select name="role" onChange={(event) => this.updateUser(event, 'auth')}>
+                        <select name="role" onChange={(event) => this.updateUserInt(event, 'auth')}>
                             <option >Choose One...</option>
                             <option value="3">Teacher</option>
                             <option value="2">School Principal</option>

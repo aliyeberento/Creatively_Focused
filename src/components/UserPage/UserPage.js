@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './user.css';
 import 'react-calendar/dist/Calendar.css';
 import Moment from 'react-moment';
-import {Calendar, momentLocalizer,} from 'react-big-calendar';
+import { Calendar, momentLocalizer, } from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -46,76 +46,110 @@ const styles = theme => ({
 
 class UserPage extends Component {
 
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' });
+    this.props.dispatch({ type: 'GET_TEACHERS' });
+    this.props.dispatch({ type: 'GET_STUDENTS' });
+    this.props.dispatch({ type: 'GET_STUDENTEVENT' });
+    this.props.dispatch({ type: 'GET_SCHOOLS' });
+    this.props.dispatch({ type: 'GET_DISTRICTS' });
+  }
+
   state = {
     user: {
       // this is where the user's info is held locally
     },
     complete: false, // marked complete default false - changes to true in db
-    
+
   }
 
-  // componentDidMount() {
-  //   this.props.dispatch({ type: 'GET_STUDENTEVENT' });
-  // }
-
-  onChange = (date) => {
-    this.setState({ date });
-    console.log('on change triggered')
-  }
-  
+  // changes checkboxes in task list to true
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
-    console.log(this.state.complete)
+
   };
 
-  editUser = () => {
-    console.log('editing THIS user:', this.props.user.username); 
+  // editUser = () => {
+  //   console.log('editing THIS user:', this.props.user.username);
+  // }
+
+  updateStudentEvent = (event, propertyValue) => {
+    this.props.dispatch({
+      type: 'EDIT_STUDENTEVENT',
+      payload: {
+        key: [propertyValue],
+        value: event.target.value
+      }
+    })
+  }
+
+  submitEdit = () => {
+    // dispatches edit request to redux/database
+    console.log('clicking to submit edit');
+    this.props.dispatch({
+      type: 'EDIT_STUDENTEVENT',
+      payload: this.props.student,
+      url: `/api/studentEvent/${this.props.match.params.id}`
+    })
+    
   }
 
   formatEventsForCalendar = (studentEvents) => {
-    let counter = 0;
-    // let daysInMonth = 30;
-    let formatedStudentEvents = studentEvents.map(studentEvent => {
-    console.log(Number(counter));
-    
-    counter ++;
-      if (counter > 3 && moment().daysInMonth()) {
-      return {
-        start: new Date(studentEvent.next_iep),
-        end: new Date(studentEvent.next_iep),
-        title: '!'
-      }
-    }else {
-      return {
-        start: new Date(studentEvent.next_iep),
-        end: new Date(studentEvent.next_iep),
-        title: `${studentEvent.firstname}'s IEP`
-      }
-    }
-        
+    // object that will have the amount of studentEvents within that month
+    // jan = 0, dec = 11
+    let year = {
+      0: 0,
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
+      8: 0,
+      9: 0,
+      10: 0,
+      11: 0
+    };
+
+    studentEvents.map(studentEvent => {
+      // takes the index of year and increment studentEvent in that month
+      year[moment(studentEvent.next_iep).month()]++
     });
-    
-   return formatedStudentEvents;
-    
+    // loops through studentEvents and turns it into an object for calendar
+    let formatedStudentEvents = studentEvents.map(studentEvent => {
+
+      // if the year's index is more than 3 change all events in that month
+      if (year[moment(studentEvent.next_iep).month()] > 3) {
+        return {
+          start: new Date(studentEvent.next_iep),
+          end: new Date(studentEvent.next_iep),
+          title: `⚠ ${studentEvent.firstname}'s IEP`
+        }
+        // the standard object to return
+      } else {
+        return {
+          start: new Date(studentEvent.next_iep),
+          end: new Date(studentEvent.next_iep),
+          title: `${studentEvent.firstname}'s IEP`
+        }
+      }
+
+    });
+    //returns one of the objects
+    return formatedStudentEvents;
   }
 
-
   render() {
-
+    // sets the events for calendar using the student's dates
     let events = this.formatEventsForCalendar(this.props.student);
-    // events.length = 4;
-
-    console.log(events);
-    console.log(moment().daysInMonth());
-  
 
     return (
       <div className="welcome">
         <h1 >
           Welcome, {this.props.user.username}!
-          
         </h1>
-      
+
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
@@ -123,7 +157,7 @@ class UserPage extends Component {
           events={events}
           style={{ height: "100vh" }}
         />
-        
+
         <Table className="table">
           <TableHead>
             <TableRow>
@@ -135,32 +169,35 @@ class UserPage extends Component {
               <TableCell>Notes</TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
-          {this.props.student.map(event => (
-            
-            <TableRow key={event.id}>
-              
-              <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
-              <TableCell><Moment format="MM-D-YYYY">{event.next_eval}</Moment></TableCell>
-              <TableCell>{event.firstname}</TableCell>
-              <TableCell>{event.lastname}</TableCell>
-              <TableCell>
-                <div>
-                <Checkbox
-                  checked={this.state.checkedB}
-                  onChange={this.handleChange('complete')}
-                  value="true"
-                  color="primary"
-                />
-              </div>
-              </TableCell>
-              <TableCell>{event.notes}</TableCell>
-            </TableRow>
-          )
-          )}
+            {this.props.student.map(event => (
+              // maps over studentsEvent reducer
+              <TableRow key={event.id}>
+
+                <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
+                <TableCell><Moment format="MM-D-YYYY">{event.next_eval}</Moment></TableCell>
+                <TableCell>{event.firstname}</TableCell>
+                <TableCell>{event.lastname}</TableCell>
+                <TableCell>
+
+                  <div>
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={(event) => this.updateStudentEvent(event, 'completed')}
+                      value="true"
+                      color="primary"
+                    />
+                  </div>
+
+                </TableCell>
+                <TableCell>{event.notes}</TableCell>
+              </TableRow>
+            )
+            )}
           </TableBody>
         </Table>
-    
+
         {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
 
         {/* <TaskList /> */}

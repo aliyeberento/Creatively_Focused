@@ -52,12 +52,11 @@ class StudentDetailPage extends Component {
                 <li>Next EVAL: {moment(student.next_eval).format('MM-DD-YYYY')}</li>
                 <li>Disability Category: {student.disability_cat}</li>
                 <li>Federal Setting: {student.fed_setting}</li>
-
                 <li>Teacher: {student.teacherlastname}, {student.teacherfirstname}</li>
                 <li>School: {student.school}</li>
                 <li>ISD: {student.isd}</li>
                 <li>Notes: {student.notes}</li><br />
-                <button onClick={this.editStudent}>edit student</button><br />
+                <button onClick={this.editStudent}>EDIT</button><br />
                
                     <Popup trigger={<button> DELETE </button>} modal>
                         {close => (

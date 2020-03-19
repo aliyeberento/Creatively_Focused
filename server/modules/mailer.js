@@ -17,29 +17,29 @@ const transporter = nodemailer.createTransport({
 
 //email teachers their daily deadline reminders
 //Cron will run every morning at 8:00AM
-cron.schedule('* 8 * * *', async () => {  
+cron.schedule('* 8 * * *', async () => {
     const userResults = await getNotifications();
-    for(i=0; i<userResults.length; i++){
+    for (i = 0; i < userResults.length; i++) {
         let email = userResults[i].username;
         let task = userResults[i].task;
         let dueDate = userResults[i].due_date;
-    const mailOptions = {
-        from: process.env.EMAIL,
-        to: email,
-        subject: 'test',
-        text: 'test',
-        html:   `<p>Looks like you have a(n) ${task} on 
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: email,
+            subject: 'test',
+            text: 'test',
+            html: `<p>Looks like you have a(n) ${task} on 
                 ${dueDate} coming up. I'll make sure you and the 
                 other team members are ready for this meeting by helping you 
                 space out the work. Let's get to work!</p>`
-    }
-    transporter.sendMail(mailOptions, function (err, info) {
-        if (err) {
-            console.log('err', err)
-        } else {
-            console.log('info', info);
         }
-    })
-}
+        transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+                console.log('err', err)
+            } else {
+                console.log('info', info);
+            }
+        })
+    }
 });
 

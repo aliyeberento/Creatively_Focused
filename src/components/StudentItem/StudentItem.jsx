@@ -38,8 +38,16 @@ const styles = {
 
 class StudentItem extends Component {
 
+    getDetail = (event, student) => {
+        this.props.dispatch({
+            type: 'GET_STUDENT_DETAIL',
+            payload: student
+        })
+        this.goDetail();
+    }
+    
     goDetail = (event, student) => {
-        this.props.history.push(`/studentdetail/${student.id}`)
+        this.props.history.push(`/studentdetail/${this.props.student.id}`);
     }
 
     render() {
@@ -52,7 +60,7 @@ class StudentItem extends Component {
                     <CardContent>
                 <li>
                     {this.props.student.lastname}, {this.props.student.firstname}
-                    <Button key={this.props.student.id} onClick={(event) => this.goDetail(event, this.props.student)}>view details</Button>
+                    <Button key={this.props.student.id} onClick={(event) => this.getDetail(event, this.props.student.id)}>view details</Button>
                 </li>
                     </CardContent>
                     </Paper>
