@@ -11,6 +11,7 @@ function* editStudentSaga() {
 function* editStudent(action) {
     console.log('in editStudent generator', action);
     yield axios.put(`/api/studentList/${action.payload.id}`, action.payload);
+    yield put({ type: 'GET_STUDENT_DETAIL' });
     yield put({ type: 'GET_STUDENTS' });
 }
 
