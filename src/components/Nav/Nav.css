@@ -35,7 +35,9 @@
 }
 
 .nav-link:hover {
-  background-color: #008183;
+  /* background-color: #008183; */
+  background-color: rgb(66, 103, 190);
+
 }
 
 .bm-item {
@@ -111,6 +113,7 @@ a {
 }
 
 a:hover {
+  width: 100%;
   background-color: rgb(66, 103, 190);
 }
 
@@ -121,6 +124,8 @@ a:hover {
 
 .menu-color {
   background-color: #294A9A;
+  /* background-color: rgb(66, 103, 190); */
+
 }
 
 .outer-Container {

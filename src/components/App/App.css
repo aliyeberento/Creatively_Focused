@@ -43,8 +43,8 @@ input {
 }
 
 .log-in:hover, .register:hover {
-  color: black;
-  background-color: #C3EFCB;
+  /* color: black; */
+  background-color: rgb(66, 103, 190);
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -64,7 +64,7 @@ ul {
     /* font-family: Helvetica, Arial, sans-serif; */
     width: 30%;
     margin: 20px auto;
-    padding: 25px;
+    /* padding: 25px; */
     border-radius: 2px;
 }
 
@@ -72,6 +72,11 @@ ul {
     padding-top: 33px;
     padding-left: 33px;
     position: fixed;
+}
+
+a {
+    color: white;
+    text-decoration: none;
 }
 
 @font-face {
