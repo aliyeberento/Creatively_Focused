@@ -118,14 +118,15 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // updates a single student's event
 router.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in router PUT for studentEvent', req.body);
+
+    // UPDATE "grocery_list" SET "checked" = NOT "checked" WHERE "id" = $1;`
+    // pool.query(sqlText, [id])
+
     let sqlText = `
-    UPDATE "student_event" 
-        SET 
-        "completed"=$1
-        WHERE "id"=${req.params.id};`;
-    let values = [req.body.completed];
-    console.log(req.params)
-    pool.query(sqlText, values)
+        UPDATE "student_event" 
+        SET "completed" = NOT "completed"
+        WHERE "id"=${req.body.id};`
+    pool.query(sqlText)
         .then((result) => {
             res.sendStatus(200);
         }).catch((error) => {
