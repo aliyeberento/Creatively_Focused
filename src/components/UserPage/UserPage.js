@@ -17,7 +17,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-
 // variables
 const localizer = momentLocalizer(moment);
 const styles = theme => ({
@@ -30,8 +29,6 @@ const styles = theme => ({
     minWidth: 700,
   },
 });
-
-// import LogOutButton from '../LogOutButton/LogOutButton';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -74,16 +71,6 @@ class UserPage extends Component {
     })
   }
 
-  // submitEdit = () => {
-  //   // dispatches edit request to redux/database
-  //   console.log('clicking to submit edit');
-  //   this.props.dispatch({
-  //     type: 'EDIT_STUDENTEVENT',
-  //     payload: this.props.student,
-  //     url: `/api/studentEvent/${this.props.match.params.id}`
-  //   })
-  // }
-
   formatEventsForCalendar = (studentEvents) => {
     // object that will have the amount of studentEvents within that month
     // jan = 0, dec = 11
@@ -102,26 +89,26 @@ class UserPage extends Component {
       11: 0
     };
 
-    studentEvents.map(studentEvent => {
+    this.props.student.map(studentEvent => {
       // takes the index of year and increment studentEvent in that month
-      year[moment(studentEvent.next_iep).month()]++
+      year[moment(studentEvent.due_date).month()]++
     });
     // loops through studentEvents and turns it into an object for calendar
     let formatedStudentEvents = studentEvents.map(studentEvent => {
 
       // if the year's index is more than 3 change all events in that month
-      if (year[moment(studentEvent.next_iep).month()] > 3) {
+      if (year[moment(studentEvent.due_date).month()] > 3) {
         return {
-          start: new Date(studentEvent.next_iep),
-          end: new Date(studentEvent.next_iep),
-          title: `⚠ ${studentEvent.firstname}'s IEP`
+          start: new Date(studentEvent.due_date),
+          end: new Date(studentEvent.due_date),
+          title: `⚠ ${studentEvent.student_firstname}'s ${studentEvent.task}`
         }
         // the standard object to return
       } else {
         return {
-          start: new Date(studentEvent.next_iep),
-          end: new Date(studentEvent.next_iep),
-          title: `${studentEvent.firstname}'s IEP`
+          start: new Date(studentEvent.due_date),
+          end: new Date(studentEvent.due_date),
+          title: `${studentEvent.student_firstname}'s ${studentEvent.task}`
         }
       }
     });
@@ -130,6 +117,8 @@ class UserPage extends Component {
   }
 
   render() {
+    console.log(this.props.student);
+    
     // sets the events for calendar using the student's dates
     let events = this.formatEventsForCalendar(this.props.student);    
     return (
