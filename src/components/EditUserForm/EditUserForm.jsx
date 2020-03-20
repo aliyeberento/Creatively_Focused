@@ -4,47 +4,6 @@ import { withRouter } from 'react-router-dom';
 
 class EditUserForm extends Component {
 
-    // state = {
-    //     userToEdit: {
-    //         id: this.props.reduxState.teacherDetail.id,
-    //         username: this.props.reduxState.teacherDetail.username,
-    //         phone: this.props.reduxState.teacherDetail.phone,
-    //         school: this.props.reduxState.teacherDetail.school,
-    //         isd: this.props.reduxState.teacherDetail.isd,
-    //         // password: this.props.reduxState.teacherDetail.password
-    //     }
-    // }
-
-    // editThisUser = (event, propertyValue) => {
-    //     // build a new object in state
-    //     console.log('building a new user', this.state.userToEdit);
-    //     this.setState({
-    //         userToEdit: {
-    //             ...this.state.userToEdit,
-    //             [propertyValue]: event.target.value,
-    //         }
-    //     })
-    // }
-
-    // submitEdit = () => {
-    //     // dispatches edit to redux/database
-    //     console.log('clicking to submit edit', this.state.userToEdit);
-    //     this.props.dispatch({
-    //         type: 'EDIT_USER',
-    //         payload: this.state.userToEdit,
-    //         url: `/api/teacherList/${this.state.userToEdit.id}`
-    //     })
-    //     this.goDetail();
-    // }
-
-    // goDetail = () => {
-    //     // brings the user to a detail page showing all of
-    //     // the information for the item they clicked on
-    //     // console.log('clicking to go back to detail');
-    //     this.props.history.push(`/admindetail/${this.props.reduxState.teacherDetail.id}`)
-    //     // this.props.history.push(`/`)
-    // }
-
     submitEdit = () => {
         // dispatches edit request to redux/database
         console.log('clicking to submit edit');
@@ -63,6 +22,8 @@ class EditUserForm extends Component {
     }
 
     updateUser = (event, propertyValue) => {
+        // dispatch calls 'UPDATE_USER' which'll update 
+        //the targeted property and send it to redux/database 
         this.props.dispatch({
             type: 'UPDATE_USER',
             payload: {
@@ -73,6 +34,8 @@ class EditUserForm extends Component {
     }
 
     updateUserInt = (event, propertyValue) => {
+        // dispatch calls 'UPDATE_USER' which'll update 
+        //the targeted property and send it to redux/database 
         this.props.dispatch({
             type: 'UPDATE_USER',
             payload: {
