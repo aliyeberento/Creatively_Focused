@@ -5,12 +5,13 @@ import Moment from 'react-moment';
 import Checkbox from '@material-ui/core/Checkbox';
 
 //styling
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
+import './TaskList.css';
 
 // variables
 const styles = theme => ({
@@ -59,6 +60,11 @@ class TaskList extends Component {
         
         return (
             <div>
+                <header>
+                <Typography className="student-name" gutterBottom variant="h5" component="h2">
+                    Upcoming Deadlines
+                    </Typography>
+                </header>
                 <Table className="table">
                     <TableHead>
                         <TableRow>
