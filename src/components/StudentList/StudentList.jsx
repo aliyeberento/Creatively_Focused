@@ -36,12 +36,13 @@ class StudentList extends Component {
         return (
             <div>
                 <ul>
-                    
-                <h1>STUDENT LIST</h1>
-                {/* link to add new students */}
-                <Link className="connectorLink" to="/addstudent">
-                    <button className="linkBtn">
-                        ADD NEW STUDENT
+                    <Typography className="student-name" gutterBottom variant="h5" component="h2">
+                        Student List
+                    </Typography>
+
+                    <Link className="connectorLink" to="/addstudent">
+                        <button className="linkBtn">
+                            ADD NEW STUDENT
                     </button>
                     </Link>
                     {this.props.reduxState.students.map(student => {

@@ -64,8 +64,6 @@ class UserPage extends Component {
 
   };
 
-
-
   updateStudentEvent = (e, propertyValue, id) => {
     // console.log('updating student event', event, propertyValue);
     console.log(id);
