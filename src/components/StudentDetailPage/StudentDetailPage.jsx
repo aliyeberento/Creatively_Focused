@@ -16,16 +16,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-const styles = {
-    card: {
-        maxWidth: 345,
 
-    },
-    media: {
-        height: 140,
-    },
-
-};
 
 class StudentDetailPage extends Component {
 
