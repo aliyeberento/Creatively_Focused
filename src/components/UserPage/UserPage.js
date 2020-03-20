@@ -83,14 +83,14 @@ class UserPage extends Component {
     })
   }
 
-  submitEdit = () => {
-    // dispatches edit request to redux/database
-    console.log('clicking to submit edit');
-    this.props.dispatch({
-      type: 'EDIT_STUDENTEVENT',
-      payload: event
-    })
-  }
+  // submitEdit = () => {
+  //   // dispatches edit request to redux/database
+  //   console.log('clicking to submit edit');
+  //   this.props.dispatch({
+  //     type: 'EDIT_STUDENTEVENT',
+  //     payload: event
+  //   })
+  // }
 
   formatEventsForCalendar = (studentEvents) => {
     // object that will have the amount of studentEvents within that month
