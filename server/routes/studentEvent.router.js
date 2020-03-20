@@ -11,6 +11,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         const queryText = `SELECT 
         "user"."firstname" AS "teacher_firstname",
         "user"."lastname" AS "teacher_lastname",
+        "user"."id" AS "user_id",
         "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
         "student"."id" AS "student_id",
@@ -41,6 +42,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         const queryText = `SELECT 
         "user"."firstname" AS "teacher_firstname",
         "user"."lastname" AS "teacher_lastname",
+        "user"."id" AS "user_id",
         "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
         "student"."id" AS "student_id",
@@ -72,6 +74,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         const queryText = `SELECT 
         "user"."firstname" AS "teacher_firstname",
         "user"."lastname" AS "teacher_lastname",
+        "user"."id" AS "user_id",
         "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
         "student"."id" AS "student_id",
@@ -100,6 +103,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         const queryText = `SELECT 
         "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
+        "user"."id" AS "user_id",
         "student"."id" AS "student_id",
         "student_event"."due_date",
         "student_event"."notes",
@@ -126,10 +130,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // updates a single student's event
 router.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in router PUT for studentEvent', req.body);
-
-    // UPDATE "grocery_list" SET "checked" = NOT "checked" WHERE "id" = $1;`
-    // pool.query(sqlText, [id])
-
     let sqlText = `
     UPDATE "student_event" 
     SET "completed" = NOT "completed",
