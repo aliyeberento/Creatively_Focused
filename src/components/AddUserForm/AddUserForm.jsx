@@ -13,7 +13,7 @@ class AddUserForm extends Component {
             phone: '',
             isd: this.props.store.user.isd,
             school: this.props.store.user.school,
-            auth: 3
+            auth: ''
         }
     }
 
@@ -53,39 +53,54 @@ class AddUserForm extends Component {
         this.props.history.push(`/adminhome`)
     }
 
+    populateInputs = () => {
+        console.log('prepopulating KEN');
+        this.setState({
+            userToAdd: {
+                firstname: 'Ken',
+                lastname: 'Slack',
+                username: 'ken@gmail.com',
+                password: '1234',
+                phone: '6089874523',
+                auth: 3
+            }
+        })
+    }
+
     render() {
+        let userToAdd = this.state.userToAdd
         if (this.props.store.user.auth === 0) {
             return (
                 <div>
-                    <h1>ADD NEW USER</h1>
+                <h1 onClick={this.populateInputs}>ADD NEW USER</h1>
                     <form>
                         <label>
                             First Name:
-                        <input type="text"
+                        <input type="text" value={userToAdd.firstname}
                                 onChange={(event) => this.handleNewUser(event, 'firstname')} />
                         </label>
                         <br />
                         <label>
                             Last Name:
-                        <input type="text"
+                        <input type="text" value={userToAdd.lastname}
                                 onChange={(event) => this.handleNewUser(event, 'lastname')} />
                         </label>
                         <br />
                         <label>
                             Email/Username:
-                        <input type="text"
+                        <input type="text" value={userToAdd.username}
                                 onChange={(event) => this.handleNewUser(event, 'username')} />
                         </label>
                         <br />
                         <label>
                             Password:
-                        <input type="password"
+                        <input type="password" value={userToAdd.password}
                                 onChange={(event) => this.handleNewUser(event, 'password')} />
                         </label>
                         <br />
                         <label>
                             Phone number:
-                        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
+                        <input type="tel" value={userToAdd.phone} id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
                                 placeholder='(012)-345-6789'
                                 max="10"
                                 onChange={(event) => this.handleNewUser(event, 'phone')} >
@@ -94,7 +109,7 @@ class AddUserForm extends Component {
                         <br />
                         <label>
                             Role/Auth:
-                        <select name="auth" onChange={(event) => this.handleNewUserInt(event, 'auth')} value={this.state.userToAdd.auth} >
+                        <select name="auth" onChange={(event) => this.handleNewUserInt(event, 'auth')} value={userToAdd.auth} >
                                 <option >Choose One...</option>
                                 <option value="3">Teacher</option>
                                 <option value="2">School Principal</option>
@@ -106,6 +121,7 @@ class AddUserForm extends Component {
                         <label>District:
                             <select
                                 name="district"
+                                value={this.props.store.user.isd}
                                 id="district"
                                 onChange={(event) => this.handleNewUserInt(event, 'isd')}>
                                 District:
@@ -121,6 +137,7 @@ class AddUserForm extends Component {
                         <label>School:
                             <select
                                 name="school"
+                                value={this.props.store.user.school}
                                 id="school"
                                 defaultValue="school"
                                 placeholder="school"
@@ -142,7 +159,7 @@ class AddUserForm extends Component {
         } else if (this.props.store.user.auth === 1) {
             return (
                 <div>
-                    <h1>ADD/EDIT NEW USER</h1>
+                    <h1 onClick={this.populateInputs}>ADD NEW USER</h1>
                     <form>
                         <label>
                             First Name:
@@ -209,7 +226,7 @@ class AddUserForm extends Component {
         } else if (this.props.store.user.auth === 2) {
             return (
                 <div>
-                    <h1>ADD/EDIT NEW USER</h1>
+                    <h1 onClick={this.populateInputs}>ADD NEW USER</h1>
                     <form>
                         <label>
                             First Name:
