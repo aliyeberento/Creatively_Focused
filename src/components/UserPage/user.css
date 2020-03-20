@@ -1,6 +1,5 @@
 .welcome {
     text-align: center;
-    
 }
 
 .table {
@@ -8,13 +7,11 @@
     margin-right: auto;
     width: 500px;
     margin-top: 50px;
-    
-   
 }
 
 #marker {
- width: 0;
-      height: 0;
-      border-bottom: 10px solid grey;
-      border-left: 0px solid transparent;
+    width: 0;
+        height: 0;
+        border-bottom: 10px solid grey;
+        border-left: 0px solid transparent;
 }

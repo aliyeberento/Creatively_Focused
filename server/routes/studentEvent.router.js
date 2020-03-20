@@ -8,10 +8,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     console.log(req.user);
     // superintendents see events for their school's students
     if (req.user.auth == 0) {
-        const queryText = `SELECT "user"."firstname" AS "teacher_firstname",
+        const queryText = `SELECT 
+        "user"."firstname" AS "teacher_firstname",
         "user"."lastname" AS "teacher_lastname",
         "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
+        "student"."id" AS "student_id",
         "student_event"."id",
         "student_event"."due_date",
         "student_event"."notes",
@@ -36,10 +38,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         } else if (req.user.auth == 1) {
         console.log('superintendent isd:', req.user.isd);
         const isd = [req.user.isd]
-        const queryText = `SELECT "user"."firstname" AS "teacher_firstname",
+        const queryText = `SELECT 
+        "user"."firstname" AS "teacher_firstname",
         "user"."lastname" AS "teacher_lastname",
         "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
+        "student"."id" AS "student_id",
         "student_event"."id",
         "student_event"."due_date",
         "student_event"."notes",
@@ -65,10 +69,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         // principals see events for their teacher's student
         console.log('principal school:', req.user.school);
         const school = [req.user.school]
-        const queryText = `SELECT "user"."firstname" AS "teacher_firstname",
+        const queryText = `SELECT 
+        "user"."firstname" AS "teacher_firstname",
         "user"."lastname" AS "teacher_lastname",
         "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
+        "student"."id" AS "student_id",
         "student_event"."id",
         "student_event"."due_date",
         "student_event"."notes",
@@ -91,8 +97,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             });
     } else {
         // teachers see events for only their students
-        const queryText = `SELECT "student"."firstname" AS "student_firstname",
+        const queryText = `SELECT 
+        "student"."firstname" AS "student_firstname",
         "student"."lastname" AS "student_lastname",
+        "student"."id" AS "student_id",
         "student_event"."due_date",
         "student_event"."notes",
         "student_event"."completed",
