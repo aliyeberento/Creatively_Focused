@@ -11,7 +11,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import './TaskList.css';
+// import './TaskList.css';
 
 // variables
 const styles = theme => ({
@@ -26,7 +26,7 @@ const styles = theme => ({
 });
 
 
-class TaskList extends Component {
+class TeacherTaskList extends Component {
 
     state = {
         user: {
@@ -56,7 +56,7 @@ class TaskList extends Component {
 
     render() {
         let selectedStudentTasks = 
-        this.props.reduxState.studentEvent.filter(task => task.student_id == this.props.match.params.id)
+        this.props.reduxState.studentEvent.filter(task => task.user_id == this.props.match.params.id)
         
         return (
             <div>
@@ -104,4 +104,4 @@ const putStateOnProps = (reduxState) => {
     })
 }
 
-export default withRouter(connect(putStateOnProps)(TaskList));
+export default withRouter(connect(putStateOnProps)(TeacherTaskList));

@@ -6,8 +6,6 @@ import Moment from 'react-moment';
 import { Calendar, momentLocalizer, } from 'react-big-calendar';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
-// import TaskList from '../TaskList/TaskList';
 import 'react-calendar/dist/Calendar.css';
 import Checkbox from '@material-ui/core/Checkbox';
 
@@ -18,7 +16,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
 
 // variables
 const localizer = momentLocalizer(moment);
@@ -32,8 +29,6 @@ const styles = theme => ({
     minWidth: 700,
   },
 });
-
-// import LogOutButton from '../LogOutButton/LogOutButton';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -61,7 +56,6 @@ class UserPage extends Component {
     },
     complete: false, // marked complete default false - changes to true in db
     id: this.props.student
-
   }
 
   // changes checkboxes in task list to true
@@ -69,6 +63,7 @@ class UserPage extends Component {
     this.setState({ [name]: event.target.checked });
 
   };
+
 
   // editUser = () => {
   //   console.log('editing THIS user:', this.props.user.username);
@@ -93,10 +88,8 @@ class UserPage extends Component {
     console.log('clicking to submit edit');
     this.props.dispatch({
       type: 'EDIT_STUDENTEVENT',
-      payload: this.props.student,
-      url: `/api/studentEvent/${this.props.match.params.id}`
+      payload: event
     })
-    
   }
 
   formatEventsForCalendar = (studentEvents) => {
@@ -117,45 +110,41 @@ class UserPage extends Component {
       11: 0
     };
 
-    studentEvents.map(studentEvent => {
+    this.props.student.map(studentEvent => {
       // takes the index of year and increment studentEvent in that month
-      year[moment(studentEvent.next_iep).month()]++
+      year[moment(studentEvent.due_date).month()]++
     });
     // loops through studentEvents and turns it into an object for calendar
     let formatedStudentEvents = studentEvents.map(studentEvent => {
 
       // if the year's index is more than 3 change all events in that month
-      if (year[moment(studentEvent.next_iep).month()] > 3) {
+      if (year[moment(studentEvent.due_date).month()] > 3) {
         return {
-          start: new Date(studentEvent.next_iep),
-          end: new Date(studentEvent.next_iep),
-          title: `⚠ ${studentEvent.firstname}'s IEP`
+          start: new Date(studentEvent.due_date),
+          end: new Date(studentEvent.due_date),
+          title: `⚠ ${studentEvent.student_firstname}'s ${studentEvent.task}`
         }
         // the standard object to return
       } else {
         return {
-          start: new Date(studentEvent.next_iep),
-          end: new Date(studentEvent.next_iep),
-          title: `${studentEvent.firstname}'s IEP`
+          start: new Date(studentEvent.due_date),
+          end: new Date(studentEvent.due_date),
+          title: `${studentEvent.student_firstname}'s ${studentEvent.task}`
         }
       }
-
     });
     //returns one of the objects
     return formatedStudentEvents;
   }
 
   render() {
-    // sets the events for calendar using the student's dates
-    let events = this.formatEventsForCalendar(this.props.student);
     console.log(this.props.student);
     
+    // sets the events for calendar using the student's dates
+    let events = this.formatEventsForCalendar(this.props.student);    
     return (
       <div className="welcome">
-        <h1 >
-          Welcome, {this.props.user.username}!
-        </h1>
-
+        <h1 >Welcome, {this.props.user.firstname}!</h1>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
@@ -163,42 +152,35 @@ class UserPage extends Component {
           events={events}
           style={{ height: "100vh" }}
         />
-
         <Table className="table">
           <TableHead>
             <TableRow>
               <TableCell>Mark Completed</TableCell>
               <TableCell>Date Due</TableCell>
               <TableCell>Task Name</TableCell>
-              <TableCell>First Name</TableCell>
-              <TableCell>Last Name</TableCell>
+              <TableCell>Student Name</TableCell>
             </TableRow>
           </TableHead>
-
           <TableBody>
             {this.props.student.map(event => (
               // maps over studentsEvent reducer
               <TableRow key={event.id}>
-                
+                <TableCell>
                   <Checkbox
                     key={event.id}
                     checked={this.state.checkedB}
-                    onChange={(e) => this.updateStudentEvent(e, 'completed', event.id)}
+                    onChange={(e) => this.updateStudentEvent(e, event)}
                     value="true"
                     color="primary"
-                  />
-              
-                <TableCell><Moment format="MM-D-YYYY">{event.next_iep}</Moment></TableCell>
+                  /></TableCell>
+                <TableCell><Moment format="MM-D-YYYY">{event.due_date}</Moment></TableCell>
                 <TableCell>{event.task}</TableCell>
-                <TableCell>{event.firstname}</TableCell>
-                <TableCell>{event.lastname}</TableCell>
-                
+                <TableCell>{event.student_lastname}, {event.student_firstname}</TableCell>
               </TableRow>
             )
             )}
           </TableBody>
         </Table>
-
       </div>
     )
   }

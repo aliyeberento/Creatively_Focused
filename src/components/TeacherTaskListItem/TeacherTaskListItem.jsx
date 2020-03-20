@@ -26,7 +26,7 @@ const styles = theme => ({
     },
 });
 
-class TaskListItem extends Component {
+class TeacherTaskListItem extends Component {
     state = {
     complete: false,
     }
@@ -93,4 +93,4 @@ const putReduxStateOnProps = (reduxState) => {
     }
 }
 
-export default withStyles(styles)(withRouter(connect(putReduxStateOnProps)(TaskListItem)));
+export default withStyles(styles)(withRouter(connect(putReduxStateOnProps)(TeacherTaskListItem)));
