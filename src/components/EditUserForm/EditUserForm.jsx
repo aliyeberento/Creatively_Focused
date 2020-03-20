@@ -97,7 +97,7 @@ class EditUserForm extends Component {
                             defaultValue={user.firstname}
                             onChange={(event) => this.updateUser(event, 'firstname')}
                         />
-                    </label><br />
+                    </label><br/>
                     <label>Last Name:
                         <input
                             type="text"
@@ -105,7 +105,7 @@ class EditUserForm extends Component {
                             defaultValue={user.lastname}
                             onChange={(event) => this.updateUser(event, 'lastname')}
                         />
-                    </label><br />
+                    </label><br/>
                     <label>Email/Username:
                         <input
                             type="text"
