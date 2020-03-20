@@ -24,7 +24,7 @@ const styles = {
 
 
 class StudentList extends Component {
-
+// calls 'GET_STUDENTS' which then gets a list of students from the database
     componentDidMount() {
         this.props.dispatch({
             type: 'GET_STUDENTS'
@@ -36,14 +36,12 @@ class StudentList extends Component {
         return (
             <div>
                 <ul>
-
-                    <Typography className="student-name" gutterBottom variant="h5" component="h2">
-                        Student List
-                    </Typography>
-
-                    <Link className="connectorLink" to="/addstudent">
-                        <button className="linkBtn">
-                            ADD NEW STUDENT
+                    
+                <h1>STUDENT LIST</h1>
+                {/* link to add new students */}
+                <Link className="connectorLink" to="/addstudent">
+                    <button className="linkBtn">
+                        ADD NEW STUDENT
                     </button>
                     </Link>
                     {this.props.reduxState.students.map(student => {

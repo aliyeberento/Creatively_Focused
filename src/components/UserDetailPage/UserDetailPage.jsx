@@ -54,7 +54,7 @@ class UserDetailPage extends Component {
         })
         this.props.history.push(`/adminhome`)
     }
-
+// on call, it will take you back to the student list
     goToUserList = () => {
         console.log('going back to student list');
         this.props.history.push(`/adminhome`)

@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 
 // This GET route is for testing purposes. Emails will be triggered by Cron.
 router.get('/', (req, res) => {
+    // selecting
     const selectUsers = `
     SELECT "user"."id" AS "user_id",
     "user"."username",
