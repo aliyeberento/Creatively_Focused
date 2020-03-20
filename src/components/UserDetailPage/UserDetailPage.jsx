@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TaskList from '../TaskList/TaskList';
 import StudentList from '../StudentList/StudentList';
+import TeacherTaskList from '../TeacherTaskList/TeacherTaskList'
 import Popup from 'reactjs-popup';
 import Button from '@material-ui/core/Button';
 
@@ -107,13 +108,6 @@ class UserDetailPage extends Component {
                         </CardActions>
                     </Card>
                 </Grid>
-
-                {/* SHOULD WE HAVE A LIST OF DEADLINES HERE? */}
-                {/* <ol>
-                    <li><input type="checkbox"></input>This is a task.</li>
-                    <li><input type="checkbox"></input>This is another task.</li>
-                    <li><input type="checkbox"></input>This is a third task.</li>
-                </ol> */}
                 <TaskList />
                 <StudentList />
             </div>
