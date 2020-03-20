@@ -20,7 +20,7 @@ class TaskListItem extends Component {
                     {/* DATE DUTE */}
                     {moment(task.due_date).format('MM-DD-YYYY')}<br />
                     {/* STUDENT NAME */}
-                    {task.lastname}, {task.firstname}<br />
+                    {task.student_lastname}, {task.student_firstname}<br />
                     {/* TASK NAME */}
                     {task.task}
                     {/* <button key={task.id} onClick={(event) => this.goDetail(event, this.props.task)}>view event details</button> */}

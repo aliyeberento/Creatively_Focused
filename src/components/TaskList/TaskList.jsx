@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import TaskListItem from '../TaskListItem/TaskListItem';
 
 class TaskList extends Component {
@@ -11,17 +13,17 @@ class TaskList extends Component {
     }
 
     render() {
-        console.log(this.props.reduxState.tasks);
+        let selectedStudentTasks = 
+        this.props.reduxState.studentEvent.filter(task => task.student_id == this.props.match.params.id)
+        console.log(this.props.reduxState.studentEvent);
+        console.log(this.props.match.params.id);
+        console.log(selectedStudentTasks);
         return (
             <div>
                 <ul>
                     <h3>UPCOMING DEADLINES</h3>
-                    {this.props.reduxState.studentEvent.map(task => {
-                        return <TaskListItem key={task.id} task={task} />
-                    })}
-                    {/* <li><input type="checkbox"></input>task #1</li>
-                    <li><input type="checkbox"></input>task #2</li>
-                    <li><input type="checkbox"></input>task #3</li> */}
+                    {JSON.stringify(selectedStudentTasks)}
+                    <TaskListItem key={selectedStudentTasks.id} task={selectedStudentTasks} />
                 </ul>
             </div>
         )
@@ -34,4 +36,4 @@ const putStateOnProps = (reduxState) => {
     })
 }
 
-export default connect(putStateOnProps)(TaskList);
+export default withRouter(connect(putStateOnProps)(TaskList));
