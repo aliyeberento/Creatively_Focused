@@ -64,7 +64,28 @@ class UserPage extends Component {
 
   };
 
-  updateStudentEvent = (e, event) => {
+
+  // editUser = () => {
+  //   console.log('editing THIS user:', this.props.user.username);
+  // }
+
+  updateStudentEvent = (e, propertyValue, id) => {
+    // console.log('updating student event', event, propertyValue);
+    console.log(id);
+    // dispatch calls 'EDIT_STUDENTEVENT' which'll make a call to redux/database to edit an event
+    this.props.dispatch({
+      type: 'EDIT_STUDENTEVENT',
+      payload: {
+        key: propertyValue,
+        value: 'true',
+        id: id
+      }
+    })
+  }
+
+  submitEdit = () => {
+    // dispatches edit request to redux/database
+    console.log('clicking to submit edit');
     this.props.dispatch({
       type: 'EDIT_STUDENTEVENT',
       payload: event
