@@ -77,15 +77,21 @@ class AddStudentForm extends Component {
         return (
             <div>
                 <h1
-                // onClick={this.populateInputs}
+                onClick={this.populateInputs}
                 >ADD NEW STUDENT</h1>
                 <form className="form">
                     <div className="set1">
-                        <label>First Name: <input type="text" value={student.firstname} placeholder="first name" onChange={(event) => this.handleAddStudent('firstname', event)}></input></label>
+                        <label>First Name: 
+                            <input 
+                                type="text"  
+                                placeholder="first name" 
+                                value={student.firstname}
+                                onChange={(event) => this.handleAddStudent('firstname', event)}>
+                            </input>
+                        </label>
                         <label>Last Name: <input type="text" value={student.lastname} placeholder="last name" onChange={(event) => this.handleAddStudent('lastname', event)}></input></label>
                         <label>Student ID: <input type="number" value={student.student_id} placeholder="id number" onChange={(event) => this.handleAddStudentInt('student_id', event)}></input></label>
                         <label>Birthdate: <input type="date" value={student.birthdate} placeholder="birthdate" onChange={(event) => this.handleAddStudent('birthdate', event)}></input></label>
-                        {/* <label>Grade: <input type="number" value={student.grade} placeholder="grade" onChange={(event) => this.handleAddStudentInt('grade', event)}></input></label> */}
                         <label>Grade: 
                             <select name="grade" value={student.grade} placeholder="grade" onChange={(event) => this.handleAddStudentInt('grade', event)}>
                                 <option>Choose One...</option>
