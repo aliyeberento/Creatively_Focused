@@ -51,20 +51,43 @@ class AddStudentForm extends Component {
         this.props.history.push(`/studentlist`);
     }
 
+    populateInputs = () => {
+        this.setState({
+            studentToAdd: {
+                firstname: 'Jimmy',
+                lastname: 'Jackson',
+                grade: 8,
+                student_id: '827564428',
+                prev_iep: '2019-12-01',
+                prev_eval: '2017-11-05',
+                disability_cat: 5,
+                fed_setting: 3,
+                birthdate: '2007-06-20',
+                notes: 'English is his second language.',
+                teacher: this.props.state.user.id,
+                school_id: this.props.state.user.school,
+                isd_id: this.props.state.user.isd,
+            }
+        })
+    }
+
     render() {
-        console.log(this.state.studentToAdd);
+        let student = this.state.studentToAdd
+        console.log(student);
         return (
             <div>
-                <h1>ADD NEW STUDENT</h1>
+                <h1
+                // onClick={this.populateInputs}
+                >ADD NEW STUDENT</h1>
                 <form className="form">
                     <div className="set1">
-                        <label>First Name: <input type="text" placeholder="first name" onChange={(event) => this.handleAddStudent('firstname', event)}></input></label>
-                        <label>Last Name: <input type="text" placeholder="last name" onChange={(event) => this.handleAddStudent('lastname', event)}></input></label>
-                        <label>Student ID: <input type="number" placeholder="id number" onChange={(event) => this.handleAddStudentInt('student_id', event)}></input></label>
-                        <label>Birthdate: <input type="date" placeholder="birthdate" onChange={(event) => this.handleAddStudent('birthdate', event)}></input></label>
-                        <label>Grade: <input type="number" placeholder="grade" onChange={(event) => this.handleAddStudentInt('grade', event)}></input></label>
+                        <label>First Name: <input type="text" value={student.firstname} placeholder="first name" onChange={(event) => this.handleAddStudent('firstname', event)}></input></label>
+                        <label>Last Name: <input type="text" value={student.lastname} placeholder="last name" onChange={(event) => this.handleAddStudent('lastname', event)}></input></label>
+                        <label>Student ID: <input type="number" value={student.student_id} placeholder="id number" onChange={(event) => this.handleAddStudentInt('student_id', event)}></input></label>
+                        <label>Birthdate: <input type="date" value={student.birthdate} placeholder="birthdate" onChange={(event) => this.handleAddStudent('birthdate', event)}></input></label>
+                        <label>Grade: <input type="number" value={student.grade} placeholder="grade" onChange={(event) => this.handleAddStudentInt('grade', event)}></input></label>
                         <label>Disability Category: 
-                            <select name="disability_cat" onChange={(event) => this.handleAddStudentInt('disability_cat', event)}>
+                            <select name="disability_cat" value={student.disability_cat} onChange={(event) => this.handleAddStudentInt('disability_cat', event)}>
                                 <option>Choose one...</option>
                                 <option value="0">Autism</option>
                                 <option value="1">Deaf-Blindness</option>
@@ -83,7 +106,7 @@ class AddStudentForm extends Component {
                             </select>
                         </label><br />
                         <label>Federal Setting: 
-                            <select name="fed_setting" onChange={(event) => this.handleAddStudentInt('fed_setting', event)}>
+                            <select name="fed_setting" value={student.fed_setting} onChange={(event) => this.handleAddStudentInt('fed_setting', event)}>
                                 <option>Choose one...</option>
                                 <option value="1">I</option>
                                 <option value="2">II</option>
@@ -94,9 +117,9 @@ class AddStudentForm extends Component {
                         </label><br />
                     </div>
                     <div className="set2">
-                        <label>Previous IEP<input type="date" placeholder="previous iep date" onChange={(event) => this.handleAddStudent('prev_iep', event)}></input></label>
-                        <label>Previous EVAL<input type="date" placeholder="previous eval date" onChange={(event) => this.handleAddStudent('prev_eval', event)}></input></label>
-                        <label>Notes<input type="text" placeholder="notes" onChange={(event) => this.handleAddStudent('notes', event)}></input></label>
+                        <label>Previous IEP<input type="date" value={student.prev_iep} placeholder="previous iep date" onChange={(event) => this.handleAddStudent('prev_iep', event)}></input></label>
+                        <label>Previous EVAL<input type="date" value={student.prev_eval} placeholder="previous eval date" onChange={(event) => this.handleAddStudent('prev_eval', event)}></input></label>
+                        <label>Notes<input type="text" value={student.notes} placeholder="notes" onChange={(event) => this.handleAddStudent('notes', event)}></input></label>
                         <button type="button" className="submitBtn" onClick={this.submitStudent}>Submit</button>
                     </div>
                 </form>
