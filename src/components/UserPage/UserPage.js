@@ -64,11 +64,6 @@ class UserPage extends Component {
 
   };
 
-
-  // editUser = () => {
-  //   console.log('editing THIS user:', this.props.user.username);
-  // }
-
   updateStudentEvent = (e, propertyValue, id) => {
     // console.log('updating student event', event, propertyValue);
     console.log(id);
@@ -91,6 +86,7 @@ class UserPage extends Component {
   //     payload: event
   //   })
   // }
+
 
   formatEventsForCalendar = (studentEvents) => {
     // object that will have the amount of studentEvents within that month

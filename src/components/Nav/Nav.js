@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { slide as Menu } from "react-burger-menu";
+import { stack as Menu } from "react-burger-menu";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -32,7 +32,8 @@ class Nav extends Component {
         <Menu  pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } 
         isOpen={this.state.menuOpen}
         onStateChange={(state) => this.handleStateChange(state)}
-        right>
+        right
+        width={ 150 } >
         <main>
             <div className="menu-color">
               <Link className="menu-item" to="/home" onClick={() => this.closeMenu()}>HOME</Link>
