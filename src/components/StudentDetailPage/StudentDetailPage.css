@@ -1,0 +1,11 @@
+ul {
+    display: grid
+    
+}
+
+.student-name {
+    text-align: center;
+}
+.student-buttons {
+    display: flex; justify-content: center;
+}

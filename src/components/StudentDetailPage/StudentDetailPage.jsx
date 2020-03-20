@@ -5,6 +5,7 @@ import moment from 'moment';
 import TaskList from '../TaskList/TaskList';
 import Popup from 'reactjs-popup';
 
+
 //styling 
 import logo from '../UserDetailPage/logo square color.jpg';
 import './StudentDetailPage.css';
@@ -65,15 +66,18 @@ class StudentDetailPage extends Component {
                 <Card>
 
                     <CardActionArea>
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
+                        <CardContent className="student-content">
+                                <Typography className="student-name" gutterBottom variant="h5" component="h2">
                                 {student.lastname}, {student.firstname}
                             </Typography>
 
                             <Typography component="p">
                                 <ul>
+                                   
                                     <li>Grade: {student.grade}</li>
+                                    
                                     <li>Date of Birth: {moment(student.birthdate).format('MM-DD-YYYY')}</li>
+                                       
                                     <li>Previous IEP: {moment(student.prev_iep).format('MM-DD-YYYY')}</li>
                                     <li>Next IEP: {moment(student.next_iep).format('MM-DD-YYYY')}</li>
                                     <li>Previous EVAL: {moment(student.prev_eval).format('MM-DD-YYYY')}</li>
@@ -83,14 +87,15 @@ class StudentDetailPage extends Component {
                                     <li>Teacher: {student.teacherlastname}, {student.teacherfirstname}</li>
                                     <li>School: {student.school}</li>
                                     <li>ISD: {student.isd}</li>
-                                    <li>Notes: {student.notes}</li><br />
                                     
+                                    <li>Notes: {student.notes}</li><br />
+                                        
                                 </ul>
                             </Typography>
                         </CardContent>
                     </CardActionArea>
 
-                    <CardActions>
+                    <CardActions className="student-buttons">
                         <Button size="small" variant="outlined" onClick={this.editStudent}>Edit</Button>
                         <Button>
                             <Popup trigger={<Button size="small" variant="outlined" > DELETE </Button>} modal>
