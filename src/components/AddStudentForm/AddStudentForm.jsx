@@ -22,33 +22,37 @@ class AddStudentForm extends Component {
             isd_id: this.props.state.user.isd,
         }
     }
-// takes the users input and inputs it into local state
+    // takes the users input and inputs it into local state
     handleAddStudent = (propertyName, event) => {
         this.setState({
+            //spreading state and having the propertyName be what the user inputs
             studentToAdd: {
                 ...this.state.studentToAdd,
                 [propertyName]: event.target.value
             }
         })
     }
-// takes the users input and inputs it into local state
+    // takes the users input and inputs it into local state
     handleAddStudentInt = (propertyName, event) => {
         this.setState({
             studentToAdd: {
+                //spreading state and having the propertyName be what the user inputs
                 ...this.state.studentToAdd,
                 [propertyName]: Number(event.target.value)
             }
         })
     }
 
-//takes local state and sends it to 
     submitStudent = (event) => {
         event.preventDefault()
         console.log('submitting:', this.state.studentToAdd)
         this.props.dispatch({
+            //calls 'SUBMIT_STUDENT' which takes local 
+            //state and sends it to redux/database
             type: 'SUBMIT_STUDENT',
             payload: this.state.studentToAdd
         })
+        // takes you back to the student list page
         this.props.history.push(`/studentlist`);
     }
 
@@ -64,7 +68,7 @@ class AddStudentForm extends Component {
                         <label>Student ID: <input type="number" placeholder="id number" onChange={(event) => this.handleAddStudentInt('student_id', event)}></input></label>
                         <label>Birthdate: <input type="date" placeholder="birthdate" onChange={(event) => this.handleAddStudent('birthdate', event)}></input></label>
                         <label>Grade: <input type="number" placeholder="grade" onChange={(event) => this.handleAddStudentInt('grade', event)}></input></label>
-                        <label>Disability Category: 
+                        <label>Disability Category:
                             <select name="disability_cat" onChange={(event) => this.handleAddStudentInt('disability_cat', event)}>
                                 <option>Choose one...</option>
                                 <option value="0">Autism</option>
@@ -83,7 +87,7 @@ class AddStudentForm extends Component {
                                 <option value="13">Visual Impairment Inclucing Blindness</option>
                             </select>
                         </label><br />
-                        <label>Federal Setting: 
+                        <label>Federal Setting:
                             <select name="fed_setting" onChange={(event) => this.handleAddStudentInt('fed_setting', event)}>
                                 <option>Choose one...</option>
                                 <option value="1">I</option>

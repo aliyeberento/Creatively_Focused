@@ -77,7 +77,7 @@ class UserPage extends Component {
   updateStudentEvent = (e, propertyValue, id) => {
     // console.log('updating student event', event, propertyValue);
     console.log(id);
-    
+    // dispatch calls 'EDIT_STUDENTEVENT' which'll make a call to redux/database to edit an event
     this.props.dispatch({
       type: 'EDIT_STUDENTEVENT',
       payload: {
@@ -198,11 +198,6 @@ class UserPage extends Component {
             )}
           </TableBody>
         </Table>
-
-        {/* <button onClick={this.editUser}>EDIT USER PROFILE</button> */}
-
-        {/* <TaskList /> */}
-        {/* <LogOutButton className="log-in" /> */}
 
       </div>
     )

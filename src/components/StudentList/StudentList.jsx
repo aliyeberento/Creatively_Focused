@@ -22,7 +22,7 @@ const styles = {
 
 
 class StudentList extends Component {
-
+// calls 'GET_STUDENTS' which then gets a list of students from the database
     componentDidMount() {
         this.props.dispatch({
             type: 'GET_STUDENTS'
@@ -36,7 +36,7 @@ class StudentList extends Component {
                 <ul>
                     
                 <h1>STUDENT LIST</h1>
-                
+                {/* link to add new students */}
                 <Link className="connectorLink" to="/addstudent">
                     <button className="linkBtn">
                         ADD NEW STUDENT

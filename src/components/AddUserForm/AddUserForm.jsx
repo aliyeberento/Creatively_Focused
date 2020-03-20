@@ -16,10 +16,11 @@ class AddUserForm extends Component {
             auth: 3
         }
     }
-
+    // takes the users input and inputs it into local state with its corresponding propertyName
     handleNewUser = (event, propertyName) => {
         this.setState({
             userToAdd: {
+                //spreading state and having the propertyName be what the user inputs
                 ...this.state.userToAdd,
                 [propertyName]: event.target.value
             }
@@ -27,10 +28,11 @@ class AddUserForm extends Component {
             console.log(this.state.userToAdd)
         })
     }
-
+    // takes the users input and inputs it into local state with its corresponding propertyName
     handleNewUserInt = (event, propertyName) => {
         this.setState({
             userToAdd: {
+                //spreading state and having the propertyName be what the user inputs
                 ...this.state.userToAdd,
                 [propertyName]: Number(event.target.value)
             }
@@ -38,7 +40,7 @@ class AddUserForm extends Component {
             console.log(this.state.userToAdd)
         })
     }
-
+    //sends local state into the addUser Saga/database
     submitBtn = (event) => {
         event.preventDefault()
         console.log('submitting:', this.state.userToAdd)
@@ -48,7 +50,7 @@ class AddUserForm extends Component {
         })
         this.goDetail();
     }
-
+    // when called brings you back to the admin home page
     goDetail = () => {
         this.props.history.push(`/adminhome`)
     }

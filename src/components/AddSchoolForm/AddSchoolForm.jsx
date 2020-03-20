@@ -16,6 +16,7 @@ class AddSchoolForm extends Component {
     makeSchool = (event, propertyValue) => {
         console.log('making a new school', this.state.schoolToAdd);
         this.setState({
+            //spreading state and having the propertyName be what the user inputs
             schoolToAdd: {
                 ...this.state.schoolToAdd,
                 [propertyValue]: event.target.value
@@ -34,6 +35,7 @@ class AddSchoolForm extends Component {
             type: 'ADD_SCHOOL',
             payload: this.state.schoolToAdd
         })
+        //brings you back to the home page
         this.props.history.push('/home')
     }
 
