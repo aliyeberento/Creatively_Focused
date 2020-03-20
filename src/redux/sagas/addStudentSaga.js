@@ -9,6 +9,8 @@ function* addStudent(action) {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true,
         };
+        //response is all data being sent from the dom 
+        //sending to database
         const response = yield axios.post('/api/addStudent', action.payload, config);
         console.log('action.payload from post saga addstudent', action.payload)
         yield put({ type: 'GET_STUDENTS', payload: response.data });
