@@ -19,6 +19,14 @@ class TaskListItem extends Component {
                     return (
                         <div>
                             <li>{moment(task.due_date).format('MM-DD-YYYY')}</li>
+                            {/* CHECKBOX */}
+                            {/* <input type="checkbox"></input> */}
+                            {/* DATE DUTE */}
+                            {/* {moment(task.due_date).format('MM-DD-YYYY')}<br /> */}
+                            {/* STUDENT NAME */}
+                            {/* {task.lastname}, {task.firstname}<br /> */}
+                            {/* TASK NAME */}
+                            {/* {task.task} */}
                         </div>
                     )
                 })}
