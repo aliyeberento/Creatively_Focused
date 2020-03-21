@@ -33,7 +33,7 @@ class Nav extends Component {
         isOpen={this.state.menuOpen}
         onStateChange={(state) => this.handleStateChange(state)}
         right
-        width={ 150 } >
+        width={ 180 } >
         <main>
             <div className="menu-color">
               <Link className="menu-item" to="/home" onClick={() => this.closeMenu()}>HOME</Link>
