@@ -15,6 +15,8 @@ function* addStudent(action) {
         console.log('action.payload from post saga addstudent', action.payload)
         yield put({ type: 'ADD_EVENTS' });
         yield put({ type: 'GET_STUDENTS', payload: response.data });
+        yield put({ type: 'GET_STUDENTEVENT' });
+
     } catch (error) {
         console.log('add student post request failed in saga', error);
     }

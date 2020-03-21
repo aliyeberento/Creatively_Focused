@@ -145,31 +145,22 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
-router.post('/', rejectUnauthenticated, (req, res) => {
-
-    let newStudent = req.body;
-
+router.post('/', rejectUnauthenticated, (res) => {
     console.log('in studentEvent.router POST');
-    //in the student table, insert the newStudent info into following columns
     let queryText = `
     INSERT INTO "student_event" 
     ("student_id", "event_id", "due_date") 
     VALUES
-    (26, 1, '2020-05-01'), 
-    (26, 2, '2020-05-01'), 
-    (26, 3, '2020-05-01'), 
-    (26, 4, '2020-05-01'), 
-    (26, 5, '2020-05-01'), 
-    (26, 6, '2020-05-01'), 
-    (26, 7, '2020-05-01'), 
-    (26, 8, '2020-05-01'), 
-    (26, 9, '2020-05-01')
-    ;`
-    pool.query(queryText, [newStudent.firstname, newStudent.lastname, 
-        newStudent.birthdate, newStudent.grade, newStudent.student_id, newStudent.disability_cat,
-        newStudent.fed_setting, newStudent.initial_iep, newStudent.prev_iep, newStudent.next_iep,
-        newStudent.prev_eval, newStudent.next_eval, newStudent.school_id, newStudent.isd_id, 
-        newStudent.notes, req.user.id])
+    (23, 1, '2020-05-01'), 
+    (23, 2, '2020-05-01'), 
+    (23, 3, '2020-05-01'), 
+    (23, 4, '2020-05-01'), 
+    (23, 5, '2020-05-01'), 
+    (23, 6, '2020-05-01'), 
+    (23, 7, '2020-05-01'), 
+    (23, 8, '2020-05-01'), 
+    (23, 9, '2020-05-01');`
+    pool.query(queryText)
         .then((result) => {
             res.sendStatus(201);
         })
