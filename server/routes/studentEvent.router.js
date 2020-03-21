@@ -145,4 +145,38 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
+router.post('/', rejectUnauthenticated, (req, res) => {
+
+    let newStudent = req.body;
+
+    console.log(req.body);
+    //in the student table, insert the newStudent info into following columns
+    let queryText = `INSERT INTO "student_event" 
+    ("student_id", "event_id", "due_date") 
+    VALUES 
+    (26, 1, '2020-05-01'), 
+    (26, 2, '2020-05-01'), 
+    (26, 3, '2020-05-01'), 
+    (26, 4, '2020-05-01'), 
+    (26, 5, '2020-05-01'), 
+    (26, 6, '2020-05-01'), 
+    (26, 7, '2020-05-01'), 
+    (26, 8, '2020-05-01'), 
+    (26, 9, '2020-05-01')
+    ;`
+    pool.query(queryText, [newStudent.firstname, newStudent.lastname, 
+        newStudent.birthdate, newStudent.grade, newStudent.student_id, newStudent.disability_cat,
+        newStudent.fed_setting, newStudent.initial_iep, newStudent.prev_iep, newStudent.next_iep,
+        newStudent.prev_eval, newStudent.next_eval, newStudent.school_id, newStudent.isd_id, 
+        newStudent.notes, req.user.id])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('error in addStudent post req in server', error);
+            res.sendStatus(500);
+        });
+
+});
+
 module.exports = router;
