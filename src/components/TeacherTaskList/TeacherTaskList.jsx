@@ -21,7 +21,6 @@ class TeacherTaskList extends Component {
             <div>
                 <ul>
                     <h3>UPCOMING DEADLINES</h3>
-                    {/* {JSON.stringify(selectedStudentTasks)} */}
                     <TeacherTaskListItem key={selectedStudentTasks.id} task={selectedStudentTasks} />
                 </ul>
             </div>
