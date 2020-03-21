@@ -61,9 +61,11 @@ class AddUserForm extends Component {
             userToAdd: {
                 firstname: 'Ken',
                 lastname: 'Slack',
-                username: 'ken@gmail.com',
+                username: 'kenslacktheteacher@gmail.com',
                 password: '1234',
                 phone: '6089874523',
+                isd: 3,
+                school: 3,
                 auth: 3
             }
         })

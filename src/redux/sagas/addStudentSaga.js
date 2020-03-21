@@ -13,6 +13,7 @@ function* addStudent(action) {
         //sending to database
         const response = yield axios.post('/api/addStudent', action.payload, config);
         console.log('action.payload from post saga addstudent', action.payload)
+        
         yield put({ type: 'GET_STUDENTS', payload: response.data });
     } catch (error) {
         console.log('add student post request failed in saga', error);

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import TaskList from '../TaskList/TaskList';
+// import TaskList from '../TaskList/TaskList';
 import StudentList from '../StudentList/StudentList';
-import TeacherTaskList from '../TeacherTaskList/TeacherTaskList'
+import TeacherTaskList from '../TeacherTaskList/TeacherTaskList';
 import Popup from 'reactjs-popup';
 import Button from '@material-ui/core/Button';
 
@@ -108,7 +108,7 @@ class UserDetailPage extends Component {
                         </CardActions>
                     </Card>
                 </Grid>
-                <TaskList />
+                <TeacherTaskList />
                 <StudentList />
             </div>
         )
