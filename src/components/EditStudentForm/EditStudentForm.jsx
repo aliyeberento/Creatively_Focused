@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-// import moment from 'moment';
+import moment from 'moment';
 
 class EditStudentForm extends Component {
 
@@ -47,6 +47,8 @@ class EditStudentForm extends Component {
 
     render() {
         console.log(this.props.reduxState.studentDetail);
+        console.log(moment(this.props.reduxState.studentDetail.birthdate).format('MM/DD/YYYY'));
+        
         return (
             <div>
                 <h1>EDIT STUDENT</h1>
@@ -75,15 +77,15 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudentInt(event, 'grade')}
                         />
                     </label><br />
-                    <label>Date of Birth:
+                    {/* <label>Date of Birth:
                         <input
                             type="date"
                             placeholder="birthdate"
-                            defaultValue="03-01-2020"
+                            defaultValue="03/01/2010"
                             value="03-01-2020"
                             onChange={(event) => this.updateStudent(event, 'birthdate')}
                         />
-                    </label><br />
+                    </label><br /> */}
                     <label>Disability Category: 
                             <select name="disability_cat" onChange={(event) => this.updateStudentInt(event, 'disability_cat')}>
                                 <option>Choose one...</option>
@@ -113,7 +115,7 @@ class EditStudentForm extends Component {
                                 <option value="5">V</option>
                             </select>
                         </label><br />
-                    <label>Next IEP:
+                    <label>Next IEP: (must occur before {moment(this.props.reduxState.studentDetail.next_iep).format('MM/DD/YYYY')})
                         <input
                             type="date"
                             placeholder="next iep"
@@ -121,7 +123,7 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudent(event, 'next_iep')}
                         />
                     </label><br />
-                    <label>Next EVAL:
+                    <label>Next EVAL: (must occur before {moment(this.props.reduxState.studentDetail.next_eval).format('MM/DD/YYYY')})
                         <input
                             type="date"
                             placeholder="next_eval"
