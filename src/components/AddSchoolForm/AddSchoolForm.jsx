@@ -46,13 +46,16 @@ class AddSchoolForm extends Component {
                 <form>
                 <label>School Name: 
                     <input onChange={(event) => this.makeSchool(event, 'name')}></input></label><br />
+                    <label>District: 
                         <select name="isd_id" id="isd_id" defaultValue="isd_id" placeholder="isd_id" onChange={(event) => this.makeSchool(event, 'isd_id')}>School District: 
                             <option>Choose one...</option>
                             {this.props.state.districtReducer.map(isd => {
                             return (
-                                <option value={isd.id} key={isd.id}>{isd.city}, {isd.state} - {isd.isd}</option>
+                                <option value={isd.id} key={isd.id}>{isd.state} - {isd.city} - {isd.isd}</option>
                             )})}
-                        </select><br />
+                        </select>
+                        </label>
+                        <br />
                 <button type="button" onClick={this.submitSchool}>Add School</button>
                 </form>
             </div>

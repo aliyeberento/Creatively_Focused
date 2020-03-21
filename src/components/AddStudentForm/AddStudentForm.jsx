@@ -63,15 +63,18 @@ class AddStudentForm extends Component {
                 lastname: 'Jackson',
                 grade: 8,
                 student_id: '827564428',
+                initial_iep: '2013-05-01',
                 prev_iep: '2019-12-01',
+                next_iep: '2013-05-01',
                 prev_eval: '2017-11-05',
+                next_eval: '2013-05-01',
                 disability_cat: 5,
                 fed_setting: 3,
                 birthdate: '2007-06-20',
                 notes: 'English is his second language.',
-                teacher: this.props.state.user.id,
-                school_id: this.props.state.user.school,
-                isd_id: this.props.state.user.isd,
+                teacher: 13,
+                school_id: 3,
+                isd_id: 3
             }
         })
     }
