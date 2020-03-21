@@ -21,6 +21,7 @@ function* addStudent(action) {
 }
 
 function* addEvents() {
+    console.log('in addEvents generator, addStudent saga');
     
     try {
         const config = {

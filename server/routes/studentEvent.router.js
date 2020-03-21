@@ -149,11 +149,12 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
     let newStudent = req.body;
 
-    console.log(req.body);
+    console.log('in studentEvent.router POST');
     //in the student table, insert the newStudent info into following columns
-    let queryText = `INSERT INTO "student_event" 
+    let queryText = `
+    INSERT INTO "student_event" 
     ("student_id", "event_id", "due_date") 
-    VALUES 
+    VALUES
     (26, 1, '2020-05-01'), 
     (26, 2, '2020-05-01'), 
     (26, 3, '2020-05-01'), 

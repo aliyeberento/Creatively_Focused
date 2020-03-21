@@ -14,9 +14,6 @@ class TeacherTaskList extends Component {
     render() {
         let selectedStudentTasks = 
         this.props.reduxState.studentEvent.filter(task => task.user_id == this.props.match.params.id)
-        console.log(this.props.reduxState.studentEvent);
-        console.log(this.props.match.params.id);
-        console.log(selectedStudentTasks);
         return (
             <div>
                 <ul>

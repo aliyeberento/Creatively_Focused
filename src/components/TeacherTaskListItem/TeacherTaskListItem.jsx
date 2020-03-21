@@ -5,11 +5,6 @@ import moment from 'moment';
 
 class TaskListItem extends Component {
 
-    goDetail = (event, task) => {
-        console.log('clicking to see detail on task:', task);
-        this.props.history.push(`/taskdetail/${task.id}`)
-    }
-
     render() {
         let task = this.props.task
         console.log(task);
@@ -18,12 +13,14 @@ class TaskListItem extends Component {
                 {task.map(task => {
                     return (
                         <div>
-                            {/* DATE DUTE */}
-                            <li>{moment(task.due_date).format('MM-DD-YYYY')}<br />
-                            {/* STUDENT NAME */}
-                            {task.student_lastname}, {task.student_firstname}<br />
-                            {/* TASK NAME */}
-                            {task.task}</li><br />
+                            <li>
+                                {/* DUE DATE */}
+                                {moment(task.due_date).format('MM-DD-YYYY')}<br />
+                                {/* STUDENT NAME */}
+                                {task.student_lastname}, {task.student_firstname}<br />
+                                {/* TASK NAME */}
+                                {task.task}</li>
+                            <br />
                         </div>
                     )
                 })}
