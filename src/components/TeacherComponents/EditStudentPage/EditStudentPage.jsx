@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Nav from '../Nav/Nav';
-// import Footer from '../Footer/Footer';
-// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 class EditStudentPage extends Component {
-
-    componentDidMount() {
-        // let selectedStudent = this.props.student.filter(student => student.id == this.props.match.params.id)[0];
-        this.props.dispatch({type: 'GET_STUDENT',})
-    }
 
     state = {
         student: {},

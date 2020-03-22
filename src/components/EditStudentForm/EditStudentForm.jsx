@@ -5,12 +5,6 @@ import { withRouter } from 'react-router-dom';
 
 class EditStudentForm extends Component {
 
-    // componentDidMount() {
-    //     this.props.dispatch({
-    //         type: 'GET_TEACHERS'
-    //     })
-    // }
-
     // state = {
     //     studentToEdit: {
     //         firstname: this.props.reduxState.studentDetail.firstname,

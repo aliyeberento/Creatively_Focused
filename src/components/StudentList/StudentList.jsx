@@ -24,29 +24,20 @@ const styles = {
 
 class StudentList extends Component {
 
-    componentDidMount() {
-        this.props.dispatch({
-            type: 'GET_STUDENTS'
-        })
-    }
-
     render() {
         console.log(this.props.reduxState.students);
         return (
             <div>
                 <ul>
-                    
                     <h2 className="student-list">Student List</h2>
-                
-                <Link className="connectorLink" to="/addstudent">
-                    <button className="linkBtn">
-                        ADD NEW STUDENT
-                    </button>
-                </Link>
+                    <Link style={{ backgroundColor: 'transparent' }} className="connectorLink" to="/addstudent">
+                        <button className="linkBtn student-add">
+                            ADD STUDENT
+                        </button>
+                    </Link>
                     {this.props.reduxState.students.map(student => {
                         return <StudentItem id="studentListItem" key={student.id} student={student} />
                     })}
-                    
                 </ul>
             </div>
         )

@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import logo from './logo square color.jpg';
 import './UserDetailPage.css';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -27,6 +26,7 @@ const styles = {
     },
 
 };
+
 
 class UserDetailPage extends Component {
 
@@ -65,27 +65,24 @@ class UserDetailPage extends Component {
         return (
             <div>
                 <Grid>
-                    <Card>
+                    <Card >
+                        <CardContent className="user-content">
+                            <Typography className="user-name" gutterBottom variant="h5" component="h2">
+                                User: {user.firstname} {user.lastname}
+                            </Typography>
 
-                        <CardActionArea>
-                            <CardContent className="user-content">
-                                <Typography className="user-name" gutterBottom variant="h5" component="h2">
-                                    User: {user.firstname} {user.lastname}
-                                </Typography>
+                            <Typography component="p">
+                                <ul>
+                                    <li>E-Mail/Username: {user.username}</li>
+                                    <li>School: {user.school}</li>
+                                    <li>City: {user.city}</li>
+                                    <li>State: {user.state}</li>
+                                    <li>ISD: {user.isd}</li>
+                                    <li>Phone Number: {user.phone}</li>
 
-                                <Typography component="p">
-                                    <ul>
-                                        <li>E-Mail/Username: {user.username}</li>
-                                        <li>School: {user.school}</li>
-                                        <li>City: {user.city}</li>
-                                        <li>State: {user.state}</li>
-                                        <li>ISD: {user.isd}</li>
-                                        <li>Phone Number: {user.phone}</li>
-
-                                    </ul>
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
+                                </ul>
+                            </Typography>
+                        </CardContent>
 
                         <CardActions className="student-buttons">
                             <Button size="small" variant="outlined" onClick={this.editUser}>Edit</Button>
@@ -107,13 +104,6 @@ class UserDetailPage extends Component {
                         </CardActions>
                     </Card>
                 </Grid>
-
-                {/* SHOULD WE HAVE A LIST OF DEADLINES HERE? */}
-                {/* <ol>
-                    <li><input type="checkbox"></input>This is a task.</li>
-                    <li><input type="checkbox"></input>This is another task.</li>
-                    <li><input type="checkbox"></input>This is a third task.</li>
-                </ol> */}
                 <TaskList />
                 <StudentList />
             </div>
