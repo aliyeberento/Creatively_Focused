@@ -10,8 +10,6 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import UserPage from '../UserPage/UserPage';
-import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
-import MonthlyCalendarPage from '../TeacherComponents/MonthlyCalendarPage/MonthlyCalendarPage';
 import StudentList from '../StudentList/StudentList';
 import StudentDetailPage from '../StudentDetailPage/StudentDetailPage';
 import AddStudentForm from '../AddStudentForm/AddStudentForm';
@@ -102,16 +100,7 @@ class App extends Component {
               path="/addschool"
               component={AddSchoolForm}
             />
-            <ProtectedRoute
-              exact
-              path="/teacherhome"
-              component={AnnualCalendarPage}
-            />
-            <ProtectedRoute
-              exact
-              path="/monthlycalendar"
-              component={MonthlyCalendarPage}
-            />
+       
             <ProtectedRoute
               exact
               path="/addstudent"
@@ -143,7 +132,7 @@ class App extends Component {
             component={twilio}
             />
             {/* If none of the other routes matched, we will show a 404. */}
-            <Route render={() => <h1>Huh? Are you stupid? 404 dummy</h1>} />
+            <Route render={() => <h1>404 Error in server</h1>} />
           </Switch>
           <Footer />
         </div>
