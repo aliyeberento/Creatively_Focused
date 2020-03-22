@@ -96,7 +96,7 @@ class AddStudentForm extends Component {
             <div>
                 <h1 onClick={this.populateInputs}>ADD NEW STUDENT</h1>
                 <form>
-                    
+{/* <div className="set1"> */}
 {/* first name */}
                     <div id="TextField">
                         <TextField type="text" 
@@ -162,6 +162,8 @@ class AddStudentForm extends Component {
                             </Select>
                         </FormControl>
                     </div><br />
+{/* </div> */}
+{/* <div className="set2"> */}
 {/* disablity cat */}
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
@@ -172,7 +174,7 @@ class AddStudentForm extends Component {
                             id="disability_cat" 
                             defaultValue="disability_cat" 
                             placeholder="disability_cat" 
-                            onChange={(event) => this.makeStudentInt(event, 'disability_cat')}>
+                            onChange={(event) => this.handleAddStudentInt(event, 'disability_cat')}>
                                 <MenuItem value="0">Autism</MenuItem>
                                 <MenuItem value="1">Deaf-Blindness</MenuItem>
                                 <MenuItem value="2">Deafness</MenuItem>
@@ -200,7 +202,7 @@ class AddStudentForm extends Component {
                             id="fed_setting" 
                             defaultValue="fed_setting" 
                             placeholder="fed_setting" 
-                            onChange={(event) => this.makeStudentInt(event, 'fed_setting')}>
+                            onChange={(event) => this.handleAddStudentInt(event, 'fed_setting')}>
                                 <MenuItem value="1">I</MenuItem>
                                 <MenuItem value="2">II</MenuItem>
                                 <MenuItem value="3">III</MenuItem>
@@ -245,10 +247,11 @@ class AddStudentForm extends Component {
                             type="text" 
                             label="NOTES" 
                             multiline rowsMax="3" 
-                            onChange={(event) => this.handleStudent(event, 'notes')} 
+                            onChange={(event) => this.handleAddStudent(event, 'notes')} 
                         />
                     </div>
                     <br />
+{/* </div> */}
                     <div id="Button">
                         <Button variant="contained" onClick={this.submitStudent}>ADD STUDENT</Button>
                     </div>
