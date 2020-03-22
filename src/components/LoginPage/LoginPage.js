@@ -49,8 +49,8 @@ class LoginPage extends Component {
         )}
         <form id="formContent">
               <h1>LOGIN</h1>
-              <div id="Button"><TextField type="text" label="username" value={this.state.username} onChange={this.handleInputChangeFor('username')} /></div>
-              <div id="Button"><TextField type="password" label="password" value={this.state.password} onChange={this.handleInputChangeFor('password')} /></div><br />
+              <div id="TextField"><TextField type="text" label="username" value={this.state.username} onChange={this.handleInputChangeFor('username')} /></div>
+              <div id="TextField"><TextField type="password" label="password" value={this.state.password} onChange={this.handleInputChangeFor('password')} /></div><br />
               <div id="Button">
                 <Button id="Button" variant="contained" onClick={this.login}>Log In</Button>
               </div>

@@ -14,13 +14,13 @@ form {
     width: 40%;
     height: 250px;
     margin: 20px auto;
-    /* padding: 25px; */
+    padding-bottom: 25px;
     border-radius: 2px;
 }
 
 #Button {
     text-align: center;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 #TextField {
@@ -29,6 +29,11 @@ form {
 
 #MenuItem {
     overflow: visible;
+}
+
+#AddForm {
+    column-count: 2;
+    padding-bottom: 250px;
 }
 
 input {
