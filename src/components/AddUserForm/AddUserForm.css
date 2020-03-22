@@ -22,3 +22,8 @@
 h1 {
     text-align: center;
 }
+
+#AddForm {
+    display: flex;        /* Lay out each item using flex layout */
+    flex-flow: column;
+}

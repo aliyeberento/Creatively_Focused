@@ -95,7 +95,7 @@ class AddStudentForm extends Component {
         return (
             <div>
                 <h1 onClick={this.populateInputs}>ADD NEW STUDENT</h1>
-                <form>
+                <form id="AddForm">
 {/* <div className="set1"> */}
 {/* first name */}
                     <div id="TextField">

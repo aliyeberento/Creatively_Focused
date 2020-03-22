@@ -23,3 +23,10 @@ h1 {
     text-align: center;
     padding-top: 10px;
 }
+
+#AddForm {
+    display: flex;        /* Lay out each item using flex layout */
+    flex-flow: column;
+    width: 66%;
+    columns: 2;
+}
