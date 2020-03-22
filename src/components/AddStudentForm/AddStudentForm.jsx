@@ -67,6 +67,7 @@ class AddStudentForm extends Component {
     }
 
     populateInputs = () => {
+        console.log('POPULATING');
         this.setState({
             studentToAdd: {
                 firstname: 'Jimmy',
@@ -101,6 +102,7 @@ class AddStudentForm extends Component {
                     <div id="TextField">
                         <TextField type="text" 
                             label="FIRST NAME" 
+                            value={student.firstname}
                             onChange={(event) => this.handleAddStudent(event, 'firstname')} />
                     </div>
                     <br />
@@ -109,6 +111,7 @@ class AddStudentForm extends Component {
                         <TextField 
                             type="text" 
                             label="LAST NAME" 
+                            value={student.lastname}
                             onChange={(event) => this.handleAddStudent(event, 'lastname')} />
                     </div>
                     <br />
@@ -117,6 +120,7 @@ class AddStudentForm extends Component {
                         <TextField 
                             type="text" 
                             label="STUDENT ID" 
+                            value={student.student_id}
                             onChange={(event) => this.handleAddStudentInt(event, 'student_id')} />
                     </div>
                     <br />
@@ -126,6 +130,7 @@ class AddStudentForm extends Component {
                             id="date"
                             label="BIRTHDATE"
                             type="date"
+                            value={student.birthdate}
                             style={{minWidth: 166}}
                             onChange={(event) => this.handleAddStudent(event, 'birthdate')}
                             // defaultValue="2017-05-24"
@@ -143,6 +148,7 @@ class AddStudentForm extends Component {
                                 label="GRADE" 
                                 name="grade" 
                                 id="grade" 
+                                value={student.grade}
                                 defaultValue="grade" 
                                 placeholder="grade" 
                                 onChange={(event) => this.handleAddStudentInt(event, 'grade')}>
@@ -171,6 +177,7 @@ class AddStudentForm extends Component {
                         <Select 
                             label="DISABILITY CATEGORY" 
                             name="disability_cat" 
+                            value={student.disability_cat}
                             id="disability_cat" 
                             defaultValue="disability_cat" 
                             placeholder="disability_cat" 
@@ -200,6 +207,7 @@ class AddStudentForm extends Component {
                             label="FEDERAL SETTING" 
                             name="fed_setting" 
                             id="fed_setting" 
+                            value={student.fed_setting}
                             defaultValue="fed_setting" 
                             placeholder="fed_setting" 
                             onChange={(event) => this.handleAddStudentInt(event, 'fed_setting')}>
@@ -217,6 +225,7 @@ class AddStudentForm extends Component {
                             id="date"
                             label="PREV IEP"
                             type="date"
+                            value={student.prev_iep}
                             style={{minWidth: 166}}
                             onChange={(event) => this.handleAddStudent(event, 'prev_iep')}
                             // defaultValue="2017-05-24"
@@ -232,6 +241,7 @@ class AddStudentForm extends Component {
                             id="date"
                             label="PREV EVAL"
                             type="date"
+                            value={student.prev_eval}
                             style={{minWidth: 166}}
                             onChange={(event) => this.handleAddStudent(event, 'prev_eval')}
                             // defaultValue="2017-05-24"
@@ -246,6 +256,7 @@ class AddStudentForm extends Component {
                         <TextField 
                             type="text" 
                             label="NOTES" 
+                            value={student.notes}
                             multiline rowsMax="3" 
                             onChange={(event) => this.handleAddStudent(event, 'notes')} 
                         />
