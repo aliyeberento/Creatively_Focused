@@ -56,12 +56,11 @@ class StudentDetailPage extends Component {
                     <Card>
                         <CardContent className="student-content">
                             <Typography className="student-name" gutterBottom variant="h5" component="h2">
-                                {student.lastname}, {student.firstname}
+                                {student.firstname} {student.lastname}
                             </Typography>
 
                             <Typography component="p">
                                 <ul>
-
                                     <li>Grade: {student.grade}</li>
                                     <li>Date of Birth: {moment(student.birthdate).format('MM-DD-YYYY')}</li>
                                     <li>Previous IEP: {moment(student.prev_iep).format('MM-DD-YYYY')}</li>
@@ -70,11 +69,10 @@ class StudentDetailPage extends Component {
                                     <li>Next EVAL: {moment(student.next_eval).format('MM-DD-YYYY')}</li>
                                     <li>Disability Category: {student.disability_cat}</li>
                                     <li>Federal Setting: {student.fed_setting}</li>
-                                    <li>Teacher: {student.teacherlastname}, {student.teacherfirstname}</li>
+                                    <li>Teacher: {student.teacherfirstname} {student.teacherlastname}</li>
                                     <li>School: {student.school}</li>
                                     <li>ISD: {student.isd}</li>
                                     <li>Notes: {student.notes}</li><br />
-
                                 </ul>
                             </Typography>
                         </CardContent>
