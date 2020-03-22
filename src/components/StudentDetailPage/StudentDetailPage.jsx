@@ -35,6 +35,7 @@ class StudentDetailPage extends Component {
             type: 'GET_STUDENT_DETAIL',
             payload: this.props.match.params.id
         })
+        // this.props.dispatch({ 'GET_STUDENTEVENT' });
     }
 
     // directs the user to an edit page pre-populated with the item's info
