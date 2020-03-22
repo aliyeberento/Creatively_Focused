@@ -8,12 +8,6 @@ import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
 
 
-
-// import Nav from '../Nav/Nav';
-// import Footer from '../Footer/Footer';
-// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
-
 const styles = {
     root: {
         maxWidth: 600,

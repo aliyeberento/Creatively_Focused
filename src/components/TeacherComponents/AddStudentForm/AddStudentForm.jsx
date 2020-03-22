@@ -26,6 +26,7 @@ class AddStudentForm extends Component {
     handleAddStudent = (propertyName, event) => {
         this.setState({
             studentToAdd: {
+             //spreading state and having the propertyName be what the user inputs
                 ...this.state.studentToAdd,
                 [propertyName]: event.target.value
             }
@@ -44,7 +45,7 @@ class AddStudentForm extends Component {
             type: 'SUBMIT_STUDENT',
             payload: this.state.studentToAdd
         })
-
+        // brings you back to the student list page
         this.props.history.push(`/studentlist`);
     }
 

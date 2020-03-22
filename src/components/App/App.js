@@ -9,24 +9,14 @@ import { connect } from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-// import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-// import InfoPage from '../InfoPage/InfoPage';
-// import AdminHome from '../AdminComponents/AdminHome/AdminHome';
-// import RegisterPage from '../RegisterPage/RegisterPage';
-// import AdminDetail from '../AdminComponents/AdminDetail/AdminDetail';
-// import AddStudentForm from '../TeacherComponents/AddStudentForm/AddStudentForm';
 import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
-// import EditStudentPage from '../TeacherComponents/EditStudentPage/EditStudentPage';
 import MonthlyCalendarPage from '../TeacherComponents/MonthlyCalendarPage/MonthlyCalendarPage';
-// import StudentDetailPage from '../TeacherComponents/StudentDetailPage/StudentDetailPage';
-// import StudentList from '../TeacherComponents/StudentList/StudentList';
 import StudentList from '../StudentList/StudentList';
 import StudentDetailPage from '../StudentDetailPage/StudentDetailPage';
 import AddStudentForm from '../AddStudentForm/AddStudentForm';
 import EditStudentForm from '../EditStudentForm/EditStudentForm';
 import AdminRoute from '../AdminRoute/AdminRoute';
-// import AdminForm from '../AdminComponents/AdminForm/AdminForm';
 import AddUserForm from '../AddUserForm/AddUserForm'
 import UserList from '../UserList/UserList';
 import UserDetailPage from '../UserDetailPage/UserDetailPage';
@@ -53,7 +43,7 @@ class App extends Component {
       <Router>
         <div>
           <div className="nav">
-            <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED</header>
+            <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED APP</header>
           </div>
           <Nav />
           <Switch>
