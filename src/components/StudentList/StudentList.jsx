@@ -34,7 +34,6 @@ class StudentList extends Component {
                         <button className="linkBtn student-add">
                             ADD STUDENT
                         </button>
-
                     </Link>
                     {this.props.reduxState.students.map(student => {
                         return <StudentItem id="studentListItem" key={student.id} student={student} />

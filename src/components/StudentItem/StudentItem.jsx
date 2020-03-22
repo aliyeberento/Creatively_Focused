@@ -22,9 +22,6 @@ const styles = {
     title: {
         fontSize: 14,
     },
-    pos: {
-        marginBottom: 12,
-    },
     paper: {
         height: 50,
         width: 140,

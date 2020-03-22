@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from './logo square color.jpg';
-
 
 class LoginPage extends Component {
   state = {
