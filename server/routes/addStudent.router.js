@@ -8,6 +8,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     let newStudent = req.body;
 
     console.log(req.body);
+    //in the student table, insert the newStudent info into following columns
     let queryText = `INSERT INTO "student" 
     ("firstname", "lastname", "birthdate", "grade", "student_id",
     "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", 

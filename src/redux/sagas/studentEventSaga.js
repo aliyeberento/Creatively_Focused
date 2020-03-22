@@ -3,7 +3,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* getStudentEvent() {
     console.log('IN GET STUDENT EVENT');
-    
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },
