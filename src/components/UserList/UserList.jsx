@@ -3,26 +3,22 @@ import { connect } from 'react-redux'
 import UserItem from '../UserItem/UserItem';
 import { Link } from 'react-router-dom';
 
+//styling
+import './UserList.css';
 
 class UserList extends Component {
-
-    componentDidMount() {
-        this.props.dispatch({
-            type: 'GET_TEACHERS'
-        })
-    }
 
     render() {
         console.log(this.props.reduxState.teacher);
         return (
             <div>
                 <ul>
-                <h1>USER LIST</h1>
-                <Link className="connectorLink" to="/adminform">
-                    <button className="linkBtn">
-                        ADD NEW USER
-                    </button>
-                </Link>
+                    <h1>USER LIST</h1>
+                    <Link style={{ backgroundColor: 'transparent' }} className="connectorLink" to="/adminform">
+                        <button className="linkBtn user-add" >
+                            ADD USER
+                        </button>
+                    </Link>
                     {this.props.reduxState.teacher.map(teacher => {
                         return <UserItem key={teacher.id} teacher={teacher} />
                     })}

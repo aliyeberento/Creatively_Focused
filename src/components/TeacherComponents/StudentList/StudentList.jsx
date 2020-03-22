@@ -20,10 +20,6 @@ const styles = {
 
 class StudentList extends Component {
 
-    componentDidMount() {
-        this.props.dispatch({ type: 'GET_STUDENT' });
-    }
-
     detailsBtn = (event, student) => {
         console.log('details button clicked', student)
         this.props.history.push(`/studentdetail/${student.id}`)
