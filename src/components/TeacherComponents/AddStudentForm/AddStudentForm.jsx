@@ -63,7 +63,6 @@ class AddStudentForm extends Component {
                         <label>Disability Category<input type="number" placeholder="disability category" onChange={(event) => this.handleAddStudent('disabilityCategory', event)}></input></label>
                         <label>Student ID<input type="number" placeholder="id number" onChange={(event) => this.handleAddStudent('idNumber', event)}></input></label>
                         <label>Federal Setting<input type="number" placeholder="federal setting" onChange={(event) => this.handleAddStudent('federalSetting', event)}></input></label>
-
                     </div>
 
                     <div className="set2">
@@ -72,9 +71,7 @@ class AddStudentForm extends Component {
                         <label>Notes<input type="text" placeholder="notes" onChange={(event) => this.handleAddStudent('notes', event)}></input></label>
                         <button type="button" className="submitBtn" onClick={this.submitStudent}>Submit</button>
                     </div>
-
                 </div>
-
 
             </div>
         )

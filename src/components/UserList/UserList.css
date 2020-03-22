@@ -1,0 +1,13 @@
+.user-add {
+    margin-bottom: 15px;
+    font-size: 15px;
+    border: lightgrey solid 1.3px;
+    border-radius: 5px;
+    
+    
+}
+
+button:hover {
+  background-color: #e1e2e3;
+  
+}

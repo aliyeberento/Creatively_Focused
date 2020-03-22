@@ -10,8 +10,6 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import UserPage from '../UserPage/UserPage';
-import AnnualCalendarPage from '../TeacherComponents/AnnualCalendarPage/AnnualCalendarPage';
-import MonthlyCalendarPage from '../TeacherComponents/MonthlyCalendarPage/MonthlyCalendarPage';
 import StudentList from '../StudentList/StudentList';
 import StudentDetailPage from '../StudentDetailPage/StudentDetailPage';
 import AddStudentForm from '../AddStudentForm/AddStudentForm';
@@ -43,7 +41,7 @@ class App extends Component {
       <Router>
         <div>
           <div className="nav">
-            <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED APP</header>
+            <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED</header>
           </div>
           <Nav />
           <Switch>
@@ -101,16 +99,6 @@ class App extends Component {
               exact
               path="/addschool"
               component={AddSchoolForm}
-            />
-            <ProtectedRoute
-              exact
-              path="/teacherhome"
-              component={AnnualCalendarPage}
-            />
-            <ProtectedRoute
-              exact
-              path="/monthlycalendar"
-              component={MonthlyCalendarPage}
             />
             <ProtectedRoute
               exact

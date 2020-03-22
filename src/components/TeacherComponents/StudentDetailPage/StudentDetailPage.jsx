@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 
 class StudentDetailPage extends Component {
 
-    componentDidMount() {
-        this.props.dispatch({type: 'GET_STUDENT'})
-    }
-
     goToEdit = (id) => {
         console.log('clicking to edit student:', id);
         this.props.history.push(`/editstudent/${id}`)
@@ -44,8 +40,6 @@ class StudentDetailPage extends Component {
                 </ul>
                 <button onClick={() => this.goToEdit(selectedStudent.id)}>EDIT STUDENT</button>
                 <br />
-                {/* IS THIS WHERE WE WANT THIS??? */}
-                {/* OR IN THE NAVBAR??? */}
                 <button onClick={this.goToStudentList}>BACK TO STUDENT LIST</button>
             </div>
         )
