@@ -148,6 +148,7 @@ class UserPage extends Component {
           events={events}
           style={{ height: "100vh" }}
         />
+        <h3 id="h3">UPCOMING DEADLINES</h3>
         <Table className="table">
           <TableHead>
             <TableRow>
