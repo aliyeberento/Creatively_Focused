@@ -84,7 +84,10 @@ class AddDistrictForm extends Component {
                         <InputLabel>DISTRICT STATE</InputLabel>
                         <Select 
                             label="DISTRICT STATE" 
-                            name="state" 
+                            name="state"
+                            id="state" 
+                            placeholder="state" 
+                            value={this.state.districtToAdd.state}
                             onChange={(event) => this.makeDistrict(event, 'state')}>
                             <MenuItem value="AL">Alabama</MenuItem>
                             <MenuItem value="AK">Alaska</MenuItem>

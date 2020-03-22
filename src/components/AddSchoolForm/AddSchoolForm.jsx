@@ -61,11 +61,13 @@ class AddSchoolForm extends Component {
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
                         <InputLabel>DISTRICT</InputLabel>
-                        <Select label="DISTRICT NUMBER" 
+                        <Select 
+                            label="DISTRICT NUMBER" 
                             name="isd_id" 
                             id="isd_id" 
                             defaultValue="isd_id" 
                             placeholder="isd_id" 
+                            value={this.state.schoolToAdd.isd_id}
                             onChange={(event) => this.makeSchool(event, 'isd_id')}>
                                 {this.props.state.districtReducer.map(isd => {
                                     return (
