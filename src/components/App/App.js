@@ -41,7 +41,7 @@ class App extends Component {
       <Router>
         <div>
           <div className="nav">
-            <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED APP</header>
+            <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED</header>
           </div>
           <Nav />
           <Switch>
@@ -99,8 +99,7 @@ class App extends Component {
               exact
               path="/addschool"
               component={AddSchoolForm}
-            />
-       
+            />       
             <ProtectedRoute
               exact
               path="/addstudent"

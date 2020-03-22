@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Button from "@material-ui/core/Button";
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from "@material-ui/core/TextField";
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
 
 class AddSchoolForm extends Component {
 
@@ -12,7 +18,7 @@ class AddSchoolForm extends Component {
             isd_id: 0
         }
     }
-//takes the input value and makes it the new schoolToAdd value
+    //takes the input value and makes it the new schoolToAdd value
     makeSchool = (event, propertyValue) => {
         console.log('making a new school', this.state.schoolToAdd);
         this.setState({
@@ -39,24 +45,27 @@ class AddSchoolForm extends Component {
         this.props.history.push('/home')
     }
 
-    render () {
+    render() {
         return (
             <div>
                 <h1>ADD NEW SCHOOL</h1>
                 <form>
-                <label>School Name: 
-                    <input onChange={(event) => this.makeSchool(event, 'name')}></input></label><br />
-                    <label>District: 
-                        <select name="isd_id" id="isd_id" defaultValue="isd_id" placeholder="isd_id" onChange={(event) => this.makeSchool(event, 'isd_id')}>School District: 
-                            <option>Choose one...</option>
+                    <div id="TextField">
+                        <TextField type="text" label="SCHOOL NAME" onChange={(event) => this.makeSchool(event, 'name')} />
+                    </div>
+                    <br />
+                    <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>DISTRICT</InputLabel>
+                        <Select label="DISTRICT NUMBER" name="isd_id" id="isd_id" defaultValue="isd_id" placeholder="isd_id" onChange={(event) => this.makeSchool(event, 'isd_id')}>
                             {this.props.state.districtReducer.map(isd => {
-                            return (
-                                <option value={isd.id} key={isd.id}>{isd.state} - {isd.city} - {isd.isd}</option>
-                            )})}
-                        </select>
-                        </label>
-                        <br />
-                <button type="button" onClick={this.submitSchool}>Add School</button>
+                                return (
+                                    <MenuItem id="MenuItem" value={isd.id} key={isd.id}>{isd.state} - {isd.city} - {isd.isd}</MenuItem>
+                                )})}
+                        </Select>
+                        </FormControl>
+                    </div><br />
+                    <div id="Button"><Button variant="contained" onClick={this.submitSchool}>ADD SCHOOL</Button></div>
                 </form>
             </div>
         )

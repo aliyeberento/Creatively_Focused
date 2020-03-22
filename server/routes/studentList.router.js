@@ -151,7 +151,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         JOIN "school" on "school".id = "student".school_id
         JOIN "isd" on "isd".id = "student".isd_id
         WHERE "teacher" = $1
-        ORDER BY "lastname" DESC`
+        ORDER BY "lastname"`
     pool.query(queryText, [req.user.id])
         .then(results => {
             res.send(results.rows);

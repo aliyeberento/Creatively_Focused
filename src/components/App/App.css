@@ -11,11 +11,24 @@ body {
 
 form {
     /* background-color: #dbd5d5; */
-    width: 30%;
+    width: 40%;
     height: 250px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
+}
+
+#Button {
+    text-align: center;
+    padding-top: 15px;
+}
+
+#TextField {
+    text-align: center;
+}
+
+#MenuItem {
+    overflow: visible;
 }
 
 input {
