@@ -82,7 +82,10 @@ class AddDistrictForm extends Component {
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
                         <InputLabel>DISTRICT STATE</InputLabel>
-                        <Select label="DISTRICT STATE" name="state" onChange={(event) => this.makeDistrict(event, 'state')}>
+                        <Select 
+                            label="DISTRICT STATE" 
+                            name="state" 
+                            onChange={(event) => this.makeDistrict(event, 'state')}>
                             <MenuItem value="AL">Alabama</MenuItem>
                             <MenuItem value="AK">Alaska</MenuItem>
                             <MenuItem value="AZ">Arizona</MenuItem>

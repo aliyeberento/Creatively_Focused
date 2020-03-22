@@ -258,6 +258,7 @@ class AddStudentForm extends Component {
                             label="NOTES" 
                             value={student.notes}
                             multiline rowsMax="3" 
+                            style={{maxWidth: 166}}
                             onChange={(event) => this.handleAddStudent(event, 'notes')} 
                         />
                     </div>
