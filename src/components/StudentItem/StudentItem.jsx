@@ -53,7 +53,7 @@ class StudentItem extends Component {
             <div>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
-                        <Paper>
+                        <Paper >
                             <CardContent id="studentCard">
                                 <li>
                                     {this.props.student.lastname}, {this.props.student.firstname}

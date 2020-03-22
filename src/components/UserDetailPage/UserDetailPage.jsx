@@ -10,23 +10,23 @@ import Button from '@material-ui/core/Button';
 //styling
 import logo from './logo square color.jpg';
 import './UserDetailPage.css';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+// import Card from '@material-ui/core/Card';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 
 
-const styles = {
-    card: {
-        maxWidth: 345,
+// const styles = {
+//     card: {
+//         maxWidth: 345,
 
-    },
-    media: {
-        height: 140,
-    },
+//     },
+//     media: {
+//         height: 140,
+//     },
 
-};
+// };
 
 
 class UserDetailPage extends Component {
@@ -64,15 +64,15 @@ class UserDetailPage extends Component {
     render() {
         let user = this.props.reduxState.teacherDetail;
         return (
-            <div>
-                <Grid>
-                    <Card >
-                        <CardContent className="user-content">
+            <div id="centercard">
+                {/* <Grid> */}
+                    {/* <Card className="user-content">
+                        <CardContent id="cardcontent"> */}
                             <Typography className="user-name" gutterBottom variant="h5" component="h2">
-                                User: {user.firstname} {user.lastname}
+                                USER: {user.firstname} {user.lastname}
                             </Typography>
 
-                            <Typography component="p">
+                            <Typography>
                                 <ul>
                                     <li>E-Mail/Username: {user.username}</li>
                                     <li>School: {user.school}</li>
@@ -80,12 +80,12 @@ class UserDetailPage extends Component {
                                     <li>State: {user.state}</li>
                                     <li>ISD: {user.isd}</li>
                                     <li>Phone Number: {user.phone}</li>
-
                                 </ul>
                             </Typography>
-                        </CardContent>
+                        {/* </CardContent> */}
 
-                        <CardActions className="student-buttons">
+                        {/* <CardActions className="student-buttons"> */}
+                        <div id="Button">
                             <Button size="small" variant="outlined" onClick={this.editUser}>Edit</Button>
                             <Button>
                                 <Popup trigger={<Button size="small" variant="outlined" > DELETE </Button>} modal>
@@ -102,13 +102,12 @@ class UserDetailPage extends Component {
                                 </Popup>
                             </Button>
                             <Button size="small" variant="outlined" onClick={this.goToUserList}>BACK TO USER LIST</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-            
+                            </div>
+                        {/* </CardActions>
+                    </Card> */}
+                {/* </Grid> */}
                 <TeacherTaskList />
                 <StudentList />
-            
             </div>
         )
     }
