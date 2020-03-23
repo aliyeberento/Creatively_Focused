@@ -15,9 +15,11 @@ class UserList extends Component {
                 <ul>
                     <h1>USER LIST</h1>
                     <Link style={{ backgroundColor: 'transparent' }} className="connectorLink" to="/adminform">
-                        <button className="linkBtn user-add" >
-                            ADD USER
-                        </button>
+                        <div id="Button">
+                            <button className="linkBtn user-add" >
+                                ADD NEW USER
+                            </button>
+                        </div>
                     </Link>
                     {this.props.reduxState.teacher.map(teacher => {
                         return <UserItem key={teacher.id} teacher={teacher} />

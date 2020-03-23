@@ -9,12 +9,38 @@
 
 ul {
     display: grid
-    
 }
 
 .user-name {
     text-align: center;
 }
 .user-buttons {
-    display: flex; justify-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* .user-content {
+    width: 70%;
+} */
+
+#userinfo {
+    padding: 0px;
+}
+
+/* #cardcontent {
+    padding: 10px;
+} */
+
+#usercenter {
+    margin: 0 auto;
+}
+
+#centercard {
+    /* border: 2px; */
+    width: 70%;
+    margin: auto;
+}
+
+#cardContent {
+    padding-left: 110px;
 }

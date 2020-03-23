@@ -11,5 +11,13 @@
 
 button:hover {
   background-color: #e1e2e3;
-  
+}
+
+#rightButton {
+  text-align: right;
+}
+
+#studentCard {
+  margin-bottom: 8px;
+  padding: 8px;
 }

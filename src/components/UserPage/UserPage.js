@@ -135,19 +135,21 @@ class UserPage extends Component {
 
   render() {
     console.log(this.props.student);
+    console.log(this.props.user.id);
     
     // sets the events for calendar using the student's dates
     let events = this.formatEventsForCalendar(this.props.student);    
     return (
       <div className="welcome">
-        <h1 >Welcome, {this.props.user.firstname}!</h1>
+        <h1>Welcome, {this.props.user.firstname}!</h1>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
           defaultView="month"
           events={events}
-          style={{ height: "100vh" }}
+          style={{ height: "80vh", width: "100%" }}
         />
+        <h3 id="h3">UPCOMING DEADLINES</h3>
         <Table className="table">
           <TableHead>
             <TableRow>
@@ -165,7 +167,7 @@ class UserPage extends Component {
                   <Checkbox
                     key={event.id}
                     checked={this.state.checkedB}
-                    onChange={(e) => this.updateStudentEvent(e, event)}
+                    onChange={(e) => this.updateStudentEvent(e, event, event.id)}
                     value="true"
                     color="primary"
                   /></TableCell>

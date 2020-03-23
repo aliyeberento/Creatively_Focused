@@ -49,11 +49,13 @@ class StudentItem extends Component {
             <div>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
-                        <Paper>
-                            <CardContent>
+                        <Paper >
+                            <CardContent id="studentCard">
                                 <li>
                                     {this.props.student.lastname}, {this.props.student.firstname}
-                                    <Button variant="outlined" key={this.props.student.id} onClick={(event) => this.getDetail(event, this.props.student.id)}>view details</Button>
+                                    <div id="rightButton">
+                                        <Button id="rightButton" variant="outlined" key={this.props.student.id} onClick={(event) => this.getDetail(event, this.props.student.id)}>view details</Button>
+                                    </div>
                                 </li>
                             </CardContent>
                         </Paper>

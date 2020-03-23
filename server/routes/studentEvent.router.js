@@ -171,4 +171,16 @@ router.post('/', rejectUnauthenticated, (res) => {
 
 });
 
+router.delete('/', rejectUnauthenticated, (req, res) => {
+    const id = req.params.id
+    console.log('in delete route', id)
+    const queryText = 'DELETE FROM "student_event" WHERE "student_id" = $1'
+    pool.query(queryText, [id])
+        .then(() => { res.sendStatus(200) })
+        .catch((err) => {
+            console.log(err)
+            res.sendStatus(500)
+        })
+});
+
 module.exports = router;

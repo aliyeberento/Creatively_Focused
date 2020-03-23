@@ -48,10 +48,12 @@ class UserItem extends Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
                         <Paper>
-                            <CardContent>
+                            <CardContent id="userCard">
                                 <li>
                                     {this.props.teacher.lastname}, {this.props.teacher.firstname}
-                                    <Button size="small" variant="outlined" key={this.props.teacher.id} onClick={(event) => this.goDetail(event, this.props.teacher)}>view user details</Button>
+                                        <div id="rightButton">
+                                            <Button size="small" variant="outlined" key={this.props.teacher.id} onClick={(event) => this.goDetail(event, this.props.teacher)}>view user details</Button>
+                                        </div>
                                 </li>
                             </CardContent>
                         </Paper>

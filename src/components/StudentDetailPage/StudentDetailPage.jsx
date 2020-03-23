@@ -5,7 +5,6 @@ import moment from 'moment';
 import TaskList from '../TaskList/TaskList';
 import Popup from 'reactjs-popup';
 
-
 //styling 
 import logo from '../UserDetailPage/logo square color.jpg';
 import './StudentDetailPage.css';

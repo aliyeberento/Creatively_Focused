@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './AddStudentForm.css';
+import Button from "@material-ui/core/Button";
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from "@material-ui/core/TextField";
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+// import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+// import MomentUtils from '@date-io/moment';
 
 class AddStudentForm extends Component {
 
@@ -22,8 +30,9 @@ class AddStudentForm extends Component {
             isd_id: this.props.state.user.isd,
         }
     }
+
     // takes the users input and inputs it into local state
-    handleAddStudent = (propertyName, event) => {
+    handleAddStudent = (event, propertyName) => {
         this.setState({
             //spreading state and having the propertyName be what the user inputs
             studentToAdd: {
@@ -32,8 +41,9 @@ class AddStudentForm extends Component {
             }
         })
     }
+
     // takes the users input and inputs it into local state
-    handleAddStudentInt = (propertyName, event) => {
+    handleAddStudentInt = (event, propertyName) => {
         this.setState({
             studentToAdd: {
                 //spreading state and having the propertyName be what the user inputs
@@ -57,6 +67,7 @@ class AddStudentForm extends Component {
     }
 
     populateInputs = () => {
+        console.log('POPULATING');
         this.setState({
             studentToAdd: {
                 firstname: 'Jimmy',
@@ -84,9 +95,180 @@ class AddStudentForm extends Component {
         console.log(student);
         return (
             <div>
-                <h1
-                onClick={this.populateInputs}
-                >ADD NEW STUDENT</h1>
+                <h1 onClick={this.populateInputs}>ADD NEW STUDENT</h1>
+                <form id="AddForm">
+{/* <div className="set1"> */}
+{/* first name */}
+                    <div id="TextField">
+                        <TextField type="text" 
+                            label="FIRST NAME" 
+                            value={student.firstname}
+                            onChange={(event) => this.handleAddStudent(event, 'firstname')} />
+                    </div>
+                    <br />
+{/* last name */}
+                    <div id="TextField">
+                        <TextField 
+                            type="text" 
+                            label="LAST NAME" 
+                            value={student.lastname}
+                            onChange={(event) => this.handleAddStudent(event, 'lastname')} />
+                    </div>
+                    <br />
+{/* student id */}
+                    <div id="TextField">
+                        <TextField 
+                            type="text" 
+                            label="STUDENT ID" 
+                            value={student.student_id}
+                            onChange={(event) => this.handleAddStudentInt(event, 'student_id')} />
+                    </div>
+                    <br />
+{/* birthdate */}
+                    <div id="TextField">
+                        <TextField
+                            id="date"
+                            label="BIRTHDATE"
+                            type="date"
+                            value={student.birthdate}
+                            style={{minWidth: 166}}
+                            onChange={(event) => this.handleAddStudent(event, 'birthdate')}
+                            // defaultValue="2017-05-24"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </div>
+{/* grade */}
+                    <div id="TextField">
+                        <FormControl 
+                            style={{minWidth: 166}}>
+                            <InputLabel>GRADE</InputLabel>
+                            <Select 
+                                label="GRADE" 
+                                name="grade" 
+                                id="grade" 
+                                value={student.grade}
+                                defaultValue="grade" 
+                                placeholder="grade" 
+                                onChange={(event) => this.handleAddStudentInt(event, 'grade')}>
+                                    <MenuItem value="0">K</MenuItem>
+                                    <MenuItem value="1">1</MenuItem>
+                                    <MenuItem value="2">2</MenuItem>
+                                    <MenuItem value="3">3</MenuItem>
+                                    <MenuItem value="4">4</MenuItem>
+                                    <MenuItem value="5">5</MenuItem>
+                                    <MenuItem value="6">6</MenuItem>
+                                    <MenuItem value="7">7</MenuItem>
+                                    <MenuItem value="8">8</MenuItem>
+                                    <MenuItem value="9">9</MenuItem>
+                                    <MenuItem value="10">10</MenuItem>
+                                    <MenuItem value="11">11</MenuItem>
+                                    <MenuItem value="12">12</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </div><br />
+{/* </div> */}
+{/* <div className="set2"> */}
+{/* disablity cat */}
+                    <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>DISABILITY</InputLabel>
+                        <Select 
+                            label="DISABILITY CATEGORY" 
+                            name="disability_cat" 
+                            value={student.disability_cat}
+                            id="disability_cat" 
+                            defaultValue="disability_cat" 
+                            placeholder="disability_cat" 
+                            onChange={(event) => this.handleAddStudentInt(event, 'disability_cat')}>
+                                <MenuItem value="0">Autism</MenuItem>
+                                <MenuItem value="1">Deaf-Blindness</MenuItem>
+                                <MenuItem value="2">Deafness</MenuItem>
+                                <MenuItem value="3">Developmental Delay</MenuItem>
+                                <MenuItem value="4">Emotional Disturbance</MenuItem>
+                                <MenuItem value="5">Hearing Impairment</MenuItem>
+                                <MenuItem value="6">Intellectual Disability</MenuItem>
+                                <MenuItem value="7">Multiple Disabilities</MenuItem>
+                                <MenuItem value="8">Orthopedic Impairment</MenuItem>
+                                <MenuItem value="9">Other Health Impairment</MenuItem>
+                                <MenuItem value="10">Specific Learning Disability</MenuItem>
+                                <MenuItem value="11">Speech or Language Impairment</MenuItem>
+                                <MenuItem value="12">Traumatic Brain Injury</MenuItem>
+                                <MenuItem value="13">Visual Impairment Inclucing Blindness</MenuItem>
+                        </Select>
+                        </FormControl>
+                    </div><br />
+{/* fed set */}
+                    <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>SETTING</InputLabel>
+                        <Select 
+                            label="FEDERAL SETTING" 
+                            name="fed_setting" 
+                            id="fed_setting" 
+                            value={student.fed_setting}
+                            defaultValue="fed_setting" 
+                            placeholder="fed_setting" 
+                            onChange={(event) => this.handleAddStudentInt(event, 'fed_setting')}>
+                                <MenuItem value="1">I</MenuItem>
+                                <MenuItem value="2">II</MenuItem>
+                                <MenuItem value="3">III</MenuItem>
+                                <MenuItem value="4">IV</MenuItem>
+                                <MenuItem value="5">V</MenuItem>
+                        </Select>
+                        </FormControl>
+                    </div><br />
+{/* prev iep */}
+                    <div id="TextField">
+                        <TextField
+                            id="date"
+                            label="PREV IEP"
+                            type="date"
+                            value={student.prev_iep}
+                            style={{minWidth: 166}}
+                            onChange={(event) => this.handleAddStudent(event, 'prev_iep')}
+                            // defaultValue="2017-05-24"
+                            InputLabelProps={{
+                            shrink: true,
+                            }}
+                        />
+                    </div>
+                    <br />
+{/* prev eval */}
+                    <div id="TextField">
+                        <TextField
+                            id="date"
+                            label="PREV EVAL"
+                            type="date"
+                            value={student.prev_eval}
+                            style={{minWidth: 166}}
+                            onChange={(event) => this.handleAddStudent(event, 'prev_eval')}
+                            // defaultValue="2017-05-24"
+                            InputLabelProps={{
+                            shrink: true,
+                            }}
+                        />
+                    </div>
+                    <br />
+{/* notes */}
+                    <div id="TextField">
+                        <TextField 
+                            type="text" 
+                            label="NOTES" 
+                            value={student.notes}
+                            multiline rowsMax="3" 
+                            style={{maxWidth: 166}}
+                            onChange={(event) => this.handleAddStudent(event, 'notes')} 
+                        />
+                    </div>
+                    <br />
+{/* </div> */}
+                    <div id="Button">
+                        <Button variant="contained" onClick={this.submitStudent}>ADD STUDENT</Button>
+                    </div>
+                </form>
+{/* <br />
                 <form className="form">
                     <div className="set1">
                         <label>First Name: 
@@ -155,7 +337,7 @@ class AddStudentForm extends Component {
                         <label>Notes<input type="text" value={student.notes} placeholder="notes" onChange={(event) => this.handleAddStudent('notes', event)}></input></label>
                         <button type="button" className="submitBtn" onClick={this.submitStudent}>Submit</button>
                     </div>
-                </form>
+                </form> */}
             </div>
         )
     }
