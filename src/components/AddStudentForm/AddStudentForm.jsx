@@ -213,7 +213,8 @@ class AddStudentForm extends Component {
                                 <MenuItem id="MenuItem" value="8">Federal Setting VIII</MenuItem>
                         </Select>
                         </FormControl>
-                    </div><br />
+                    </div>
+                    <br />
 {/* prev iep */}
                     <div id="TextField">
                         <TextField
@@ -238,7 +239,6 @@ class AddStudentForm extends Component {
                             value={student.prev_eval}
                             style={{minWidth: 166}}
                             onChange={(event) => this.handleAddStudent(event, 'prev_eval')}
-                            // defaultValue="2017-05-24"
                             InputLabelProps={{
                             shrink: true,
                             }}
