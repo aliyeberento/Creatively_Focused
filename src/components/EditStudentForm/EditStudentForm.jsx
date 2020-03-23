@@ -229,8 +229,7 @@ class EditStudentForm extends Component {
                             label="NEXT IEP"
                             type="date"
                             value={this.props.reduxState.studentDetail.next_iep}
-                            helperText={moment(this.props.reduxState.studentDetail.next_iep).format('MM/DD/YYYY')}
-                            defaultValue={this.props.reduxState.studentDetail.next_iep}
+                            helperText={`must occur prior to ${moment(this.props.reduxState.studentDetail.next_iep).format('MM/DD/YYYY')}`}                            defaultValue={this.props.reduxState.studentDetail.next_iep}
                             style={{minWidth: 166}}
                             onChange={(event) => this.updateStudent(event, 'next_iep')}
                             InputLabelProps={{
@@ -253,7 +252,7 @@ class EditStudentForm extends Component {
                             label="NEXT EVAL"
                             type="date"
                             value={this.props.reduxState.studentDetail.next_eval}
-                            helperText={moment(this.props.reduxState.studentDetail.next_eval).format('MM/DD/YYYY')}
+                            helperText={`must occur prior to ${moment(this.props.reduxState.studentDetail.next_eval).format('MM/DD/YYYY')}`}
                             defaultValue={this.props.reduxState.studentDetail.next_eval}
                             style={{minWidth: 166}}
                             onChange={(event) => this.updateStudent(event, 'next_eval')}
