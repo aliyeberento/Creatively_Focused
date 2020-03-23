@@ -51,17 +51,33 @@ class AddSchoolForm extends Component {
                 <h1>ADD NEW SCHOOL</h1>
                 <form>
                     <div id="TextField">
-                        <TextField type="text" label="SCHOOL NAME" onChange={(event) => this.makeSchool(event, 'name')} />
+                        <TextField 
+                            type="text" 
+                            label="SCHOOL NAME" 
+                            onChange={(event) => this.makeSchool(event, 'name')}
+                        />
                     </div>
                     <br />
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
                         <InputLabel>DISTRICT</InputLabel>
-                        <Select label="DISTRICT NUMBER" name="isd_id" id="isd_id" defaultValue="isd_id" placeholder="isd_id" onChange={(event) => this.makeSchool(event, 'isd_id')}>
-                            {this.props.state.districtReducer.map(isd => {
-                                return (
-                                    <MenuItem id="MenuItem" value={isd.id} key={isd.id}>{isd.state} - {isd.city} - {isd.isd}</MenuItem>
-                                )})}
+                        <Select 
+                            label="DISTRICT NUMBER" 
+                            name="isd_id" 
+                            id="isd_id" 
+                            defaultValue="isd_id" 
+                            placeholder="isd_id" 
+                            value={this.state.schoolToAdd.isd_id}
+                            onChange={(event) => this.makeSchool(event, 'isd_id')}>
+                                {this.props.state.districtReducer.map(isd => {
+                                    return (
+                                        <MenuItem 
+                                            id="MenuItem" 
+                                            value={isd.id} 
+                                            key={isd.id}>
+                                            {isd.state} - {isd.city} - {isd.isd}
+                                        </MenuItem>
+                                    )})}
                         </Select>
                         </FormControl>
                     </div><br />

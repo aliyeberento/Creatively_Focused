@@ -19,6 +19,7 @@ class AddDistrictForm extends Component {
             state: ''
         }
     }
+
     //takes the input value and makes it the new districtToAdd value
     makeDistrict = (event, propertyValue) => {
         console.log('making a new district', this.state.districtToAdd);
@@ -30,6 +31,7 @@ class AddDistrictForm extends Component {
             }
         })
     }
+    
     //takes the input value and makes it the new isd number
     makeDistrictInt = (event, propertyValue) => {
         console.log('making a new district', this.state.districtToAdd);
@@ -64,17 +66,29 @@ class AddDistrictForm extends Component {
                 <h1>ADD NEW DISTRICT</h1>
                 <form>
                 <div id="TextField">
-                        <TextField type="text" label="DISTRICT CITY" onChange={(event) => this.makeDistrict(event, 'city')} />
+                        <TextField 
+                            type="text" 
+                            label="DISTRICT CITY" 
+                            onChange={(event) => this.makeDistrict(event, 'city')} />
                     </div>
                     <br />
                     <div id="TextField">
-                        <TextField type="text" label="DISTRICT NUMBER" onChange={(event) => this.makeDistrict(event, 'isd')} />
+                        <TextField 
+                            type="text" 
+                            label="DISTRICT NUMBER" 
+                            onChange={(event) => this.makeDistrict(event, 'isd')} />
                     </div>
                     <br />
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
                         <InputLabel>DISTRICT STATE</InputLabel>
-                        <Select label="DISTRICT STATE" name="state" onChange={(event) => this.makeDistrict(event, 'state')}>
+                        <Select 
+                            label="DISTRICT STATE" 
+                            name="state"
+                            id="state" 
+                            placeholder="state" 
+                            value={this.state.districtToAdd.state}
+                            onChange={(event) => this.makeDistrict(event, 'state')}>
                             <MenuItem value="AL">Alabama</MenuItem>
                             <MenuItem value="AK">Alaska</MenuItem>
                             <MenuItem value="AZ">Arizona</MenuItem>
@@ -128,7 +142,13 @@ class AddDistrictForm extends Component {
                         </Select>
                         </FormControl>
                     </div><br />
-                    <div id="Button"><Button variant="contained" onClick={this.submitDistrict}>ADD DISTRICT</Button></div>
+                    <div id="Button">
+                        <Button 
+                            variant="contained" 
+                            onClick={this.submitDistrict}
+                            >ADD DISTRICT
+                        </Button>
+                    </div>
                     {/* <label>District City:
                     <input onChange={(event) => this.makeDistrict(event, 'city')}></input></label><br />
                     <label>District Number:

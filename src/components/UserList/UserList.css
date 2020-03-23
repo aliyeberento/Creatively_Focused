@@ -11,3 +11,8 @@ button:hover {
   background-color: #e1e2e3;
   
 }
+
+#userCard {
+  margin-bottom: 8px;
+  padding: 8px;
+}
