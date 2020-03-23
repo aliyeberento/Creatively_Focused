@@ -15,7 +15,7 @@ class AddDistrictForm extends Component {
     state = {
         districtToAdd: {
             city: '',
-            isd: 0,
+            isd: '',
             state: ''
         }
     }
@@ -76,7 +76,7 @@ class AddDistrictForm extends Component {
                         <TextField 
                             type="text" 
                             label="DISTRICT NUMBER" 
-                            onChange={(event) => this.makeDistrict(event, 'isd')} />
+                            onChange={(event) => this.makeDistrictInt(event, 'isd')} />
                     </div>
                     <br />
                     <div id="TextField">

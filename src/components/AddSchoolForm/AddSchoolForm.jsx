@@ -15,7 +15,7 @@ class AddSchoolForm extends Component {
     state = {
         schoolToAdd: {
             name: '',
-            isd_id: 0
+            isd_id: ''
         }
     }
     //takes the input value and makes it the new schoolToAdd value
