@@ -159,7 +159,7 @@ router.post('/', rejectUnauthenticated, (res) => {
     (33, 6, '2020-05-01'), 
     (33, 7, '2020-05-01'), 
     (33, 8, '2020-05-01'), 
-    (33, 9, '2020-05-01');`
+    (33, 9, '2024-06-20');`
     pool.query(queryText)
         .then((result) => {
             res.sendStatus(201);

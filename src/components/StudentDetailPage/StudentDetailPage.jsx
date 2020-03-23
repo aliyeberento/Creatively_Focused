@@ -52,15 +52,15 @@ class StudentDetailPage extends Component {
         let student = this.props.reduxState.studentDetail;
         return (
             <div>
-                <Grid>
+                {/* <Grid>
                     <Card>
-                        <CardContent className="student-content">
+                        <CardContent className="student-content"> */}
                             <Typography className="student-name" gutterBottom variant="h5" component="h2">
                                 {student.firstname} {student.lastname}
                             </Typography>
 
                             <Typography component="p">
-                                <ul>
+                                <ul id="cardContent">
                                     <li>Grade: {student.grade}</li>
                                     <li>Date of Birth: {moment(student.birthdate).format('MM-DD-YYYY')}</li>
                                     <li>Previous IEP: {moment(student.prev_iep).format('MM-DD-YYYY')}</li>
@@ -75,9 +75,10 @@ class StudentDetailPage extends Component {
                                     <li>Notes: {student.notes}</li><br />
                                 </ul>
                             </Typography>
-                        </CardContent>
+                        {/* </CardContent>
 
-                        <CardActions className="student-buttons">
+                        <CardActions className="student-buttons"> */}
+                        <div id="Button">
                             <Button size="small" variant="outlined" onClick={this.editStudent}>Edit</Button>
                             <Button>
                                 <Popup trigger={<Button size="small" variant="outlined" > DELETE </Button>} modal>
@@ -94,9 +95,10 @@ class StudentDetailPage extends Component {
                                 </Popup>
                             </Button>
                             <Button size="small" variant="outlined" onClick={this.goToStudentList}>BACK TO STUDENT LIST</Button>
-                        </CardActions>
+                        </div>
+                        {/* </CardActions>
                     </Card>
-                </Grid>
+                </Grid> */}
                 <TaskList />
             </div>
         )
