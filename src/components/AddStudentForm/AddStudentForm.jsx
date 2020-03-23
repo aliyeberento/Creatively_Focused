@@ -8,8 +8,6 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
-// import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-// import MomentUtils from '@date-io/moment';
 
 class AddStudentForm extends Component {
 
@@ -74,12 +72,12 @@ class AddStudentForm extends Component {
                 lastname: 'Jackson',
                 grade: 8,
                 student_id: '827564428',
-                initial_iep: '2013-05-01',
+                initial_iep: '2013-05-15',
                 prev_iep: '2019-12-01',
-                next_iep: '2013-05-01',
+                next_iep: '2020-12-05',
                 prev_eval: '2017-11-05',
-                next_eval: '2013-05-01',
-                disability_cat: 5,
+                next_eval: '2020-11-05',
+                disability_cat: 3,
                 fed_setting: 3,
                 birthdate: '2007-06-20',
                 notes: 'English is his second language.',
@@ -97,7 +95,6 @@ class AddStudentForm extends Component {
             <div>
                 <h1 onClick={this.populateInputs}>ADD NEW STUDENT</h1>
                 <form id="AddForm">
-{/* <div className="set1"> */}
 {/* first name */}
                     <div id="TextField">
                         <TextField type="text" 
@@ -168,8 +165,6 @@ class AddStudentForm extends Component {
                             </Select>
                         </FormControl>
                     </div><br />
-{/* </div> */}
-{/* <div className="set2"> */}
 {/* disablity cat */}
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
@@ -182,20 +177,20 @@ class AddStudentForm extends Component {
                             defaultValue="disability_cat" 
                             placeholder="disability_cat" 
                             onChange={(event) => this.handleAddStudentInt(event, 'disability_cat')}>
-                                <MenuItem value="0">Autism</MenuItem>
-                                <MenuItem value="1">Deaf-Blindness</MenuItem>
-                                <MenuItem value="2">Deafness</MenuItem>
-                                <MenuItem value="3">Developmental Delay</MenuItem>
-                                <MenuItem value="4">Emotional Disturbance</MenuItem>
-                                <MenuItem value="5">Hearing Impairment</MenuItem>
-                                <MenuItem value="6">Intellectual Disability</MenuItem>
-                                <MenuItem value="7">Multiple Disabilities</MenuItem>
-                                <MenuItem value="8">Orthopedic Impairment</MenuItem>
-                                <MenuItem value="9">Other Health Impairment</MenuItem>
-                                <MenuItem value="10">Specific Learning Disability</MenuItem>
-                                <MenuItem value="11">Speech or Language Impairment</MenuItem>
-                                <MenuItem value="12">Traumatic Brain Injury</MenuItem>
-                                <MenuItem value="13">Visual Impairment Inclucing Blindness</MenuItem>
+                                <MenuItem value="1">Autism</MenuItem>
+                                <MenuItem value="2">Deaf-Blindness</MenuItem>
+                                <MenuItem value="3">Deafness</MenuItem>
+                                <MenuItem value="4">Developmental Delay</MenuItem>
+                                <MenuItem value="5">Emotional Disturbance</MenuItem>
+                                <MenuItem value="6">Hearing Impairment</MenuItem>
+                                <MenuItem value="7">Intellectual Disability</MenuItem>
+                                <MenuItem value="8">Multiple Disabilities</MenuItem>
+                                <MenuItem value="9">Orthopedic Impairment</MenuItem>
+                                <MenuItem value="10">Other Health Impairment</MenuItem>
+                                <MenuItem value="11">Specific Learning Disability</MenuItem>
+                                <MenuItem value="12">Speech or Language Impairment</MenuItem>
+                                <MenuItem value="13">Traumatic Brain Injury</MenuItem>
+                                <MenuItem value="14">Visual Impairment Inclucing Blindness</MenuItem>
                         </Select>
                         </FormControl>
                     </div><br />
@@ -211,11 +206,11 @@ class AddStudentForm extends Component {
                             defaultValue="fed_setting" 
                             placeholder="fed_setting" 
                             onChange={(event) => this.handleAddStudentInt(event, 'fed_setting')}>
-                                <MenuItem value="1">I</MenuItem>
-                                <MenuItem value="2">II</MenuItem>
-                                <MenuItem value="3">III</MenuItem>
-                                <MenuItem value="4">IV</MenuItem>
-                                <MenuItem value="5">V</MenuItem>
+                                <MenuItem id="MenuItem" value="1">Federal Setting I</MenuItem>
+                                <MenuItem id="MenuItem" value="2">Federal Setting II</MenuItem>
+                                <MenuItem id="MenuItem" value="3">Federal Setting III</MenuItem>
+                                <MenuItem id="MenuItem" value="4">Federal Setting IV</MenuItem>
+                                <MenuItem id="MenuItem" value="8">Federal Setting VIII</MenuItem>
                         </Select>
                         </FormControl>
                     </div><br />
@@ -228,7 +223,6 @@ class AddStudentForm extends Component {
                             value={student.prev_iep}
                             style={{minWidth: 166}}
                             onChange={(event) => this.handleAddStudent(event, 'prev_iep')}
-                            // defaultValue="2017-05-24"
                             InputLabelProps={{
                             shrink: true,
                             }}
@@ -263,7 +257,6 @@ class AddStudentForm extends Component {
                         />
                     </div>
                     <br />
-{/* </div> */}
                     <div id="Button">
                         <Button variant="contained" onClick={this.submitStudent}>ADD STUDENT</Button>
                     </div>
