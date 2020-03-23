@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
+import Button from "@material-ui/core/Button";
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from "@material-ui/core/TextField";
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
 
 class EditStudentForm extends Component {
 

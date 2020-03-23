@@ -8,7 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 
-
 class AddUserForm extends Component {
 
     state = {

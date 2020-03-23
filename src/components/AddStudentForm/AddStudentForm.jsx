@@ -8,8 +8,6 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
-// import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-// import MomentUtils from '@date-io/moment';
 
 class AddStudentForm extends Component {
 
@@ -97,7 +95,6 @@ class AddStudentForm extends Component {
             <div>
                 <h1 onClick={this.populateInputs}>ADD NEW STUDENT</h1>
                 <form id="AddForm">
-{/* <div className="set1"> */}
 {/* first name */}
                     <div id="TextField">
                         <TextField type="text" 
@@ -168,8 +165,6 @@ class AddStudentForm extends Component {
                             </Select>
                         </FormControl>
                     </div><br />
-{/* </div> */}
-{/* <div className="set2"> */}
 {/* disablity cat */}
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
@@ -228,7 +223,6 @@ class AddStudentForm extends Component {
                             value={student.prev_iep}
                             style={{minWidth: 166}}
                             onChange={(event) => this.handleAddStudent(event, 'prev_iep')}
-                            // defaultValue="2017-05-24"
                             InputLabelProps={{
                             shrink: true,
                             }}
@@ -263,7 +257,6 @@ class AddStudentForm extends Component {
                         />
                     </div>
                     <br />
-{/* </div> */}
                     <div id="Button">
                         <Button variant="contained" onClick={this.submitStudent}>ADD STUDENT</Button>
                     </div>
