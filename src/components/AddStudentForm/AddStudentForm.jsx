@@ -182,20 +182,20 @@ class AddStudentForm extends Component {
                             defaultValue="disability_cat" 
                             placeholder="disability_cat" 
                             onChange={(event) => this.handleAddStudentInt(event, 'disability_cat')}>
-                                <MenuItem value="0">Autism</MenuItem>
-                                <MenuItem value="1">Deaf-Blindness</MenuItem>
-                                <MenuItem value="2">Deafness</MenuItem>
-                                <MenuItem value="3">Developmental Delay</MenuItem>
-                                <MenuItem value="4">Emotional Disturbance</MenuItem>
-                                <MenuItem value="5">Hearing Impairment</MenuItem>
-                                <MenuItem value="6">Intellectual Disability</MenuItem>
-                                <MenuItem value="7">Multiple Disabilities</MenuItem>
-                                <MenuItem value="8">Orthopedic Impairment</MenuItem>
-                                <MenuItem value="9">Other Health Impairment</MenuItem>
-                                <MenuItem value="10">Specific Learning Disability</MenuItem>
-                                <MenuItem value="11">Speech or Language Impairment</MenuItem>
-                                <MenuItem value="12">Traumatic Brain Injury</MenuItem>
-                                <MenuItem value="13">Visual Impairment Inclucing Blindness</MenuItem>
+                                <MenuItem value="1">Autism</MenuItem>
+                                <MenuItem value="2">Deaf-Blindness</MenuItem>
+                                <MenuItem value="3">Deafness</MenuItem>
+                                <MenuItem value="4">Developmental Delay</MenuItem>
+                                <MenuItem value="5">Emotional Disturbance</MenuItem>
+                                <MenuItem value="6">Hearing Impairment</MenuItem>
+                                <MenuItem value="7">Intellectual Disability</MenuItem>
+                                <MenuItem value="8">Multiple Disabilities</MenuItem>
+                                <MenuItem value="9">Orthopedic Impairment</MenuItem>
+                                <MenuItem value="10">Other Health Impairment</MenuItem>
+                                <MenuItem value="11">Specific Learning Disability</MenuItem>
+                                <MenuItem value="12">Speech or Language Impairment</MenuItem>
+                                <MenuItem value="13">Traumatic Brain Injury</MenuItem>
+                                <MenuItem value="14">Visual Impairment Inclucing Blindness</MenuItem>
                         </Select>
                         </FormControl>
                     </div><br />
@@ -211,11 +211,11 @@ class AddStudentForm extends Component {
                             defaultValue="fed_setting" 
                             placeholder="fed_setting" 
                             onChange={(event) => this.handleAddStudentInt(event, 'fed_setting')}>
-                                <MenuItem value="1">I</MenuItem>
-                                <MenuItem value="2">II</MenuItem>
-                                <MenuItem value="3">III</MenuItem>
-                                <MenuItem value="4">IV</MenuItem>
-                                <MenuItem value="5">V</MenuItem>
+                                <MenuItem id="MenuItem" value="1">Federal Setting I</MenuItem>
+                                <MenuItem id="MenuItem" value="2">Federal Setting II</MenuItem>
+                                <MenuItem id="MenuItem" value="3">Federal Setting III</MenuItem>
+                                <MenuItem id="MenuItem" value="4">Federal Setting IV</MenuItem>
+                                <MenuItem id="MenuItem" value="8">Federal Setting VIII</MenuItem>
                         </Select>
                         </FormControl>
                     </div><br />
