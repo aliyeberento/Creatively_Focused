@@ -17,7 +17,7 @@ class UserList extends Component {
                     <Link style={{ backgroundColor: 'transparent' }} className="connectorLink" to="/adminform">
                         <div id="Button">
                             <button className="linkBtn user-add" >
-                                ADD USER
+                                ADD NEW USER
                             </button>
                         </div>
                     </Link>

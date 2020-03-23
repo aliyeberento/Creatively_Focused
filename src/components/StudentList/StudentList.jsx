@@ -33,7 +33,7 @@ class StudentList extends Component {
                     <Link style={{ backgroundColor: 'transparent' }} className="connectorLink" to="/addstudent">
                         <div id="Button">
                             <button className="linkBtn student-add">
-                                ADD STUDENT
+                                ADD NEW STUDENT
                             </button>
                         </div>
                     </Link>
