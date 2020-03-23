@@ -9,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 
 class AddSchoolForm extends Component {
-
+    
     // ONLY VISIBLE TO ISD LEVEL ADMIN AND ABOVE
 
     state = {

@@ -10,6 +10,10 @@ import FormControl from '@material-ui/core/FormControl';
 
 class AddDistrictForm extends Component {
 
+    componentDidMount () {
+        document.body.scrollTop = 0;
+    }
+
     // ONLY VISIBLE TO CF LEVEL ADMIN
 
     state = {

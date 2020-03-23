@@ -11,6 +11,10 @@ import FormControl from '@material-ui/core/FormControl';
 
 class EditStudentForm extends Component {
 
+    componentDidMount () {
+        document.body.scrollTop = 0;
+    }
+
     submitEdit = () => {
         // dispatches edit request to redux/database
         console.log('clicking to submit edit');
@@ -85,7 +89,7 @@ class EditStudentForm extends Component {
                     <div id="TextField">
                         <TextField type="text" 
                             label="LAST NAME" 
-                            defaultValue={this.props.reduxState.studentDetail.firstname}
+                            defaultValue={this.props.reduxState.studentDetail.lastname}
                             onChange={(event) => this.updateStudent(event, 'lastname')} />
                     </div>
                     <br />
