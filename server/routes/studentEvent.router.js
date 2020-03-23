@@ -151,15 +151,15 @@ router.post('/', rejectUnauthenticated, (res) => {
     INSERT INTO "student_event" 
     ("student_id", "event_id", "due_date") 
     VALUES
-    (32, 1, '2020-05-01'), 
-    (32, 2, '2020-05-01'), 
-    (32, 3, '2020-05-01'), 
-    (32, 4, '2020-05-01'), 
-    (32, 5, '2020-05-01'), 
-    (32, 6, '2020-05-01'), 
-    (32, 7, '2020-05-01'), 
-    (32, 8, '2020-05-01'), 
-    (32, 9, '2020-05-01');`
+    (33, 1, '2020-05-01'), 
+    (33, 2, '2020-05-01'), 
+    (33, 3, '2020-05-01'), 
+    (33, 4, '2020-05-01'), 
+    (33, 5, '2020-05-01'), 
+    (33, 6, '2020-05-01'), 
+    (33, 7, '2020-05-01'), 
+    (33, 8, '2020-05-01'), 
+    (33, 9, '2024-06-20');`
     pool.query(queryText)
         .then((result) => {
             res.sendStatus(201);
@@ -174,7 +174,11 @@ router.post('/', rejectUnauthenticated, (res) => {
 router.delete('/', rejectUnauthenticated, (req, res) => {
     const id = req.params.id
     console.log('in delete route', id)
-    const queryText = 'DELETE FROM "student_event" WHERE "student_id" = $1'
+    const queryText = `UPDATE "student_event" 
+    SET "completed" = NOT "completed",
+    "date_completed" = now(),
+    "completed_by" = ${req.user.id}
+    WHERE "student_id"=${req.body.id};`
     pool.query(queryText, [id])
         .then(() => { res.sendStatus(200) })
         .catch((err) => {

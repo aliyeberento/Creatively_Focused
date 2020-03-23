@@ -102,7 +102,7 @@ class UserDetailPage extends Component {
                                 </Popup>
                             </Button>
                             <Button size="small" variant="outlined" onClick={this.goToUserList}>BACK TO USER LIST</Button>
-                            </div>
+                        </div>
                         {/* </CardActions>
                     </Card> */}
                 {/* </Grid> */}

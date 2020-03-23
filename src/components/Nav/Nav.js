@@ -39,8 +39,8 @@ class Nav extends Component {
               <Link className="menu-item" to="/home" onClick={() => this.closeMenu()}>HOME</Link>
               <br />
                 {/* Show this link if they are logged in or not,
-            but call this link 'Home' if they are logged in,
-            and call this link 'Login / Register' if they are not */}
+                but call this link 'Home' if they are logged in,
+                and call this link 'Login / Register' if they are not */}
                 {/* {this.props.store.user.id ? 'USER PROFILE' : 'LOGIN'} */}
                 {this.props.store.user.auth < 1 && (
                   <>
@@ -74,8 +74,7 @@ class Nav extends Component {
                     </Link>
                     <br />
                     {/* THIS LOGOUT BUTTON SHOULD HAVE THE CLOSE MENU FUNCTION PASSED DOWN ON PROPS */}
-
-                    <LogOutButton className="logoutButton"  closeMenu={this.closeMenu} onClick={() => this.closeMenu()}/>
+                    <LogOutButton className="logoutButton" onClick={() => this.closeMenu()}/>
                   </>
                 )}
             </div>
