@@ -64,7 +64,7 @@ class UserDetailPage extends Component {
     render() {
         let user = this.props.reduxState.teacherDetail;
         return (
-            <div id="centercard">
+            <div>
                 {/* <Grid> */}
                     {/* <Card className="user-content">
                         <CardContent id="cardcontent"> */}
@@ -73,7 +73,7 @@ class UserDetailPage extends Component {
                             </Typography>
 
                             <Typography>
-                                <ul>
+                                <ul id="cardContent">
                                     <li>E-Mail/Username: {user.username}</li>
                                     <li>School: {user.school}</li>
                                     <li>City: {user.city}</li>
@@ -106,8 +106,8 @@ class UserDetailPage extends Component {
                         {/* </CardActions>
                     </Card> */}
                 {/* </Grid> */}
-                <TeacherTaskList />
-                <StudentList />
+                <TeacherTaskList id="Button"/>
+                <StudentList id="Button"/>
             </div>
         )
     }

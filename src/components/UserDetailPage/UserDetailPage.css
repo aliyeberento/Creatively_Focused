@@ -40,3 +40,7 @@ ul {
     width: 70%;
     margin: auto;
 }
+
+#cardContent {
+    padding-left: 110px;
+}

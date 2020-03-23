@@ -94,8 +94,8 @@ ul {
     list-style-type: none;
     /* font-family: Helvetica, Arial, sans-serif; */
     width: 30%;
-    margin: 20px auto;
-    /* padding: 25px; */
+    margin: auto;
+    padding: 15px;
     border-radius: 2px;
 }
 
