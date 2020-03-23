@@ -11,10 +11,6 @@ import FormControl from '@material-ui/core/FormControl';
 
 class EditStudentForm extends Component {
 
-    componentDidMount () {
-        document.body.scrollTop = 0;
-    }
-
     submitEdit = () => {
         // dispatches edit request to redux/database
         console.log('clicking to submit edit');
@@ -101,6 +97,7 @@ class EditStudentForm extends Component {
                                 label="GRADE" 
                                 name="grade" 
                                 id="grade" 
+                                value={this.props.reduxState.studentDetail.grade}
                                 defaultValue={this.props.reduxState.studentDetail.grade} 
                                 placeholder="grade" 
                                 onChange={(event) => this.updateStudentInt(event, 'birthdate')}>
@@ -165,6 +162,7 @@ class EditStudentForm extends Component {
                             label="DISABILITY CATEGORY" 
                             name="disability_cat" 
                             id="disability_cat" 
+                            value={this.props.reduxState.studentDetail.disability_cat}
                             defaultValue={this.props.reduxState.studentDetail.disability_cat} 
                             placeholder="disability_cat" 
                             onChange={(event) => this.updateStudentInt(event, 'disability_cat')}>
@@ -203,7 +201,8 @@ class EditStudentForm extends Component {
                             label="FEDERAL SETTING" 
                             name="fed_setting" 
                             id="fed_setting" 
-                            defaultValue={this.props.reduxState.studentDetail.disability_cat} 
+                            value={this.props.reduxState.studentDetail.fed_setting}
+                            defaultValue={this.props.reduxState.studentDetail.fed_setting} 
                             placeholder="fed_setting" 
                             onChange={(event) => this.updateStudentInt(event, 'fed_setting')}>
                                 <MenuItem id="MenuItem" value="1">Federal Setting I</MenuItem>
@@ -229,6 +228,7 @@ class EditStudentForm extends Component {
                             id="date"
                             label="NEXT IEP"
                             type="date"
+                            value={this.props.reduxState.studentDetail.next_iep}
                             helperText={moment(this.props.reduxState.studentDetail.next_iep).format('MM/DD/YYYY')}
                             defaultValue={this.props.reduxState.studentDetail.next_iep}
                             style={{minWidth: 166}}
@@ -252,6 +252,7 @@ class EditStudentForm extends Component {
                             id="date"
                             label="NEXT EVAL"
                             type="date"
+                            value={this.props.reduxState.studentDetail.next_eval}
                             helperText={moment(this.props.reduxState.studentDetail.next_eval).format('MM/DD/YYYY')}
                             defaultValue={this.props.reduxState.studentDetail.next_eval}
                             style={{minWidth: 166}}
@@ -288,6 +289,7 @@ class EditStudentForm extends Component {
                             label="TEACHER" 
                             name="teacher" 
                             id="teacher" 
+                            value={this.props.reduxState.studentDetail.teacher}
                             defaultValue={this.props.reduxState.studentDetail.teacher}
                             placeholder="teacher" 
                             onChange={(event) => this.updateStudentInt(event, 'teacher')}>
@@ -326,6 +328,7 @@ class EditStudentForm extends Component {
                             label="SCHOOL" 
                             name="SCHOOL" 
                             id="SCHOOL" 
+                            value={this.props.reduxState.studentDetail.school}
                             defaultValue={this.props.reduxState.studentDetail.school}
                             placeholder="SCHOOL" 
                             onChange={(event) => this.updateStudentInt(event, 'school_id')}>
@@ -356,7 +359,8 @@ class EditStudentForm extends Component {
                             label="DISTRICT" 
                             name="district" 
                             id="district" 
-                            defaultValue={this.props.reduxState.studentDetail.district}
+                            value={this.props.reduxState.studentDetail.isd}
+                            defaultValue={this.props.reduxState.studentDetail.isd}
                             placeholder="district" 
                             onChange={(event) => this.updateStudentInt(event, 'isd')}>
                             {this.props.reduxState.districtReducer.map(district => {

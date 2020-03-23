@@ -48,7 +48,6 @@ class UserPage extends Component {
     this.props.dispatch({ type: 'GET_STUDENTEVENT' });
     this.props.dispatch({ type: 'GET_SCHOOLS' });
     this.props.dispatch({ type: 'GET_DISTRICTS' });
-    document.body.scrollTop = 0;
   }
 
   state = {
