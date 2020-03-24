@@ -54,6 +54,8 @@ class EditStudentForm extends Component {
     render() {
         console.log(this.props.reduxState.studentDetail);
         console.log(moment(this.props.reduxState.studentDetail.birthdate).format('MM/DD/YYYY'));
+        console.log(this.props.reduxState.studentDetail.isd);
+        
         
         return (
             <div>
@@ -85,7 +87,7 @@ class EditStudentForm extends Component {
                     <div id="TextField">
                         <TextField type="text" 
                             label="LAST NAME" 
-                            defaultValue={this.props.reduxState.studentDetail.firstname}
+                            defaultValue={this.props.reduxState.studentDetail.lastname}
                             onChange={(event) => this.updateStudent(event, 'lastname')} />
                     </div>
                     <br />
@@ -97,6 +99,7 @@ class EditStudentForm extends Component {
                                 label="GRADE" 
                                 name="grade" 
                                 id="grade" 
+                                value={this.props.reduxState.studentDetail.grade}
                                 defaultValue={this.props.reduxState.studentDetail.grade} 
                                 placeholder="grade" 
                                 onChange={(event) => this.updateStudentInt(event, 'birthdate')}>
@@ -161,6 +164,7 @@ class EditStudentForm extends Component {
                             label="DISABILITY CATEGORY" 
                             name="disability_cat" 
                             id="disability_cat" 
+                            value={this.props.reduxState.studentDetail.disability_cat}
                             defaultValue={this.props.reduxState.studentDetail.disability_cat} 
                             placeholder="disability_cat" 
                             onChange={(event) => this.updateStudentInt(event, 'disability_cat')}>
@@ -199,7 +203,8 @@ class EditStudentForm extends Component {
                             label="FEDERAL SETTING" 
                             name="fed_setting" 
                             id="fed_setting" 
-                            defaultValue={this.props.reduxState.studentDetail.disability_cat} 
+                            value={this.props.reduxState.studentDetail.fed_setting}
+                            defaultValue={this.props.reduxState.studentDetail.fed_setting} 
                             placeholder="fed_setting" 
                             onChange={(event) => this.updateStudentInt(event, 'fed_setting')}>
                                 <MenuItem id="MenuItem" value="1">Federal Setting I</MenuItem>
@@ -225,8 +230,8 @@ class EditStudentForm extends Component {
                             id="date"
                             label="NEXT IEP"
                             type="date"
-                            helperText={moment(this.props.reduxState.studentDetail.next_iep).format('MM/DD/YYYY')}
-                            defaultValue={this.props.reduxState.studentDetail.next_iep}
+                            value={this.props.reduxState.studentDetail.next_iep}
+                            helperText={`must occur prior to ${moment(this.props.reduxState.studentDetail.next_iep).format('MM/DD/YYYY')}`}                            defaultValue={this.props.reduxState.studentDetail.next_iep}
                             style={{minWidth: 166}}
                             onChange={(event) => this.updateStudent(event, 'next_iep')}
                             InputLabelProps={{
@@ -248,7 +253,8 @@ class EditStudentForm extends Component {
                             id="date"
                             label="NEXT EVAL"
                             type="date"
-                            helperText={moment(this.props.reduxState.studentDetail.next_eval).format('MM/DD/YYYY')}
+                            value={this.props.reduxState.studentDetail.next_eval}
+                            helperText={`must occur prior to ${moment(this.props.reduxState.studentDetail.next_eval).format('MM/DD/YYYY')}`}
                             defaultValue={this.props.reduxState.studentDetail.next_eval}
                             style={{minWidth: 166}}
                             onChange={(event) => this.updateStudent(event, 'next_eval')}
@@ -284,12 +290,13 @@ class EditStudentForm extends Component {
                             label="TEACHER" 
                             name="teacher" 
                             id="teacher" 
+                            value={this.props.reduxState.studentDetail.teacher}
                             defaultValue={this.props.reduxState.studentDetail.teacher}
                             placeholder="teacher" 
                             onChange={(event) => this.updateStudentInt(event, 'teacher')}>
                             {this.props.reduxState.teacher.map(teacher => {
                                 return (
-                                    <MenuItem
+                                    <MenuItem id="MenuItem"
                                         value={teacher.id}
                                         key={teacher.id}>
                                         {teacher.lastname}, {teacher.firstname}
@@ -322,12 +329,13 @@ class EditStudentForm extends Component {
                             label="SCHOOL" 
                             name="SCHOOL" 
                             id="SCHOOL" 
+                            value={this.props.reduxState.studentDetail.school}
                             defaultValue={this.props.reduxState.studentDetail.school}
                             placeholder="SCHOOL" 
                             onChange={(event) => this.updateStudentInt(event, 'school_id')}>
                                 {this.props.reduxState.schoolReducer.map(school => {
                                     return (
-                                        <MenuItem key={school.id} value={school.id}>
+                                        <MenuItem id="MenuItem" key={school.id} value={school.name}>
                                             {school.name}</MenuItem>
                                     )
                                 })}
@@ -352,17 +360,44 @@ class EditStudentForm extends Component {
                             label="DISTRICT" 
                             name="district" 
                             id="district" 
-                            defaultValue={this.props.reduxState.studentDetail.district}
+                            // value={this.props.reduxState.studentDetail.teacher}
+                            // defaultValue={this.props.reduxState.studentDetail.teacher}
+                            value={this.props.reduxState.studentDetail.isd}
+                            defaultValue={this.props.reduxState.studentDetail.isd}
                             placeholder="district" 
                             onChange={(event) => this.updateStudentInt(event, 'isd')}>
                             {this.props.reduxState.districtReducer.map(district => {
                                     return (
-                                        <MenuItem key={district.id} value={district.id}>{district.state} - {district.isd}</MenuItem>
+                                        <MenuItem id="MenuItem" key={district.id} value={district.isd}>{district.state} - {district.isd}</MenuItem>
                                     )
                                 })}
                         </Select>
                         </FormControl>
                     </div>
+
+                    {/* <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>DISTRICT</InputLabel>
+                        <Select 
+                            label="DISTRICT NUMBER" 
+                            name="isd_id" 
+                            id="isd_id" 
+                            defaultValue={this.state.schoolToAdd.isd_id} 
+                            placeholder="isd_id" 
+                            value={this.state.schoolToAdd.isd_id}
+                            onChange={(event) => this.makeSchool(event, 'isd_id')}>
+                                {this.props.state.districtReducer.map(isd => {
+                                    return (
+                                        <MenuItem 
+                                            id="MenuItem" 
+                                            value={isd.id} 
+                                            key={isd.id}>
+                                            {isd.state} - {isd.city} - {isd.isd}
+                                        </MenuItem>
+                                    )})}
+                        </Select>
+                        </FormControl>
+                    </div> */}
                     <br />
                     <div id="TextField">
                         <TextField 
@@ -376,7 +411,7 @@ class EditStudentForm extends Component {
                     </div>
                     <br />
                     <div id="Button">
-                        <Button variant="contained" onClick={this.submitEdit}>SUBMIT CHANGES</Button>
+                        <Button variant="contained" onClick={this.submitEdit}>SUBMIT EDIT</Button>
                     </div>
                 </form>
             </div >

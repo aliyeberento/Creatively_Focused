@@ -104,10 +104,12 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         "user".firstname,
         "user".lastname,
         "user".phone,
+        "isd".id,
         "isd".isd,
         "isd".city,
         "isd".state,
-        "school".name AS "school",
+        "school".id AS "school",
+        "school".name AS "schoolname",
         "user".auth
         FROM "user"
         JOIN "isd" on "isd".id = "user".isd
