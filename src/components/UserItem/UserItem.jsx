@@ -13,7 +13,6 @@ const styles = {
 
     card: {
         minWidth: 400,
-        paddingBottom: '20%',
         padding: '0 30px',
         
     },
@@ -29,7 +28,7 @@ const styles = {
         marginBottom: 12,
     },
     paper: {
-        height: 100,
+        height: 50,
         width: 140,
     },
     
