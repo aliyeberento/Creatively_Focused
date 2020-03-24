@@ -30,7 +30,8 @@ Copy all of the database.sql code into Postico and run all of the CREATE TABLE a
     SERVER_SESSION_SECRET=superDuperSecret
     ```
     While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Repeat the same precedures for setting up a Twilio session in the `.env` file. * You will need to make an account with Twilio to recieve a session password.
+* Repeat the same precedures for setting up a Twilio session in the `.env` file. 
+* You will need to make an account with Twilio to recieve a session password.
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server`
 * Run `npm run client`
