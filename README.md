@@ -11,9 +11,7 @@ This is a web application that helps teachers keep track of mandatory meetings f
 
 ## Preview
 ![Screenshot of teacher calendar] (Screen-Shot-1.png)
-![Screenshot of list of tasks] (Screen-Shot-2.png)
-![Screenshot list of students with nav bar] (Screen-Shot-3.png)
-![Screenshot a student's information] (Screen-Shot-4.png)
+
 
 ## Database Setup Instructions
 
