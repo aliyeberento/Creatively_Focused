@@ -296,7 +296,7 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudentInt(event, 'teacher')}>
                             {this.props.reduxState.teacher.map(teacher => {
                                 return (
-                                    <MenuItem
+                                    <MenuItem id="MenuItem"
                                         value={teacher.id}
                                         key={teacher.id}>
                                         {teacher.lastname}, {teacher.firstname}
@@ -335,7 +335,7 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudentInt(event, 'school_id')}>
                                 {this.props.reduxState.schoolReducer.map(school => {
                                     return (
-                                        <MenuItem key={school.id} value={school.name}>
+                                        <MenuItem id="MenuItem" key={school.id} value={school.name}>
                                             {school.name}</MenuItem>
                                     )
                                 })}
@@ -368,7 +368,7 @@ class EditStudentForm extends Component {
                             onChange={(event) => this.updateStudentInt(event, 'isd')}>
                             {this.props.reduxState.districtReducer.map(district => {
                                     return (
-                                        <MenuItem key={district.id} value={district.isd}>{district.state} - {district.isd}</MenuItem>
+                                        <MenuItem id="MenuItem" key={district.id} value={district.isd}>{district.state} - {district.isd}</MenuItem>
                                     )
                                 })}
                         </Select>
@@ -411,7 +411,7 @@ class EditStudentForm extends Component {
                     </div>
                     <br />
                     <div id="Button">
-                        <Button variant="contained" onClick={this.submitEdit}>SUBMIT CHANGES</Button>
+                        <Button variant="contained" onClick={this.submitEdit}>SUBMIT EDIT</Button>
                     </div>
                 </form>
             </div >
