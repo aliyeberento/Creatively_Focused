@@ -10,10 +10,10 @@ Duration: 2 week sprint
 This is a web application that helps teachers keep track of mandatory meetings for all of their students. The app will allow teachers to visually see their workload through a calendar and regulate scheduling conflicts. There will be a set of email and/or text reminders for upcoming dates. This will allow teachers to be mindful of the amount of work they are doing and plan accordingly. Teachers may also add new students in which the student's IEP and Eval dates will be auto-generated within the regulated time constraints. Administrators may add a school, school district, teacher, and visually see all of their teacher's upcoming due dates.
 
 ## Preview
-![Screenshot 1] (documentation/images/Screen Shot 2020-03-24 at 01.15.15.png)
-![Screenshot 2] (documentation/images/Screen Shot 2020-03-24 at 01.15.29.png)
-![Screenshot 3] (documentation/images/Screen Shot 2020-03-24 at 01.15.57.png)
-![Screenshot 4] (documentation/images/Screen Shot 2020-03-24 at 01.18.03.png)
+![Screenshot 1] (Screen Shot 2020-03-24 at 01.15.15.png)
+![Screenshot 2] (Screen Shot 2020-03-24 at 01.15.29.png)
+![Screenshot 3] (Screen Shot 2020-03-24 at 01.15.57.png)
+![Screenshot 4] (Screen Shot 2020-03-24 at 01.18.03.png)
 
 ## Database Setup Instructions
 
