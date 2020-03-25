@@ -15,6 +15,8 @@ This is a web application that helps teachers keep track of mandatory meetings f
 ![ScreenShot](Screen-Shot-2.png)
 ![ScreenShot](Screen-Shot-3.png)
 ![ScreenShot](Screen-Shot-4.png)
+![ScreenShot](Screen-Shot-5.jpg)
+![ScreenShot](Screen-Shot-6.jpg)
 
 ## Prerequisites
 
