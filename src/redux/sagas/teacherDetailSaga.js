@@ -7,6 +7,7 @@ function* teacherDetailSaga() {
 // this saga dispatches a GET to the server for a targeted item in the database
 // afterward it sets that item for the details view
 function* getDetail(action) {
+    console.log(action.payload);
     let response = yield axios.get(`/api/teacherList/${action.payload}`);
     yield put({type: 'SET_TEACHER', payload: response.data[0]})
 }

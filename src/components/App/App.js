@@ -23,7 +23,8 @@ import AddDistrictForm from '../AddDistrictForm/AddDistrictForm';
 import AddSchoolForm from '../AddSchoolForm/AddSchoolForm';
 import './App.css';
 import TaskDetailPage from '../TaskDetailPage/TaskDetailPage';
-import twilio from '../twilio/twilio'
+import twilio from '../twilio/twilio';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 class App extends Component {
 
@@ -39,6 +40,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <ScrollToTop>
         <div>
           <div className="nav">
             <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED</header>
@@ -135,6 +137,7 @@ class App extends Component {
           </Switch>
           <Footer />
         </div>
+        </ScrollToTop>
       </Router>
     )
   }

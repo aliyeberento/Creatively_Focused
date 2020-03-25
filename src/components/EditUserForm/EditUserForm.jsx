@@ -54,45 +54,83 @@ class EditUserForm extends Component {
 
     render() {
         let user = this.props.reduxState.teacherDetail;
+        let school = this.props.reduxState.schoolReducer;
+        let district = this.props.reduxState.districtReducer;
         console.log(user);
         
         return (
             <div>
                 <h1> EDIT USER</h1>
-                <form>
-                    <label>First Name:
+                <form id="AddForm">
+                    {/* <label>First Name:
                         <input
                             type="text"
                             placeholder="firstname"
                             defaultValue={user.firstname}
                             onChange={(event) => this.updateUser(event, 'firstname')}
                         />
-                    </label><br/>
-                    <label>Last Name:
+                    </label> */}
+                    <div id="TextField">
+                        <TextField 
+                            type="text" 
+                            label="FIRST NAME" 
+                            value={user.firstname}
+                            defaultValue={user.firstname}
+                            onChange={(event) => this.updateUser(event, 'firstname')} />
+                    </div>
+                    <br/>
+                    {/* <label>Last Name:
                         <input
                             type="text"
                             placeholder="lastname"
                             defaultValue={user.lastname}
                             onChange={(event) => this.updateUser(event, 'lastname')}
                         />
-                    </label><br/>
-                    <label>Email/Username:
+                    </label> */}
+                    <div id="TextField">
+                        <TextField 
+                            type="text" 
+                            label="LAST NAME" 
+                            value={user.lastname}
+                            defaultValue={user.lastname}
+                            onChange={(event) => this.updateUser(event, 'lastname')} />
+                    </div>
+                    <br/>
+                    {/* <label>Email/Username:
                         <input
                             type="text"
                             placeholder="username"
                             defaultValue={user.username}
                             onChange={(event) => this.updateUser(event, 'username')}
                         />
-                    </label><br />
-                    <label>Mobile Phone Number:
+                    </label> */}
+                    <div id="TextField">
+                        <TextField 
+                            type="text" 
+                            label="USERNAME" 
+                            value={user.username}
+                            defaultValue={user.username}
+                            onChange={(event) => this.updateUser(event, 'username')} />
+                    </div>
+                    <br />
+                    {/* <label>Mobile Phone Number:
                         <input
                             type="text"
                             placeholder="phone"
                             defaultValue={user.phone}
                             onChange={(event) => this.updateUser(event, 'phone')}
                         />
-                    </label><br />
-                    <label>District:
+                    </label> */}
+                    <div id="TextField">
+                        <TextField 
+                            type="tel" 
+                            label="PHONE" 
+                            value={user.phone}
+                            defaultValue={user.phone}
+                            onChange={(event) => this.updateUser(event, 'phone')} />
+                    </div>
+                    <br />
+                    {/* <label>District:
                         <select 
                             name="isd" 
                             id="isd" 
@@ -105,18 +143,89 @@ class EditUserForm extends Component {
                                         <option value={isd.id} key={isd.id}>{isd.state} - {isd.isd}</option>
                                     )
                                 })}
-                            </select></label>
-                    {/* <label>
-                        Independent School District:
-                        <select name="school" onChange={(event) => this.updateUser(event, 'school')}>
-                            <option >Choose One...</option>
-                            <option value="3">Saint Paul, MN</option>
-                            <option value="2">Mineapolis, MN</option>
-                            <option value="1">Farmington, MN</option>
-                        </select>
-                    </label> */}
-                    <br />
-                    <label>School:
+                            </select>
+                            </label> */}
+                    <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>DISTRICT</InputLabel>
+                        <Select 
+                            label="DISTRICT" 
+                            name="district" 
+                            id="district" 
+                            value={user.isd}
+                            // defaultValue={user.isd} 
+                            placeholder="isd" 
+                            onChange={(event) => this.updateUserInt(event, 'isd')}>
+                                {district.map(district => {
+                                    return (
+                                        <MenuItem id="MenuItem" key={district.id} value={district.isd}>{district.state} - {district.city} - {district.isd}</MenuItem>
+                                    )
+                                })}
+                        </Select>
+                        </FormControl>
+                    </div>
+                <br />
+                    <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>SCHOOL</InputLabel>
+                        <Select 
+                            label="SCHOOL" 
+                            name="school" 
+                            id="school" 
+                            value={user.school}
+                            // defaultValue={user.school} 
+                            placeholder="school" 
+                            onChange={(event) => this.updateUserInt(event, 'school')}>
+                                {school.map(school => {
+                                    return (
+                                        <MenuItem id="MenuItem" key={school.id} value={school.id}>{school.name}</MenuItem>
+                                    )
+                                })}
+                        </Select>
+                        </FormControl>
+                    </div>
+                    {/* <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>SCHOOL</InputLabel>
+                        <Select 
+                            label="SCHOOL" 
+                            name="SCHOOL" 
+                            id="SCHOOL" 
+                            value={this.props.reduxState.studentDetail.school}
+                            defaultValue={this.props.reduxState.studentDetail.school}
+                            placeholder="SCHOOL" 
+                            onChange={(event) => this.updateStudentInt(event, 'school_id')}>
+                                {this.props.reduxState.schoolReducer.map(school => {
+                                    return (
+                                        <MenuItem id="MenuItem" key={school.id} value={school.name}>
+                                            {school.name}</MenuItem>
+                                    )
+                                })}
+                        </Select>
+                        </FormControl>
+                    </div> */}
+                        {/* <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>SCHOOL</InputLabel>
+                        <Select 
+                            label="SCHOOL" 
+                            name="SCHOOL" 
+                            id="SCHOOL" 
+                            value={this.props.reduxState.studentDetail.school}
+                            defaultValue={this.props.reduxState.studentDetail.school}
+                            placeholder="SCHOOL" 
+                            onChange={(event) => this.updateStudentInt(event, 'school_id')}>
+                                {this.props.reduxState.schoolReducer.map(school => {
+                                    return (
+                                        <MenuItem id="MenuItem" key={school.id} value={school.name}>
+                                            {school.name}</MenuItem>
+                                    )
+                                })}
+                        </Select>
+                        </FormControl>
+                    </div> */}
+                    
+                        {/* <label>School:
                             <select name="school" id="school" defaultValue="school" placeholder="school" onChange={(event) => this.updateUserInt(event, 'school')}>
                                 <option>Choose one...</option>
                                 {this.props.reduxState.schoolReducer.map(school => {
@@ -124,7 +233,8 @@ class EditUserForm extends Component {
                                         <option value={school.id} key={school.id}>{school.city} - {school.name} - {school.isd}</option>
                                     )
                                 })}
-                            </select></label>
+                            </select>
+                        </label> */}
                     {/* <label>School:
                         <select name="isd" onChange={(event) => this.updateUser(event, 'isd')}>
                             <option >Choose One...</option>
@@ -138,7 +248,7 @@ class EditUserForm extends Component {
                             <option value="1">Farmington Senior High</option>
                         </select>
                     </label> */}
-                    <label>
+                    {/* <label>
                         Role/Auth:
                         <select name="role" onChange={(event) => this.updateUserInt(event, 'auth')}>
                             <option >Choose One...</option>
@@ -147,8 +257,31 @@ class EditUserForm extends Component {
                             <option value="1">Superintendent</option>
                             <option value="0">CF Admin</option>
                         </select>
-                    </label><br />
-                    <button type="button" onClick={this.submitEdit}>submit changes</button>
+                    </label> */}
+                    <br />
+                    <div id="TextField">
+                        <FormControl style={{minWidth: 166}}>
+                        <InputLabel>ROLE/AUTH</InputLabel>
+                        <Select 
+                            label="AUTH" 
+                            name="auth" 
+                            id="auth" 
+                            value={user.auth}
+                            // defaultValue="auth" 
+                            placeholder="auth" 
+                            onChange={(event) => this.updateUserInt(event, 'auth')}>
+                                <MenuItem id="MenuItem" value="3">Teacher</MenuItem>
+                                <MenuItem id="MenuItem" value="2">School Principal</MenuItem>
+                                <MenuItem id="MenuItem" value="1">Superintendent</MenuItem>
+                                <MenuItem id="MenuItem" value="0">CF Admin</MenuItem>
+                        </Select>
+                        </FormControl>
+                    </div>
+                    <br />
+                    <div id="Button">
+                        <Button variant="contained" onClick={this.submitEdit}>SUBMIT EDIT</Button>
+                    </div>
+                    {/* <button type="button" onClick={this.submitEdit}>submit changes</button> */}
                 </form>
             </div >
         )

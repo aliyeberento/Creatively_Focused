@@ -75,7 +75,7 @@ class UserDetailPage extends Component {
                             <Typography>
                                 <ul id="cardContent">
                                     <li>E-Mail/Username: {user.username}</li>
-                                    <li>School: {user.school}</li>
+                                    <li>School: {user.schoolname}</li>
                                     <li>City: {user.city}</li>
                                     <li>State: {user.state}</li>
                                     <li>ISD: {user.isd}</li>
