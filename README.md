@@ -22,9 +22,9 @@ This is a web application that helps teachers keep track of mandatory meetings f
 
 Before you get started, make sure you have the following software installed on your computer:
 
-*Node.js
-*PostrgeSQL
-*Nodemon
+* Node.js
+* PostrgeSQL
+* Nodemon
 
 This version uses React, Redux, Express, Passport, PostgreSQL, Twilio, Cron, React-Big-Calendar, and other dependencies that will be found in the package.json.
 
