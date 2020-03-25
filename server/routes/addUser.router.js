@@ -4,11 +4,10 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const encryptLib = require('../modules/encryption');
 
-router.post('/', rejectUnauthenticated, (req, res) => {
-    // req.body = data sent from addUser saga
-    let newUser = req.body;
+// adds a new user to the database's "user" table
 
-    console.log(req.body);
+router.post('/', rejectUnauthenticated, (req, res) => {
+    let newUser = req.body;
     const password = encryptLib.encryptPassword(newUser.password);
     // inserting the data into the user table
     let queryText = `INSERT INTO "user" 
@@ -22,7 +21,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             console.log('error in addUser post req in server', error);
             res.sendStatus(500);
         });
-
 });
 
 module.exports = router;

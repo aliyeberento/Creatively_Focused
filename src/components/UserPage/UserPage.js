@@ -134,9 +134,6 @@ class UserPage extends Component {
   }
 
   render() {
-    console.log(this.props.student);
-    console.log(this.props.user.id);
-    
     // sets the events for calendar using the student's dates
     let events = this.formatEventsForCalendar(this.props.student);    
     return (

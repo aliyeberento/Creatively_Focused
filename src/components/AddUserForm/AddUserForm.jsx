@@ -46,6 +46,7 @@ class AddUserForm extends Component {
             console.log(this.state.userToAdd)
         })
     }
+
     //sends local state into the addUser Saga/database
     submitBtn = (event) => {
         event.preventDefault()
@@ -54,27 +55,12 @@ class AddUserForm extends Component {
             type: 'ADD_USER',
             payload: this.state.userToAdd
         })
-        this.goDetail();
-    }
-    // when called brings you back to the admin home page
-    goDetail = () => {
-        this.props.history.push(`/adminhome`)
+        this.goHome();
     }
 
-    populateInputs = () => {
-        console.log('prepopulating KEN');
-        this.setState({
-            userToAdd: {
-                firstname: 'Ken',
-                lastname: 'Slack',
-                username: 'kenslacktheteacher@gmail.com',
-                password: '1234',
-                phone: '6089874523',
-                isd: 3,
-                school: 3,
-                auth: 3
-            }
-        })
+    // when called brings the user back to the admin home page
+    goHome = () => {
+        this.props.history.push(`/adminhome`)
     }
 
     render() {
@@ -82,213 +68,149 @@ class AddUserForm extends Component {
         if (this.props.store.user.auth === 0) {
             return (
                 <div>
-                <h1 onClick={this.populateInputs}>ADD NEW USER</h1>
+                    <h1>ADD NEW USER</h1>
                     <form id="AddForm">
-                    <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="FIRST NAME" 
-                            value={userToAdd.firstname}
-                            onChange={(event) => this.handleNewUser(event, 'firstname')} />
-                    </div>
-                        {/* <label>
-                            First Name:
-                        <input type="text" value={userToAdd.firstname}
+                        <div id="TextField">
+                            <TextField 
+                                type="text" 
+                                label="FIRST NAME" 
+                                value={userToAdd.firstname}
                                 onChange={(event) => this.handleNewUser(event, 'firstname')} />
-                        </label> */}
-                        <br />
-                        <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="LAST NAME" 
-                            value={userToAdd.lastname}
-                            onChange={(event) => this.handleNewUser(event, 'lastname')} />
                         </div>
-                        {/* <label>
-                            Last Name:
-                        <input type="text" value={userToAdd.lastname}
-                                onChange={(event) => this.handleNewUser(event, 'lastname')} />
-                        </label> */}
-                        <br />
-                        <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="USER NAME" 
-                            value={userToAdd.username}
-                            onChange={(event) => this.handleNewUser(event, 'username')} />
-                    </div>
-                        {/* <label>
-                            Email/Username:
-                        <input type="text" value={userToAdd.username}
-                                onChange={(event) => this.handleNewUser(event, 'username')} />
-                        </label> */}
                         <br />
                         <div id="TextField">
                             <TextField 
-                                type="password" 
-                                label="password" 
+                                type="text" 
+                                label="LAST NAME" 
+                                value={userToAdd.lastname}
+                                onChange={(event) => this.handleNewUser(event, 'lastname')} 
+                            />
+                        </div>
+                        <br />
+                        <div id="TextField">
+                            <TextField 
+                                type="text" 
+                                label="E-MAIL" 
+                                value={userToAdd.username}
+                                helperText="This will be the USERNAME"
+                                onChange={(event) => this.handleNewUser(event, 'username')} 
+                            />
+                        </div>
+                        <br />
+                        <div id="TextField">
+                            <TextField 
+                                type="PASSWORD" 
+                                label="PASSWORD" 
                                 value={userToAdd.password} 
                                 onChange={(event) => this.handleNewUser(event, 'password')}
                             />
                         </div>
-                        {/* <label>
-                            Password:
-                        <input type="password" value={userToAdd.password}
-                                onChange={(event) => this.handleNewUser(event, 'password')} />
-                        </label> */}
                         <br />
                         <div id="TextField">
-                        <TextField type="tel" 
-                            label="PHONE" 
-                            value={userToAdd.phone}
-                            onChange={(event) => this.handleNewUser(event, 'phone')} />
+                            <TextField type="tel" 
+                                label="PHONE" 
+                                value={userToAdd.phone}
+                                onChange={(event) => this.handleNewUser(event, 'phone')} 
+                            />
                         </div>
-                        {/* <label>
-                            Phone number:
-                        <input type="tel" value={userToAdd.phone} id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
-                                placeholder='(012)-345-6789'
-                                max="10"
-                                onChange={(event) => this.handleNewUser(event, 'phone')} >
-                            </input>
-                        </label> */}
                         <br />
                         <div id="TextField">
-                        <FormControl style={{minWidth: 166}}>
-                        <InputLabel>ROLE/AUTH</InputLabel>
-                        <Select 
-                            label="AUTH" 
-                            name="auth" 
-                            id="auth" 
-                            value={userToAdd.auth}
-                            defaultValue="auth" 
-                            placeholder="auth" 
-                            onChange={(event) => this.handleNewUserInt(event, 'auth')}>
-                                <MenuItem id="MenuItem" value="3">Teacher</MenuItem>
-                                <MenuItem id="MenuItem" value="2">School Principal</MenuItem>
-                                <MenuItem id="MenuItem" value="1">Superintendent</MenuItem>
-                                <MenuItem id="MenuItem" value="0">CF Admin</MenuItem>
-                        </Select>
-                        </FormControl>
-                    </div>
-                        {/* <label>
-                            Role/Auth:
-                        <select name="auth" onChange={(event) => this.handleNewUserInt(event, 'auth')} value={userToAdd.auth} >
-                                <option >Choose One...</option>
-                                <option value="3">Teacher</option>
-                                <option value="2">School Principal</option>
-                                <option value="1">Superintendent</option>
-                                <option value="0">CF Admin</option>
-                            </select>
-                        </label> */}
+                            <FormControl style={{minWidth: 166}}>
+                            <InputLabel>ROLE/AUTH</InputLabel>
+                            <Select 
+                                label="AUTH" 
+                                name="auth" 
+                                id="auth" 
+                                value={userToAdd.auth}
+                                defaultValue="auth" 
+                                placeholder="auth" 
+                                onChange={(event) => this.handleNewUserInt(event, 'auth')}>
+                                    <MenuItem id="MenuItem" value="3">Teacher</MenuItem>
+                                    <MenuItem id="MenuItem" value="2">School Principal</MenuItem>
+                                    <MenuItem id="MenuItem" value="1">Superintendent</MenuItem>
+                                    <MenuItem id="MenuItem" value="0">CF Admin</MenuItem>
+                            </Select>
+                            </FormControl>
+                        </div>
                         <br />
                         <div id="TextField">
-                        <FormControl style={{minWidth: 166}}>
-                        {/* <InputLabel>DISTRICT</InputLabel> */}
-                        <Select 
-                            label="DISTRICT" 
-                            name="isd" 
-                            id="isd" 
-                            value={userToAdd.isd}
-                            defaultValue="isd" 
-                            placeholder="isd" 
-                            onChange={(event) => this.handleNewUserInt(event, 'isd')}>
-                                {this.props.store.districtReducer.map(district => {
-                                    return (
-                                        <MenuItem id="MenuItem" key={district.id} value={district.id}>{district.state} - {district.city} - {district.isd}</MenuItem>
-                                    )
-                                })}
-                        </Select>
-                        </FormControl>
-                    </div>
-                        {/* <label>District:
-                            <select
-                                name="district"
-                                value={this.props.store.user.isd}
-                                id="district"
+                            <FormControl style={{minWidth: 166}}>
+                            <InputLabel>DISTRICT</InputLabel>
+                            <Select 
+                                label="DISTRICT" 
+                                name="isd" 
+                                id="isd" 
+                                value={userToAdd.isd}
+                                defaultValue="isd" 
+                                placeholder="isd" 
                                 onChange={(event) => this.handleNewUserInt(event, 'isd')}>
-                                District:
-                            <option>Choose one...</option>
-                                {this.props.store.districtReducer.map(district => {
-                                    return (
-                                        <option key={district.id} value={district.id}>{district.state} - {district.isd}</option>
-                                    )
-                                })}
-                            </select>
-                        </label> */}
+                                    {this.props.store.districtReducer.map(district => {
+                                        return (
+                                            <MenuItem id="MenuItem" key={district.id} value={district.id}>{district.state} - {district.city} - {district.isd}</MenuItem>
+                                        )
+                                    })}
+                            </Select>
+                            </FormControl>
+                        </div>
                         <br />
                         <div id="TextField">
-                        <FormControl style={{minWidth: 166}}>
-                        {/* <InputLabel>SCHOOL</InputLabel> */}
-                        <Select 
-                            label="SCHOOL" 
-                            name="school" 
-                            id="school" 
-                            value={userToAdd.school}
-                            defaultValue="school" 
-                            placeholder="school" 
-                            onChange={(event) => this.handleNewUserInt(event, 'school')}>
-                                {this.props.store.schoolReducer.map(school => {
-                                    return (
-                                        <MenuItem key={school.id} value={school.id}>
-                                            {school.name}</MenuItem>
-                                    )
-                                })}
-                        </Select>
-                        </FormControl>
-                    </div>
-                        {/* <label>School:
-                            <select
-                                name="school"
-                                value={this.props.store.user.school}
-                                id="school"
-                                defaultValue="school"
-                                placeholder="school"
+                            <FormControl style={{minWidth: 166}}>
+                            <InputLabel>SCHOOL</InputLabel>
+                            <Select 
+                                label="SCHOOL" 
+                                name="school" 
+                                id="school" 
+                                value={userToAdd.school}
+                                defaultValue="school" 
+                                placeholder="school" 
                                 onChange={(event) => this.handleNewUserInt(event, 'school')}>
-                                <option>Choose one...</option>
-                                {this.props.store.schoolReducer.map(school => {
-                                    return (
-                                        <option key={school.id} value={school.id}>
-                                            {school.name}</option>
-                                    )
-                                })}
-                            </select>
-                        </label> */}
+                                    {this.props.store.schoolReducer.map(school => {
+                                        return (
+                                            <MenuItem key={school.id} value={school.id}>
+                                                {school.name}</MenuItem>
+                                        )
+                                    })}
+                            </Select>
+                            </FormControl>
+                        </div>
                         <br />
                         <div id="Button">
                             <Button variant="contained" onClick={this.submitBtn}>ADD USER</Button>
                         </div>
-                        {/* <button type="button" className="submitBtn" onClick={this.submitBtn}>Submit</button> */}
                     </form>
                 </div >
             )
         } else if (this.props.store.user.auth === 1) {
             return (
                 <div>
-                <h1 onClick={this.populateInputs}>ADD NEW USER</h1>
+                    <h1>ADD NEW USER</h1>
                     <form id="AddForm">
-                    <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="FIRST NAME" 
-                            value={userToAdd.firstname}
-                            onChange={(event) => this.handleNewUser(event, 'firstname')} />
-                    </div>
-                        <br />
                         <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="LAST NAME" 
-                            value={userToAdd.lastname}
-                            onChange={(event) => this.handleNewUser(event, 'lastname')} />
+                            <TextField 
+                                type="text" 
+                                label="FIRST NAME" 
+                                value={userToAdd.firstname}
+                                onChange={(event) => this.handleNewUser(event, 'firstname')} 
+                            />
                         </div>
                         <br />
                         <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="USER NAME" 
-                            value={userToAdd.username}
-                            onChange={(event) => this.handleNewUser(event, 'username')} />
-                    </div>
+                            <TextField 
+                                type="text" 
+                                label="LAST NAME" 
+                                value={userToAdd.lastname}
+                                onChange={(event) => this.handleNewUser(event, 'lastname')} 
+                            />
+                        </div>
+                        <br />
+                        <div id="TextField">
+                            <TextField 
+                                type="text" 
+                                label="USER NAME" 
+                                value={userToAdd.username}
+                                onChange={(event) => this.handleNewUser(event, 'username')} 
+                            />
+                        </div>
                         <br />
                         <div id="TextField">
                             <TextField 
@@ -300,69 +222,70 @@ class AddUserForm extends Component {
                         </div>
                         <br />
                         <div id="TextField">
-                        <TextField type="tel" 
-                            label="PHONE" 
-                            value={userToAdd.phone}
-                            onChange={(event) => this.handleNewUser(event, 'phone')} />
+                            <TextField type="tel" 
+                                label="PHONE" 
+                                value={userToAdd.phone}
+                                onChange={(event) => this.handleNewUser(event, 'phone')} 
+                            />
                         </div>
                         <br />
                         <div id="TextField">
-                        <FormControl style={{minWidth: 166}}>
-                        <InputLabel>ROLE/AUTH</InputLabel>
-                        <Select 
-                            label="AUTH" 
-                            name="auth" 
-                            id="auth" 
-                            value={userToAdd.auth}
-                            defaultValue="auth" 
-                            placeholder="auth" 
-                            onChange={(event) => this.handleNewUserInt(event, 'auth')}>
-                                <MenuItem id="MenuItem" value="3">Teacher</MenuItem>
-                                <MenuItem id="MenuItem" value="2">School Principal</MenuItem>
-                        </Select>
-                        </FormControl>
-                    </div>
+                            <FormControl style={{minWidth: 166}}>
+                            <InputLabel>ROLE/AUTH</InputLabel>
+                            <Select 
+                                label="AUTH" 
+                                name="auth" 
+                                id="auth" 
+                                value={userToAdd.auth}
+                                defaultValue="auth" 
+                                placeholder="auth" 
+                                onChange={(event) => this.handleNewUserInt(event, 'auth')}>
+                                    <MenuItem id="MenuItem" value="3">Teacher</MenuItem>
+                                    <MenuItem id="MenuItem" value="2">School Principal</MenuItem>
+                            </Select>
+                            </FormControl>
+                        </div>
+                            <br />
+                            <div id="TextField">
+                            <FormControl style={{minWidth: 166}}>
+                            {/* <InputLabel>DISTRICT</InputLabel> */}
+                            <Select 
+                                label="DISTRICT" 
+                                name="isd" 
+                                id="isd" 
+                                value={userToAdd.isd}
+                                defaultValue="isd" 
+                                placeholder="isd" 
+                                onChange={(event) => this.handleNewUserInt(event, 'isd')}>
+                                    {this.props.store.districtReducer.map(district => {
+                                        return (
+                                            <MenuItem id="MenuItem" key={district.id} value={district.id}>{district.state} - {district.city} - {district.isd}</MenuItem>
+                                        )
+                                    })}
+                            </Select>
+                            </FormControl>
+                        </div>
                         <br />
                         <div id="TextField">
-                        <FormControl style={{minWidth: 166}}>
-                        {/* <InputLabel>DISTRICT</InputLabel> */}
-                        <Select 
-                            label="DISTRICT" 
-                            name="isd" 
-                            id="isd" 
-                            value={userToAdd.isd}
-                            defaultValue="isd" 
-                            placeholder="isd" 
-                            onChange={(event) => this.handleNewUserInt(event, 'isd')}>
-                                {this.props.store.districtReducer.map(district => {
-                                    return (
-                                        <MenuItem id="MenuItem" key={district.id} value={district.id}>{district.state} - {district.city} - {district.isd}</MenuItem>
-                                    )
-                                })}
-                        </Select>
-                        </FormControl>
-                    </div>
-                        <br />
-                        <div id="TextField">
-                        <FormControl style={{minWidth: 166}}>
-                        {/* <InputLabel>SCHOOL</InputLabel> */}
-                        <Select 
-                            label="SCHOOL" 
-                            name="school" 
-                            id="school" 
-                            value={userToAdd.school}
-                            defaultValue="school" 
-                            placeholder="school" 
-                            onChange={(event) => this.handleNewUserInt(event, 'school')}>
-                                {this.props.store.schoolReducer.map(school => {
-                                    return (
-                                        <MenuItem key={school.id} value={school.id}>
-                                            {school.name}</MenuItem>
-                                    )
-                                })}
-                        </Select>
-                        </FormControl>
-                    </div>
+                            <FormControl style={{minWidth: 166}}>
+                            {/* <InputLabel>SCHOOL</InputLabel> */}
+                            <Select 
+                                label="SCHOOL" 
+                                name="school" 
+                                id="school" 
+                                value={userToAdd.school}
+                                defaultValue="school" 
+                                placeholder="school" 
+                                onChange={(event) => this.handleNewUserInt(event, 'school')}>
+                                    {this.props.store.schoolReducer.map(school => {
+                                        return (
+                                            <MenuItem key={school.id} value={school.id}>
+                                                {school.name}</MenuItem>
+                                        )
+                                    })}
+                            </Select>
+                            </FormControl>
+                        </div>
                         <br />
                         <div id="Button">
                             <Button variant="contained" onClick={this.submitBtn}>ADD USER</Button>
@@ -373,31 +296,34 @@ class AddUserForm extends Component {
         } else if (this.props.store.user.auth === 2) {
             return (
                 <div>
-                <h1 onClick={this.populateInputs}>ADD NEW USER</h1>
+                    <h1>ADD NEW USER</h1>
                     <form id="AddForm">
-                    <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="FIRST NAME" 
-                            value={userToAdd.firstname}
-                            onChange={(event) => this.handleNewUser(event, 'firstname')} />
-                    </div>
-                        <br />
                         <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="LAST NAME" 
-                            value={userToAdd.lastname}
-                            onChange={(event) => this.handleNewUser(event, 'lastname')} />
+                            <TextField 
+                                type="text" 
+                                label="FIRST NAME" 
+                                value={userToAdd.firstname}
+                                onChange={(event) => this.handleNewUser(event, 'firstname')} 
+                            />
                         </div>
                         <br />
                         <div id="TextField">
-                        <TextField 
-                            type="text" 
-                            label="USER NAME" 
-                            value={userToAdd.username}
-                            onChange={(event) => this.handleNewUser(event, 'username')} />
-                    </div>
+                            <TextField 
+                                type="text" 
+                                label="LAST NAME" 
+                                value={userToAdd.lastname}
+                                onChange={(event) => this.handleNewUser(event, 'lastname')} 
+                            />
+                        </div>
+                        <br />
+                        <div id="TextField">
+                            <TextField 
+                                type="text" 
+                                label="USER NAME" 
+                                value={userToAdd.username}
+                                onChange={(event) => this.handleNewUser(event, 'username')} 
+                            />
+                        </div>
                         <br />
                         <div id="TextField">
                             <TextField 
@@ -409,10 +335,11 @@ class AddUserForm extends Component {
                         </div>
                         <br />
                         <div id="TextField">
-                        <TextField type="tel" 
-                            label="PHONE" 
-                            value={userToAdd.phone}
-                            onChange={(event) => this.handleNewUser(event, 'phone')} />
+                            <TextField type="tel" 
+                                label="PHONE" 
+                                value={userToAdd.phone}
+                                onChange={(event) => this.handleNewUser(event, 'phone')} 
+                            />
                         </div>
                         <br />
                         <div id="Button">

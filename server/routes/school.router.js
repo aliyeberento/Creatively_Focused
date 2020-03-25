@@ -3,21 +3,17 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-// GET ALL THE SCHOOLS
+// This route gets all the schools and their relevant information
+// based on the logged in user's authority,
+// and stores them in a reducer on the client
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    
-    console.log(req.user);
 
     // CONDITIONAL FOR USER AUTH
     // AUTH 1 BY ISD == REQ.USER.ISD_ID
     // AUTH 2 BY SCHOOL == REQ.USER.SCHOOL_ID
 
     if (req.user.auth == 0) {
-        console.log(req.user);
-        // const queryText = `SELECT * 
-        // FROM "school"
-        // ORDER BY "name" ASC`
         const queryText = `SELECT 
         "school".id,
         "school".name, 
@@ -36,7 +32,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
     } else if (req.user.auth == 1) {
-        console.log('superintendent isd:', req.user.isd);
         const isd = [req.user.isd]
         const queryText = `SELECT 
         "school".id,
@@ -61,10 +56,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // ADD A NEW SCHOOL
 
 router.post('/', rejectUnauthenticated, (req, res) => {
-    // req.body = data sent from addUser saga
     let newSchool = req.body;
-    console.log(req.body);
-    // inserting the data into the user table
     let queryText = `INSERT INTO "school" 
     ("name", "isd_id") 
     VALUES ($1, $2);`;

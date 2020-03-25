@@ -31,17 +31,12 @@ class AddSchoolForm extends Component {
     }
 
     submitSchool = () => {
-        console.log('submitting a new school', this.state.schoolToAdd);
-        // event.preventDefault()
-        console.log('submitting:', this.state.schoolToAdd)
-        // this should dispatch an action
-        // and then use withRouter to push history to teacher list
-        // or this new user's detail
+        // this dispatches an action
+        // and then use withRouter to push history to the UserPage component 
         this.props.dispatch({
             type: 'ADD_SCHOOL',
             payload: this.state.schoolToAdd
         })
-        //brings you back to the home page
         this.props.history.push('/home')
     }
 
@@ -80,7 +75,8 @@ class AddSchoolForm extends Component {
                                     )})}
                         </Select>
                         </FormControl>
-                    </div><br />
+                    </div>
+                    <br />
                     <div id="Button"><Button variant="contained" onClick={this.submitSchool}>ADD SCHOOL</Button></div>
                 </form>
             </div>

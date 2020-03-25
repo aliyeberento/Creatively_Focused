@@ -3,11 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-// GET ALL THE DISTRICTS
+// this get route gets all the ditricts for authorized users
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    
-    console.log(req.user);
 
     // CONDITIONAL FOR USER AUTH
     // AUTH 1 BY ISD == REQ.USER.ISD_ID
@@ -25,16 +23,27 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             console.log('Error GET route /api/isd in server', error);
             res.sendStatus(500);
         });
-    } 
+    } else if (req.user.auth <= 1) {
+        console.log(req.user);
+        const queryText = `SELECT * 
+        FROM "isd"
+        WHERE "isd"."id" = $1
+        ORDER BY "city" ASC`
+        pool.query(queryText, [req.user.isd_id])
+        .then(results => {
+            res.send(results.rows);
+        }).catch(error => {
+            console.log('Error GET route /api/isd in server', error);
+            res.sendStatus(500);
+        });
+    }
 });
 
-// ADD A NEW DISTRICT
+// This POST route adds a new district to the database's "isd" table
 
 router.post('/', rejectUnauthenticated, (req, res) => {
-    // req.body = data sent from addUser saga
     let newDistrict = req.body;
     console.log(req.body);
-    // inserting the data into the user table
     let queryText = `INSERT INTO "isd" 
     ("city", "isd", "state") 
     VALUES ($1, $2, $3);`;

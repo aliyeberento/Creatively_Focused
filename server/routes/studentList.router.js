@@ -3,7 +3,8 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-// gets all of the students for a specific teacher
+// gets all of the students that a logged-in user is allowed to see
+// and stores them on the client
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
@@ -151,7 +152,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         JOIN "school" on "school".id = "student".school_id
         JOIN "isd" on "isd".id = "student".isd_id
         WHERE "teacher" = $1
-        ORDER BY "lastname"`
+        ORDER BY "lastname" ASC`
     pool.query(queryText, [req.user.id])
         .then(results => {
             res.send(results.rows);
@@ -162,8 +163,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     }
 });
 
-// get a specific student item
+// get a specific student's detailed information for client-side use
 router.get('/:id', rejectUnauthenticated, (req, res) => {
+    console.log(req.params.id);
     let queryText = `
     SELECT 
         "student".id,
