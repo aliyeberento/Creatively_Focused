@@ -10,11 +10,21 @@ Duration: 2 week sprint
 This is a web application that helps teachers keep track of mandatory meetings for all of their students. The app will allow teachers to visually see their workload through a calendar and regulate scheduling conflicts. There will be a set of email and/or text reminders for upcoming dates. This will allow teachers to be mindful of the amount of work they are doing and plan accordingly. Teachers may also add new students in which the student's IEP and Eval dates will be auto-generated within the regulated time constraints. Administrators may add a school, school district, teacher, and visually see all of their teacher's upcoming due dates.
 
 ## Preview
+
 ![ScreenShot](Screen-Shot-1.png)
 ![ScreenShot](Screen-Shot-2.png)
 ![ScreenShot](Screen-Shot-3.png)
 ![ScreenShot](Screen-Shot-4.png)
 
+## Prerequisites
+
+Before you get started, make sure you have the following software installed on your computer:
+
+*Node.js
+*PostrgeSQL
+*Nodemon
+
+This version uses React, Redux, Express, Passport, PostgreSQL, Twilio, Cron, React-Big-Calendar, and other dependencies that will be found in the package.json.
 
 ## Database Setup Instructions
 
@@ -25,12 +35,17 @@ Copy all of the database.sql code into Postico and run all of the CREATE TABLE a
 ## Installation
 
 * Run `npm install`
-* Create a `.env` file at the root of the project and paste this line into the file:
+* Create an `.env` file at the root of the project and paste this line into the file:
     ```
     SERVER_SESSION_SECRET=superDuperSecret
     ```
     While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Repeat the same precedures for setting up a Twilio session in the `.env` file. 
+* You will also need to insert these lines into the file:
+```
+EMAIL=your_created_email@gmail.com
+PASSWORD=UUuNzcJVs62WL6F#
+``` 
+for setting up Nodemailer and Twilio.
 * You will need to make an account with Twilio to recieve a session password.
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server`
@@ -81,3 +96,11 @@ Copy all of the database.sql code into Postico and run all of the CREATE TABLE a
 * Functionality within email reminders (mark tasks as complete)
 * Better indication for congested calendar
 * Yearly calendar view in accordance to local school calendar
+
+## Acknowledgement
+
+Thank you Prime Digital Academy, our instructors Dane, Kris, and Casie, our cohort Vigenere, and our clients Elizabeth, Beck, and Matt of Creatively Focused.
+
+## Support
+
+If you have any questions or comments please email creativelyfocused50@gmail.com. If you would like to know more about Creatively Focused or know any teachers that may need their support, please visit www.creativelyfocused.org/
