@@ -48,32 +48,40 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         newStudent.isd_id, 
         newStudent.notes, 
         req.user.id]
-    let queryText2 = `
-        INSERT INTO "student_event"
-        ("student_id", "event_id", "due_date") 
-        VALUES
-        ($17, $18, TO_TIMESTAMP($19, 'YYYY/MM/DD') + interval '1 year - 15 days'),
-        ($20, $21, TO_TIMESTAMP($22, 'YYYY/MM/DD') + interval '1 year - 10 days'),
-        ($23, $24, TO_TIMESTAMP($25, 'YYYY/MM/DD') + interval '1 year - 3 days'),
-        ($26, $27, TO_TIMESTAMP($28, 'YYYY/MM/DD') + interval '1 year - 1 day'),
-        ($29, $30, TO_TIMESTAMP($31, 'YYYY/MM/DD'),
-        ($32, $33, TO_TIMESTAMP($34, 'YYYY/MM/DD') + interval '1 year + 1 day'),
-        ($35, $36, TO_TIMESTAMP($37, 'YYYY/MM/DD') + interval '1 year + 10 days'),
-        ($38, $39, TO_TIMESTAMP($40, 'YYYY/MM/DD') + interval '1 year + 24 days'),
-        ($41, $42, TO_TIMESTAMP($43, 'YYYY/MM/DD') + interval '17 year');
-        `
-        let values2 = [
-            id, 1, newStudent.prev_iep,
-            id, 2, newStudent.prev_iep,
-            id, 3, newStudent.prev_iep,
-            id, 4, newStudent.prev_iep,
-            id, 5, newStudent.prev_iep,
-            id, 6, newStudent.prev_iep,
-            id, 7, newStudent.prev_iep,
-            id, 8, newStudent.prev_iep,
-            id, 9, newStudent.birthdate,
-        ]
-    pool.query(queryText1, values1, queryText2, values2)
+
+// IF YOU CAN FIGURE OUT HOW TO USE THE RETURNING ID FROM THE ABOVE POST 
+// PLUG IT IN TO THE ID VALUE IN THE BELOW VALUES2 VARIABLE
+// WHICH WILL GENERATE IEP DEADLINES BASED ON THE USER INPUTTED DATE
+// FOR THE PREV_IEP
+
+    // let queryText2 = `
+    //     INSERT INTO "student_event"
+    //     ("student_id", "event_id", "due_date") 
+    //     VALUES
+    //     ($17, $18, TO_TIMESTAMP($19, 'YYYY/MM/DD') + interval '1 year - 15 days'),
+    //     ($20, $21, TO_TIMESTAMP($22, 'YYYY/MM/DD') + interval '1 year - 10 days'),
+    //     ($23, $24, TO_TIMESTAMP($25, 'YYYY/MM/DD') + interval '1 year - 3 days'),
+    //     ($26, $27, TO_TIMESTAMP($28, 'YYYY/MM/DD') + interval '1 year - 1 day'),
+    //     ($29, $30, TO_TIMESTAMP($31, 'YYYY/MM/DD'),
+    //     ($32, $33, TO_TIMESTAMP($34, 'YYYY/MM/DD') + interval '1 year + 1 day'),
+    //     ($35, $36, TO_TIMESTAMP($37, 'YYYY/MM/DD') + interval '1 year + 10 days'),
+    //     ($38, $39, TO_TIMESTAMP($40, 'YYYY/MM/DD') + interval '1 year + 24 days'),
+    //     ($41, $42, TO_TIMESTAMP($43, 'YYYY/MM/DD') + interval '17 year');
+    //     `
+    //     let values2 = [
+    //         id, 1, newStudent.prev_iep,
+    //         id, 2, newStudent.prev_iep,
+    //         id, 3, newStudent.prev_iep,
+    //         id, 4, newStudent.prev_iep,
+    //         id, 5, newStudent.prev_iep,
+    //         id, 6, newStudent.prev_iep,
+    //         id, 7, newStudent.prev_iep,
+    //         id, 8, newStudent.prev_iep,
+    //         id, 9, newStudent.birthdate,
+    //     ]
+    pool.query(queryText1, values1, 
+        // queryText2, values2
+        )
         .then((result) => {
             res.sendStatus(201);
         })
