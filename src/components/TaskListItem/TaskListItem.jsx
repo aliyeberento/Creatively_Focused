@@ -46,42 +46,39 @@ class TaskListItem extends Component {
         console.log(task);
         return (
             <div>
-                
-                    return (
-                        <div>
-                            {/* <Table className="table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Mark Completed</TableCell>
-                                        <TableCell>Date Due</TableCell>
-                                        <TableCell>Task Name</TableCell>
-                                        <TableCell>Student Name</TableCell>
+                return (
+                    <div>
+                        {/* <Table className="table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Mark Completed</TableCell>
+                                    <TableCell>Date Due</TableCell>
+                                    <TableCell>Task Name</TableCell>
+                                    <TableCell>Student Name</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {task.map(task => (
+                                    // maps over studentsEvent reducer
+                                    <TableRow key={task.id}>
+                                        <TableCell>
+                                            <Checkbox
+                                                key={task.id}
+                                                checked={this.state.checkedB}
+                                                onChange={(e) => this.updateStudentEvent(e, task)}
+                                                value="true"
+                                                color="primary"
+                                            /></TableCell>
+                                        <TableCell><Moment format="MM-D-YYYY">{task.due_date}</Moment></TableCell>
+                                        <TableCell>{task.task}</TableCell>
+                                        <TableCell>{task.student_lastname}, {task.student_firstname}</TableCell>
                                     </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {task.map(task => (
-                                        // maps over studentsEvent reducer
-                                        <TableRow key={task.id}>
-                                            <TableCell>
-                                                <Checkbox
-                                                    key={task.id}
-                                                    checked={this.state.checkedB}
-                                                    onChange={(e) => this.updateStudentEvent(e, task)}
-                                                    value="true"
-                                                    color="primary"
-                                                /></TableCell>
-                                            <TableCell><Moment format="MM-D-YYYY">{task.due_date}</Moment></TableCell>
-                                            <TableCell>{task.task}</TableCell>
-                                            <TableCell>{task.student_lastname}, {task.student_firstname}</TableCell>
-                                        </TableRow>
-                                    )
-                                    )}
-                                </TableBody>
-                            </Table> */}
-                            
-                        </div>
-                    )
-              
+                                )
+                                )}
+                            </TableBody>
+                        </Table> */}
+                    </div>
+                )
             </div>
         )
     }

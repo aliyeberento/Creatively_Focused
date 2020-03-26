@@ -3,7 +3,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
 function* addStudent(action) {
-    
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },
@@ -12,7 +11,6 @@ function* addStudent(action) {
         //response is all data being sent from the dom 
         //sending to database
         const response = yield axios.post('/api/addStudent', action.payload, config);
-        console.log('action.payload from post saga addstudent', action.payload)
         yield put({ type: 'ADD_EVENTS' });
         yield put({ type: 'GET_STUDENTS', payload: response.data });
         yield put({ type: 'GET_STUDENTEVENT' });
@@ -23,8 +21,6 @@ function* addStudent(action) {
 }
 
 function* addEvents() {
-    console.log('in addEvents generator, addStudent saga');
-    
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },

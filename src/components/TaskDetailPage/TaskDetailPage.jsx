@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+// This component went unused during our project 
+// but it may be useful in the future
+
 class TaskDetailPage extends Component {
 
     // GET request for details of the item clicked on

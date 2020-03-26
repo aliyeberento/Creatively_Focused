@@ -9,7 +9,6 @@ function* editStudentSaga() {
 // updating a targeted row in the database
 // afterward, it does a get to refresh the page
 function* editStudent(action) {
-    console.log('in editStudent generator', action);
     yield axios.put(`/api/studentList/${action.payload.id}`, action.payload);
     yield put({ type: 'GET_STUDENT_DETAIL' });
     yield put({ type: 'GET_STUDENTS' });

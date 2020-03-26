@@ -1,4 +1,5 @@
 const studentDetailReducer = (state = {}, action) => {
+
     switch (action.type) {
         case 'SET_STUDENT':
             return action.payload;
@@ -10,7 +11,7 @@ const studentDetailReducer = (state = {}, action) => {
             };
         default:
             return state;
-    }
+    }    
 }
 
 export default studentDetailReducer;

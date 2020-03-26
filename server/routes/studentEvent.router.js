@@ -147,19 +147,17 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 
 router.post('/', rejectUnauthenticated, (res) => {
     console.log('in studentEvent.router POST');
-    let queryText = `
+    let queryText = 
+
+        // The SQL query that follows should add all of this student upcoming
+        // events and deadlines. They should be checked again this user's
+        // district calendar in the "calendar" table.
+
+    `
     INSERT INTO "student_event" 
     ("student_id", "event_id", "due_date") 
-    VALUES
-    (35, 1, '2020-10-20'), 
-    (35, 2, '2020-11-05'), 
-    (35, 3, '2020-11-09'), 
-    (35, 4, '2020-11-11'), 
-    (35, 5, '2020-11-20'), 
-    (35, 6, '2020-11-30'), 
-    (35, 7, '2020-12-03'), 
-    (35, 8, '2020-12-04'), 
-    (35, 9, '2024-06-20');`
+    VALUES()
+    `
     pool.query(queryText)
         .then((result) => {
             res.sendStatus(201);
@@ -170,6 +168,12 @@ router.post('/', rejectUnauthenticated, (res) => {
         });
 
 });
+
+// this delete route does not remove any data from the table
+// those are valuable records that may be needed in the future
+// this delete route simply updates each of the student's events
+// to a completed status, and stamps them with the current time
+// and the id of the user that commited the action.
 
 router.delete('/', rejectUnauthenticated, (req, res) => {
     const id = req.params.id

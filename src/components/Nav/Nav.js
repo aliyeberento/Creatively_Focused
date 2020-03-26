@@ -42,6 +42,7 @@ class Nav extends Component {
                 but call this link 'Home' if they are logged in,
                 and call this link 'Login / Register' if they are not */}
                 {/* {this.props.store.user.id ? 'USER PROFILE' : 'LOGIN'} */}
+                {/* Show this link ONLY to CF admins */}
                 {this.props.store.user.auth < 1 && (
                   <>
                     <Link className="menu-item" to="/adddistrict" onClick={() => this.closeMenu()}>
@@ -50,6 +51,7 @@ class Nav extends Component {
                     <br />
                     </>
                     )}
+                    {/* Show these links to CF and ISD admins */}
                     {this.props.store.user.auth < 2 && (
                   <>
                     <Link className="menu-item" to="/addschool" onClick={() => this.closeMenu()}>
@@ -66,7 +68,7 @@ class Nav extends Component {
                     <br />
                   </>
                 )}
-                {/* Show the link to the info page and the logout button if the user is logged in */}
+                {/* Show the link to the info page and the logout button to all users */}
                 {this.props.store.user.auth < 5 && (
                   <>
                     <Link className="menu-item" to="/studentlist" onClick={() => this.closeMenu()}>

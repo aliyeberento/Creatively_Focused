@@ -14,7 +14,6 @@ const styles = {
     card: {
         minWidth: 400,
         padding: '0 30px',
-        
     },
     bullet: {
         display: 'inline-block',
@@ -31,8 +30,6 @@ const styles = {
         height: 50,
         width: 140,
     },
-    
-
 };
 
 class UserItem extends Component {
@@ -59,7 +56,6 @@ class UserItem extends Component {
                         </Paper>
                     </Grid>
                 </Grid>
-               
             </div>
         )
     }

@@ -3,17 +3,14 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-// get all the users
+// get all the users based on the logged-in user's authorization level
 router.get('/', rejectUnauthenticated, (req, res) => {
-    
-    console.log(req.user);
 
     // CONDITIONAL FOR USER AUTH
     // AUTH 1 BY ISD == REQ.USER.ISD_ID
     // AUTH 2 BY SCHOOL == REQ.USER.SCHOOL_ID
 
     if (req.user.auth == 0) {
-        console.log(req.user);
         const queryText = `
         SELECT
             "user".id, 
@@ -39,7 +36,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
     } else if (req.user.auth == 1) {
-        console.log('superintendent isd:', req.user.isd);
         const isd = [req.user.isd]
         const queryText = `
         SELECT
@@ -66,7 +62,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
     } else if (req.user.auth == 2) {
-        console.log('principal school:', req.user.school);        
         const school = [req.user.school]
         const queryText = `
         SELECT
@@ -125,10 +120,9 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// delete a specific user
+// delete a specific user after their students are all re-assigned to new users
 router.delete('/:id/', rejectUnauthenticated, (req, res) => {
     const id = req.params.id
-    console.log('in delete route', id)
     const queryText = 'DELETE FROM "user" WHERE "id" = $1'
     pool.query(queryText, [id])
         .then(() => { res.sendStatus(200) })
@@ -138,9 +132,8 @@ router.delete('/:id/', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// updates a single user
+// updates a single user's information
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in router PUT', req.body);
     let sqlText = `
         UPDATE "user" 
         SET "username"=$1,

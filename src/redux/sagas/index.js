@@ -44,6 +44,6 @@ export default function* rootSaga() {
     tasksSaga(),
     districtSaga(),
     schoolSaga(),
-    editStudentEventSaga(),
+    editStudentEventSaga()
   ]);
 }

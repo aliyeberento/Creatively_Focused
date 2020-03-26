@@ -30,7 +30,7 @@ class EditUserForm extends Component {
 
     updateUser = (event, propertyValue) => {
         // dispatch calls 'UPDATE_USER' which'll update 
-        //the targeted property and send it to redux/database 
+        // the targeted property and send it to redux/database 
         this.props.dispatch({
             type: 'UPDATE_USER',
             payload: {
@@ -42,7 +42,7 @@ class EditUserForm extends Component {
 
     updateUserInt = (event, propertyValue) => {
         // dispatch calls 'UPDATE_USER' which'll update 
-        //the targeted property and send it to redux/database 
+        // the targeted property and send it to redux/database 
         this.props.dispatch({
             type: 'UPDATE_USER',
             payload: {
@@ -62,14 +62,6 @@ class EditUserForm extends Component {
             <div>
                 <h1> EDIT USER</h1>
                 <form id="AddForm">
-                    {/* <label>First Name:
-                        <input
-                            type="text"
-                            placeholder="firstname"
-                            defaultValue={user.firstname}
-                            onChange={(event) => this.updateUser(event, 'firstname')}
-                        />
-                    </label> */}
                     <div id="TextField">
                         <TextField 
                             type="text" 
@@ -79,14 +71,6 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'firstname')} />
                     </div>
                     <br/>
-                    {/* <label>Last Name:
-                        <input
-                            type="text"
-                            placeholder="lastname"
-                            defaultValue={user.lastname}
-                            onChange={(event) => this.updateUser(event, 'lastname')}
-                        />
-                    </label> */}
                     <div id="TextField">
                         <TextField 
                             type="text" 
@@ -96,14 +80,6 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'lastname')} />
                     </div>
                     <br/>
-                    {/* <label>Email/Username:
-                        <input
-                            type="text"
-                            placeholder="username"
-                            defaultValue={user.username}
-                            onChange={(event) => this.updateUser(event, 'username')}
-                        />
-                    </label> */}
                     <div id="TextField">
                         <TextField 
                             type="text" 
@@ -113,14 +89,6 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'username')} />
                     </div>
                     <br />
-                    {/* <label>Mobile Phone Number:
-                        <input
-                            type="text"
-                            placeholder="phone"
-                            defaultValue={user.phone}
-                            onChange={(event) => this.updateUser(event, 'phone')}
-                        />
-                    </label> */}
                     <div id="TextField">
                         <TextField 
                             type="tel" 
@@ -130,21 +98,6 @@ class EditUserForm extends Component {
                             onChange={(event) => this.updateUser(event, 'phone')} />
                     </div>
                     <br />
-                    {/* <label>District:
-                        <select 
-                            name="isd" 
-                            id="isd" 
-                            defaultValue={user.isd} 
-                            placeholder="isd" 
-                            onChange={(event) => this.updateUserInt(event, 'isd')}>District:
-                            <option>Choose one...</option>
-                                {this.props.reduxState.districtReducer.map(isd => {
-                                    return (
-                                        <option value={isd.id} key={isd.id}>{isd.state} - {isd.isd}</option>
-                                    )
-                                })}
-                            </select>
-                            </label> */}
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
                         <InputLabel>DISTRICT</InputLabel>
@@ -184,80 +137,6 @@ class EditUserForm extends Component {
                         </Select>
                         </FormControl>
                     </div>
-                    {/* <div id="TextField">
-                        <FormControl style={{minWidth: 166}}>
-                        <InputLabel>SCHOOL</InputLabel>
-                        <Select 
-                            label="SCHOOL" 
-                            name="SCHOOL" 
-                            id="SCHOOL" 
-                            value={this.props.reduxState.studentDetail.school}
-                            defaultValue={this.props.reduxState.studentDetail.school}
-                            placeholder="SCHOOL" 
-                            onChange={(event) => this.updateStudentInt(event, 'school_id')}>
-                                {this.props.reduxState.schoolReducer.map(school => {
-                                    return (
-                                        <MenuItem id="MenuItem" key={school.id} value={school.name}>
-                                            {school.name}</MenuItem>
-                                    )
-                                })}
-                        </Select>
-                        </FormControl>
-                    </div> */}
-                        {/* <div id="TextField">
-                        <FormControl style={{minWidth: 166}}>
-                        <InputLabel>SCHOOL</InputLabel>
-                        <Select 
-                            label="SCHOOL" 
-                            name="SCHOOL" 
-                            id="SCHOOL" 
-                            value={this.props.reduxState.studentDetail.school}
-                            defaultValue={this.props.reduxState.studentDetail.school}
-                            placeholder="SCHOOL" 
-                            onChange={(event) => this.updateStudentInt(event, 'school_id')}>
-                                {this.props.reduxState.schoolReducer.map(school => {
-                                    return (
-                                        <MenuItem id="MenuItem" key={school.id} value={school.name}>
-                                            {school.name}</MenuItem>
-                                    )
-                                })}
-                        </Select>
-                        </FormControl>
-                    </div> */}
-                    
-                        {/* <label>School:
-                            <select name="school" id="school" defaultValue="school" placeholder="school" onChange={(event) => this.updateUserInt(event, 'school')}>
-                                <option>Choose one...</option>
-                                {this.props.reduxState.schoolReducer.map(school => {
-                                    return (
-                                        <option value={school.id} key={school.id}>{school.city} - {school.name} - {school.isd}</option>
-                                    )
-                                })}
-                            </select>
-                        </label> */}
-                    {/* <label>School:
-                        <select name="isd" onChange={(event) => this.updateUser(event, 'isd')}>
-                            <option >Choose One...</option>
-                            <option value="8">South High School</option>
-                            <option value="7">Patrick Henry High School</option>
-                            <option value="6">North High School</option>
-                            <option value="5">Johnson High School</option>
-                            <option value="4">Como</option>
-                            <option value="3">Highland Park Middle School</option>
-                            <option value="2">Farmington Junior High</option>
-                            <option value="1">Farmington Senior High</option>
-                        </select>
-                    </label> */}
-                    {/* <label>
-                        Role/Auth:
-                        <select name="role" onChange={(event) => this.updateUserInt(event, 'auth')}>
-                            <option >Choose One...</option>
-                            <option value="3">Teacher</option>
-                            <option value="2">School Principal</option>
-                            <option value="1">Superintendent</option>
-                            <option value="0">CF Admin</option>
-                        </select>
-                    </label> */}
                     <br />
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
@@ -281,7 +160,6 @@ class EditUserForm extends Component {
                     <div id="Button">
                         <Button variant="contained" onClick={this.submitEdit}>SUBMIT EDIT</Button>
                     </div>
-                    {/* <button type="button" onClick={this.submitEdit}>submit changes</button> */}
                 </form>
             </div >
         )

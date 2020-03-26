@@ -7,7 +7,6 @@ function* schoolSaga() {
 }
 
 function* getSchools() {
-    console.log('inside the get school saga')
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },
@@ -21,7 +20,6 @@ function* getSchools() {
 }
 
 function* addSchool(action) {
-console.log('inside the add school saga')
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },

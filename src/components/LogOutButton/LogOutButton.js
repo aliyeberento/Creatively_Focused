@@ -12,7 +12,7 @@ class LogOutButton extends Component {
         // This button shows up in multiple locations and is styled differently
         // because it's styled differently depending on where it is used, the className
         // is passed to it from it's parents through React props
-        className={this.props.reduxState.className}
+        // className={this.props.reduxState.className}
         onClick={() => this.props.dispatch({ type: 'LOGOUT' })}
       >
         LOGOUT
@@ -21,11 +21,11 @@ class LogOutButton extends Component {
   }
 }
 
-  const putReduxStateOnProps = (reduxState) => {
-    return {
-      reduxState
-    }
+const putReduxStateOnProps = (reduxState) => {
+  return {
+    reduxState
   }
+}
 
 // This component doesn't need 'mapStateToProps'
 // because it doesn't care what the current state is.

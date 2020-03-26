@@ -12,4 +12,5 @@ const teacherDetailReducer = (state = {}, action) => {
             return state;
     }
 }
+
 export default teacherDetailReducer;
