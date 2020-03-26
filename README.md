@@ -99,6 +99,10 @@ PASSWORD=UUuNzcJVs62WL6F#
 * Better indication for congested calendar
 * Yearly calendar view in accordance to local school calendar
 
+## Current Bugs
+
+* If the user is logged in as an admin or teacher and adds a new student, school, etc. the new item may not show up. In this case, refresh the page and it should show up.
+
 ## Acknowledgement
 
 Thank you Prime Digital Academy, our instructors Dane, Kris, and Casie, our cohort Vigenere, and our clients Elizabeth, Beck, and Matt of Creatively Focused.
