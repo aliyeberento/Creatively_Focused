@@ -46,8 +46,8 @@ CREATE TABLE "student" (
 
 CREATE TABLE "school" (
 	"id" SERIAL NOT NULL,
-	"name" VARCHAR(100) NOT NULL,
-	"isd_id" INT NOT NULL,
+	"name" VARCHAR(100),
+	"isd_id" INT,
 	CONSTRAINT "school_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -55,7 +55,7 @@ CREATE TABLE "school" (
 
 CREATE TABLE "isd" (
 	"id" SERIAL NOT NULL,
-	"isd" INT NOT NULL,
+	"isd" INT,
 	"city" VARCHAR(100),
 	"state" VARCHAR(50),
 	CONSTRAINT "isd_pk" PRIMARY KEY ("id")
@@ -83,7 +83,7 @@ CREATE TABLE "student_event" (
 	"id" SERIAL NOT NULL,
 	"student_id" INT NOT NULL,
 	"event_id" INT NOT NULL,
-	"due_date" DATE NOT NULL,
+	"due_date" DATE,
 	"notes" TEXT,
 	"completed" BOOLEAN DEFAULT 'false',
 	"date_completed" TIMESTAMP,
@@ -96,9 +96,9 @@ CREATE TABLE "student_event" (
 CREATE TABLE "calendar" (
 	"id" SERIAL NOT NULL,
 	"date" DATE NOT NULL,
-	"school_id" INT NOT NULL,
-	"school_day" BOOLEAN NOT NULL DEFAULT 'true',
-	"creator" SERIAL NOT NULL,
+	"school_id" INT,
+	"school_day" BOOLEAN DEFAULT 'true',
+	"creator" INT NOT NULL,
 	CONSTRAINT "calendar_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -193,6 +193,7 @@ VALUES
 
 INSERT INTO "student"("firstname", "lastname", "birthdate", "grade", "disability_cat", "fed_setting", "initial_iep", "prev_iep", "next_iep", "prev_eval", "next_eval", "notes") VALUES('Luke', 'Rohde', '1981-02-17', 12, 3, 5, '2009-01-01', '2020-01-01', '2021-01-01', '2020-12-02', '2021-12-02', 'note about luke');
 
+-- Drop Table commands
 DROP TABLE "user";
 DROP TABLE "student";
 DROP TABLE "event";
@@ -202,6 +203,7 @@ DROP TABLE "isd";
 DROP TABLE "case_worker";
 DROP TABLE "calendar";
 
+-- The following are SQL Queries that produced our sample data set
 INSERT INTO "isd"("isd", "city", "state") 
 VALUES
 (1, 'Farmington', 'MN'),
@@ -243,6 +245,7 @@ VALUES('Adam', 'Anderson', '2007-01-29', 8, 987149765, 0, 1, '2015-01-01', '2019
 ('Uter', 'Ulow', '2005-08-08', 10, 492478562, 1, 5, '2014-01-01', '2019-10-22', '2020-10-22', '2018-09-24', '2021-09-24', 5, 5, 3),
 ('Victor', 'Vandalay', '2008-09-21', 7, 728229472, 7, 2, '2015-01-01', '2020-02-01', '2021-02-01', '2019-01-04', '2022-01-04', 6, 3, 2);
 
+-- This Query creates the milestones associated with an IEP and Transfer of Rights
 INSERT INTO "event" ("task") 
 VALUES('Notice of Team IEP Meeting'),
 ('Present Levels of Performance (IEP)'),
@@ -251,4 +254,5 @@ VALUES('Notice of Team IEP Meeting'),
 ('Annual IEP Meeting Deadline'),
 ('PWN and IEP Reminder'),
 ('Send PWN and IEP Due'),
-('IEP Consent');
+('IEP Consent'),
+('Transfer of Rights');

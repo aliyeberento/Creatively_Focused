@@ -9,7 +9,6 @@ function* editUserSaga() {
 // updating a targeted row in the database
 // afterward, it does a get to refresh the page
 function* editUser(action) {
-    console.log('in edit user generator', action);
     yield axios.put(`/api/teacherList/${action.payload.id}`, action.payload);
     yield put({ type: 'GET_TEACHERS' });
 }

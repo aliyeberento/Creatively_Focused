@@ -10,7 +10,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 
 const styles = {
-
     card: {
         minWidth: 400,
         paddingBottom: '20%',
@@ -30,8 +29,6 @@ const styles = {
         height: 100,
         width: 140,
     }
-
-
 };
 
 class StudentItem extends Component {

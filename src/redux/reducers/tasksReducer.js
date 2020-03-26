@@ -9,5 +9,4 @@ const tasksReducer = (state = [], action) => {
     }
 };
 
-
 export default tasksReducer;

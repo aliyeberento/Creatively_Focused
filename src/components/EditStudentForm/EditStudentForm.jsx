@@ -39,8 +39,9 @@ class EditStudentForm extends Component {
             }
         })
     }
-        // dispatch calls 'UPDATE_STUDENTS' which'll update 
-        //the targeted property and send it to redux/database 
+
+    // dispatch calls 'UPDATE_STUDENTS' which'll update 
+    // the targeted property and send it to redux/database 
     updateStudentInt = (event, propertyValue) => {
         this.props.dispatch({
             type: 'UPDATE_STUDENT',
@@ -73,8 +74,7 @@ class EditStudentForm extends Component {
                     </div>
                     <br />
                     <div id="TextField">
-                        <FormControl 
-                            style={{minWidth: 166}}>
+                        <FormControl style={{minWidth: 166}}>
                             <InputLabel>GRADE</InputLabel>
                             <Select 
                                 label="GRADE" 
@@ -103,50 +103,50 @@ class EditStudentForm extends Component {
                     <br />
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
-                        <InputLabel>DISABILITY</InputLabel>
-                        <Select 
-                            label="DISABILITY CATEGORY" 
-                            name="disability_cat" 
-                            id="disability_cat" 
-                            value={this.props.reduxState.studentDetail.disability_cat}
-                            // defaultValue={this.props.reduxState.studentDetail.disability_cat} 
-                            placeholder="disability_cat" 
-                            onChange={(event) => this.updateStudentInt(event, 'disability_cat')}>
-                                <MenuItem value="1">Autism</MenuItem>
-                                <MenuItem value="2">Deaf-Blindness</MenuItem>
-                                <MenuItem value="3">Deafness</MenuItem>
-                                <MenuItem value="4">Developmental Delay</MenuItem>
-                                <MenuItem value="5">Emotional Disturbance</MenuItem>
-                                <MenuItem value="6">Hearing Impairment</MenuItem>
-                                <MenuItem value="7">Intellectual Disability</MenuItem>
-                                <MenuItem value="8">Multiple Disabilities</MenuItem>
-                                <MenuItem value="9">Orthopedic Impairment</MenuItem>
-                                <MenuItem value="10">Other Health Impairment</MenuItem>
-                                <MenuItem value="11">Specific Learning Disability</MenuItem>
-                                <MenuItem value="12">Speech or Language Impairment</MenuItem>
-                                <MenuItem value="13">Traumatic Brain Injury</MenuItem>
-                                <MenuItem value="14">Visual Impairment Inclucing Blindness</MenuItem>
-                        </Select>
+                            <InputLabel>DISABILITY</InputLabel>
+                            <Select 
+                                label="DISABILITY CATEGORY" 
+                                name="disability_cat" 
+                                id="disability_cat" 
+                                value={this.props.reduxState.studentDetail.disability_cat}
+                                // defaultValue={this.props.reduxState.studentDetail.disability_cat} 
+                                placeholder="disability_cat" 
+                                onChange={(event) => this.updateStudentInt(event, 'disability_cat')}>
+                                    <MenuItem value="1">Autism</MenuItem>
+                                    <MenuItem value="2">Deaf-Blindness</MenuItem>
+                                    <MenuItem value="3">Deafness</MenuItem>
+                                    <MenuItem value="4">Developmental Delay</MenuItem>
+                                    <MenuItem value="5">Emotional Disturbance</MenuItem>
+                                    <MenuItem value="6">Hearing Impairment</MenuItem>
+                                    <MenuItem value="7">Intellectual Disability</MenuItem>
+                                    <MenuItem value="8">Multiple Disabilities</MenuItem>
+                                    <MenuItem value="9">Orthopedic Impairment</MenuItem>
+                                    <MenuItem value="10">Other Health Impairment</MenuItem>
+                                    <MenuItem value="11">Specific Learning Disability</MenuItem>
+                                    <MenuItem value="12">Speech or Language Impairment</MenuItem>
+                                    <MenuItem value="13">Traumatic Brain Injury</MenuItem>
+                                    <MenuItem value="14">Visual Impairment Inclucing Blindness</MenuItem>
+                            </Select>
                         </FormControl>
                     </div>
                     <br />
                     <div id="TextField">
                         <FormControl style={{minWidth: 166}}>
-                        <InputLabel>SETTING</InputLabel>
-                        <Select 
-                            label="FEDERAL SETTING" 
-                            name="fed_setting" 
-                            id="fed_setting" 
-                            value={this.props.reduxState.studentDetail.fed_setting}
-                            // defaultValue={this.props.reduxState.studentDetail.fed_setting} 
-                            placeholder="fed_setting" 
-                            onChange={(event) => this.updateStudentInt(event, 'fed_setting')}>
-                                <MenuItem id="MenuItem" value="1">Federal Setting I</MenuItem>
-                                <MenuItem id="MenuItem" value="2">Federal Setting II</MenuItem>
-                                <MenuItem id="MenuItem" value="3">Federal Setting III</MenuItem>
-                                <MenuItem id="MenuItem" value="4">Federal Setting IV</MenuItem>
-                                <MenuItem id="MenuItem" value="8">Federal Setting VIII</MenuItem>
-                        </Select>
+                            <InputLabel>SETTING</InputLabel>
+                            <Select 
+                                label="FEDERAL SETTING" 
+                                name="fed_setting" 
+                                id="fed_setting" 
+                                value={this.props.reduxState.studentDetail.fed_setting}
+                                // defaultValue={this.props.reduxState.studentDetail.fed_setting} 
+                                placeholder="fed_setting" 
+                                onChange={(event) => this.updateStudentInt(event, 'fed_setting')}>
+                                    <MenuItem id="MenuItem" value="1">Federal Setting I</MenuItem>
+                                    <MenuItem id="MenuItem" value="2">Federal Setting II</MenuItem>
+                                    <MenuItem id="MenuItem" value="3">Federal Setting III</MenuItem>
+                                    <MenuItem id="MenuItem" value="4">Federal Setting IV</MenuItem>
+                                    <MenuItem id="MenuItem" value="8">Federal Setting VIII</MenuItem>
+                            </Select>
                         </FormControl>
                     </div>
                     <br />

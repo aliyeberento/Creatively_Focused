@@ -3,7 +3,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* StudentDetailSaga() {
     yield takeLatest('GET_STUDENT_DETAIL', getDetail);
-    
 }
 
 function* getDetail(action) {

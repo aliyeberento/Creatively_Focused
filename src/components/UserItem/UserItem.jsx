@@ -15,7 +15,6 @@ const styles = {
         minWidth: 400,
         paddingBottom: '20%',
         padding: '0 30px',
-        
     },
     bullet: {
         display: 'inline-block',
@@ -32,8 +31,6 @@ const styles = {
         height: 100,
         width: 140,
     },
-    
-
 };
 
 class UserItem extends Component {
@@ -60,7 +57,6 @@ class UserItem extends Component {
                         </Paper>
                     </Grid>
                 </Grid>
-               
             </div>
         )
     }
