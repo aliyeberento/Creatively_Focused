@@ -128,7 +128,7 @@ class UserPage extends Component {
     let events = this.formatEventsForCalendar(this.props.student);    
     return (
       <div className="welcome">
-        <h1>Welcome, {this.props.user.firstname}!</h1>
+        <h1>Welcome, Mr. Teacher!</h1>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}

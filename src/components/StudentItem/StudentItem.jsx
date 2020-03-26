@@ -12,7 +12,6 @@ import Button from '@material-ui/core/Button';
 const styles = {
     card: {
         minWidth: 400,
-        paddingBottom: '20%',
     },
     bullet: {
         display: 'inline-block',
@@ -22,11 +21,8 @@ const styles = {
     title: {
         fontSize: 14,
     },
-    pos: {
-        marginBottom: 12,
-    },
     paper: {
-        height: 100,
+        height: 50,
         width: 140,
     }
 };

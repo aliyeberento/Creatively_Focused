@@ -26,7 +26,6 @@
     "react": "^16.8.6",
     "react-big-calendar": "^0.24.1",
     "react-burger-menu": "^2.6.13",
-    "react-calendar": "^2.19.2",
     "react-dom": "^16.8.6",
     "react-moment": "^0.9.7",
     "react-redux": "^7.1.1",

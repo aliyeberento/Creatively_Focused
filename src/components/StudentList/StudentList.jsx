@@ -31,6 +31,7 @@ class StudentList extends Component {
                 <ul>
                     <h1 className="student-list">STUDENT LIST</h1>
                     <Link style={{ backgroundColor: 'transparent' }} className="connectorLink" to="/addstudent">
+
                         <div id="Button">
                             <button className="linkBtn student-add">
                                 ADD NEW STUDENT
